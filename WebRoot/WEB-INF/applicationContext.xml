@@ -67,11 +67,11 @@
 		</property>
 	</bean>                 
     
-    <bean id="newsDao" class="com.bookstore.dao.NewsDaoImpl">
+    <bean id="newsDao" class="com.bookstore.dao.impl.NewsDaoImpl">
  		<property name="sessionFactory" ref="sessionFactory" />    <!-- 除了action类是自动装配，其他的类都需要显示的写出注入 -->
 	</bean>
     
-	<bean id="helloWorldService" class="com.bookstore.service.HelloWorldServiceImpl">
+	<bean id="helloWorldService" class="com.bookstore.service.impl.HelloWorldServiceImpl">
 		<property name="newsDao" ref="newsDao" />
 	</bean>     <!-- action默认是自动装配的 -->
 
