@@ -9,5 +9,6 @@ ehthumbs.db
 Thumbs.db
 .classpath
 .project
+.tern-project
 .settings/
 bin/
