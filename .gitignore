@@ -12,3 +12,4 @@ Thumbs.db
 .tern-project
 .settings/
 bin/
+*.MF
