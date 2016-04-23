@@ -1,4 +1,4 @@
-**/classes
+**/classes/
 .DS_Store
 .DS_Store?
 ._*
@@ -13,4 +13,4 @@ Thumbs.db
 .settings/
 bin/
 *.MF
-**/META-INF
+**/META-INF/
