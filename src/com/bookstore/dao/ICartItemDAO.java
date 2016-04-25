@@ -1,5 +1,11 @@
 package com.bookstore.dao;
 
-public interface ICartItemDAO {
+import java.util.List;
 
+import com.bookstore.domain.CartItem;
+
+public interface ICartItemDAO {
+	CartItem findById();
+	List<CartItem> findAll();
+	int save(CartItem cartItem);
 }
