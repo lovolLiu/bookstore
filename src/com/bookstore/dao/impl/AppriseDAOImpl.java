@@ -5,10 +5,7 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bookstore.dao.AppriseDAO;
-import com.bookstore.domain.Address;
 import com.bookstore.domain.Apprise;
-import com.bookstore.domain.Book;
-import com.bookstore.domain.User;
 
 public class AppriseDAOImpl extends HibernateDaoSupport implements AppriseDAO {
 
@@ -23,18 +20,18 @@ public class AppriseDAOImpl extends HibernateDaoSupport implements AppriseDAO {
 	}
 
 	@Override
-	public Integer save(Address address){
-		return (Integer)getHibernateTemplate().save(address);
+	public Integer save(Apprise apprise){
+		return (Integer)getHibernateTemplate().save(apprise);
 	}
 
 	@Override
-	public void update(Address address) {
-		getHibernateTemplate().update(address);
+	public void update(Apprise apprise) {
+		getHibernateTemplate().update(apprise);
 	}
 
 	@Override
-	public void delete(Address address){
-		getHibernateTemplate().delete(address);
+	public void delete(Integer id){
+		getHibernateTemplate().delete(findByID(id));
 	}
 	
 
