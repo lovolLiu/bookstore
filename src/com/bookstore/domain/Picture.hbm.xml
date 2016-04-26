@@ -8,5 +8,6 @@
 			<generator class="identity" />
 		</id>
 		<property name="url" column="URL"/>
+		<property name="bookID" column="Book_BookID"/>
 	</class>
 </hibernate-mapping>

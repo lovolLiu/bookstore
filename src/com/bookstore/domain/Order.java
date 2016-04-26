@@ -6,6 +6,22 @@ public class Order {
 	private Integer orderID;
 	private Integer stats;
 	private Timestamp buyTime;
+	
+	private Integer userID;
+	private Integer addressID;
+	
+	public Integer getUserID() {
+		return userID;
+	}
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+	public Integer getAddressID() {
+		return addressID;
+	}
+	public void setAddressID(Integer addressID) {
+		this.addressID = addressID;
+	}
 	public Integer getOrderID() {
 		return orderID;
 	}

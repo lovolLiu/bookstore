@@ -9,5 +9,7 @@
 		</id>
 		<property name="stats" column="Stats"/>
 		<property name="buyTime" column="BuyTime"/>
+		<property name="userID" column="User_UserID"/>
+		<property name="addressID" column="Address_AddressID"/>
 	</class>
 </hibernate-mapping>
