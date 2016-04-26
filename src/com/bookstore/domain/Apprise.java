@@ -7,6 +7,9 @@ public class Apprise {
 	private Integer score;
 	private String text;
 	private Timestamp appriseTime;
+	private Integer bookID;
+	private Integer userID;
+	
 	public Integer getAppriseID() {
 		return appriseID;
 	}
@@ -31,4 +34,17 @@ public class Apprise {
 	public void setAppriseTime(Timestamp appriseTime) {
 		this.appriseTime = appriseTime;
 	}
+	public Integer getBookID() {
+		return bookID;
+	}
+	public void setBookID(Integer bookID) {
+		this.bookID = bookID;
+	}
+	public Integer getUserID() {
+		return userID;
+	}
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+	
 }

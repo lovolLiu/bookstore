@@ -10,5 +10,7 @@
 		<property name="score" column="Score"/>
 		<property name="text" column="Text"/>
 		<property name="appriseTime" column="AppriseTime"/>
+		<property name="bookID" column="Book_BookID"/>
+		<property name="userID" column="User_UserID"/>
 	</class>
 </hibernate-mapping>

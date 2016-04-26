@@ -12,5 +12,7 @@
 		<property name="currentPrice" column="CurrentPrice"/>
 		<property name="boughtDate" column="BoughtDate"/>
 		<property name="hasApprise" column="HasApprise"/>
+		<property name="orderID" column="Order_OrderID"/>
+		
 	</class>
 </hibernate-mapping>

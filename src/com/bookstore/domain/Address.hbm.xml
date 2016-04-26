@@ -11,6 +11,8 @@
 		<property name="person" column="Person"/>
 		<property name="address" column="Address"/>
 		<property name="tel" column="Tel"/>
+		<property name="userID" column="User_UserID"/>
+		
 		
 	</class>
 </hibernate-mapping>

@@ -3,6 +3,7 @@ package com.bookstore.domain;
 public class BookType {
 	private Integer typeID;
 	private String type;
+	
 	public Integer getTypeID() {
 		return typeID;
 	}

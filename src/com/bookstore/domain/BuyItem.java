@@ -8,6 +8,8 @@ public class BuyItem {
 	double currentPrice;
 	Timestamp boughtDate;
 	boolean hasApprise;
+	Integer orderID;
+	
 	public int getBuyItemID() {
 		return buyItemID;
 	}

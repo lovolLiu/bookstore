@@ -18,6 +18,7 @@
 		<property name="restNum" column="RestNum"/>
 		<property name="totalSell" column="TotalSell"/>
 		<property name="pageNum" column="PageNum"/>
+		<property name="publisherID" column="Publisher_PublisherID"/>
 		
 	</class>
 </hibernate-mapping>
