@@ -32,6 +32,12 @@ public class Address {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	public Integer getUserID() {
+		return userID;
+	}
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
 	
 	
 	

@@ -40,6 +40,12 @@ public class BuyItem {
 	public void setHasApprise(boolean hasApprise) {
 		this.hasApprise = hasApprise;
 	}
+	public Integer getOrderID() {
+		return orderID;
+	}
+	public void setOrderID(Integer orderID) {
+		this.orderID = orderID;
+	}
 	
 	
 }

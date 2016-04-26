@@ -82,5 +82,13 @@ public class Book {
 	public void setPageNum(Integer pageNum) {
 		this.pageNum = pageNum;
 	}
+	public Integer getPublisherID() {
+		return publisherID;
+	}
+	public void setPublisherID(Integer publisherID) {
+		this.publisherID = publisherID;
+	}
+	
+	
 	
 }
