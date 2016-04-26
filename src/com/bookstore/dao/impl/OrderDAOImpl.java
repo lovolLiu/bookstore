@@ -2,54 +2,49 @@ package com.bookstore.dao.impl;
 
 import java.util.List;
 
-import com.bookstore.dao.CartItemDAO;
-import com.bookstore.domain.CartItem;
+import com.bookstore.dao.OrderDAO;
+import com.bookstore.domain.Order;
 
-public class CartItemDAOImpl implements CartItemDAO {
+public class OrderDAOImpl implements OrderDAO {
 
-	public CartItem findById() {
+	@Override
+	public Order findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<CartItem> findAll() {
+	public List<Order> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Integer save(CartItem cartItem) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public CartItem findById(Integer id) {
+	public Integer save(Order order) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(CartItem cartItem) {
+	public void update(Order order) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public List<CartItem> findByBuyItemID(Integer bookID) {
+	public List<Order> findByAddressID(Integer addressID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<CartItem> findByUserID(Integer userID) {
+	public List<Order> findByUserID(Integer userID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
