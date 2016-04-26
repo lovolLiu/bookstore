@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.bookstore.domain">
+	<class name="Book" table="Book">
+	
+		<cache usage="read-write" /> <!-- 缓存 -->
+		<id name="bookID" column="BookID" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="bookName" column="BookName"/>
+		<property name="author" column="Author"/>
+		<property name="price" column="Price"/>
+		<property name="description" column="Description"/>
+		<property name="discount" column="Discount"/>
+		<property name="publishTime" column="PublishTime"/>
+		<property name="clickCount" column="ClickCount"/>
+		<property name="restNum" column="RestNum"/>
+		<property name="totalSell" column="TotalSell"/>
+		<property name="pageNum" column="PageNum"/>
+		
+	</class>
+</hibernate-mapping>

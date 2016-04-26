@@ -6,6 +6,7 @@ public class Address {
 	String person;
 	String address;
 	String tel;
+	
 	public int getAddressID() {
 		return addressID;
 	}

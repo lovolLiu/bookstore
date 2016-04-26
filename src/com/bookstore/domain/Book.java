@@ -14,6 +14,7 @@ public class Book {
 	private Integer restNum;
 	private Integer totalSell;
 	private Integer pageNum;
+	
 	public Integer getBookID() {
 		return bookID;
 	}

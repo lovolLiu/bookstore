@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.bookstore.domain">
+	<class name="Address" table="">
+		<cache usage="read-write" /> <!-- 缓存 -->
+		<id name="appriseID" column="AppriseID" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="score" column="Score"/>
+		<property name="text" column="Text"/>
+		<property name="appriseTime" column="AppriseTime"/>
+	</class>
+</hibernate-mapping>

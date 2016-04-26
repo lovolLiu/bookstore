@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.bookstore.domain">
+	<class name="BuyItem" table="BuyItem">
+	
+		<cache usage="read-write" /> <!-- 缓存 -->
+		<id name="buyItemID" column="BuyItemID" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="buyNum" column="BuyNum"/>
+		<property name="currentPrice" column="CurrentPrice"/>
+		<property name="boughtDate" column="BoughtDate"/>
+		<property name="hasApprise" column="HasApprise"/>
+	</class>
+</hibernate-mapping>
