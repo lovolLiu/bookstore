@@ -7,6 +7,7 @@
 		<id name="cartItemID" column="CartItemID" type="integer">
 			<generator class="identity" />
 		</id>
-<!--		<property name="title" column="BuyItem_BuyItemID"/> -->
+		<property name="buyItemID" column="BuyItem_BuyItemID"/> 
+		<property name="userID" column="User_UserID"/> 
 	</class>
 </hibernate-mapping>
