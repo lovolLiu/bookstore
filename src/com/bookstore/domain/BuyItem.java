@@ -9,6 +9,7 @@ public class BuyItem {
 	Timestamp boughtDate;
 	boolean hasApprise;
 	Integer orderID;
+	Integer bookID;
 	
 	public int getBuyItemID() {
 		return buyItemID;
@@ -46,6 +47,11 @@ public class BuyItem {
 	public void setOrderID(Integer orderID) {
 		this.orderID = orderID;
 	}
-	
+	public Integer getBookID() {
+		return bookID;
+	}
+	public void setBookID(Integer bookID) {
+		this.bookID = bookID;
+	}
 	
 }
