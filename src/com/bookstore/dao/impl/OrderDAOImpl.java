@@ -42,8 +42,8 @@ public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
 
 	@Override
 	public List<Order> findByUserID(Integer userID) {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Order>)getHibernateTemplate().
+				find("from Order as a where a.userID=?", userID);
 	}
 
 }

@@ -11,4 +11,5 @@ public interface BookTypeDAO {
 	Integer save(BookType bookType);
 	void update(BookType bookType);
 	void delete(Integer id);
+	List<BookType> findByBookID(Integer bookID);
 }
