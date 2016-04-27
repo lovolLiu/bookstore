@@ -2,14 +2,18 @@ package com.bookstore.service.impl;
 
 import java.util.List;
 
-
+import com.bookstore.dao.BuyItemDAO;
+import com.bookstore.domain.BuyItem;
 import com.bookstore.service.BuyService;
 
 public class BuyServiceImpl implements BuyService {
+	
+	BuyItemDAO buyItemDao;
 
 	@Override
 	public int createBuyItem(int userID, int bookID, int num) {
-		// TODO Auto-generated method stub
+		BuyItem buyItem = new BuyItem();
+		
 		return 0;
 	}
 
