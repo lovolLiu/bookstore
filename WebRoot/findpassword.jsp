@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,10 +62,9 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="hidden-sm"><a href="index.jsp">主页</a></li>
-					<li class="hidden-sm"><a href="">开始选购</a></li>
-					<li class="hidden-sm"><a href="">购物车</a></li>
-					<li class="hidden-sm"><a href="">我的订单</a></li>
-					<li class="hidden-sm"><a href="">我的账户</a></li>
+					<li class="hidden-sm"><a href="books.jsp">开始选购</a></li>
+					<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
+					<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
 			    </ul>
 			</div>
 			<!--/.nav-collapse -->

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,8 +106,10 @@
                     <div class="widget widget-categories">
                         <h2>站点地图</h2>
                         <ul>
-                            <li><a href="#">主页</a></li> 
-                            <li><a href="#">搜索书籍</a></li> 
+                            <li><a href="index.jsp">主页</a></li> 
+                            <li><a href="books.jsp">开始选购</a></li> 
+                            <li><a href="cart.jsp">购物车</a></li> 
+                            <li><a href="userinfo.jsp">我的账户</a></li> 
                         </ul>
                     </div>
                 </div>
