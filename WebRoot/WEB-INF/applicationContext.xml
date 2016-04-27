@@ -43,6 +43,16 @@
 		<!-- 注意：我用的是Annotation的方式配置的Hibernate，这里的property的name是annotatedClasses -->
 		<property name="mappingResources">
 			<list>
+				<value>com/bookstore/domain/Address.hbm.xml</value>
+				<value>com/bookstore/domain/Apprise.hbm.xml</value>
+				<value>com/bookstore/domain/Book.hbm.xml</value>
+				<value>com/bookstore/domain/BookType.hbm.xml</value>
+				<value>com/bookstore/domain/BuyItem.hbm.xml</value>
+				<value>com/bookstore/domain/CartItem.hbm.xml</value>
+				<value>com/bookstore/domain/Order.hbm.xml</value>
+				<value>com/bookstore/domain/Picture.hbm.xml</value>
+				<value>com/bookstore/domain/Publisher.hbm.xml</value>
+				<value>com/bookstore/domain/User.hbm.xml</value>
 				<value>com/bookstore/domain/News.hbm.xml</value>
 			</list>
 		</property>
