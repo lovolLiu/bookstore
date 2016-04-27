@@ -8,10 +8,9 @@ import com.bookstore.domain.BookType;
 public interface SelectBookService {
 	List<Book> selectRandomBook(int count);
 	List<BookType> getTypeList();
-	List<Book> selectBookByTypeID(int typeID, int num);
 	List<Book> selectBookByTypeID(int typeID);
-	List<Book> selectNewestBook(int count);
-	List<Book> selectHottestBook(int count);
-	List<Book> selectDiscountBook(int count);
-	List<Book> selectPersonBook(int count);
+	List<Book> selectNewestBook();
+	List<Book> selectHottestBook();
+	List<Book> selectDiscountBook();
+	List<Book> selectPersonalBook();
 }

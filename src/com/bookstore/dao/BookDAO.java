@@ -12,4 +12,7 @@ public interface BookDAO {
 	void delete(Integer id);
 	List<Book> findByTypeID(Integer typeID);
 	List<Book> findByPublisherID(Integer publisherID);
+	List<Book> findAllOrderByPublishTime();
+	List<Book> findAllOrderByClickCount();
+	List<Book> findAllOrderByDiscount();
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.bookstore.domain">
-	<class name="Order" table="Order">
+	<class name="Order" table="OrderForm">
 		<cache usage="read-write" /> <!-- 缓存 -->
 		<id name="orderID" column="OrderID	" type="integer">
 			<generator class="identity" />

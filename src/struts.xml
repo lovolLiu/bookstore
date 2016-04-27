@@ -9,6 +9,19 @@
 			<result>/success.jsp</result>
 		</action>
 
+		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
+			<result>/submit-order.jsp</result>
+		</action>
+		
+		<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
+			<result>/pay.jsp</result>
+		</action>
+		
+<!-- 		<action name="hello" class="com.bookstore.action.HelloWorldAction"> -->
+<!-- 			<result>/success.jsp</result> -->
+<!-- 		</action> -->
+
+
 <!--         <action name="*_*" class="com.bookstore.action.{1}Action" method="{2}"> -->
 <!--             <result name="success">/{1}/{2}.jsp</result> -->
 <!--         </action> -->

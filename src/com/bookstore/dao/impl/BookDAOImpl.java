@@ -66,4 +66,19 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 				.find("from Book as b where b.publisherID=?", publisherID);
 	}
 
+	@Override
+	public List<Book> findAllOrderByPublishTime() {
+		return (List<Book>)getHibernateTemplate().find("from Book b order by b.publishTime");
+	}
+
+	@Override
+	public List<Book> findAllOrderByClickCount() {
+		return (List<Book>)getHibernateTemplate().find("from Book b order by b.clickCount");
+	}
+
+	@Override
+	public List<Book> findAllOrderByDiscount() {
+		return (List<Book>)getHibernateTemplate().find("from Book b order by b.discount");
+	}
+
 }

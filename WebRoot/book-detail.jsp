@@ -258,7 +258,7 @@
                                         <p>出版商: Journal inc</p>
                                         <p>书目ID: 1100</p>
                                     </div>
-                                    <a href="#" class="add-to-cart">加入购物车</a>
+                                    <a href="StraightBuy?bookID=9&num=1" class="add-to-cart">加入购物车</a>
                                 </div>
                             </div>
                         </div>

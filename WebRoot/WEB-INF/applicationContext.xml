@@ -124,9 +124,21 @@
  		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
     
+    
+    
+    
+    
+    
     <!-- 这个是例子 -->
 	<bean id="helloWorldService" class="com.bookstore.service.impl.HelloWorldServiceImpl">
 		<property name="newsDao" ref="newsDao" />
 	</bean>
+
+	<bean id="buyService" class="com.bookstore.service.impl.BuyServiceImpl">
+		<property name="orderDAO" ref="orderDAO" />
+		<property name="buyItemDAO" ref="buyItemDAO"/>
+		<property name="bookDAO" ref="bookDAO"/>
+	</bean>
+
 
 </beans>

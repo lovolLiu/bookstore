@@ -268,14 +268,14 @@ select{
 										<option>曲靖</option>
 										<option>丽江</option>
 									</select>
-									<input type="text" placeholder="详细地址">
+									<input type="text" placeholder="详细地址" value="${address.address }">
 									<input type="text" placeholder="邮政编码">
 								</form>
 							</div>
 							<div class="form-two">
 								<form>
-									<input type="text" placeholder="收货人姓名">
-									<input type="text" placeholder="电话号码">
+									<input type="text" placeholder="收货人姓名" value="${address.person }">
+									<input type="text" placeholder="电话号码" value="${address.tel }">
 								</form>
 							</div>
 						</div>
@@ -309,11 +309,11 @@ select{
 								<a href=""><img src="images/book.png"></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">BESPOKE</a></h4>
+								<h4><a href="">${book.bookName}</a></h4>
 								<p>ISBN: 1089772</p>
 							</td>
 							<td class="cart_price">
-								<p>$59</p>
+								<p>${book.price }</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -323,7 +323,7 @@ select{
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+								<p class="cart_total_price">${book.price }</p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
@@ -331,67 +331,17 @@ select{
 						</tr>
 
 						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/book2.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">LIFE IS A TRIP</a></h4>
-								<p>ISBN: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/book3.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">JENNIFER</a></h4>
-								<p>ISBN: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
 							<td colspan="4">&nbsp;</td>
 							<td colspan="2">
 								<table class="total-result">
 									<tbody>
 									<tr style="font-size: x-large;">
 										<td>总价</td>
-										<td style="color:#FE980F;"><span>$157</span></td>
+										<td style="color:#FE980F;"><span>${book.price }</span></td>
 									</tr>
 									<tr style="border-bottom: 0;">
 										<td></td>
-										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="">提交订单</a></div></td>
+										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="SubmitOrder?buyItemID=${buyItemID }&addressID=${addressID }">提交订单</a></div></td>
 									</tr>
 								</tbody></table>
 							</td>
