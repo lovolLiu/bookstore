@@ -365,11 +365,6 @@ textarea {
 	vertical-align: top;
 }
 
-table,
-th,
-td {
-	border: 1px solid rgba(0, 0, 0, 0.1);
-}
 
 table {
 	border-collapse: separate;
@@ -488,7 +483,6 @@ input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-	background-color: #41a62a;
 	color: #fff;
 }
 
