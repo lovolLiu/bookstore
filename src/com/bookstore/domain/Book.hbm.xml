@@ -10,6 +10,7 @@
 		</id>
 		<property name="bookName" column="BookName"/>
 		<property name="author" column="Author"/>
+		<property name="size" column="Size"/>
 		<property name="price" column="Price"/>
 		<property name="description" column="Description"/>
 		<property name="discount" column="Discount"/>

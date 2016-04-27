@@ -6,6 +6,7 @@ public class Book {
 	private Integer bookID;
 	private String bookName;
 	private String author;
+	private String size;
 	private double price;
 	private String description;
 	private Integer discount;
@@ -87,6 +88,12 @@ public class Book {
 	}
 	public void setPublisherID(Integer publisherID) {
 		this.publisherID = publisherID;
+	}
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
 	}
 	
 	

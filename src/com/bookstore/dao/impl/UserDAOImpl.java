@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bookstore.dao.UserDAO;
+import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.User;
 
 public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
@@ -14,6 +15,12 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 		return (User)getHibernateTemplate().get(User.class, id);
 	}
 
+	@Override
+	public User findByName(String userName) {
+		return (User)getHibernateTemplate()
+				.find("from User as u where u.userName=?", userName);	
+	}
+	
 	@Override
 	public List<User> findAll() {
 		return (List<User>)getHibernateTemplate().find("from User");
@@ -33,5 +40,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	public void delete(Integer id) {
 		getHibernateTemplate().delete(findById(id));
 	}
+
+
 
 }
