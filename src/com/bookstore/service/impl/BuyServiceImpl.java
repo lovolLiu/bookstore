@@ -1,15 +1,7 @@
 package com.bookstore.service.impl;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
-
-
-
-
-
-
-
 
 
 import com.bookstore.dao.BookDAO;
@@ -17,9 +9,12 @@ import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.dao.OrderDAO;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
+
 import com.bookstore.service.BuyService;
 
 public class BuyServiceImpl implements BuyService {
+	
+	BuyItemDAO buyItemDao;
 
 	OrderDAO orderDAO;
 	BuyItemDAO buyItemDAO;
