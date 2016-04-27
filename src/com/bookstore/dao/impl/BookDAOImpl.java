@@ -28,6 +28,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 	@Override
 	public Integer save(Book book) {
 		System.out.println("BookDAOImpl: save()");
+		System.out.println(getHibernateTemplate());
 		return (Integer)getHibernateTemplate().save(book);
 
 	}

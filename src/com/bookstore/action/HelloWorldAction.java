@@ -9,6 +9,8 @@ public class HelloWorldAction {
 	
 	private IHelloWorldService helloWorldService;
 
+	BookDAO bookDAO;
+	
 	public IHelloWorldService getHelloWorldService() {
 		return helloWorldService;
 	}
@@ -19,13 +21,23 @@ public class HelloWorldAction {
 
 
 	public String execute(){
-		BookDAO bookdao = new BookDAOImpl();
+		
 		Book book = new Book();
 		book.setAuthor("fuyu");
 		book.setPageNum(123);
-		bookdao.save(book);
+		bookDAO.save(book);
 		//helloWorldService.addNew();
 		return "success";
 	}
+
+	public BookDAO getBookDAO() {
+		return bookDAO;
+	}
+
+	public void setBookDAO(BookDAO bookdao) {
+		this.bookDAO = bookdao;
+	}
+	
+	
 	
 }

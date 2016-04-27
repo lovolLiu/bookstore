@@ -44,15 +44,15 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/bookstore/domain/Address.hbm.xml</value>
-				<value>com/bookstore/domain/Apprise.hbm.xml</value>
+<!-- 				<value>com/bookstore/domain/Apprise.hbm.xml</value> -->
 				<value>com/bookstore/domain/Book.hbm.xml</value>
-				<value>com/bookstore/domain/BookType.hbm.xml</value>
-				<value>com/bookstore/domain/BuyItem.hbm.xml</value>
-				<value>com/bookstore/domain/CartItem.hbm.xml</value>
-				<value>com/bookstore/domain/Order.hbm.xml</value>
-				<value>com/bookstore/domain/Picture.hbm.xml</value>
-				<value>com/bookstore/domain/Publisher.hbm.xml</value>
-				<value>com/bookstore/domain/User.hbm.xml</value>
+<!-- 				<value>com/bookstore/domain/BookType.hbm.xml</value> -->
+<!-- 				<value>com/bookstore/domain/BuyItem.hbm.xml</value> -->
+<!-- 				<value>com/bookstore/domain/CartItem.hbm.xml</value> -->
+<!-- 				<value>com/bookstore/domain/Order.hbm.xml</value> -->
+<!-- 				<value>com/bookstore/domain/Picture.hbm.xml</value> -->
+<!-- 				<value>com/bookstore/domain/Publisher.hbm.xml</value> -->
+<!-- 				<value>com/bookstore/domain/User.hbm.xml</value> -->
 				<value>com/bookstore/domain/News.hbm.xml</value>
 			</list>
 		</property>
@@ -76,6 +76,9 @@
 			</props>
 		</property>
 	</bean>                 
+    
+    
+    
     
     <bean id="newsDao" class="com.bookstore.dao.impl.NewsDaoImpl">
  		<property name="sessionFactory" ref="sessionFactory" />    <!-- 除了action类是自动装配，其他的类都需要显示的写出注入 -->
