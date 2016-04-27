@@ -30,6 +30,8 @@
 <link href="css/responsive.css" rel="stylesheet">
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,6 +39,70 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+<style>
+.userinfo {
+	border: 1px solid #ccc;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	display: inline-block;
+}
+
+ h2 {
+	color: #FF9606;
+}
+
+.userinfo a {
+	color: black;
+}
+
+.user-pic {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	float: left;
+}
+
+.user-pic>img {
+	width: 120px;
+	height: 120px;
+}
+
+.userdetail {
+	font-size: 26px;
+	float: left;
+}
+
+.icons {
+	font-size: 30px;
+	float: left;
+	margin-top: 20px;
+}
+
+.icons a {
+	font-size: 20px;
+}
+
+.quantity {
+	color: #FF9606 !important;
+	font-size: 30px !important;
+}
+.myorder {
+	border: 1px solid #ccc;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	display: inline-block;
+}
+</style>
+</head>
 <body>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
@@ -71,81 +137,97 @@
 			</div>
 		</div>
 		<!--HEADER END-->
-		<!--BANNER START-->
-		<div class="kode-inner-banner">
-			<div class="kode-page-heading">
-				<h2>我的账户</h2>
-				<ol class="breadcrumb">
-					<li><a href="#">主页</a></li>
-					<li class="active">我的账户</li>
-				</ol>
-			</div>
+	</div>
+	<!--BANNER START-->
+	<div class="kode-inner-banner">
+		<div class="kode-page-heading">
+			<h2>我的账户</h2>
+			<ol class="breadcrumb">
+				<li><a href="#">主页</a></li>
+				<li class="active">我的账户</li>
+			</ol>
 		</div>
-		<!--BANNER END-->
-		<!--CONTENT START-->
-		<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
-			<blockquote>
-				<h2>个人信息</h2>
-				<div class="user-pic">
-				  <img src="images/"/>
-				</div>
-			</blockquote>
+	</div>
+	<!--BANNER END-->
+	<!--CONTENT START-->
+	<div
+		class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1 userinfo">
+		<h2>个人信息</h2>
+		<div class="user-pic">
+			<img src="images/userpic/1.JPG" alt="" />
 		</div>
-		<!--CONTENT END-->
-		<footer class="footer-3">
-			<div class="container">
-				<div class="row">
-					<!--CATEGORY WIDGET START-->
-					<div class="col-md-6 col-sm-6">
-						<div class="widget widget-categories">
-							<h2>站点地图</h2>
-							<ul>
-								<li><a href="index.jsp">主页</a></li>
-								<li><a href="books.jsp">开始选购</a></li>
-								<li><a href="cart.jsp">购物车</a></li>
-								<li><a href="userinfo.jsp">我的账户</a></li>
-							</ul>
-						</div>
-					</div>
-					<!--CATEGORY WIDGET END-->
-					<!--NEWSLETTER START-->
-					<div class="col-md-6 col-sm-6">
-						<div class="widget widget-contact-info">
-							<h2>联系我们</h2>
-							<ul>
-								<li><i class="fa fa-paper-plane"></i>
-									<div class="kode-text">
-										<h4>地址</h4>
-										<p>北京市海淀区西土城路10号北京邮电大学</p>
-									</div></li>
-								<li><i class="fa fa-phone"></i>
-									<div class="kode-text">
-										<h4>电话号码</h4>
-										<p>+55(62) 55258-4570</p>
-										<p>+55(62) 55258-4570</p>
-									</div></li>
-								<li><i class="fa fa-envelope-o"></i>
-									<div class="kode-text">
-										<h4>电子邮箱</h4>
-										<a href="#">teamx@bupt.edu.cn</a>
-									</div></li>
-							</ul>
-						</div>
-					</div>
-					<!--NEWSLETTER START END-->
+		<div class="userdetail col-md-6 col-md-offset-2 col-xs-offset-2">
+			<a style="margin-bottmo:10px;">Crenshaw</a>
+			<div>
+				<div class="icons col-md-4">
+					<i class="icon-money"></i> <a class="quantity">1</a><br> <a>待付款</a>
 				</div>
-			</div>
-		</footer>
-		<div class="copyrights">
-			<div class="container">
-				<p>Copyrights © 2015-16 BUPTSSE. All rights reserved</p>
-				<div class="cards">
-					<img src="images/cards.png" alt="">
+				<div class="icons col-md-4">
+					<i class="icon-truck"></i> <a class="quantity">2</a><br> <a>待收货</a>
+				</div>
+				<div class="icons col-md-4">
+					<i class="icon-paint-brush"></i> <a class="quantity">1</a><br>
+					<a>待评价</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--WRAPPER END-->
+	<div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1 myorder">
+	    <h2>我的订单</h2>
+	</div>
+	<!--CONTENT END-->
+	<footer class="footer-3">
+		<div class="container">
+			<div class="row">
+				<!--CATEGORY WIDGET START-->
+				<div class="col-md-6 col-sm-6">
+					<div class="widget widget-categories">
+						<h2>站点地图</h2>
+						<ul>
+							<li><a href="index.jsp">主页</a></li>
+							<li><a href="books.jsp">开始选购</a></li>
+							<li><a href="cart.jsp">购物车</a></li>
+							<li><a href="userinfo.jsp">我的账户</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--CATEGORY WIDGET END-->
+				<!--NEWSLETTER START-->
+				<div class="col-md-6 col-sm-6">
+					<div class="widget widget-contact-info">
+						<h2>联系我们</h2>
+						<ul>
+							<li><i class="fa fa-paper-plane"></i>
+								<div class="kode-text">
+									<h4>地址</h4>
+									<p>北京市海淀区西土城路10号北京邮电大学</p>
+								</div></li>
+							<li><i class="fa fa-phone"></i>
+								<div class="kode-text">
+									<h4>电话号码</h4>
+									<p>+55(62) 55258-4570</p>
+									<p>+55(62) 55258-4570</p>
+								</div></li>
+							<li><i class="fa fa-envelope-o"></i>
+								<div class="kode-text">
+									<h4>电子邮箱</h4>
+									<a href="#">teamx@bupt.edu.cn</a>
+								</div></li>
+						</ul>
+					</div>
+				</div>
+				<!--NEWSLETTER START END-->
+			</div>
+		</div>
+	</footer>
+	<div class="copyrights">
+		<div class="container">
+			<p>Copyrights © 2015-16 BUPTSSE. All rights reserved</p>
+			<div class="cards">
+				<img src="images/cards.png" alt="">
+			</div>
+		</div>
+	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="js/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -175,8 +257,13 @@
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
 	<script type="application/x-javascript">
+		
+		
+		
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-	</script>
+	
+	
+	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
