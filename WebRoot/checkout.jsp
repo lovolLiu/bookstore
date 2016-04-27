@@ -391,7 +391,7 @@ select{
 									</tr>
 									<tr style="border-bottom: 0;">
 										<td></td>
-										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="">提交订单</a></div></td>
+										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="pay.jsp">提交订单</a></div></td>
 									</tr>
 								</tbody></table>
 							</td>
