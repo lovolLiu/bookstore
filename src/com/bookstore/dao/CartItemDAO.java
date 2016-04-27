@@ -2,8 +2,6 @@ package com.bookstore.dao;
 
 import java.util.List;
 
-import com.bookstore.domain.Address;
-import com.bookstore.domain.Apprise;
 import com.bookstore.domain.CartItem;
 
 public interface CartItemDAO {
