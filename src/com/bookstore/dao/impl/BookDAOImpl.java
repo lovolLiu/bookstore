@@ -4,17 +4,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bookstore.dao.BookDAO;
-import com.bookstore.domain.Apprise;
 import com.bookstore.domain.Book;
 
-public class BookDAOImpl  extends HibernateDaoSupport implements BookDAO {
+public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
 	@Override
 	public Book findByID(Integer id) {
@@ -29,6 +27,7 @@ public class BookDAOImpl  extends HibernateDaoSupport implements BookDAO {
 
 	@Override
 	public Integer save(Book book) {
+		System.out.println("BookDAOImpl: save()");
 		return (Integer)getHibernateTemplate().save(book);
 
 	}

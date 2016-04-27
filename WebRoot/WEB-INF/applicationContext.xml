@@ -70,9 +70,50 @@
     <bean id="newsDao" class="com.bookstore.dao.impl.NewsDaoImpl">
  		<property name="sessionFactory" ref="sessionFactory" />    <!-- 除了action类是自动装配，其他的类都需要显示的写出注入 -->
 	</bean>
+	
+	<bean id="addressDAO" class="com.bookstore.dao.impl.AddressDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="appriseDAO" class="com.bookstore.dao.impl.AppriseDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="bookDAO" class="com.bookstore.dao.impl.BookDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="bookTypeDAO" class="com.bookstore.dao.impl.BookTypeDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="buyItemDAO" class="com.bookstore.dao.impl.BuyItemDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="cartItemDAO" class="com.bookstore.dao.impl.CartItemDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="orderDAO" class="com.bookstore.dao.impl.OrderDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="pictureDAO" class="com.bookstore.dao.impl.PictureDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="publisherDAO" class="com.bookstore.dao.impl.PublisherDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userDAO" class="com.bookstore.dao.impl.UserDAOImpl">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
     
+    <!-- 这个是例子 -->
 	<bean id="helloWorldService" class="com.bookstore.service.impl.HelloWorldServiceImpl">
 		<property name="newsDao" ref="newsDao" />
-	</bean>     <!-- action默认是自动装配的 -->
+	</bean>
 
 </beans>

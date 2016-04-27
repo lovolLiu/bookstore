@@ -1,5 +1,8 @@
 package com.bookstore.action;
 
+import com.bookstore.dao.BookDAO;
+import com.bookstore.dao.impl.BookDAOImpl;
+import com.bookstore.domain.Book;
 import com.bookstore.service.IHelloWorldService;
 
 public class HelloWorldAction {
@@ -16,7 +19,12 @@ public class HelloWorldAction {
 
 
 	public String execute(){
-		helloWorldService.addNew();
+		BookDAO bookdao = new BookDAOImpl();
+		Book book = new Book();
+		book.setAuthor("fuyu");
+		book.setPageNum(123);
+		bookdao.save(book);
+		//helloWorldService.addNew();
 		return "success";
 	}
 	
