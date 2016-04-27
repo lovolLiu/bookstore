@@ -306,7 +306,7 @@ select{
 					<tbody>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/book.png"></a>
+								<a href=""><img src="images/book-detail.jpg"></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">${book.bookName}</a></h4>

@@ -3,6 +3,11 @@ package com.bookstore.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bookstore.dao.AddressDAO;
+import com.bookstore.dao.BookDAO;
+import com.bookstore.dao.BuyItemDAO;
+import com.bookstore.domain.Address;
+import com.bookstore.domain.Book;
 import com.bookstore.service.BuyService;
 
 public class SubmitOrderAction {
@@ -17,10 +22,20 @@ public class SubmitOrderAction {
 	
 	BuyService buyService;
 	
+	
+	AddressDAO addressDAO;
+	Address address;
+	Book book;
+	BookDAO bookDAO;
+	BuyItemDAO buyItemDAO;
+	
 	public String execute(){
 		List<Integer> buyItemIDList = new ArrayList();
 		buyItemIDList.add(buyItemID);
 		orderID = buyService.createOrder(buyItemIDList, userID, addressID);
+		address = addressDAO.findByID(addressID);
+		book = bookDAO.findByID(buyItemDAO.findByID(buyItemID).getBookID());
+		System.out.println(buyItemID);
 		return "success";
 	}
 
@@ -62,6 +77,46 @@ public class SubmitOrderAction {
 
 	public void setBuyService(BuyService buyService) {
 		this.buyService = buyService;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public AddressDAO getAddressDAO() {
+		return addressDAO;
+	}
+
+	public void setAddressDAO(AddressDAO addressDAO) {
+		this.addressDAO = addressDAO;
+	}
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+	public BookDAO getBookDAO() {
+		return bookDAO;
+	}
+
+	public void setBookDAO(BookDAO bookDAO) {
+		this.bookDAO = bookDAO;
+	}
+
+	public BuyItemDAO getBuyItemDAO() {
+		return buyItemDAO;
+	}
+
+	public void setBuyItemDAO(BuyItemDAO buyItemDAO) {
+		this.buyItemDAO = buyItemDAO;
 	}
 	
 	

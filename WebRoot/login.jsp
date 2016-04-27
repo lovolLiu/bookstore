@@ -97,9 +97,9 @@
 
 				<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 						<div class="register">
-							<form>								
-								<input placeholder="用户名" class="mail" type="text" required="">									
-								<input placeholder="密码" class="lock" type="password" required="">				
+							<form action="Login">								
+								<input placeholder="用户名" class="mail" type="text" required="" name="username">									
+								<input placeholder="密码" class="lock" type="password" required="" name="password">				
 								<input type="submit" value="登陆"/>
 							</form>
 							<p>忘记密码?<a href="#"> 点击这里</a></p>

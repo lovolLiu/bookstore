@@ -274,7 +274,7 @@ select {
 		<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
 		<blockquote>
 		    <h2>收货人信息</h2>
-			<p>张三 北京 昌平区 北京邮电大学宏福校区 159*****8879</p>
+			<p>${address.person } &nbsp ${address.tel } &nbsp ${address.address }</p>
 		</blockquote>
 		</div>
 		<section id="cart_items">
@@ -293,15 +293,15 @@ select {
 						<tbody>
 							<tr>
 								<td class="cart_product"><a href=""><img
-										src="images/book.png"></a></td>
+										src="images/book-detail.jpg"></a></td>
 								<td class="cart_description">
 									<h4>
-										<a href="">BESPOKE</a>
+										<a href="">${book.bookName }</a>
 									</h4>
 									<p>ISBN: 1089772</p>
 								</td>
 								<td class="cart_price">
-									<p>$59</p>
+									<p>${book.price }</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
@@ -310,74 +310,36 @@ select {
 									</div>
 								</td>
 								<td class="cart_total">
-									<p class="cart_total_price">$59</p>
+									<p class="cart_total_price">${book.price }</p>
 								</td>
 							</tr>
-
-							<tr>
-								<td class="cart_product"><a href=""><img
-										src="images/book2.png" alt=""></a></td>
-								<td class="cart_description">
-									<h4>
-										<a href="">LIFE IS A TRIP</a>
-									</h4>
-									<p>ISBN: 1089772</p>
-								</td>
-								<td class="cart_price">
-									<p>$59</p>
-								</td>
-								<td class="cart_quantity">
-									<div class="cart_quantity_button">
-										<input class="cart_quantity_input" type="text" name="quantity"
-											value="1" autocomplete="off" size="2">
-									</div>
-								</td>
-								<td class="cart_total">
-									<p class="cart_total_price">$59</p>
-								</td>
-							</tr>
-							<tr>
-								<td class="cart_product"><a href=""><img
-										src="images/book3.png" alt=""></a></td>
-								<td class="cart_description">
-									<h4>
-										<a href="">JENNIFER</a>
-									</h4>
-									<p>ISBN: 1089772</p>
-								</td>
-								<td class="cart_price">
-									<p>$59</p>
-								</td>
-								<td class="cart_quantity">
-									<div class="cart_quantity_button">
-										<input class="cart_quantity_input" type="text" name="quantity"
-											value="1" autocomplete="off" size="2">
-									</div>
-								</td>
-								<td class="cart_total">
-									<p class="cart_total_price">$59</p>
-								</td>
-							</tr>
-							<tr>
+								<tr>
 								<td colspan="4">&nbsp;</td>
 								<td colspan="2">
 									<table class="total-result">
 										<tbody>
 											<tr style="font-size: x-large;">
 												<td>总价</td>
-												<td style="color:#FE980F;"><span>$157</span></td>
+												<td style="color:#FE980F;"><span>${book.price }</span></td>
 											</tr>
 											<tr style="border-bottom: 0;">
 												<td></td>
 												<td><div style="text-align: right;">
-														<a class="btn btn-default check_out" href="pay.jsp">付款</a>
+														<a class="btn btn-default check_out" href="goods-ontheway.jsp">付款</a>
 													</div></td>
 											</tr>
 										</tbody>
 									</table>
 								</td>
 							</tr>
+							
+							
+							
+							
 						</tbody>
+						
+						
+						
 					</table>
 				</div>
 		</section>

@@ -134,10 +134,16 @@
 		<property name="newsDao" ref="newsDao" />
 	</bean>
 
+
+
 	<bean id="buyService" class="com.bookstore.service.impl.BuyServiceImpl">
 		<property name="orderDAO" ref="orderDAO" />
 		<property name="buyItemDAO" ref="buyItemDAO"/>
 		<property name="bookDAO" ref="bookDAO"/>
+	</bean>
+	
+	<bean id="loginService" class="com.bookstore.service.impl.LoginServiceImpl">
+		<property name="userDAO" ref="userDAO" />
 	</bean>
 
 

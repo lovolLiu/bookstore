@@ -238,7 +238,7 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="kode-text">
-                                	<h2>Apllication Health and Well-Beign</h2>
+                                	<h2> 最好的我们 </h2>
                                     <div class="product-review">
                                         <div class="rating">
                                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
@@ -246,19 +246,19 @@
                                         <p>4 评论</p>
                                     </div>
                                     <div class="product-price">
-                                        <h4>19.90 RMB</h4>
-                                        <p>作者: <span class="color">Robert L. Lukdke</span></p>
+                                        <h4>55.00 RMB</h4>
+                                        <p>作者: <span class="color">八月长安</span></p>
                                     </div>
                                     <div class="book-text">
                                     	<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
                                     </div>
                                     <div class="book-text">
-                                        <p>标签: books.</p>
-                                        <p>作者: Daniel Abraham</p>
-                                        <p>出版商: Journal inc</p>
+                                        <p>标签: 文学.</p>
+                                        <p>作者: 八月长安</p>
+                                        <p>出版商: 湖南文艺出版社</p>
                                         <p>书目ID: 1100</p>
                                     </div>
-                                    <a href="StraightBuy?bookID=9&num=1" class="add-to-cart">加入购物车</a>
+                                    <a href="StraightBuy?bookID=9&num=1" class="add-to-cart">立即购买</a>
                                 </div>
                             </div>
                         </div>

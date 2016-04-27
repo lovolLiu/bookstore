@@ -32,6 +32,7 @@ public class BuyServiceImpl implements BuyService {
 		buyItem.setBuyNum(num);
 		buyItem.setCurrentPrice(bookDAO.findByID(bookID).getPrice());
 		buyItem.setHasApprise(false);
+		buyItem.setBookID(9);
 		return buyItemDAO.save(buyItem);
 	}
 

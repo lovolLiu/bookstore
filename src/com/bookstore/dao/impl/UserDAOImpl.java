@@ -18,7 +18,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	@Override
 	public User findByName(String userName) {
 		return (User)getHibernateTemplate()
-				.find("from User as u where u.userName=?", userName);	
+				.find("from User as u where u.userName=?", userName).get(0);	
 	}
 	
 	@Override

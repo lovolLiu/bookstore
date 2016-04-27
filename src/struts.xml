@@ -8,6 +8,11 @@
 		<action name="hello" class="com.bookstore.action.HelloWorldAction">
 			<result>/success.jsp</result>
 		</action>
+		
+		<action name="Login" class="com.bookstore.action.LoginAction">
+			<result>/index.jsp</result>
+			<result name="fail">/login.jsp</result>
+		</action>
 
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
 			<result>/submit-order.jsp</result>
