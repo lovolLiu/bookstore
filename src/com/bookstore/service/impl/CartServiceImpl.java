@@ -2,7 +2,6 @@ package com.bookstore.service.impl;
 
 import java.util.List;
 
-import com.bookstore.domain.Book;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.service.CartService;
 
