@@ -12,7 +12,6 @@ public class AddressDAOImpl extends HibernateDaoSupport implements AddressDAO {
 	@Override
 	public Address findByID(Integer id) {
 		return (Address)getHibernateTemplate().get(Address.class, id);
-
 	}
 
 	@Override
