@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF－8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,23 +105,7 @@
                     <div role="tabpanel" class="tab-pane fade in active" id="Description">
 						<!--REVIEW START-->
 						<div class="pro-info"  >
-							<ul>
-								<li class="fore1">
-									<div class="p-item">
-										<div class="p-img">
-											<img width="50" height="50" >
-										</div>
-									<div class="p-msg">
-										<div class="p-name">
-											<a target="_blank" href="book-detail.html">书名</a>
-										</div>
-									<div class="p-tiem ftx-03">
-										"购买时间：2016-4-26"
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
+	
 						<div id="Demo" style="text-align:center;">
 							<div class="Main">
 								<div class="Input_Box">
