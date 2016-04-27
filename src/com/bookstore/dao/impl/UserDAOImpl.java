@@ -2,39 +2,36 @@ package com.bookstore.dao.impl;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import com.bookstore.dao.UserDAO;
 import com.bookstore.domain.User;
 
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public User findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (User)getHibernateTemplate().get(User.class, id);
 	}
 
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<User>)getHibernateTemplate().find("from User");
 	}
 
 	@Override
 	public Integer save(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Integer)getHibernateTemplate().save(user);
 	}
 
 	@Override
 	public void update(User user) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().update(user);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().delete(findById(id));
 	}
 
 }

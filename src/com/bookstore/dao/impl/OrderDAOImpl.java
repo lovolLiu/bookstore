@@ -2,45 +2,42 @@ package com.bookstore.dao.impl;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import com.bookstore.dao.OrderDAO;
 import com.bookstore.domain.Order;
 
-public class OrderDAOImpl implements OrderDAO {
+public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
 
 	@Override
 	public Order findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Order)getHibernateTemplate().get(Order.class, id);
 	}
 
 	@Override
 	public List<Order> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Order>)getHibernateTemplate().find("from Order");
 	}
 
 	@Override
 	public Integer save(Order order) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Integer)getHibernateTemplate().save(order);
 	}
 
 	@Override
 	public void update(Order order) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().update(order);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().delete(findById(id));
 	}
 
 	@Override
 	public List<Order> findByAddressID(Integer addressID) {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Order>)getHibernateTemplate().
+				find("from Order as a where a.addressID=?", addressID);
 	}
 
 	@Override

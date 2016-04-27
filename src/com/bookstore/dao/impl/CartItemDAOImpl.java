@@ -2,56 +2,48 @@ package com.bookstore.dao.impl;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import com.bookstore.dao.CartItemDAO;
 import com.bookstore.domain.CartItem;
 
-public class CartItemDAOImpl implements CartItemDAO {
+public class CartItemDAOImpl extends HibernateDaoSupport implements CartItemDAO {
 
-	public CartItem findById() {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public CartItem findById(Integer id) {
+		return (CartItem)getHibernateTemplate().get(CartItem.class, id);
 	}
 
 	@Override
 	public List<CartItem> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<CartItem>)getHibernateTemplate().find("from CartItem");
 	}
 
 	@Override
 	public Integer save(CartItem cartItem) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public CartItem findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Integer)getHibernateTemplate().save(cartItem);
 	}
 
 	@Override
 	public void update(CartItem cartItem) {
-		// TODO Auto-generated method stub
-		
+		getHibernateTemplate().update(cartItem);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
+		getHibernateTemplate().delete(findById(id));
 	}
 
 	@Override
 	public List<CartItem> findByBuyItemID(Integer bookID) {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<CartItem>)getHibernateTemplate().
+				find("from CartItem as a where a.bookID=?", bookID);
 	}
 
 	@Override
 	public List<CartItem> findByUserID(Integer userID) {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<CartItem>)getHibernateTemplate().
+				find("from CartItem as a where a.userID=?", userID);
 	}
 
 }

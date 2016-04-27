@@ -2,39 +2,36 @@ package com.bookstore.dao.impl;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import com.bookstore.dao.PublisherDAO;
 import com.bookstore.domain.Publisher;
 
-public class PublisherDAOImpl implements PublisherDAO {
+public class PublisherDAOImpl extends HibernateDaoSupport implements PublisherDAO {
 
 	@Override
 	public Publisher findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Publisher)getHibernateTemplate().get(Publisher.class, id);
 	}
 
 	@Override
 	public List<Publisher> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Publisher>)getHibernateTemplate().find("from Publisher");
 	}
 
 	@Override
 	public Integer save(Publisher publisher) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Integer)getHibernateTemplate().save(publisher);
 	}
 
 	@Override
 	public void update(Publisher publisher) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().update(publisher);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().delete(findById(id));
 	}
 
 }

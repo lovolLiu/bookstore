@@ -2,45 +2,42 @@ package com.bookstore.dao.impl;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import com.bookstore.dao.PictureDAO;
 import com.bookstore.domain.Picture;
 
-public class PictureDAOImpl implements PictureDAO {
+public class PictureDAOImpl extends HibernateDaoSupport implements PictureDAO {
 
 	@Override
 	public Picture findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Picture)getHibernateTemplate().get(Picture.class, id);
 	}
 
 	@Override
 	public List<Picture> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Picture>)getHibernateTemplate().find("from Picture");
 	}
 
 	@Override
 	public Integer save(Picture picture) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Integer)getHibernateTemplate().save(picture);
 	}
 
 	@Override
 	public void update(Picture picture) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().update(picture);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		getHibernateTemplate().delete(findById(id));
 	}
 
 	@Override
 	public List<Picture> findByBookID(Integer bookID) {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Picture>)getHibernateTemplate().
+				find("from Picture as a where a.bookID=?", bookID);
 	}
 
 }
