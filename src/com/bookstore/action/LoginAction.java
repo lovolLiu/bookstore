@@ -15,6 +15,7 @@ public class LoginAction {
 		else{
 			return "fail";
 		}
+		
 	}
 
 	public LoginService getLoginService() {
