@@ -33,10 +33,12 @@ public class FindPasswordServiceImpl implements FindPasswordService{
 		try {
 			transport = session.getTransport();
 			transport.connect(serverHost, fromEmailAccount, fromEmailPassword);
+			System.out.println("Connect #");
 			msg.setFrom(new InternetAddress(fromEmailAccount));
+			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+			System.out.println("SetRecipient #");
 			msg.setSubject("Bookaholic");
 			msg.setText("\r\nhttp://");
-			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
 			transport.sendMessage(msg, msg.getRecipients(Message.RecipientType.TO));
 			transport.close();
 		} catch (MessagingException e) {
