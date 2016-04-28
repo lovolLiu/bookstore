@@ -4,7 +4,8 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 <constant name="struts.devMode" value="true" />
-<package name="hello" namespace="/" extends="struts-default">
+	<package name="hello" namespace="/" extends="struts-default">
+	
 		<action name="hello" class="com.bookstore.action.HelloWorldAction">
 			<result>/success.jsp</result>
 		</action>
@@ -21,7 +22,6 @@
 		<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
 			<result>/pay.jsp</result>
 		</action>
-		
 <!-- 		<action name="hello" class="com.bookstore.action.HelloWorldAction"> -->
 <!-- 			<result>/success.jsp</result> -->
 <!-- 		</action> -->
@@ -31,4 +31,14 @@
 <!--             <result name="success">/{1}/{2}.jsp</result> -->
 <!--         </action> -->
     </package>
+    <package name="ajax_json" namespace="/" extends="json-default">
+		<action name="FindPassword" class="com.bookstore.action.FindPasswordAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
 </struts>
