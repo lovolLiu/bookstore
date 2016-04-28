@@ -50,7 +50,7 @@
 	display: inline-block;
 }
 
- h2 {
+h2 {
 	color: #FF9606;
 }
 
@@ -92,6 +92,7 @@
 	color: #FF9606 !important;
 	font-size: 30px !important;
 }
+
 .myorder {
 	border: 1px solid #ccc;
 	-moz-border-radius: 20px;
@@ -101,15 +102,55 @@
 	margin-bottom: 40px;
 	display: inline-block;
 }
+
+.order-icon {
+	font-size: 120px;
+	float: left;
+	margin-bottom: 15px;
+}
+
+.order-table {
+	float: left;
+}
+
+.pic img {
+	float: left;
+	max-width: 80px;
+	max-height: 80px;
+	margin-right: 15%;
+}
+
+.msg p {
+	margin: 0;
+}
+
+.msg .book-title {
+	font-size: x-large;
+	color: #FF9606;
+}
+
+.orderno {
+	margin-left: 15%;
+}
+
+.btn.btn-primary {
+	background: #FE980F;
+	border: 0 none;
+	border-radius: 0;
+	margin-top: 16px;
+}
+
+.checkallorder {
+	text-align:center;
+	margin-bottom:15px;
+}
 </style>
 </head>
 <body>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
-
 		<div class="loader-section section-left"></div>
 		<div class="loader-section section-right"></div>
-
 	</div>
 	<!--WRAPPER START-->
 	<div class="wrapper kode-header-class-3">
@@ -172,9 +213,54 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1 myorder">
-	    <h2>我的订单</h2>
+	<div
+		class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1 myorder">
+		<h2>我的订单</h2>
+		<div class="order-icon">
+			<i class="icon-clipboard2"></i>
+		</div>
+		<div class="order-table col-md-9 col-md-offset-1 col-xs-12">
+			<table>
+				<thead>
+					<tr>
+						<th>订单详情</th>
+						<th>收货人</th>
+						<th>金额</th>
+						<th>订单状态</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="itemhead">
+						<td colspan="4"><span class="dealtime">2016-4-15
+								10:20:39</span> <span class="orderno">订单号：14567</span></td>
+					</tr>
+					<tr class="item">
+						<td class="itemdetail">
+							<div>
+								<div class="pic">
+									<img src="images/book.png" />
+								</div>
+								<div class="msg">
+									<p class="book-title">Life is a trip</p>
+									<p>H.Laurence</p>
+									<p>ISBN:76889-0</p>
+								</div>
+							</div>
+						</td>
+						<td class="deliver"><span data-toggle="tooltip"
+							data-placement="bottom" title="张三 北京邮电大学宏福校区 18976543256">张三</span>
+						</td>
+						<td class="sum"><span>￥50</span></td>
+						<td class="status"><span>已支付</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="checkallorder">
+			<a class="btn btn-primary" href="myorder.jsp">查看所有订单</a>
+		</div>
 	</div>
+
 	<!--CONTENT END-->
 	<footer class="footer-3">
 		<div class="container">
@@ -260,7 +346,13 @@
 		
 		
 		
+		
+		
+		
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	
+	
+	
 	
 	
 	

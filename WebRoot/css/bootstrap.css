@@ -6016,7 +6016,7 @@ button.close {
   padding: 3px 8px;
   color: #fff;
   text-align: center;
-  background-color: #000;
+  background-color: #ff8000;
   border-radius: 4px;
 }
 .tooltip-arrow {
@@ -6066,7 +6066,7 @@ button.close {
   left: 50%;
   margin-left: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000;
+  border-bottom-color: #ff8000;
 }
 .tooltip.bottom-left .tooltip-arrow {
   top: 0;
