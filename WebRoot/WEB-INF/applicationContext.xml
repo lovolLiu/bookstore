@@ -147,6 +147,7 @@
 	</bean>
 	
 	<bean id="findPasswordService" class="com.bookstore.service.impl.FindPasswordServiceImpl">
+		<property name="userDAO" ref="userDAO"/>
 	</bean>
 
 </beans>

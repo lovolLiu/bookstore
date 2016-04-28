@@ -1,5 +1,6 @@
 package com.bookstore.service.impl;
 
+import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -9,9 +10,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.bookstore.dao.UserDAO;
 import com.bookstore.service.FindPasswordService;
 
 public class FindPasswordServiceImpl implements FindPasswordService{
+	
+	UserDAO userDao;
 
 	@Override
 	public boolean sendEmail(String email){
@@ -29,16 +33,18 @@ public class FindPasswordServiceImpl implements FindPasswordService{
 		
 		Session session = Session.getInstance(props);
 		Transport transport;
-		Message msg = new MimeMessage(session);
+		MimeMessage msg = new MimeMessage(session);
 		try {
 			transport = session.getTransport();
 			transport.connect(serverHost, fromEmailAccount, fromEmailPassword);
-			System.out.println("Connect #");
 			msg.setFrom(new InternetAddress(fromEmailAccount));
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
-			System.out.println("SetRecipient #");
-			msg.setSubject("Bookaholic");
-			msg.setText("\r\nhttp://");
+			msg.setSubject("找回密码-Bookaholic","utf-8");
+			String body = "点击下面链接，找回密码<br><a href=http://www.baidu.com>xxxx</a>";
+			msg.setText(body,"utf-8");
+			msg.setContent(body, "text/html;charset=utf-8");
+			msg.setSentDate(new Date());
+			msg.saveChanges();
 			transport.sendMessage(msg, msg.getRecipients(Message.RecipientType.TO));
 			transport.close();
 		} catch (MessagingException e) {
@@ -51,6 +57,16 @@ public class FindPasswordServiceImpl implements FindPasswordService{
 	public boolean changePassword(int userID, String password) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public UserDAO getUserDao(){
+		return userDao;
+	}
+	
+	@Override
+	public void setUserDao(UserDAO userDao){
+		this.userDao = userDao;
 	}
 
 }
