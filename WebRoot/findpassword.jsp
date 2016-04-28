@@ -97,11 +97,13 @@
                 	<div class="col-md-9 col-sm-8">
                     	<div class="input-container">
                         	<i class="fa fa-envelope-o"></i>
-                        	<input type="text" placeholder="输入邮箱">
+                        	<input type="text" placeholder="输入邮箱" id="input-email">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
-                    	<button onclick="javascript:window.location.href='findpassword-success.html'">找回密码<i class="fa fa-paper-plane"></i></button>
+                    	<button onclick="checkemail()" id="send-eamil">找回密码<i class="fa fa-paper-plane"></i></button>
+                    </div>
+                    <div class="" id="result" style="width: 100%;display: inline-block;text-align: center;">
                     </div>
                 </div>
                 </div>
@@ -193,7 +195,21 @@
 							width: 'auto', //auto or any width like 600px
 							fit: true   // 100% fit in a container
 						});
+						
 					});
+					function checkemail(){
+						
+							var mailReg=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,5}$/; 
+							var emailAddress=$("#input-eamil").val();
+							var res=mailReg.test(String(emailAddress)); 
+							
+							if(!res){
+								$("#result").html("您输入的邮箱地址不合法，请重新输入");
+							}else{
+								
+							}
+						
+					};
 				   </script>
 
 </body>
