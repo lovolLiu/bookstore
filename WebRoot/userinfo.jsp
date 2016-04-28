@@ -135,6 +135,7 @@ h2 {
 
 .btn.btn-primary {
 	background: #FE980F;
+	color:white;
 	border: 0 none;
 	border-radius: 0;
 	margin-top: 16px;
@@ -211,6 +212,9 @@ h2 {
 					<a>待评价</a>
 				</div>
 			</div>
+		</div>
+		<div>
+		    <a class="btn btn-primary">修改个人信息</a>
 		</div>
 	</div>
 	<div

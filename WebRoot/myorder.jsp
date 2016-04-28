@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,166 +37,6 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<style>
-.form-one {
-    float: left;
-    width: 47%;
-}
-.form-two{
-	float: right;
-	width: 47%;
-}	
-input{
-    background: #F0F0E9;
-    border: 0 none;
-    margin-bottom: 10px;
-    padding: 10px;
-    width: 100%;
-    font-weight: 300;
-}
-select{
-	background: #F0F0E9;
-    border: 0 none;
-    margin-bottom: 10px;
-    padding: 10px;
-    width: 100%;
-    font-weight: 300;
-}
-.bill-to p, .order-message p {
-    color: #FE980F;
-    font-size: 25px;
-    font-weight: 300;
-    margin-top: 20px;
-}
-.btn.btn-primary {
-    background: #FE980F;
-    border: 0 none;
-    border-radius: 0;
-    margin-top: 16px;
-}
-.review-payment h2 {
-    color: #FE980F;
-    font-size: 25px;
-    font-weight: 300;
-    margin-top: 45px;
-    margin-bottom: 20px;
-}
-.cart_info .cart_menu {
-    background: #FE980F;
-    color: #fff;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: normal;
-}
-.cart_product > a > img{
-	height:50%;
-}
-.cart_info table{
-	border: none;
-}
-.cart_info table tr{
-	border-top: 0 none;
-	vertical-align: inherit;
-	border-bottom: 2px solid #67675f;
-}
-.cart_info td{
-	padding: 5px;
-	vertical-align: middle !important;
-	border:none;
-}
-.cart_quantity_button{
-	width:100px;
-}
-.cart_quantity_button a {
-    background: #F0F0E9;
-    color: #696763;
-    display: inline-block;
-    font-size: 16px;
-    height: 28px;
-    overflow: hidden;
-    text-align: center;
-    width: 20%;
-    float: left;
-}
-.cart_quantity_input {
-    color: #696763;
-    font-size: 16px;
-    text-align: center;
-    font-family: 'Roboto',sans-serif;
-    float: left;
-    height:28px;
-    padding: 0;
-    width: 60%;
-}
-#cart_items .cart_info .cart_price p {
-    color: #696763;
-    font-size: 18px;
-}
-#cart_items .cart_info .cart_total_price {
-    color: #FE980F;
-    font-size: 24px;
-}
-.cart_delete a {
-    background: #F0F0E9;
-    color: #FFFFFF;
-    padding: 5px 7px;
-    font-size: 16px;
-}
-.cart_delete a:hover {
-    background: #FE980F;
-}
-.cart_description a{
-	color: #FE980F;
-}
-#cart_items .cart_info 
- .table.table-condensed.total-result {
-    margin-bottom: 10px;
-    margin-top: 35px;
-    color: #696763;
-}
-#cart_items .cart_info 
- .table.table-condensed.total-result table {
-    border-bottom: 0;
-}
-.total_area, #do_action .chose_area {
-    border: 1px solid #E6E4DF;
-    color: #696763;
-    padding: 30px 25px 30px 0;
-    margin-bottom: 80px;
-}
-.total_area {
-    padding-bottom: 18px !important;
-    text-align: right;
-}
-.total_area ul{ 
-	list-style: none;
-}
-.total_area ul li {
-    background: #E6E4DF;
-    color: #696763;
-    margin-top: 10px;
-    padding: 7px 20px;
-}
-.check_out {
-    margin-left: 20px;
-}
-.update {
-    margin-left: 40px;
-    
-}
-.update, .check_out {
-    background: #FE980F;
-    border-radius: 0;
-    color: #FFFFFF;
-    margin-top: 18px;
-    border: none;
-    padding: 5px 15px;
-}
-.total-result > tr > td{
-	border-top: none;
-}
-</style>
-</head>
 <body>
 <div id="loader-wrapper">
 	<div id="loader"></div>
@@ -212,10 +52,10 @@ select{
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
+						data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand">Bookaholic</a>
 			</div>
@@ -234,27 +74,16 @@ select{
     <!--BANNER START-->
     <div class="kode-inner-banner">
     	<div class="kode-page-heading">
-        	<h2>交易成功</h2>
+        	<h2>账户登陆</h2>
             <ol class="breadcrumb">
               <li><a href="#">主页</a></li>
-              <li class="active">交易成功</li>
+              <li class="active">登陆</li>
             </ol>
         </div>
     </div>
     <!--BANNER END-->
     <!--CONTENT START-->
-     <div class="kode-content">
-    	<div class="container">
-            <div class="error-404">
-                <h2>恭喜</h2>
-                <div class="page-404">
-                    <span>您的订单已经成功提交</span>
-                </div>
-                <p>我们将尽快给您发货。</p>
-                <a href="books.jsp" class="go-back">继续逛逛</a>
-            </div>   
-        </div>    
-    </div>
+    
     <!--CONTENT END-->
     <footer class="footer-3">
         <div class="container">
@@ -309,7 +138,9 @@ select{
     <div class="copyrights">
     	<div class="container">
         	<p>Copyrights © 2015-16 BUPTSSE. All rights reserved</p>
-            <div class="cards"><img src="images/cards.png" alt=""></div>
+            <div class="cards">
+					<img src="images/cards.png" alt="">
+				</div>
         </div>
     </div>
 </div>
@@ -331,18 +162,21 @@ select{
 <script src="js/jquerypp.custom.js"></script>
 <script src="js/jquery.bookblock.js"></script>
 <script src="js/functions.js"></script>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
 </script>
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 				<script type="text/javascript">
-					$(document).ready(function () {
+					$(document).ready(function() {
 						$('#horizontalTab').easyResponsiveTabs({
-							type: 'default', //Types: default, vertical, accordion           
-							width: 'auto', //auto or any width like 600px
-							fit: true   // 100% fit in a container
+							type : 'default', //Types: default, vertical, accordion           
+							width : 'auto', //auto or any width like 600px
+							fit : true
+						// 100% fit in a container
 						});
 					});
-				   </script>
+				</script>
 
 </body>
 </html>
