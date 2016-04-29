@@ -59,12 +59,10 @@ public class FindPasswordServiceImpl implements FindPasswordService{
 		return false;
 	}
 	
-	@Override
 	public UserDAO getUserDao(){
 		return userDao;
 	}
 	
-	@Override
 	public void setUserDao(UserDAO userDao){
 		this.userDao = userDao;
 	}
