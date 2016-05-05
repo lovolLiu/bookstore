@@ -195,6 +195,10 @@ select{
 .total-result > tr > td{
 	border-top: none;
 }
+.itemselectbox{
+    float:left;
+    width:10%;
+}
 </style>
 </head>
 <body>
@@ -260,6 +264,7 @@ select{
 					<tbody>
 						<tr>
 							<td class="cart_product">
+							    <input type="checkbox" class="itemselectbox">
 								<a href=""><img src="images/book.png"></a>
 							</td>
 							<td class="cart_description">
@@ -286,6 +291,7 @@ select{
 
 						<tr>
 							<td class="cart_product">
+							    <input type="checkbox" class="itemselectbox">
 								<a href=""><img src="images/book2.png" alt=""></a>
 							</td>
 							<td class="cart_description">
@@ -311,6 +317,7 @@ select{
 						</tr>
 						<tr>
 							<td class="cart_product">
+							    <input type="checkbox" class="itemselectbox">
 								<a href=""><img src="images/book3.png" alt=""></a>
 							</td>
 							<td class="cart_description">
