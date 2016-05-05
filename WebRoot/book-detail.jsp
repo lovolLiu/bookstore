@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ taglib prefix="s" uri="/struts-tags"%>  
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>在线书城</title>
 <!-- CUSTOM STYLE -->
@@ -238,7 +239,7 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="kode-text">
-                                	<h2> 最好的我们 </h2>
+                                	<h2> <s:property value="book.bookName"/></h2>
                                     <div class="product-review">
                                         <div class="rating">
                                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>

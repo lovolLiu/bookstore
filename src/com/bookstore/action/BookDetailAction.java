@@ -19,8 +19,9 @@ public class BookDetailAction {
 	List<BookType> typeList;
 	
 	public String execute(){
-		book = bookDetailService.getBookInfo(bookID);
-		appriseList = bookDetailService.getAppriseList(bookID);
+		book = bookDetailService.getBookInfo(9);
+		System.out.println(book.getBookName());
+		appriseList = bookDetailService.getAppriseList(9);
 		relatedBookList = selectService.selectPersonalBook();
 		hotestBookList = selectService.selectHottestBook();
 		newestBookList = selectService.selectNewestBook();
