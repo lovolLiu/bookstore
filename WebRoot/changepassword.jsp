@@ -89,10 +89,10 @@
 					<h2>重置密码</h2>
 					<p>请输入您的新密码以恢复账户</p>
 					<div class="register col-md-6 col-md-offset-3" style="padding:0;">
-							<input id="pwd1" placeholder="新密码" class="mail" type="text" required=""
+							<input id="pwd1" placeholder="新密码"ntype="password" required=""
 								name="username"> 
-							<input id="pwd2" placeholder="重复您的新密码" class="lock"
-								type="password" required="" name="password" onblur="check()"> 
+							<input id="pwd2" placeholder="重复您的新密码"
+								type="password" required="" onblur="check()"> 
 							<div id="errorpwd2" class="errormessage"></div>
 							<input type="submit" value="重置密码" onclick="restorepwd()"/>
 					</div>
