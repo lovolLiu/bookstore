@@ -18,5 +18,5 @@ public interface BookDAO {
 	
 	List<Book> fuzzyfindByName(String bookname);
 	List<Book> fuzzyfindByAuthor(String authorname);
-	List<Book> fuzzyfindByPublisher(String publisher);
+	List<Book> fuzzyfindByPublisher(Integer id);
 }
