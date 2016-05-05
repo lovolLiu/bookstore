@@ -40,5 +40,10 @@ public class BuyItemDAOImpl extends HibernateDaoSupport implements BuyItemDAO {
 		return (List<BuyItem>)getHibernateTemplate()
 				.find("from BuyItem as b where b.orderID=?", orderID);
 	}
+	
+	public List<BuyItem> findNotApprise(Integer orderID){
+		return (List<BuyItem>)getHibernateTemplate()
+				.find("from BuyItem as b where b.orderID=? and b.hasApprise=?", orderID, false);
+	}
 
 }
