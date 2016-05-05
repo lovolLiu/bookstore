@@ -1,0 +1,58 @@
+package com.bookstore.util;
+
+/**
+ * @author Zhiqi Yang
+ * @description 购物车列表的tr的数据封装对象
+ * @modify
+ * @modifyDate 
+ */
+public class TrCartItem {
+	
+	Integer buyItemID;
+	String imageUrl;
+	String bookName;
+	Double price;
+	Double buyItemPrice;
+	Integer num;
+	
+	public Integer getBuyItemID() {
+		return buyItemID;
+	}
+	public void setBuyItemID(Integer buyItemID) {
+		this.buyItemID = buyItemID;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	public Integer getNum() {
+		return num;
+	}
+	public void setNum(Integer num) {
+		this.num = num;
+	}
+	public Double getBuyItemPrice() {
+		return buyItemPrice;
+	}
+	public void setBuyItemPrice(Double buyItemPrice) {
+		this.buyItemPrice = buyItemPrice;
+	}
+
+	
+	
+	
+}
