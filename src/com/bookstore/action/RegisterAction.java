@@ -17,6 +17,8 @@ public class RegisterAction {
 		user.setPassword(password);
 		user.setUserTel(userTel);
 		user.setUserEmail(userEmail);
+		boolean hasemail = registerService.hasUserEmail(userEmail);//true为存在输入邮箱 false为不存在输入邮箱
+		boolean hasname = registerService.hasUsername(userName);//true为存在输入用户名 false为不存在输入用户名
 		if(registerService.resgister(user)){
 			return "success";
 		}

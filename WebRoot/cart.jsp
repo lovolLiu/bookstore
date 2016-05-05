@@ -196,6 +196,10 @@ select{
 .total-result > tr > td{
 	border-top: none;
 }
+.itemselectbox{
+    float:left;
+    width:10%;
+}
 </style>
 </head>
 <body>
@@ -259,34 +263,60 @@ select{
 						</tr>
 					</thead>
 					<tbody>
-					
-					
-					<s:iterator value="trCartList"	var="trItem">
+
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/book3.png" alt=""></a>
+							    <input type="checkbox" class="itemselectbox">
+								<a href=""><img src="images/book.png"></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">${bookName } </a></h4>
+								<h4><a href="">BESPOKE</a></h4>
+								<p>ISBN: 1089772</p>
 							</td>
 							<td class="cart_price">
-								<p>¥${price }</p>
+								<p>¥59</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
 									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="${num }" autocomplete="off" size="2">
+									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
 									<a class="cart_quantity_down" href=""> - </a>
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">¥${buyItemPrice }</p>
+								<p class="cart_total_price">¥59</p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
-					</s:iterator>
+
+						<tr>
+							<td class="cart_product">
+							    <input type="checkbox" class="itemselectbox">
+								<a href=""><img src="images/book2.png" alt=""></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href="">LIFE IS A TRIP</a></h4>
+								<p>ISBN: 1089772</p>
+							</td>
+							<td class="cart_price">
+								<p>¥59</p>
+							</td>
+							<td class="cart_quantity">
+								<div class="cart_quantity_button">
+									<a class="cart_quantity_up" href=""> + </a>
+									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+									<a class="cart_quantity_down" href=""> - </a>
+								</div>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">¥59</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
 						
 						
 						<tr>

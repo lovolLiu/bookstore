@@ -7,29 +7,28 @@ import com.bookstore.service.AddressService;
 public class AddressServiceImpl implements AddressService{
 	
 	AddressDAO addressDao;
-
+	
 	@Override
-	public boolean createAddress(Address address) {
-		
-		return false;
+	public int createAddress(Address address) {
+		return addressDao.save(address);
 	}
 
 	@Override
-	public boolean updateAddress(Address address) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateAddress(Address address){
+		addressDao.update(address);
+		return true;
 	}
 
 	@Override
-	public boolean deleteAddress(Address address) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteAddress(int addressID) {
+		addressDao.delete(addressID);
+		return true;
 	}
 
 	@Override
-	public boolean selectAddress(Address address) {
+	public Address selectAddress(int addressID) {
 		// TODO Auto-generated method stub
-		return false;
+		return addressDao.findByID(addressID);
 	}
 	
 }

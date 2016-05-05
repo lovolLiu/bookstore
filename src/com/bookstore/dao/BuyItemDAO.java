@@ -12,4 +12,5 @@ public interface BuyItemDAO {
 	void update(BuyItem buyItem);
 	void delete(Integer id);
 	List<BuyItem> findByOrderID(Integer orderID);
+	List<BuyItem> findNotApprise(Integer orderID);
 }

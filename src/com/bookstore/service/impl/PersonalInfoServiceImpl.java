@@ -30,25 +30,34 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 
 	@Override
 	public List<Order> getPaidOrder(int userID) {
-		return null;
+		return orderDao.findByUserIDandStats(1, userID);
 	}
 
 	@Override
 	public List<Order> getUnpaidOrder(int userID) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.findByUserIDandStats(0, userID);
 	}
 
 	@Override
 	public List<Order> getCanceledOrder(int userID) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.findByUserIDandStats(2, userID);
 	}
 
 	@Override
 	public List<Book> getUnappriseBook(int userID) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Book> bookList = new ArrayList<Book>();
+		List<Order> personalOrderList = orderDao.findByUserIDandStats(1,userID);
+		for (int i = 0; i < personalOrderList.size(); i++){
+			List<BuyItem> buyItemList = buyItemDao.findNotApprise(personalOrderList.get(i).getOrderID());
+			for(int j = 0; j < buyItemList.size(); j++){
+				int bookId = buyItemList.get(j).getBookID();
+				Book book = bookDao.findByID(bookId);
+				if (!bookList.contains(book)){
+					bookList.add(book);
+				}
+			}
+		}
+		return bookList;
 	}
 
 	@Override
@@ -64,7 +73,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	@Override
 	public List<Book> getPersonalBookList(int userID) {
 		List<Book> bookList = new ArrayList<Book>();
-		List<Order> personalOrderList = orderDao.findByUserID(userID);
+		List<Order> personalOrderList = orderDao.findByUserIDandStats(1,userID);
 		// for - each
 		for (int i = 0; i < personalOrderList.size(); i++){
 			List<BuyItem> buyItemList = buyItemDao.findByOrderID(personalOrderList.get(i).getOrderID());
