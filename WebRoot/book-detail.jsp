@@ -256,7 +256,7 @@
                                     <div class="book-text">
                                         <p>标签: 文学.</p>
                                         <p>作者: <s:property value="book.author"/></p>
-                                        <p>出版商: <s:property value="book.publisherID"/></p>
+                                        <p>出版商:<s:property value="publisher.publisherName"/> </p>
                                         <p>书目ID: 1100</p>
                                     </div>
                                     <a href="StraightBuy?bookID=9&num=1" class="add-to-cart">立即购买</a>
