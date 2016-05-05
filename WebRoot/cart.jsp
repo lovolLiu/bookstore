@@ -462,7 +462,7 @@ select{
 					function showCart(){
 						$.ajax({
 							url:"GetCartItemList",
-							dataType:"json",	/* 服务器返回的数据类型 */
+							dataType:"json",
 							success:function(data){
 								$.each(data,function(i,list){  
                        				 var _tr = $("<tr id=\""+list.buyItemID+"\">"

@@ -31,14 +31,6 @@
 		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
 			<result>/book-detail.jsp</result>
 		</action>
-<!-- 		<action name="hello" class="com.bookstore.action.HelloWorldAction"> -->
-<!-- 			<result>/success.jsp</result> -->
-<!-- 		</action> -->
-
-
-<!--         <action name="*_*" class="com.bookstore.action.{1}Action" method="{2}"> -->
-<!--             <result name="success">/{1}/{2}.jsp</result> -->
-<!--         </action> -->
     </package>
     <package name="ajax_json" namespace="/" extends="json-default">
 		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
