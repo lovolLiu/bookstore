@@ -35,4 +35,28 @@ public class SearchServiceImpl implements SearchService {
 		
 	}
 
+	public BookDAO getBookDAO() {
+		return bookDAO;
+	}
+
+	public void setBookDAO(BookDAO bookDAO) {
+		this.bookDAO = bookDAO;
+	}
+
+	public BookTypeDAO getBookTypeDAO() {
+		return bookTypeDAO;
+	}
+
+	public void setBookTypeDAO(BookTypeDAO bookTypeDAO) {
+		this.bookTypeDAO = bookTypeDAO;
+	}
+
+	public PublisherDAO getPublisherDAO() {
+		return publisherDAO;
+	}
+
+	public void setPublisherDAO(PublisherDAO publisherDAO) {
+		this.publisherDAO = publisherDAO;
+	}
+	
 }
