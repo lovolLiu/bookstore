@@ -247,16 +247,16 @@
                                         <p>4 评论</p>
                                     </div>
                                     <div class="product-price">
-                                        <h4>55.00 RMB</h4>
-                                        <p>作者: <span class="color">八月长安</span></p>
+                                        <h4><s:property value="book.price"/> RMB</h4>
+                                        <p>作者: <span class="color"><s:property value="book.author"/></span></p>
                                     </div>
                                     <div class="book-text">
-                                    	<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
+                                    	<p><s:property value="book.description"/></p>
                                     </div>
                                     <div class="book-text">
                                         <p>标签: 文学.</p>
-                                        <p>作者: 八月长安</p>
-                                        <p>出版商: 湖南文艺出版社</p>
+                                        <p>作者: <s:property value="book.author"/></p>
+                                        <p>出版商: <s:property value="book.publisherID"/></p>
                                         <p>书目ID: 1100</p>
                                     </div>
                                     <a href="StraightBuy?bookID=9&num=1" class="add-to-cart">立即购买</a>
