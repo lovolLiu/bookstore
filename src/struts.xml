@@ -33,6 +33,9 @@
     </package>
     <package name="ajax_json" namespace="/" extends="json-default">
 		<action name="FindPassword" class="com.bookstore.action.FindPasswordAction">
+			<result name="nouser" type="json">
+				<param name="root">result</param>
+			</result>
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>

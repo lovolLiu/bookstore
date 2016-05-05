@@ -8,11 +8,14 @@ public class FindPasswordAction {
 	String result;
 	
 	public String execute(){
+		if(!findPasswordService.userExists(email)){
+			this.result = "nouser";
+			return "nouser";
+		}
 		if(findPasswordService.sendEmail(email)){
 			this.result = "success";
 			return "success";
-		}
-		else{
+		}else{
 			this.result = "fail";
 			return "fail";
 		}

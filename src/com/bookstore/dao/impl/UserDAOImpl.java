@@ -41,6 +41,15 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 		getHibernateTemplate().delete(findById(id));
 	}
 
+	@Override
+	public User findByEmail(String email) {
+		List<User> userList = getHibernateTemplate().find("from User as u where u.userEmail=?", email);
+		if (userList.isEmpty())
+			return null;
+		else
+			return userList.get(0);
+	}
+
 
 
 }

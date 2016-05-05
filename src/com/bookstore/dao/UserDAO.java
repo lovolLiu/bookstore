@@ -6,6 +6,7 @@ import com.bookstore.domain.User;
 public interface UserDAO {
 	User findById(Integer id);
 	User findByName(String name);
+	User findByEmail(String email);
 	List<User> findAll();
 	Integer save(User user);
 	void update(User user);
