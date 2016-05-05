@@ -15,6 +15,11 @@
 			<result name="fail">/login.jsp</result>
 		</action>
 
+		<action name="Register" class="com.bookstore.action.RegisterAction">
+			<result name="success">/login.jsp</result>
+			<result name="fail">/index.jsp</result>
+		</action>
+
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
 			<result>/submit-order.jsp</result>
 		</action>

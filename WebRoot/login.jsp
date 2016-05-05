@@ -108,11 +108,11 @@
 
 				<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 						<div class="register">
-							<form>	
-								<input placeholder="用户名" type="text" required="">
-								<input placeholder="电话号码" type="text" required="">		
-								<input placeholder="电子邮箱" type="text" required="">											
-								<input placeholder="密码" type="password" required="">	
+							<form action="Register">	
+								<input placeholder="用户名" type="text" required="" name="userName">
+								<input placeholder="电话号码" type="text" required="" name="userTel">		
+								<input placeholder="电子邮箱" type="text" required="" name="userEmail">											
+								<input placeholder="密码" type="password" required="" name="password">	
 								<input placeholder="重复密码" type="password" required="">
 									<div class="sign-up">
 										<input type="submit" value="注册"/>
