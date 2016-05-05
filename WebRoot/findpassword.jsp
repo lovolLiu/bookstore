@@ -97,11 +97,13 @@
                 	<div class="col-md-9 col-sm-8">
                     	<div class="input-container">
                         	<i class="fa fa-envelope-o"></i>
-                        	<input type="text" placeholder="输入邮箱">
+                        	<input type="text" placeholder="输入邮箱" id="emailAddress" name="emailAddress">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
-                    	<button onclick="javascript:window.location.href='findpassword-success.html'">找回密码<i class="fa fa-paper-plane"></i></button>
+                    	<button onclick="checkemail()" id="send-eamil">找回密码<i class="fa fa-paper-plane"></i></button>
+                    </div>
+                    <div class="" id="result" style="width: 100%;display: inline-block;text-align: center;">
                     </div>
                 </div>
                 </div>
@@ -193,7 +195,38 @@
 							width: 'auto', //auto or any width like 600px
 							fit: true   // 100% fit in a container
 						});
+						
 					});
+					function checkemail(){
+						
+							var mailReg=/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/; 
+							var emailAddress=$("input[id='emailAddress']").val();
+							var res=mailReg.test(String(emailAddress)); 
+							if(!res){
+								$("#result").html("您输入的邮箱地址不合法，请重新输入");
+								$("#result").css("color","#FF9606");
+							}else{
+								$.ajax({
+									url:"FindPassword.action",
+									type:"post",
+									data:{"email":emailAddress},
+									dataType:"json",	/* 服务器返回的数据类型 */
+									success:function(data){
+										if(data=="success"){
+											$("#result").html("我们已经将重设密码链接发送到您的邮箱");
+						               		$("#result").css("color","#FF9606"); 
+						          		}else if(data=="fail"){ 
+								            $("#result").html("邮件发送失败，请重新发送");
+						               		$("#result").css("color","#FF9606"); 
+						          		}else if(data=="nouser"){
+						          			$("#result").html("此邮箱还没有注册到Bookaholic");
+						               		$("#result").css("color","#FF9606"); 
+						          		}
+									}
+								})
+							}
+						
+					};
 				   </script>
 
 </body>

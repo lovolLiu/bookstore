@@ -15,8 +15,13 @@ public class RegisterServiceImpl implements RegisterService {
 
 	@Override
 	public boolean resgister(User user) {
+		if(hasUsername(user.getUserName())){
+			return false;
+		}
+		else{
 		userDAO.save(user);
 		return true;
+		}
 	}
 
 	public UserDAO getUserDAO() {
