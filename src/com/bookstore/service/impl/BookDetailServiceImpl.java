@@ -28,4 +28,20 @@ public class BookDetailServiceImpl implements BookDetailService {
 		return appriseList;
 	}
 
+	public BookDAO getBookDao() {
+		return bookDao;
+	}
+
+	public void setBookDao(BookDAO bookDao) {
+		this.bookDao = bookDao;
+	}
+
+	public AppriseDAO getAppriseDao() {
+		return appriseDao;
+	}
+
+	public void setAppriseDao(AppriseDAO appriseDao) {
+		this.appriseDao = appriseDao;
+	}
+
 }

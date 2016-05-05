@@ -27,6 +27,10 @@
 		<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
 			<result>/pay.jsp</result>
 		</action>
+		
+		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
+			<result>/bookdetail.jsp</result>
+		</action>
 <!-- 		<action name="hello" class="com.bookstore.action.HelloWorldAction"> -->
 <!-- 			<result>/success.jsp</result> -->
 <!-- 		</action> -->
