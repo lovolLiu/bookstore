@@ -109,19 +109,20 @@
 
 				<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 						<div class="register">
-							<form>	
-								<input id="usrname" placeholder="用户名" type="text" required="" onblur="checkusrname()">
+							<h4 id="register-success" style="width: 100%;display: inline-block;text-align: center;display: none;"></h4>
+							<form id="registerform">	
+								<input id="usrname" placeholder="用户名" type="text" required="required" onblur="checkusrname()">
 								<div id="errorusrname" class="errormessage"></div>
 								<input id="tel" placeholder="电话号码" type="text" required="" onblur="checktel()">
 								<div id="errortel" class="errormessage"></div>		
-								<input id="email" placeholder="电子邮箱" type="text" required="" onblur="checkemail()">
+								<input id="email" placeholder="电子邮箱" type="text" required="required" onblur="checkemail()">
 								<div id="erroremail" class="errormessage"></div>											
-								<input id="pwd1" placeholder="密码" type="password" required="">	
-								<input id="pwd2" placeholder="重复密码" type="password" required="" onblur="checkpwd2()">
+								<input id="pwd1" placeholder="密码" type="password" required="required">	
+								<input id="pwd2" placeholder="重复密码" type="password" required="required" onblur="checkpwd2()">
 								<div id="errorpwd2" class="errormessage"></div>
-									<div class="sign-up" id="sign-up">
-										<input type="submit" value="注册" onclick="submitUser()"/>
-									</div>
+								<div class="sign-up" id="sign-up">
+									<input type="submit" value="注册" onclick="submitUser()"/>
+								</div>
 							</form>
 						</div>
 					</div> 	        					            	      
@@ -297,9 +298,11 @@
 								dataType:"json",	
 								success:function(data){
 									if(data=="success"){
-										$("#erroremail").html("注册成功");
+										$("form[id='registerform']").css("display","none");
+										$("h4[id='register-success']").css("display","");
+										$("h4[id='register-success']").html("注册成功");
 					          		}else{
-					          			$("#erroremail").html("注册失败");
+										$("h4[id='register-success']").html("注册失败，请重新注册");
 					          		}
 								}
 							});
