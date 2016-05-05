@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,82 +259,36 @@ select{
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/book.png"></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">BESPOKE</a></h4>
-								<p>ISBN: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>¥59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">¥59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/book2.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">LIFE IS A TRIP</a></h4>
-								<p>ISBN: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>¥59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">¥59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
+					
+					
+					<s:iterator value="trCartList"	var="trItem">
 						<tr>
 							<td class="cart_product">
 								<a href=""><img src="images/book3.png" alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">JENNIFER</a></h4>
-								<p>ISBN: 1089772</p>
+								<h4><a href="">${bookName } </a></h4>
 							</td>
 							<td class="cart_price">
-								<p>¥59</p>
+								<p>¥${price }</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
 									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+									<input class="cart_quantity_input" type="text" name="quantity" value="${num }" autocomplete="off" size="2">
 									<a class="cart_quantity_down" href=""> - </a>
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">¥59</p>
+								<p class="cart_total_price">¥${buyItemPrice }</p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
+					</s:iterator>
+						
+						
 						<tr>
 							<td colspan="4">&nbsp;</td>
 							<td colspan="2">
@@ -341,7 +296,7 @@ select{
 									<tbody>
 									<tr style="font-size: x-large;text-align: right">
 										<td style="text-align: right">合计</td>
-										<td style="text-align: right;color: #FE980F;"><span>¥157</span></td>
+										<td style="text-align: right;color: #FE980F;"><span>¥${totalPrice }</span></td>
 									</tr>
 									<tr style="border-bottom: 0;">
 										<td><div style="text-align: right"><a class="btn btn-default update" href="">更新购物车</a></div></td>

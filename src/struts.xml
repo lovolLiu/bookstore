@@ -4,9 +4,30 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 <constant name="struts.devMode" value="true" />
+
+
+<package name="default" namespace="/" extends="json-default"> 
+	<action name="GetCartItemList" class="com.bookstore.action.CartAction" method="showBuyItemList"> 
+		<result type="json" />
+	</action>
+	
+	<action name="DeleteCartItem" class="com.bookstore.action.CartAction" method="deleteBuyItem"> 
+		<result type="json" /> 
+	</action>
+	
+	<action name="UpdateCartItem" class="com.bookstore.action.CartAction" method="updateBuyItem"> 
+		<result type="json" /> 
+	</action>
+</package>
+
+
 <package name="hello" namespace="/" extends="struts-default">
 		<action name="hello" class="com.bookstore.action.HelloWorldAction">
 			<result>/success.jsp</result>
+		</action>
+		
+		<action name="LookCart" class="com.bookstore.action.CartAction" method="showBuyItemList">
+			<result>/cart.jsp</result>
 		</action>
 		
 		<action name="Login" class="com.bookstore.action.LoginAction">

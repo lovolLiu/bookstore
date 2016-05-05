@@ -133,9 +133,17 @@
 	<bean id="helloWorldService" class="com.bookstore.service.impl.HelloWorldServiceImpl">
 		<property name="newsDao" ref="newsDao" />
 	</bean>
-
-
-
+	
+	<bean id="cartService" class="com.bookstore.service.impl.CartServiceImpl">
+		<property name="cartItemDAO" ref="cartItemDAO" />
+		<property name="buyItemDAO" ref="buyItemDAO"/>
+	</bean>
+	
+	<bean id="convertorService" class="com.bookstore.service.impl.ConvertorServiceImpl">
+		<property name="bookDAO" ref="bookDAO"/>
+		<property name="pictureDAO" ref="pictureDAO"/>
+	</bean>
+	
 	<bean id="buyService" class="com.bookstore.service.impl.BuyServiceImpl">
 		<property name="orderDAO" ref="orderDAO" />
 		<property name="buyItemDAO" ref="buyItemDAO"/>
