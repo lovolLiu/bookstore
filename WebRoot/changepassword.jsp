@@ -89,7 +89,7 @@
 					<h2>重置密码</h2>
 					<p>请输入您的新密码以恢复账户</p>
 					<div class="register col-md-6 col-md-offset-3" style="padding:0;">
-							<input id="pwd1" placeholder="新密码"ntype="password" required=""
+							<input id="pwd1" placeholder="新密码" type="password" required=""
 								name="username"> 
 							<input id="pwd2" placeholder="重复您的新密码"
 								type="password" required="" onblur="check()"> 
@@ -202,12 +202,11 @@
 		    check();
 		    if(flag == true){
 		    	var emailAddress=window.location.hash.slice(1);
-		    	var email="catherine_ai@163.com";
 		    	var password=document.getElementById("pwd1").value;
 		    	$.ajax({
 					url:"ChangePassword.action",
 					type:"post",
-					data:{"email":email,"password":password},
+					data:{"email":emailAddress,"password":password},
 					dataType:"json",	/* 服务器返回的数据类型 */
 					success:function(data){
 						if(data=="success"){

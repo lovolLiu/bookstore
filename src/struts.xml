@@ -15,11 +15,6 @@
 			<result name="fail">/login.jsp</result>
 		</action>
 
-		<action name="Register" class="com.bookstore.action.RegisterAction">
-			<result name="success">/login.jsp</result>
-			<result name="fail">/index.jsp</result>
-		</action>
-
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
 			<result>/submit-order.jsp</result>
 		</action>
@@ -51,6 +46,33 @@
 			</result>
 			<result name="fail" type="json">
 				<param name="root">result</param>>
+			</result>
+		</action>
+		
+		<action name="CheckUsername" class="com.bookstore.action.RegisterAction" method="hasUsername">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="CheckEmail" class="com.bookstore.action.RegisterAction" method="hasEmail">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="RegisterUser" class="com.bookstore.action.RegisterAction" method="registerUser">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
 			</result>
 		</action>
 	</package>

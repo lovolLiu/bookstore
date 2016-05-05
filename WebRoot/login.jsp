@@ -119,8 +119,8 @@
 								<input id="pwd1" placeholder="密码" type="password" required="">	
 								<input id="pwd2" placeholder="重复密码" type="password" required="" onblur="checkpwd2()">
 								<div id="errorpwd2" class="errormessage"></div>
-									<div class="sign-up">
-										<input type="submit" value="注册"/>
+									<div class="sign-up" id="sign-up">
+										<input type="submit" value="注册" onclick="submitUser()"/>
 									</div>
 							</form>
 						</div>
@@ -219,7 +219,23 @@
 						});
 					});
 					function checkusrname(){
-					    $("#errorusrname").html("用户名已被注册！");
+						var username = $("input[id='usrname']").val();
+						$("#errorusrname").html("");
+						$.ajax({
+							url:"CheckUsername",
+							type:"post",
+							data:{"userName":username},
+							dataType:"json",	/* 服务器返回的数据类型 */
+							success:function(data){
+								if(data=="true"){
+									$("#errorusrname").html("用户名已被注册");
+									flag = false;
+				          		}else{
+				          			$("#errorusrname").html("");
+				          			flag = true;
+				          		}
+							}
+						});
 					}
 					function checktel(){
 					    var tel = document.getElementById("tel").value;
@@ -234,13 +250,27 @@
 					}
 					function checkemail(){
 					    var email = document.getElementById("email").value;
+					    $("#erroremail").html("");
 					    var reg =  /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 					    if(!(reg.test(email))){
 					      $("#erroremail").html("邮箱格式错误");
 					      flag = false;
 					    }else{
-					      $("#erroremail").html("");
-					      flag = true;
+					    	$.ajax({
+								url:"CheckEmail",
+								type:"post",
+								data:{"userEmail":email},
+								dataType:"json",	/* 服务器返回的数据类型 */
+								success:function(data){
+									if(data=="true"){
+										$("#erroremail").html("邮箱已被注册");
+										flag = false;
+					          		}else{
+					          			$("#erroremail").html("");
+					      				flag = true;
+					          		}
+								}
+							});
 					    }
 					}
 					function checkpwd2(){
@@ -254,6 +284,31 @@
 		                  flag = true;
 		                }
 		            }
+		            function submitUser(){
+		            	if(flag == true){
+			            	var username = $("input[id='usrname']").val();
+			            	var tel = document.getElementById("tel").value;
+			            	var email = document.getElementById("email").value;
+			            	var pwd1 = document.getElementById("pwd1").value;
+			            	$.ajax({
+								url:"RegisterUser",
+								type:"post",
+								data:{"userName":username,"password":pwd1,"userTel":tel,"userEmail":email},
+								dataType:"json",	
+								success:function(data){
+									if(data=="success"){
+										$("#erroremail").html("注册成功");
+					          		}else{
+					          			$("#erroremail").html("注册失败");
+					          		}
+								}
+							});
+		            	}else{
+		        			alert("请确保您的各项信息填写正确");
+		    			}
+		            }
+		            
+		 
 </script>
 </body>
 </html>
