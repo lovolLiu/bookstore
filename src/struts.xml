@@ -5,74 +5,80 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
 
-		<package name="hello" namespace="/" extends="struts-default">
+	<package name="hello" namespace="/" extends="struts-default">
 
-			<action name="hello" class="com.bookstore.action.HelloWorldAction">
-				<result>/success.jsp</result>
-			</action>
+		<action name="hello" class="com.bookstore.action.HelloWorldAction">
+			<result>/success.jsp</result>
+		</action>
 
-			<action name="LookCart" class="com.bookstore.action.CartAction"
-				method="showBuyItemList">
-				<result>/cart.jsp</result>
-			</action>
+		<action name="LookCart" class="com.bookstore.action.CartAction"
+			method="showBuyItemList">
+			<result>/cart.jsp</result>
+		</action>
 
-			<action name="Login" class="com.bookstore.action.LoginAction">
-				<result>/index.jsp</result>
-				<result name="fail">/login.jsp</result>
-			</action>
+		<action name="Login" class="com.bookstore.action.LoginAction">
+			<result>/index.jsp</result>
+			<result name="fail">/login.jsp</result>
+		</action>
 
-			<action name="Register" class="com.bookstore.action.RegisterAction">
-				<result name="success">/login.jsp</result>
-				<result name="fail">/index.jsp</result>
-			</action>
+		<action name="Register" class="com.bookstore.action.RegisterAction">
+			<result name="success">/login.jsp</result>
+			<result name="fail">/index.jsp</result>
+		</action>
 
-			<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
-				<result>/submit-order.jsp</result>
-			</action>
+		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
+			<result>/submit-order.jsp</result>
+		</action>
 
-			<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
-				<result>/pay.jsp</result>
-			</action>
-			<!-- <action name="hello" class="com.bookstore.action.HelloWorldAction"> -->
-			<!-- <result>/success.jsp</result> -->
-			<!-- </action> -->
-
-
-			<!-- <action name="*_*" class="com.bookstore.action.{1}Action" method="{2}"> -->
-			<!-- <result name="success">/{1}/{2}.jsp</result> -->
-			<!-- </action> -->
-		</package>
-		
-		
-		<package name="ajax_json" namespace="/" extends="json-default">
-			<action name="FindPassword" class="com.bookstore.action.FindPasswordAction">
-				<result name="nouser" type="json">
-					<param name="root">result</param>
-				</result>
-				<result name="success" type="json">
-					<param name="root">result</param>
-				</result>
-				<result name="fail" type="json">
-					<param name="root">result</param>
-				</result>
-			</action>
+		<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
+			<result>/pay.jsp</result>
+		</action>
+		<!-- <action name="hello" class="com.bookstore.action.HelloWorldAction"> -->
+		<!-- <result>/success.jsp</result> -->
+		<!-- </action> -->
 
 
-			<action name="GetCartItemList" class="com.bookstore.action.CartAction"
-				method="showBuyItemList">
-				<result type="json" />
-			</action>
-
-			<action name="DeleteCartItem" class="com.bookstore.action.CartAction"
-				method="deleteBuyItem">
-				<result type="json" />
-			</action>
-
-			<action name="UpdateCartItem" class="com.bookstore.action.CartAction"
-				method="updateBuyItem">
-				<result type="json" />
-			</action>
+		<!-- <action name="*_*" class="com.bookstore.action.{1}Action" method="{2}"> -->
+		<!-- <result name="success">/{1}/{2}.jsp</result> -->
+		<!-- </action> -->
+	</package>
 
 
-		</package>
+
+	<package name="ajax_json" namespace="/" extends="json-default">
+		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction"
+			method="sendEmail">
+			<result name="nouser" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="ChangePassword" class="com.bookstore.action.FindPasswordAction"
+			method="changePassword">
+			<result type="json" />
+		</action>
+
+
+		<action name="GetCartItemList" class="com.bookstore.action.CartAction"
+			method="showBuyItemList">
+			<result type="json" />
+		</action>
+
+		<action name="DeleteCartItem" class="com.bookstore.action.CartAction"
+			method="deleteBuyItem">
+			<result type="json" />
+		</action>
+
+		<action name="UpdateCartItem" class="com.bookstore.action.CartAction"
+			method="updateBuyItem">
+			<result type="json" />
+		</action>
+
+	</package>
 </struts>
