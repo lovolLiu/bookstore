@@ -5,9 +5,10 @@ import com.bookstore.service.FindPasswordService;
 public class FindPasswordAction {
 	FindPasswordService findPasswordService;
 	String email;
+	String password;
 	String result;
 	
-	public String execute(){
+	public String sendEmail(){
 		if(!findPasswordService.userExists(email)){
 			this.result = "nouser";
 			return "nouser";
@@ -21,6 +22,16 @@ public class FindPasswordAction {
 		}
 		
 	}
+	
+	public String changePassword(){
+		if(findPasswordService.changePassword(email, password)){
+			this.result = "success";
+			return "success";
+		}
+		this.result = "fail";
+		return "fail";
+	}
+	
 	public FindPasswordService getFindPasswordService() {
 		return findPasswordService;
 	}
@@ -37,12 +48,19 @@ public class FindPasswordAction {
 		this.email = email;
 	}
 	
-	public String getResult() {
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password){
+		this.password = password;
+	}
+	
+	public String getResult(){
 		return result;
 	}
 	
-	public void setResult(String result) {
+	public void setResult(String result){
 		this.result = result;
 	}
-
 }

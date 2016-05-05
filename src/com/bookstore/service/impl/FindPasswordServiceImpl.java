@@ -11,6 +11,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import com.bookstore.dao.UserDAO;
+import com.bookstore.domain.User;
 import com.bookstore.service.FindPasswordService;
 
 public class FindPasswordServiceImpl implements FindPasswordService{
@@ -40,7 +41,7 @@ public class FindPasswordServiceImpl implements FindPasswordService{
 			msg.setFrom(new InternetAddress(fromEmailAccount));
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
 			msg.setSubject("找回密码-Bookaholic","utf-8");
-			String body = "点击下面链接，找回密码<br><a href=http://www.baidu.com>xxxx</a>";
+			String body = "点击下面链接，找回密码<br><a href=http://localhost:8080/BookStore/changepassword.jsp#"+email+">找回密码</a>";
 			msg.setText(body,"utf-8");
 			msg.setContent(body, "text/html;charset=utf-8");
 			msg.setSentDate(new Date());
@@ -54,9 +55,11 @@ public class FindPasswordServiceImpl implements FindPasswordService{
 	}
 
 	@Override
-	public boolean changePassword(int userID, String password) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean changePassword(String email, String password) {
+		User user = userDao.findByEmail(email);
+		user.setPassword(password);
+		userDao.update(user);
+		return true;
 	}
 	
 	public UserDAO getUserDao(){

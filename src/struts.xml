@@ -37,7 +37,7 @@
 <!--         </action> -->
     </package>
     <package name="ajax_json" namespace="/" extends="json-default">
-		<action name="FindPassword" class="com.bookstore.action.FindPasswordAction">
+		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
 			<result name="nouser" type="json">
 				<param name="root">result</param>
 			</result>
@@ -46,6 +46,15 @@
 			</result>
 			<result name="fail" type="json">
 				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="ChangePassword" class="com.bookstore.action.FindPasswordAction" method="changePassword">
+			<result name="success" type="json">
+				<param name="root">result</param>>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>>
 			</result>
 		</action>
 	</package>

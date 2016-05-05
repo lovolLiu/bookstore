@@ -261,7 +261,7 @@ select{
 							<td></td>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="cartItem" id="cartItem">
 						<tr>
 							<td class="cart_product">
 							    <input type="checkbox" class="itemselectbox">
@@ -459,6 +459,27 @@ select{
 							fit: true   // 100% fit in a container
 						});
 					});
+					function showCart(){
+						$.ajax({
+							url:"GetCartItemList",
+							dataType:"json",	/* 服务器返回的数据类型 */
+							success:function(data){
+								$.each(data,function(i,list){  
+                       				 var _tr = $("<tr id=\""+list.buyItemID+"\">"
+                       				 +"<td class=\"cart_product\"><a href><img src=\""+list.imageUrl+"\"></a></td>"
+                       				 +"<td class=\"cart_description\"><h4><a href>"+ list.bookName+"</a></h4></td>"
+                       				 +"<td class=\"cart_price\"><p>¥"+list.price+"</p></td>"
+                       				 +"<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\"> + </a> "
+                       				 	+ "<input class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+" autocomplete=\"off\" size=\"2\">"
+									 	+ "<a class=\"cart_quantity_down\" href=\"\"> - </a></div></td>"
+									 +"<td class=\"cart_total\"> <p class=\"cart_total_price\"> ¥"+list.buyItemPrice+"</p></td>"
+									 +"<td class=\"cart_delete\"><a class=\"cart_quantity_delete\" href=\"\"><i class=\"fa fa-times\"></i></a></td>"
+									 +"</tr>");  
+                       			 	 $("tbody[id='cartItem']").append(_tr);  
+                    			})  
+							}
+						})
+					}
 				   </script>
 
 </body>
