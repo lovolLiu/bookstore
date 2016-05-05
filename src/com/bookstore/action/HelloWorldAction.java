@@ -22,8 +22,7 @@ public class HelloWorldAction {
 	}
 
 
-	public String execute(){
-		
+	public String execute(){	
 		Book book = new Book();
 		book.setAuthor("fuyu");
 		book.setPageNum(123);
