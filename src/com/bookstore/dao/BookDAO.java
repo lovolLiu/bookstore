@@ -15,4 +15,8 @@ public interface BookDAO {
 	List<Book> findAllOrderByPublishTime();
 	List<Book> findAllOrderByClickCount();
 	List<Book> findAllOrderByDiscount();
+	
+	List<Book> fuzzyfindByName(String bookname);
+	List<Book> fuzzyfindByAuthor(String authorname);
+	List<Book> fuzzyfindByPublisher(String publisher);
 }
