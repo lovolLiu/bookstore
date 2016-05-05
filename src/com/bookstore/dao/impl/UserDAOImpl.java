@@ -17,8 +17,12 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public User findByName(String userName) {
-		return (User)getHibernateTemplate()
-				.find("from User as u where u.userName=?", userName).get(0);	
+		List<User> userList =getHibernateTemplate()
+				.find("from User as u where u.userName=?", userName);	
+		if (userList.isEmpty())
+			return null;
+		else
+			return userList.get(0);
 	}
 	
 	@Override
@@ -39,6 +43,15 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	@Override
 	public void delete(Integer id) {
 		getHibernateTemplate().delete(findById(id));
+	}
+
+	@Override
+	public User findByEmail(String email) {
+		List<User> userList = getHibernateTemplate().find("from User as u where u.userEmail=?", email);
+		if (userList.isEmpty())
+			return null;
+		else
+			return userList.get(0);
 	}
 
 

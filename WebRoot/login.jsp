@@ -37,13 +37,6 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<style>
-.errormessage{
-  color:red;
-  font-weight:bold;
-  font-style:italic;
-}
-</style>
 </head>
 <body>
 <div id="loader-wrapper">
@@ -117,16 +110,15 @@
 				<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 						<div class="register">
 							<form>	
-								<input placeholder="用户名" type="text" required="" onblur="checkusrname()">
-								<div id="usrname" class="errormessage"></div>
-								<input placeholder="电话号码" type="text" required="">
-								<div id="tel" class="errormessage"></div>		
-								<input placeholder="电子邮箱" type="text" required="">
-								<div id="email" class="errormessage"></div>											
-								<input placeholder="密码" type="password" required="">	
-								<div id="pwd" class="errormessage"></div>
-								<input placeholder="重复密码" type="password" required="">
-								<div id="repwd" class="errormessage"></div>
+								<input id="usrname" placeholder="用户名" type="text" required="" onblur="checkusrname()">
+								<div id="errorusrname" class="errormessage"></div>
+								<input id="tel" placeholder="电话号码" type="text" required="">
+								<div id="errortel" class="errormessage"></div>		
+								<input id="email" placeholder="电子邮箱" type="text" required="">
+								<div id="erroremail" class="errormessage"></div>											
+								<input id="pwd1" placeholder="密码" type="password" required="">	
+								<input id="pwd2" placeholder="重复密码" type="password" required="">
+								<div id="errorpwd2" class="errormessage"></div>
 									<div class="sign-up">
 										<input type="submit" value="注册"/>
 									</div>
@@ -226,7 +218,7 @@
 						});
 					});
 					function checkusrname(){
-					    $("#usrname").html("用户名已被注册！");
+					    $("#errorusrname").html("用户名已被注册！");
 					}
 </script>
 </body>

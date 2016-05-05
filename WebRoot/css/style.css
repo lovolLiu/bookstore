@@ -119,6 +119,12 @@ Sidebar heading:	'Oswald', sans-serif;
 				DEFAULT CSS
 ==========================================
 */
+.errormessage{
+  color:red;
+  font-weight:bold;
+  font-style:italic;
+  text-align:left;
+}
 .sap_tabs {
      margin: 0 auto;
     padding: 40px 30px;

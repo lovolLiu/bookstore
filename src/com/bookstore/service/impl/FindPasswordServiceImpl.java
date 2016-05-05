@@ -67,4 +67,12 @@ public class FindPasswordServiceImpl implements FindPasswordService{
 		this.userDao = userDao;
 	}
 
+	@Override
+	public boolean userExists(String email) {
+		if (userDao.findByEmail(email) != null){
+			return true;
+		}
+		return false;
+	}
+
 }

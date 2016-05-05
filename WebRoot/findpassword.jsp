@@ -215,10 +215,13 @@
 										if(data=="success"){
 											$("#result").html("我们已经将重设密码链接发送到您的邮箱");
 						               		$("#result").css("color","#FF9606"); 
-										}else if(data=="fail"){ 
-								            $("#result").html("此邮箱还没有注册到Bookaholic");
+						          		}else if(data=="fail"){ 
+								            $("#result").html("邮件发送失败，请重新发送");
 						               		$("#result").css("color","#FF9606"); 
-						          		} 
+						          		}else if(data=="nouser"){
+						          			$("#result").html("此邮箱还没有注册到Bookaholic");
+						               		$("#result").css("color","#FF9606"); 
+						          		}
 									}
 								})
 							}
