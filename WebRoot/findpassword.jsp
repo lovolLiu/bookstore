@@ -207,7 +207,7 @@
 								$("#result").css("color","#FF9606");
 							}else{
 								$.ajax({
-									url:"SendEmail",
+									url:"SendEmail.action",
 									type:"post",
 									data:{"email":emailAddress},
 									dataType:"json",	/* 服务器返回的数据类型 */

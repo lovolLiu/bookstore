@@ -50,7 +50,12 @@
 		</action>
 		
 		<action name="ChangePassword" class="com.bookstore.action.FindPasswordAction" method="changePassword">
-			<result type="json"/>
+			<result name="success" type="json">
+				<param name="root">result</param>>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>>
+			</result>
 		</action>
 	</package>
 </struts>
