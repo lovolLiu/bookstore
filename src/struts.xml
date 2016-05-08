@@ -21,11 +21,6 @@
 			<result name="fail">/login.jsp</result>
 		</action>
 
-		<action name="Register" class="com.bookstore.action.RegisterAction">
-			<result name="success">/login.jsp</result>
-			<result name="fail">/index.jsp</result>
-		</action>
-
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
 			<result>/submit-order.jsp</result>
 		</action>
@@ -33,21 +28,20 @@
 		<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
 			<result>/pay.jsp</result>
 		</action>
-		<!-- <action name="hello" class="com.bookstore.action.HelloWorldAction"> -->
-		<!-- <result>/success.jsp</result> -->
-		<!-- </action> -->
+		
+		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
+			<result>/book-detail.jsp</result>
+		</action>
+    </package>
+    
+    
+    
+    
+    
+    
+    <package name="ajax_json" namespace="/" extends="json-default">
+		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
 
-
-		<!-- <action name="*_*" class="com.bookstore.action.{1}Action" method="{2}"> -->
-		<!-- <result name="success">/{1}/{2}.jsp</result> -->
-		<!-- </action> -->
-	</package>
-
-
-
-	<package name="ajax_json" namespace="/" extends="json-default">
-		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction"
-			method="sendEmail">
 			<result name="nouser" type="json">
 				<param name="root">result</param>
 			</result>
@@ -58,13 +52,44 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-
-		<action name="ChangePassword" class="com.bookstore.action.FindPasswordAction"
-			method="changePassword">
-			<result type="json" />
+		
+		<action name="ChangePassword" class="com.bookstore.action.FindPasswordAction" method="changePassword">
+			<result name="success" type="json">
+				<param name="root">result</param>>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>>
+			</result>
 		</action>
-
-
+		
+		<action name="CheckUsername" class="com.bookstore.action.RegisterAction" method="hasUsername">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="CheckEmail" class="com.bookstore.action.RegisterAction" method="hasEmail">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="RegisterUser" class="com.bookstore.action.RegisterAction" method="registerUser">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+			
+			
 		<action name="GetCartItemList" class="com.bookstore.action.CartAction"
 			method="showBuyItemList">
 			<result type="json"><param name="root">trCartList</param></result>
@@ -87,7 +112,6 @@
 			method="showBuyItemList">   <!-- 这个地方没写错，就是这样的 -->
 			<result type="json"><param name="root">totalPrice</param></result>
 		</action>
-
 
 
 	</package>

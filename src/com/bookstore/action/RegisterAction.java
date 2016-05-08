@@ -9,20 +9,37 @@ public class RegisterAction {
 	String password;
 	String userTel;
 	String userEmail;
+	String result;
 	
+	public String hasEmail(){
+		if(registerService.hasUserEmail(userEmail)){
+			this.result = "true";
+			return "true";
+		}
+		this.result="false";
+		return "false";
+	}
 	
-	public String execute(){
+	public String hasUsername(){
+		if(registerService.hasUsername(userName)){
+			this.result = "true";
+			return "true";
+		}
+		this.result="false";
+		return "false";
+	}
+	public String registerUser(){
 		User user = new User();
 		user.setUserName(userName);
 		user.setPassword(password);
 		user.setUserTel(userTel);
 		user.setUserEmail(userEmail);
-		boolean hasemail = registerService.hasUserEmail(userEmail);//true为存在输入邮箱 false为不存在输入邮箱
-		boolean hasname = registerService.hasUsername(userName);//true为存在输入用户名 false为不存在输入用户名
 		if(registerService.resgister(user)){
+			this.result = "success";
 			return "success";
 		}
 		else{
+			this.result = "fail";
 			return "fail";
 		}
 	}
@@ -57,7 +74,12 @@ public class RegisterAction {
 		this.userEmail = userEmail;
 	}
 
-	
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
 	
 	
 }

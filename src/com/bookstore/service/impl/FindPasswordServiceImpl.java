@@ -41,7 +41,7 @@ public class FindPasswordServiceImpl implements FindPasswordService{
 			msg.setFrom(new InternetAddress(fromEmailAccount));
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
 			msg.setSubject("找回密码-Bookaholic","utf-8");
-			String body = "点击下面链接，找回密码<br><a href=http://localhost:8080/bookstore/changepassword.jsp#userEmail="+email+">找回密码</a>";
+			String body = "点击下面链接，找回密码<br><a href=http://localhost:8080/BookStore/changepassword.jsp#"+email+">找回密码</a>";
 			msg.setText(body,"utf-8");
 			msg.setContent(body, "text/html;charset=utf-8");
 			msg.setSentDate(new Date());

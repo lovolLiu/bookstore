@@ -109,19 +109,20 @@
 
 				<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 						<div class="register">
-							<form>	
-								<input id="usrname" placeholder="用户名" type="text" required="" onblur="checkusrname()">
+							<h4 id="register-success" style="width: 100%;display: inline-block;text-align: center;display: none;"></h4>
+							<form id="registerform">	
+								<input id="usrname" placeholder="用户名" type="text" required="required" onblur="checkusrname()">
 								<div id="errorusrname" class="errormessage"></div>
-								<input id="tel" placeholder="电话号码" type="text" required="">
+								<input id="tel" placeholder="电话号码" type="text" required="" onblur="checktel()">
 								<div id="errortel" class="errormessage"></div>		
-								<input id="email" placeholder="电子邮箱" type="text" required="">
+								<input id="email" placeholder="电子邮箱" type="text" required="required" onblur="checkemail()">
 								<div id="erroremail" class="errormessage"></div>											
-								<input id="pwd1" placeholder="密码" type="password" required="">	
-								<input id="pwd2" placeholder="重复密码" type="password" required="">
+								<input id="pwd1" placeholder="密码" type="password" required="required">	
+								<input id="pwd2" placeholder="重复密码" type="password" required="required" onblur="checkpwd2()">
 								<div id="errorpwd2" class="errormessage"></div>
-									<div class="sign-up">
-										<input type="submit" value="注册"/>
-									</div>
+								<div class="sign-up" id="sign-up">
+									<input type="submit" value="注册" onclick="submitUser()"/>
+								</div>
 							</form>
 						</div>
 					</div> 	        					            	      
@@ -210,6 +211,7 @@
 </script>
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 <script type="text/javascript">
+                    var flag = true;
 					$(document).ready(function () {
 						$('#horizontalTab').easyResponsiveTabs({
 							type: 'default', //Types: default, vertical, accordion           
@@ -218,8 +220,98 @@
 						});
 					});
 					function checkusrname(){
-					    $("#errorusrname").html("用户名已被注册！");
+						var username = $("input[id='usrname']").val();
+						$("#errorusrname").html("");
+						$.ajax({
+							url:"CheckUsername",
+							type:"post",
+							data:{"userName":username},
+							dataType:"json",	/* 服务器返回的数据类型 */
+							success:function(data){
+								if(data=="true"){
+									$("#errorusrname").html("用户名已被注册");
+									flag = false;
+				          		}else{
+				          			$("#errorusrname").html("");
+				          			flag = true;
+				          		}
+							}
+						});
 					}
+					function checktel(){
+					    var tel = document.getElementById("tel").value;
+					    var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+					    if(!reg.test(tel)){
+					      $("#errortel").html("请输入有效的电话号码");
+					      flag = false;
+					    }else{
+					      $("#errortel").html("");
+					      flag = true;
+					    }
+					}
+					function checkemail(){
+					    var email = document.getElementById("email").value;
+					    $("#erroremail").html("");
+					    var reg =  /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+					    if(!(reg.test(email))){
+					      $("#erroremail").html("邮箱格式错误");
+					      flag = false;
+					    }else{
+					    	$.ajax({
+								url:"CheckEmail",
+								type:"post",
+								data:{"userEmail":email},
+								dataType:"json",	/* 服务器返回的数据类型 */
+								success:function(data){
+									if(data=="true"){
+										$("#erroremail").html("邮箱已被注册");
+										flag = false;
+					          		}else{
+					          			$("#erroremail").html("");
+					      				flag = true;
+					          		}
+								}
+							});
+					    }
+					}
+					function checkpwd2(){
+		                var pwd1 = document.getElementById("pwd1").value;
+		                var pwd2 = document.getElementById("pwd2").value;
+		                if(pwd1 != pwd2){
+		                  $("#errorpwd2").html("两次密码不一致！");
+		                  flag = false;
+		                }else{
+		                  $("#errorpwd2").html("");
+		                  flag = true;
+		                }
+		            }
+		            function submitUser(){
+		            	if(flag == true){
+			            	var username = $("input[id='usrname']").val();
+			            	var tel = document.getElementById("tel").value;
+			            	var email = document.getElementById("email").value;
+			            	var pwd1 = document.getElementById("pwd1").value;
+			            	$.ajax({
+								url:"RegisterUser",
+								type:"post",
+								data:{"userName":username,"password":pwd1,"userTel":tel,"userEmail":email},
+								dataType:"json",	
+								success:function(data){
+									if(data=="success"){
+										$("form[id='registerform']").css("display","none");
+										$("h4[id='register-success']").css("display","");
+										$("h4[id='register-success']").html("注册成功");
+					          		}else{
+										$("h4[id='register-success']").html("注册失败，请重新注册");
+					          		}
+								}
+							});
+		            	}else{
+		        			alert("请确保您的各项信息填写正确");
+		    			}
+		            }
+		            
+		 
 </script>
 </body>
 </html>

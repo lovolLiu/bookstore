@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ taglib prefix="s" uri="/struts-tags"%>  
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>在线书城</title>
 <!-- CUSTOM STYLE -->
@@ -238,7 +239,7 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="kode-text">
-                                	<h2> 最好的我们 </h2>
+                                	<h2> <s:property value="book.bookName"/></h2>
                                     <div class="product-review">
                                         <div class="rating">
                                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
@@ -246,16 +247,16 @@
                                         <p>4 评论</p>
                                     </div>
                                     <div class="product-price">
-                                        <h4>55.00 RMB</h4>
-                                        <p>作者: <span class="color">八月长安</span></p>
+                                        <h4><s:property value="book.price"/> RMB</h4>
+                                        <p>作者: <span class="color"><s:property value="book.author"/></span></p>
                                     </div>
                                     <div class="book-text">
-                                    	<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
+                                    	<p><s:property value="book.description"/></p>
                                     </div>
                                     <div class="book-text">
                                         <p>标签: 文学.</p>
-                                        <p>作者: 八月长安</p>
-                                        <p>出版商: 湖南文艺出版社</p>
+                                        <p>作者: <s:property value="book.author"/></p>
+                                        <p>出版商:<s:property value="publisher.publisherName"/> </p>
                                         <p>书目ID: 1100</p>
                                     </div>
                                     <a href="StraightBuy?bookID=9&num=1" class="add-to-cart">立即购买</a>

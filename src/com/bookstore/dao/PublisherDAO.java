@@ -10,4 +10,6 @@ public interface PublisherDAO {
 	Integer save(Publisher publisher);
 	void update(Publisher publisher);
 	void delete(Integer id);
+	
+	Publisher fuzzyfindName(String publisherName);
 }

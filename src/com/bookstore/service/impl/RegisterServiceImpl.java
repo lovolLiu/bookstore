@@ -15,7 +15,6 @@ public class RegisterServiceImpl implements RegisterService {
 	
 	@Override
 	public boolean hasUserEmail(String userEmail) {
-		// TODO Auto-generated method stub
 		return (userDAO.findByEmail(userEmail)!=null);
 	}
 	

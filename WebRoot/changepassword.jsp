@@ -84,15 +84,15 @@
 		<!--BANNER END-->
 		<!--CONTENT START-->
 		<div class="kode-content padding-tb-50">
-			<div class="container">
+			<div class="container" id="restore-success">
 				<div class="error-404">
 					<h2>重置密码</h2>
 					<p>请输入您的新密码以恢复账户</p>
 					<div class="register col-md-6 col-md-offset-3" style="padding:0;">
-							<input id="pwd1" placeholder="新密码" class="mail" type="text" required=""
+							<input id="pwd1" placeholder="新密码" type="password" required=""
 								name="username"> 
-							<input id="pwd2" placeholder="重复您的新密码" class="lock"
-								type="password" required="" name="password" onblur="check()"> 
+							<input id="pwd2" placeholder="重复您的新密码"
+								type="password" required="" onblur="check()"> 
 							<div id="errorpwd2" class="errormessage"></div>
 							<input type="submit" value="重置密码" onclick="restorepwd()"/>
 					</div>
@@ -201,6 +201,24 @@
 		function restorepwd(){
 		    check();
 		    if(flag == true){
+		    	var emailAddress=window.location.hash.slice(1);
+		    	var password=document.getElementById("pwd1").value;
+		    	$.ajax({
+					url:"ChangePassword.action",
+					type:"post",
+					data:{"email":emailAddress,"password":password},
+					dataType:"json",	/* 服务器返回的数据类型 */
+					success:function(data){
+						if(data=="success"){
+							$("div[class='error-404']").css("display","none");
+							$("#restore-success").html("您的密码已重设");
+		               		$("#restore-success").css("color","#FF9606"); 
+		          		}else if(data=="fail"){ 
+				            $("#restore-success").html("密码设置失败，请重新点击发送邮件");
+		               		$("#restore-success").css("color","red"); 
+	               		}
+					}
+				});
 		    }//执行恢复密码的action
 		    else{
 		        alert("请确保您输入的两次密码输入一致！");
