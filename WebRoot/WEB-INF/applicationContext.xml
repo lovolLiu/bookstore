@@ -142,6 +142,7 @@
 	<bean id="convertorService" class="com.bookstore.service.impl.ConvertorServiceImpl">
 		<property name="bookDAO" ref="bookDAO"/>
 		<property name="pictureDAO" ref="pictureDAO"/>
+		<property name="buyItemDAO" ref="buyItemDAO"/>
 	</bean>
 	
 	<bean id="buyService" class="com.bookstore.service.impl.BuyServiceImpl">

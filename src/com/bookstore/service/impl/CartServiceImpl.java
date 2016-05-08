@@ -2,7 +2,6 @@ package com.bookstore.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.dao.CartItemDAO;
 import com.bookstore.domain.BuyItem;
@@ -23,8 +22,11 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public boolean addCartItem(int userID, int buyItemID) {
-		// TODO Auto-generated method stub
-		return false;
+		CartItem cartItem = new CartItem();
+		cartItem.setBuyItemID(buyItemID);
+		cartItem.setUserID(userID);
+		cartItemDAO.save(cartItem);
+		return true;
 	}
 
 	@Override
@@ -47,9 +49,11 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public boolean deleteCartItem(int userID, int buyItemID) {
-		CartItem cartItem = (CartItem) cartItemDAO.findByBuyItemID(buyItemID);
-		cartItemDAO.delete(cartItem.getCartItemID());
+	public boolean deleteCartItem(int buyItemID) {
+		List<CartItem> cartItemList =  cartItemDAO.findByBuyItemID(buyItemID);
+		if(!cartItemList.isEmpty()){
+			cartItemDAO.delete(cartItemList.get(0).getCartItemID());
+		}
 		return true;
 	}
 

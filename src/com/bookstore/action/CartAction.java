@@ -4,6 +4,7 @@ package com.bookstore.action;
 import java.util.List;
 import java.util.Map;
 
+import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.service.CartService;
 import com.bookstore.service.ConvertorService;
@@ -26,12 +27,15 @@ public class CartAction {
 	Double totalPrice;
 	
 	//To cart.jap -- json variable
-	boolean isSuccess;
+	Boolean isSuccess;
+	TrCartItem trCartItem;
 	
 	//IOC Service
 	CartService cartService;
 	ConvertorService convertorService;
 	
+	//////////////////////////////////////////
+	Integer userID = 1;
 	
 	/*in: userID
 	* out: trCartList
@@ -40,7 +44,6 @@ public class CartAction {
 	public String showBuyItemList(){    
 //		Map session = ActionContext.getContext().getSession();
 //		Integer userID = (Integer) session.get("userID");
-		Integer userID = 1;
 		
 		List<BuyItem> buyItemList = cartService.getCartItemList(userID);
 		trCartList = convertorService.buyItemListToTrCartList(buyItemList);
@@ -51,10 +54,11 @@ public class CartAction {
 		return "success";
 	}
 	
+	/*in:  buyItemID
+	* out: isSuccess
+	*/
 	public String deleteBuyItem(){
-		
-		Integer userID = 1;
-		cartService.deleteCartItem(userID, buyItemID);
+		cartService.deleteCartItem(buyItemID);
 		isSuccess = true;
 		return "success";
 	}
@@ -64,12 +68,12 @@ public class CartAction {
 	 * out: isSuccess
 	*/
 	public String updateBuyItem(){
-		
-		Integer userID = 1;
 		cartService.changeNumOfCartItem(buyItemID, num);
+		trCartItem = convertorService.buyItemIDToTrCartItem(buyItemID);
 		isSuccess = true;
 		return "success";
 	}
+	
 
 	//getter and setter
 	public Integer getBuyItemID() {
@@ -119,6 +123,21 @@ public class CartAction {
 	public void setConvertorService(ConvertorService convertorService) {
 		this.convertorService = convertorService;
 	}
-	
+
+	public Boolean getIsSuccess() {
+		return isSuccess;
+	}
+
+	public void setIsSuccess(Boolean isSuccess) {
+		this.isSuccess = isSuccess;
+	}
+
+	public TrCartItem getTrCartItem() {
+		return trCartItem;
+	}
+
+	public void setTrCartItem(TrCartItem trCartItem) {
+		this.trCartItem = trCartItem;
+	}
 	
 }

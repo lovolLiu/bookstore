@@ -35,9 +35,9 @@ public class CartItemDAOImpl extends HibernateDaoSupport implements CartItemDAO 
 	}
 
 	@Override
-	public List<CartItem> findByBuyItemID(Integer bookID) {
+	public List<CartItem> findByBuyItemID(Integer buyItemID) {
 		return (List<CartItem>)getHibernateTemplate().
-				find("from CartItem as a where a.bookID=?", bookID);
+				find("from CartItem as a where a.buyItemID=?", buyItemID);
 	}
 
 	@Override

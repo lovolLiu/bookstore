@@ -7,4 +7,6 @@ import com.bookstore.util.TrCartItem;
 
 public interface ConvertorService {
 	List<TrCartItem> buyItemListToTrCartList(List<BuyItem> buyItemList);
+	TrCartItem buyItemToTrCartItem(BuyItem buyItem);
+	TrCartItem buyItemIDToTrCartItem(Integer buyItemID);
 }

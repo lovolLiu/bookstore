@@ -67,18 +67,28 @@
 
 		<action name="GetCartItemList" class="com.bookstore.action.CartAction"
 			method="showBuyItemList">
-			<result type="json" />
+			<result type="json"><param name="root">trCartList</param></result>
 		</action>
 
 		<action name="DeleteCartItem" class="com.bookstore.action.CartAction"
 			method="deleteBuyItem">
-			<result type="json" />
+			<result type="json"><param name="root">isSuccess</param></result>
 		</action>
 
 		<action name="UpdateCartItem" class="com.bookstore.action.CartAction"
 			method="updateBuyItem">
-			<result type="json" />
+			<result type="json">
+				<param name="root">isSuccess</param>
+				<param name="root">trCartItem</param>
+			</result>
 		</action>
+
+		<action name="GetCartTotal" class="com.bookstore.action.CartAction"
+			method="showBuyItemList">   <!-- 这个地方没写错，就是这样的 -->
+			<result type="json"><param name="root">totalPrice</param></result>
+		</action>
+
+
 
 	</package>
 </struts>
