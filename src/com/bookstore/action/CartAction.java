@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.domain.BuyItem;
+import com.bookstore.domain.CartItem;
+import com.bookstore.service.BuyService;
 import com.bookstore.service.CartService;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.util.TrCartItem;
@@ -22,6 +24,8 @@ public class CartAction {
 	Integer buyItemID;
 	Integer num;
 	
+	Integer bookID;
+	
 	//To cart.jsp -- ordinary variable
 	List<TrCartItem> trCartList;
 	Double totalPrice;
@@ -33,6 +37,7 @@ public class CartAction {
 	//IOC Service
 	CartService cartService;
 	ConvertorService convertorService;
+	BuyService buyService;
 	
 	//////////////////////////////////////////
 	Integer userID = 1;
@@ -66,11 +71,21 @@ public class CartAction {
 	/*in:   buyItemID
 	 *      num
 	 * out: isSuccess
-	*/
+	 */
 	public String updateBuyItem(){
 		cartService.changeNumOfCartItem(buyItemID, num);
 		trCartItem = convertorService.buyItemIDToTrCartItem(buyItemID);
 		isSuccess = true;
+		return "success";
+	}
+	
+	/** json
+	 * @in: bookID
+	 * @in: num
+	 * @out: isSuccess
+	 */
+	public String addCartItem(){
+		isSuccess = cartService.addCartItem(userID, bookID, num);
 		return "success";
 	}
 	
@@ -139,5 +154,24 @@ public class CartAction {
 	public void setTrCartItem(TrCartItem trCartItem) {
 		this.trCartItem = trCartItem;
 	}
+
+	public BuyService getBuyService() {
+		return buyService;
+	}
+
+	public void setBuyService(BuyService buyService) {
+		this.buyService = buyService;
+	}
+
+	public Integer getBookID() {
+		return bookID;
+	}
+
+	public void setBookID(Integer bookID) {
+		this.bookID = bookID;
+	}
+
+	
+	
 	
 }

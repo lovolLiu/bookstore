@@ -2,6 +2,8 @@ package com.bookstore.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.dao.CartItemDAO;
 import com.bookstore.domain.BuyItem;
@@ -19,9 +21,29 @@ public class CartServiceImpl implements CartService {
 	// IOC DAO
 	CartItemDAO cartItemDAO;
 	BuyItemDAO buyItemDAO;
-
+	BookDAO bookDAO;
+	
 	@Override
-	public boolean addCartItem(int userID, int buyItemID) {
+	public boolean addCartItem(int userID, int bookID, int num) {
+		//先检查是否已经有这本书的列表了，如果有直接改变数值并返回即可
+		List<CartItem> cartItemList = cartItemDAO.findByUserID(userID);
+		for(CartItem cartItem : cartItemList){
+			BuyItem buyItem = buyItemDAO.findByID(cartItem.getBuyItemID());
+			if(buyItem.getBookID() == bookID){
+				buyItem.setBuyNum(buyItem.getBuyNum() + num);
+				buyItemDAO.update(buyItem);
+				return true;
+			}
+		}
+		
+		//如果没有，需要新建一个buyItem，并新建一个cartItem
+		BuyItem buyItem = new BuyItem();
+		buyItem.setBuyNum(num);
+		buyItem.setCurrentPrice(bookDAO.findByID(bookID).getPrice());
+		buyItem.setHasApprise(false);
+		buyItem.setBookID(bookID);
+		Integer buyItemID =  buyItemDAO.save(buyItem);
+		
 		CartItem cartItem = new CartItem();
 		cartItem.setBuyItemID(buyItemID);
 		cartItem.setUserID(userID);
@@ -73,6 +95,15 @@ public class CartServiceImpl implements CartService {
 		this.buyItemDAO = buyItemDAO;
 	}
 
+	public BookDAO getBookDAO() {
+		return bookDAO;
+	}
+
+	public void setBookDAO(BookDAO bookDAO) {
+		this.bookDAO = bookDAO;
+	}
+
+	
 
 
 }

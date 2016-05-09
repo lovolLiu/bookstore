@@ -89,7 +89,12 @@
 			</result>
 		</action>
 			
-			
+		<!-- Cart相关的5个action -->
+		<action name="AddCartItem" class="com.bookstore.action.CartAction"
+			method="addCartItem">
+			<result type="json"><param name="root">isSuccess</param></result>	
+		</action>
+		
 		<action name="GetCartItemList" class="com.bookstore.action.CartAction"
 			method="showBuyItemList">
 			<result type="json"><param name="root">trCartList</param></result>

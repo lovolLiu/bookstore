@@ -137,6 +137,7 @@
 	<bean id="cartService" class="com.bookstore.service.impl.CartServiceImpl">
 		<property name="cartItemDAO" ref="cartItemDAO" />
 		<property name="buyItemDAO" ref="buyItemDAO"/>
+		<property name="bookDAO" ref="bookDAO"/>
 	</bean>
 	
 	<bean id="convertorService" class="com.bookstore.service.impl.ConvertorServiceImpl">
