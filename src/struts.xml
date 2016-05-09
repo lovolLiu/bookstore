@@ -7,10 +7,6 @@
 
 	<package name="hello" namespace="/" extends="struts-default">
 
-		<action name="hello" class="com.bookstore.action.HelloWorldAction">
-			<result>/success.jsp</result>
-		</action>
-
 		<action name="LookCart" class="com.bookstore.action.CartAction"
 			method="showBuyItemList">
 			<result>/cart.jsp</result>
