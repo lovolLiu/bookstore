@@ -36,6 +36,16 @@ public class UserAction {
 	Integer userID = 1;
 	
 	public String showOrderListInUserIndex() {
+		List<Order> orderList = personalInfoService.getLatestOrder(userID);
+		divOrderList = new ArrayList<DivOrder>();
+		for(Order order: orderList){
+			Integer orderId = order.getOrderID();
+			List<BuyItem> buyItemList = convertorService.getBuyItemList(orderId);
+			DivOrder divOrder = convertorService.buyItemListAddToDivOrder(buyItemList, orderId);
+			divOrderList.add(divOrder);
+		}
+		return "success";
+	}
 	
 	public String showOrderListAll(){
 		List<Order> orderList = personalInfoService.getAllOrder(userID);
