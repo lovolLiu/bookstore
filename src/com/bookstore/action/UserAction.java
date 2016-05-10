@@ -7,7 +7,6 @@ import com.bookstore.domain.Address;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.service.ConvertorService;
-import com.bookstore.service.trashService;
 import com.bookstore.service.PersonalInfoService;
 import com.bookstore.util.DivOrder;
 
