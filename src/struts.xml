@@ -36,6 +36,7 @@
     
     
     <package name="ajax_json" namespace="/" extends="json-default">
+    	<!-- FindPassword相关的2个action -->
 		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
 
 			<result name="nouser" type="json">
@@ -58,6 +59,7 @@
 			</result>
 		</action>
 		
+		<!-- Register相关的3个action -->
 		<action name="CheckUsername" class="com.bookstore.action.RegisterAction" method="hasUsername">
 			<result name="true" type="json">
 				<param name="root">result</param>
@@ -84,7 +86,10 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-			
+		
+		<!-- Login相关的1个action -->
+		
+		
 		<!-- Cart相关的5个action -->
 		<action name="AddCartItem" class="com.bookstore.action.CartAction"
 			method="addCartItem">
