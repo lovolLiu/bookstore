@@ -12,10 +12,10 @@
 			<result>/cart.jsp</result>
 		</action>
 
-		<action name="Login" class="com.bookstore.action.LoginAction">
+<!-- 		<action name="Login" class="com.bookstore.action.LoginAction">
 			<result>/index.jsp</result>
 			<result name="fail">/login.jsp</result>
-		</action>
+		</action> -->
 
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
 			<result>/submit-order.jsp</result>
@@ -88,7 +88,14 @@
 		</action>
 		
 		<!-- Login相关的1个action -->
-		
+		<action name="Login" class="com.bookstore.action.LoginAction" method="execute">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 		
 		<!-- Cart相关的5个action -->
 		<action name="AddCartItem" class="com.bookstore.action.CartAction"

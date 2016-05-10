@@ -7,12 +7,15 @@ public class LoginAction {
 	LoginService loginService;
 	String username;
 	String password;
+	String result;
 	
 	public String execute(){
 		if(loginService.login(username, password)){
+			this.result="success";
 			return "success";
 		}
 		else{
+			this.result="fail";
 			return "fail";
 		}
 		
@@ -40,6 +43,14 @@ public class LoginAction {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
 	}
 	
 	

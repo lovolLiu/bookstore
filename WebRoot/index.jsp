@@ -1672,7 +1672,7 @@
         	<div class="container">
             	<h2>成为我们的会员</h2>
                 <p>开启完美购书体验</p>
-                <a href="register.jsp" class="reg-btn">注册</a>
+                <a href="login.jsp" class="reg-btn">注册</a>
             </div>
         </section>
         <!--VIDEO SECTION END-->
