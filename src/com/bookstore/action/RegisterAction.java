@@ -3,6 +3,12 @@ package com.bookstore.action;
 import com.bookstore.domain.User;
 import com.bookstore.service.RegisterService;
 
+/**
+ * @author Chang Su
+ * @description 注册Action实现
+ * @modify
+ * @modifyDate
+ */
 public class RegisterAction {
 	RegisterService registerService;
 	String userName;

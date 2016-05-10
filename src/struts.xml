@@ -126,6 +126,12 @@
 			<result type="json"><param name="root">totalPrice</param></result>
 		</action>
 
-
+		<!-- UserInfo 页相关的Action -->
+		<action name="ShowOrderInUserInfo" class="com.bookstore.action.UserAction"
+			method="showOrderListInUserIndex">  
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 	</package>
 </struts>

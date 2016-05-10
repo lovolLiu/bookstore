@@ -242,7 +242,7 @@ h2 {
 			<i class="icon-clipboard2"></i>
 		</div>
 		<div class="order-table col-md-9 col-md-offset-1 col-xs-12">
-			<!-- <table class="order_list">
+			<table class="order_list">
 				<thead>
 					<tr>
 						<th class="order_number">订单号:<a href="">12345</a></th>
@@ -277,7 +277,7 @@ h2 {
 						<td class="operate"><span>查看</span><br><span>删除</span></td>
 					</tr>
 				</tbody>
-			</table> -->
+				</table>
 		</div>
 		<div class="checkallorder">
 			<a class="btn btn-primary" href="myorder.jsp">查看所有订单</a>
@@ -381,57 +381,25 @@ h2 {
 			showPaidOrderNumber();
 		});
 		
-		function formatDate(data){
-			var d = new Date(data);
-			var formattedDate = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
-			var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
-			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
-			var formattedTime = hours + ":" + minutes + ":" + seconds;
-			formattedDate = formattedDate + "<br>" + formattedTime;
-			return formattedDate;
-		}
-		
 		function showOrder(){
 			$.ajax({
 				url:"ShowOrderInUserInfo",
 				dataType:"json",
 				success:function(data){
 					$.each(data,function(i,list){  
-             				 var _table = $("<table class='order_list'>"
-             									 +"<thead>"
-	             									 +"<tr>"
-	             									 	+"<th class='order_number'>订单号:<a href='xxxxx'>"+list.orderId+"</a></th>"/*xxxx表示以后要添加跳转href */
-	             									 	+"<th class='consignee'>收货人</th>"
-	             									 	+"<th class='total_price'>金额</th>"
-	             									 	+"<th class='deal_time'>交易时间</th>"
-	             									 	+"<th class='status'>订单状态</th>"
-	             									 	+"<th class='op'>操作</th>"
-	             									 +"<tr>"
-             									 +"</thead>"
-             									 +"<tbody>"
-             									 	+"<tr class='item'>"
-             									 		+"<td class='itemdetail'>"
-             									 			+"<div>");
-             				$.each(list.orderItemList,function(j,order){
-             					var _divPic = $("<div class='pic'>"
-             										+"<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
-           										+"</div>");
-             				});
-             				var _table = _table + _divPic;
-             				var _table = _table + $("</div>"
-             											+"</td>"
-             											+"<td class='deliver'><span data-toggle='tooltip' data-placement='bottom' title='xxxxxx'>"+list.consignee
-             											+"</td>"
-             											+"<td class='sum'><span>￥"+list.totalPrice+"</span></td>"
-             											+"<td class='time'><span>"+formatDate(list.dealTime)+"</span></td>"
-             											+"<td class='status'><span>"+list.orderStats+"</span></td>"
-             											+"<td class='operate'><span><a href='xxxx'>查看</a></span><br><span>删除</sapn></td>"
-           											+"</tr>"
-       											+"</tbody>"
-   											+"</table>");
-             											
-             			 	 $("div[class='order-table col-md-9 col-md-offset-1 col-xs-12']").prepend(_tr);  
+             				 var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
+             				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\"><a href><img src=\""+list.imageUrl+"\"></a></td>"
+             				 +"<td class=\"cart_description\"><h4><a href>"+ list.bookName+"</a></h4></td>"
+             				 +"<td class=\"cart_price\"><p>¥"+list.price+"</p></td>"
+             				 +"<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\" onclick='return QuantityUp(" + list.buyItemID + ")'> + </a> "
+             				 	+ "<input class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+"\"autocomplete=\"off\" size=\"2\" >"
+	+ "<a class=\"cart_quantity_down\" href=\"\" onclick='return QuantityDown("+ list.buyItemID +")'> - </a></div></td>"
++"<td class=\"cart_total\"> <p class=\"cart_total_price\"> ¥"+list.buyItemPrice+"</p></td>"
++"<td class=\"cart_delete\"><a class=\"cart_quantity_delete\" href=\"\" onclick=\"return deleteCart( "+ list.buyItemID +")\"><i class=\"fa fa-times\"></i></a></td>"
++"</tr>");  
+             			 	 $("tbody[id='cartItem']").prepend(_tr);  
+             			 	 
+             			 	 
           			})  
 				}
 			})
