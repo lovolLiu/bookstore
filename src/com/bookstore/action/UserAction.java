@@ -22,7 +22,6 @@ public class UserAction {
 	
 	//To userinfo.jsp -- dataType: json
 	List<DivOrder> divOrderList;	//To order-detail.jsp
-	String result;
 	Integer paidNum;
 	Integer unpaidNum;
 	Integer unapprisedNum;
@@ -46,7 +45,6 @@ public class UserAction {
 			DivOrder divOrder = convertorService.buyItemListAddToDivOrder(buyItemList, orderId);
 			divOrderList.add(divOrder);
 		}
-		this.result = "success";
 		return "success";
 	}
 
@@ -55,7 +53,6 @@ public class UserAction {
 		if(orderList.isEmpty())
 			paidNum = 0;
 		else paidNum = orderList.size();
-		this.result = "success";
 		return "success";
 	}
 	
@@ -77,14 +74,6 @@ public class UserAction {
 
 	public void setDivOrderList(List<DivOrder> divOrderList) {
 		this.divOrderList = divOrderList;
-	}
-
-	public String getResult() {
-		return result;
-	}
-
-	public void setResult(String result) {
-		this.result = result;
 	}
 
 	public List<Address> getAddressList() {

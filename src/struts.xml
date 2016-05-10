@@ -130,7 +130,7 @@
 		<action name="ShowOrderInUserInfo" class="com.bookstore.action.UserAction"
 			method="showOrderListInUserIndex">  
 			<result type="json">
-				<param name="root">result</param>
+				<param name="root">divOrderList</param>
 			</result>
 		</action>
 	</package>
