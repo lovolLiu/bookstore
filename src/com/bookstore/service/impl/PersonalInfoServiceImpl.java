@@ -93,7 +93,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 		Timestamp currentDate = new Timestamp(new Date().getTime()); 
 		Calendar cal = Calendar.getInstance();   
 		cal.setTime(currentDate);   
-		cal.add(Calendar.MONTH,-3); 
+		cal.add(Calendar.MONTH,-1); 
 		Timestamp beforeThreeMonth = new Timestamp(cal.getTimeInMillis());
 		List<Order> allOrderList = this.getAllOrder(userID);
 		List<Order> latestOrderList = new ArrayList<Order>();

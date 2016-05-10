@@ -133,5 +133,11 @@
 				<param name="root">divOrderList</param>
 			</result>
 		</action>
+		<action name="ShowPaidNumber" class="com.bookstore.action.UserAction"
+			method="showPaidOrderNumber">
+			<result type="json">
+				<param name="root">paidNum</param>
+			</result>
+		</action>
 	</package>
 </struts>

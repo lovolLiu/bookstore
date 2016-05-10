@@ -60,7 +60,7 @@ public class UserAction {
 	}
 
 	public String showPaidOrderNumber() {
-		List<Order> orderList = personalInfoService.getPaidOrder(userID);
+		List<Order> orderList = personalInfoService.getAllOrder(userID);
 		if(orderList.isEmpty())
 			paidNum = 0;
 		else paidNum = orderList.size();

@@ -225,14 +225,13 @@ h2 {
 			<a style="margin-bottmo:10px;">Crenshaw</a>
 			<div>
 				<div class="icons col-md-4">
-					<i class="icon-money"></i> <a class="quantity">1</a><br> <a>待付款</a>
+					<i class="icon-money"></i> <a class="quantity" id="unpaid">1</a><br> <a>待付款</a>
 				</div>
 				<div class="icons col-md-4">
-					<i class="icon-truck"></i> <a class="quantity">2</a><br> <a>待收货</a>
+					<i class="icon-truck"></i> <a class="quantity" id="paid"></a><br> <a>待收货</a>
 				</div>
 				<div class="icons col-md-4">
-					<i class="icon-paint-brush"></i> <a class="quantity">1</a><br>
-					<a>待评价</a>
+					<i class="icon-paint-brush"></i> <a class="quantity" id="unapprise">1</a><br><a>待评价</a>
 				</div>
 			</div>
 		</div>
@@ -442,6 +441,16 @@ h2 {
              			 	 $("div[class='order-table col-md-9 col-md-offset-1 col-xs-12']").append(table1);  
              		
           			});  
+				}
+			})
+		}
+		
+		function showPaidOrderNumber(){
+			$.ajax({
+				url:"ShowPaidNumber",
+				dataType:"json",
+				success:function(data){
+					$("a[id='paid']").html(data);
 				}
 			})
 		}
