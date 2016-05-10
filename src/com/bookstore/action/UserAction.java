@@ -36,6 +36,8 @@ public class UserAction {
 	Integer userID = 1;
 	
 	public String showOrderListInUserIndex() {
+	
+	public String showOrderListAll(){
 		List<Order> orderList = personalInfoService.getAllOrder(userID);
 		divOrderList = new ArrayList<DivOrder>();
 		for(Order order: orderList){

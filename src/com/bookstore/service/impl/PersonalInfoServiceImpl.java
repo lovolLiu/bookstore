@@ -1,6 +1,9 @@
 package com.bookstore.service.impl;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.bookstore.dao.AddressDAO;
@@ -28,17 +31,50 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	AddressDAO addressDAO;
 	BuyItemDAO buyItemDAO;
 	BookDAO bookDAO;
+	
+	@Override
+	public boolean generateOrder(Order order) {
+		orderDAO.save(order);
+		return true;
+	}
+
+	@Override
+	public boolean deleteOrder(int orderID) {
+		Order order = orderDAO.findById(orderID);
+		if(order != null){
+			orderDAO.delete(orderID);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 2 - 已取消
+	 */
+	@Override
+	public boolean cancelOrder(int orderID) {
+		Order order = orderDAO.findById(orderID);
+		order.setStats(2);
+		orderDAO.update(order);
+		return true;
+	}
 
 	@Override
 	public List<Order> getAllOrder(int userID) {
 		return orderDAO.findByUserID(userID);
 	}
 
+	/**
+	 * 1 - 已付款
+	 */
 	@Override
 	public List<Order> getPaidOrder(int userID) {
 		return orderDAO.findByUserIDandStats(userID, 1);
 	}
 
+	/**
+	 * 0 - 未付款
+	 */
 	@Override
 	public List<Order> getUnpaidOrder(int userID) {
 		return orderDAO.findByUserIDandStats(userID, 0);
@@ -48,11 +84,30 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	public List<Order> getCanceledOrder(int userID) {
 		return orderDAO.findByUserIDandStats(userID, 2);
 	}
-
+	
+	/**
+	 * 3个月内订单
+	 */
+	@Override
+	public List<Order> getLatestOrder(int userID) {
+		Timestamp currentDate = new Timestamp(new Date().getTime()); 
+		Calendar cal = Calendar.getInstance();   
+		cal.setTime(currentDate);   
+		cal.add(Calendar.MONTH,-3); 
+		Timestamp beforeThreeMonth = new Timestamp(cal.getTimeInMillis());
+		List<Order> allOrderList = this.getAllOrder(userID);
+		List<Order> latestOrderList = new ArrayList<Order>();
+		for(Order order: allOrderList){
+			if (order.getBuyTime().after(beforeThreeMonth))
+				latestOrderList.add(order);
+		}
+		return latestOrderList;
+	}
+ 
 	@Override
 	public List<Book> getUnappriseBook(int userID) {
 		List<Book> bookList = new ArrayList<Book>();
-		List<Order> personalOrderList = orderDAO.findByUserIDandStats(1,userID);
+		List<Order> personalOrderList = orderDAO.findByUserIDandStats(userID,1);
 		for (int i = 0; i < personalOrderList.size(); i++){
 			List<BuyItem> buyItemList = buyItemDAO.findNotApprise(personalOrderList.get(i).getOrderID());
 			for(int j = 0; j < buyItemList.size(); j++){
@@ -79,7 +134,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	@Override
 	public List<Book> getPersonalBookList(int userID) {
 		List<Book> bookList = new ArrayList<Book>();
-		List<Order> personalOrderList = orderDAO.findByUserIDandStats(1,userID);
+		List<Order> personalOrderList = orderDAO.findByUserIDandStats(userID,1);
 		// for - each
 		for (int i = 0; i < personalOrderList.size(); i++){
 			List<BuyItem> buyItemList = buyItemDAO.findByOrderID(personalOrderList.get(i).getOrderID());
@@ -93,17 +148,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 		}
 		return bookList;
 	}
-
-	@Override
-	public boolean deleteOrder(int orderID) {
-		Order order = orderDAO.findById(orderID);
-		if(order != null){
-			orderDAO.delete(orderID);
-			return true;
-		}
-		return false;
-	}
-
+	
 	public OrderDAO getOrderDAO() {
 		return orderDAO;
 	}

@@ -37,17 +37,17 @@ public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
 	@Override
 	public List<Order> findByAddressID(Integer addressID) {
 		return (List<Order>)getHibernateTemplate().
-				find("from Order as a where a.addressID=?", addressID);
+				find("from Order as a where a.addressID=? order by a.buyTime desc", addressID);
 	}
 
 	@Override
 	public List<Order> findByUserID(Integer userID) {
 		return (List<Order>)getHibernateTemplate().
-				find("from Order as a where a.userID=?", userID);
+				find("from Order as a where a.userID=? order by a.buyTime desc", userID);
 	}
 	
 	public List<Order> findByUserIDandStats(Integer stats, Integer userID){
-		return (List<Order>)getHibernateTemplate().find("from Order as a where a.userID=? and a.stats=?", new int[]{userID, stats});
+		return (List<Order>)getHibernateTemplate().find("from Order as a where a.userID=? and a.stats=? order by a.buyTime desc", new int[]{userID, stats});
 	}
 	
 

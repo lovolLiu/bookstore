@@ -5,6 +5,7 @@ import java.util.List;
 import com.bookstore.domain.*;
 
 public interface PersonalInfoService {
+	
 	List<Order> getAllOrder(int userID);
 	
 	List<Order> getPaidOrder(int userID);
@@ -12,6 +13,8 @@ public interface PersonalInfoService {
 	List<Order> getUnpaidOrder(int userID);
 	
 	List<Order> getCanceledOrder(int userID);
+	
+	List<Order> getLatestOrder(int userID);
 	
 	List<Book> getUnappriseBook(int userID);
 	
@@ -21,5 +24,9 @@ public interface PersonalInfoService {
 	
 	List<Book> getPersonalBookList(int userID);
 	
+	boolean generateOrder(Order order);
+	
 	boolean deleteOrder(int orderID);
+	
+	boolean cancelOrder(int orderID);
 }

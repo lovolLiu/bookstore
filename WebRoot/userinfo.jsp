@@ -270,6 +270,10 @@ h2 {
 								</div>
 								<div class="pic">
 									<a href=""><img src="images/book.png" /></a>
+								</div><div class="pic">
+									<a href=""><img src="images/book.png" /></a>
+								</div><div class="pic">
+									<a href=""><img src="images/book.png" /></a>
 								</div>
 							</div>
 						</td>
