@@ -69,7 +69,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	 */
 	@Override
 	public List<Order> getPaidOrder(int userID) {
-		return orderDAO.findByUserIDandStats(userID, 1);
+		return orderDAO.findByUserIDandStats(1, userID);
 	}
 
 	/**
@@ -77,12 +77,12 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	 */
 	@Override
 	public List<Order> getUnpaidOrder(int userID) {
-		return orderDAO.findByUserIDandStats(userID, 0);
+		return orderDAO.findByUserIDandStats(0, userID);
 	}
 
 	@Override
 	public List<Order> getCanceledOrder(int userID) {
-		return orderDAO.findByUserIDandStats(userID, 2);
+		return orderDAO.findByUserIDandStats(2, userID);
 	}
 	
 	/**
@@ -134,7 +134,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	@Override
 	public List<Book> getPersonalBookList(int userID) {
 		List<Book> bookList = new ArrayList<Book>();
-		List<Order> personalOrderList = orderDAO.findByUserIDandStats(userID,1);
+		List<Order> personalOrderList = orderDAO.findByUserIDandStats(1,userID);
 		// for - each
 		for (int i = 0; i < personalOrderList.size(); i++){
 			List<BuyItem> buyItemList = buyItemDAO.findByOrderID(personalOrderList.get(i).getOrderID());
