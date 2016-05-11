@@ -10,6 +10,21 @@ public class RegisterAction {
 	String userTel;
 	String userEmail;
 	
+	public String hasUsername(String userName){
+		if(registerService.hasUsername(userName)){
+			return "exist";
+		}else
+			return "noexist";
+		
+	}
+	
+	public String hasUserEmail(String userEmail){
+		if(registerService.hasUserEmail(userEmail)){
+			return "exist";
+		}else
+			return "noexist";
+		
+	}
 	
 	public String execute(){
 		User user = new User();
@@ -17,8 +32,6 @@ public class RegisterAction {
 		user.setPassword(password);
 		user.setUserTel(userTel);
 		user.setUserEmail(userEmail);
-		boolean hasemail = registerService.hasUserEmail(userEmail);//true为存在输入邮箱 false为不存在输入邮箱
-		boolean hasname = registerService.hasUsername(userName);//true为存在输入用户名 false为不存在输入用户名
 		if(registerService.resgister(user)){
 			return "success";
 		}
