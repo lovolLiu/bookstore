@@ -136,6 +136,8 @@
 		<property name="bookDAO" ref="bookDAO"/>
 		<property name="pictureDAO" ref="pictureDAO"/>
 		<property name="buyItemDAO" ref="buyItemDAO"/>
+		<property name="addressDAO" ref="addressDAO"/>
+		<property name="orderDAO" ref="orderDAO"/>
 	</bean>
 	
 	<bean id="buyService" class="com.bookstore.service.impl.BuyServiceImpl">
@@ -161,5 +163,14 @@
 		<property name="appriseDao" ref="appriseDAO"/>
 		<property name="publisherDao" ref="publisherDAO"/>
 	</bean>
+	
+	<bean id="personalInfoService" class="com.bookstore.service.impl.PersonalInfoServiceImpl">
+		<property name="orderDAO" ref="orderDAO"/>
+		<property name="userDAO" ref="userDAO"/>
+		<property name="addressDAO" ref="addressDAO"/>
+		<property name="buyItemDAO" ref="buyItemDAO"/>
+		<property name="bookDAO" ref="bookDAO"/>
+	</bean>
+	
 
 </beans>

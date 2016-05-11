@@ -98,10 +98,10 @@
 
 				<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 						<div class="register">
-							<form action="Login">								
-								<input placeholder="用户名" class="mail" type="text" required="" name="username">									
-								<input placeholder="密码" class="lock" type="password" required="" name="password">				
-								<input type="submit" value="登陆"/>
+							<form onSubmit="return false;">								
+								<input placeholder="用户名" class="mail" type="text" id="loginusrname" required="" name="username">									
+								<input placeholder="密码" class="lock" type="password" id="loginpwd" required="" name="password">				
+								<input type="submit" value="登陆" onclick="loginUser()"/>
 							</form>
 							<p>忘记密码?<a href="#"> 点击这里</a></p>
 						</div>
@@ -110,7 +110,7 @@
 				<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 						<div class="register">
 							<h4 id="register-success" style="width: 100%;display: inline-block;text-align: center;display: none;"></h4>
-							<form id="registerform">	
+							<form id="registerform" onSubmit="return false;">	
 								<input id="usrname" placeholder="用户名" type="text" required="required" onblur="checkusrname()">
 								<div id="errorusrname" class="errormessage"></div>
 								<input id="tel" placeholder="电话号码" type="text" required="" onblur="checktel()">
@@ -219,6 +219,23 @@
 							fit: true   // 100% fit in a container
 						});
 					});
+					function loginUser(){
+						var username = $("input[id='loginusrname']").val();
+						var pwd = $("input[id='loginpwd']").val();
+						$.ajax({
+							url:"Login",
+							type:"post",
+							data:{"username":username,"password":pwd},
+							dataType:"json",
+							success:function(data){
+								if(data=="success"){
+									window.location.href="http://localhost:8080/BookStore/index.jsp";
+								}else{
+									alert("登录失败");
+								}
+							}
+						})
+					};
 					function checkusrname(){
 						var username = $("input[id='usrname']").val();
 						$("#errorusrname").html("");

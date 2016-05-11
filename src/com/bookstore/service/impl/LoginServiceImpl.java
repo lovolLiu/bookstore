@@ -4,6 +4,13 @@ import com.bookstore.dao.UserDAO;
 import com.bookstore.domain.User;
 import com.bookstore.service.LoginService;
 
+
+/**
+ * @author Chang Su
+ * @description 登录Service实现
+ * @modify
+ * @modifyDate
+ */
 public class LoginServiceImpl implements LoginService {
 
 	UserDAO userDAO;

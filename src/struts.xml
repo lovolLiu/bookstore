@@ -12,10 +12,10 @@
 			<result>/cart.jsp</result>
 		</action>
 
-		<action name="Login" class="com.bookstore.action.LoginAction">
+<!-- 		<action name="Login" class="com.bookstore.action.LoginAction">
 			<result>/index.jsp</result>
 			<result name="fail">/login.jsp</result>
-		</action>
+		</action> -->
 
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
 			<result type="chain">CheckOrderInfo</result>
@@ -40,6 +40,7 @@
     
     
     <package name="ajax_json" namespace="/" extends="json-default">
+    	<!-- FindPassword相关的2个action -->
 		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
 
 			<result name="nouser" type="json">
@@ -62,6 +63,7 @@
 			</result>
 		</action>
 		
+		<!-- Register相关的3个action -->
 		<action name="CheckUsername" class="com.bookstore.action.RegisterAction" method="hasUsername">
 			<result name="true" type="json">
 				<param name="root">result</param>
@@ -88,7 +90,17 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-			
+		
+		<!-- Login相关的1个action -->
+		<action name="Login" class="com.bookstore.action.LoginAction" method="execute">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
 		<!-- Cart相关的5个action -->
 		<action name="AddCartItem" class="com.bookstore.action.CartAction"
 			method="addCartItem">
@@ -118,6 +130,18 @@
 			<result type="json"><param name="root">totalPrice</param></result>
 		</action>
 
-
+		<!-- UserInfo 页相关的Action -->
+		<action name="ShowOrderInUserInfo" class="com.bookstore.action.UserAction"
+			method="showOrderListInUserIndex">  
+			<result type="json">
+				<param name="root">divOrderList</param>
+			</result>
+		</action>
+		<action name="ShowPaidNumber" class="com.bookstore.action.UserAction"
+			method="showPaidOrderNumber">
+			<result type="json">
+				<param name="root">paidNum</param>
+			</result>
+		</action>
 	</package>
 </struts>

@@ -116,8 +116,9 @@ h2 {
 .pic img {
 	float: left;
 	max-width: 80px;
-	max-height: 80px;
-	margin-right: 15%;
+	max-height: 90px;
+	margin-right: 5%; 
+	margin-bottom: 5%;
 }
 
 .msg p {
@@ -145,6 +146,28 @@ h2 {
 	text-align:center;
 	margin-bottom:15px;
 }
+
+.order_list tbody td {
+	vertical-align: top;
+    text-align: center;
+}
+
+.order_list thead th {
+	vertical-align: top;
+    text-align: center;
+}
+
+.order_list thead .order_number {
+	vertical-align: top;
+    text-align: left;
+}
+
+.order-table col-md-9 col-md-offset-1 col-xs-12 table tbody td{
+	vertical-align: top;
+    text-align: center;
+}
+
+
 </style>
 </head>
 <body>
@@ -202,14 +225,13 @@ h2 {
 			<a style="margin-bottmo:10px;">Crenshaw</a>
 			<div>
 				<div class="icons col-md-4">
-					<i class="icon-money"></i> <a class="quantity">1</a><br> <a>待付款</a>
+					<i class="icon-money"></i> <a class="quantity" id="unpaid">1</a><br> <a>待付款</a>
 				</div>
 				<div class="icons col-md-4">
-					<i class="icon-truck"></i> <a class="quantity">2</a><br> <a>待收货</a>
+					<i class="icon-truck"></i> <a class="quantity" id="paid"></a><br> <a>待收货</a>
 				</div>
 				<div class="icons col-md-4">
-					<i class="icon-paint-brush"></i> <a class="quantity">1</a><br>
-					<a>待评价</a>
+					<i class="icon-paint-brush"></i> <a class="quantity" id="unapprise">1</a><br><a>待评价</a>
 				</div>
 			</div>
 		</div>
@@ -224,30 +246,33 @@ h2 {
 			<i class="icon-clipboard2"></i>
 		</div>
 		<div class="order-table col-md-9 col-md-offset-1 col-xs-12">
-			<table>
+			<table class="order_list">
 				<thead>
 					<tr>
-						<th>订单详情</th>
-						<th>收货人</th>
-						<th>金额</th>
-						<th>订单状态</th>
+						<th class="order_number">订单号:<a href="">12345</a></th>
+						<th class="consignee">收货人</th>
+						<th class="total_price">金额</th>
+						<th class="deal_time">交易时间</th>
+						<th class="status">订单状态</th>
+						<th class="op">操作</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="itemhead">
-						<td colspan="4"><span class="dealtime">2016-4-15
-								10:20:39</span> <span class="orderno">订单号：14567</span></td>
-					</tr>
 					<tr class="item">
 						<td class="itemdetail">
 							<div>
 								<div class="pic">
-									<img src="images/book.png" />
+									<a href=""><img src="images/book.png" /></a>
 								</div>
-								<div class="msg">
-									<p class="book-title">Life is a trip</p>
-									<p>H.Laurence</p>
-									<p>ISBN:76889-0</p>
+								<div class="pic">
+									<a href=""><img src="images/book.png" /></a>
+								</div>
+								<div class="pic">
+									<a href=""><img src="images/book.png" /></a>
+								</div><div class="pic">
+									<a href=""><img src="images/book.png" /></a>
+								</div><div class="pic">
+									<a href=""><img src="images/book.png" /></a>
 								</div>
 							</div>
 						</td>
@@ -255,10 +280,12 @@ h2 {
 							data-placement="bottom" title="张三 北京邮电大学宏福校区 18976543256">张三</span>
 						</td>
 						<td class="sum"><span>￥50</span></td>
+						<td class="time"><span>2016-4-15<br>10:20:39</span></td>
 						<td class="status"><span>已支付</span></td>
+						<td class="operate"><span>查看</span><br><span>删除</span></td>
 					</tr>
 				</tbody>
-			</table>
+			</table> 
 		</div>
 		<div class="checkallorder">
 			<a class="btn btn-primary" href="myorder.jsp">查看所有订单</a>
@@ -346,20 +373,8 @@ h2 {
 	<script src="js/jquerypp.custom.js"></script>
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
-	<script type="application/x-javascript">
-		
-		
-		
-		
-		
-		
+	<script type="application/x-javascript">	
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-	
-	
-	
-	
-	
-	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
@@ -370,7 +385,75 @@ h2 {
 				fit : true
 			// 100% fit in a container
 			});
+			showOrder();
+			showPaidOrderNumber();
 		});
+		
+		function formatDate(data){
+			var d = new Date(data);
+			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+			var	hours = ((d.getHours()+16)%24 < 10) ? "0" + (d.getHours()+16)%24 : (d.getHours()+16)%24;
+			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
+			var formattedTime = hours + ":" + minutes + ":" + seconds;
+			formattedDate = formattedDate + "<br>" + formattedTime;
+			return formattedDate;
+		}
+		
+		function showOrder(){
+			$.ajax({
+				url:"ShowOrderInUserInfo",
+				dataType:"json",
+				success:function(data){
+					$.each(data,function(i,list){  
+							var divPic = "";
+             				$.each(list.orderItemList,function(j,order){
+             					divPic = "<div class='pic'>"
+             										+"<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
+           										+"</div>";
+             				});
+             				 var table1 = $("<table class='order_list'>"
+             							+"<thead>"
+	             						+"<tr>"
+   									 	+"<th class='order_number'>订单号:<a href='xxxxx'>"+list.orderId+"</a></th>"/*xxxx表示以后要添加跳转href */
+   									 	+"<th class='consignee'>收货人</th>"
+   									 	+"<th class='total_price'>金额</th>"
+   									 	+"<th class='deal_time'>交易时间</th>"
+   									 	+"<th class='status'>订单状态</th>"
+   									 	+"<th class='op'>操作</th>"
+   									 	+"<tr>"
+             							+"</thead>"
+             							+"<tbody>"
+             							+"<tr class='item'>"
+             							+"<td class='itemdetail'>"
+             							+"<div>"+divPic+"</div>"
+             											+"</td>"
+             											+"<td class='deliver'><span data-toggle='tooltip' data-placement='bottom' title='xxxxxx'>"+list.consignee
+             											+"</td>"
+             											+"<td class='sum'><span>￥"+list.totalPrice+"</span></td>"
+             											+"<td class='time'><span>"+formatDate(list.dealTime)+"</span></td>"
+             											+"<td class='status'><span>"+list.orderStats+"</span></td>"
+             											+"<td class='operate'><span><a href='xxxx'>查看</a></span><br><span>删除</sapn></td>"
+           											+"</tr>"
+       											+"</tbody>"
+   											+"</table>");
+             											
+             			 	 $("div[class='order-table col-md-9 col-md-offset-1 col-xs-12']").append(table1);  
+             		
+          			});  
+				}
+			})
+		}
+		
+		function showPaidOrderNumber(){
+			$.ajax({
+				url:"ShowPaidNumber",
+				dataType:"json",
+				success:function(data){
+					$("a[id='paid']").html(data);
+				}
+			})
+		}
 	</script>
 
 </body>

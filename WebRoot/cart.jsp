@@ -305,8 +305,8 @@ select{
 										<td style="text-align: right;color: #FE980F;"><span id="cart_total">¥${totalPrice }</span></td>
 									</tr>
 									<tr style="border-bottom: 0;">
-										<td><div style="text-align: right"><a class="btn btn-default update" href="">更新购物车</a></div></td>
-										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="checkout.jsp">去结算</a></div></td>
+										<!-- <td><div style="text-align: right"><a class="btn btn-default update" href="">更新购物车</a></div></td> -->
+										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="submit-order.jsp">去结算</a></div></td>
 									</tr>
 								</tbody>
 								</table>
