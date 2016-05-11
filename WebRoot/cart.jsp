@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -261,86 +262,39 @@ select{
 							<td></td>
 						</tr>
 					</thead>
-					<tbody class="cartItem" id="cartItem">
-						<tr>
-							<td class="cart_product">
-							    <input type="checkbox" class="itemselectbox">
-								<a href=""><img src="images/book.png"></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">BESPOKE</a></h4>
-								<p>ISBN: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>¥59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">¥59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
 
-						<tr>
-							<td class="cart_product">
-							    <input type="checkbox" class="itemselectbox">
-								<a href=""><img src="images/book2.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">LIFE IS A TRIP</a></h4>
-								<p>ISBN: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>¥59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">¥59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-							    <input type="checkbox" class="itemselectbox">
-								<a href=""><img src="images/book3.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">JENNIFER</a></h4>
-								<p>ISBN: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>¥59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">¥59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
+					<tbody class="cartItem" id="cartItem">
+						
+
+<!-- 				    <tr> -->
+<!-- 							<td class="cart_product"> -->
+<!-- 							    <input type="checkbox" class="itemselectbox"> -->
+<!-- 								<a href=""><img src="images/book.png"></a> -->
+<!-- 							</td> -->
+<!-- 							<td class="cart_description"> -->
+<!-- 								<h4><a href="">BESPOKE</a></h4> -->
+<!-- 								<p>ISBN: 1089772</p> -->
+<!-- 							</td> -->
+<!-- 							<td class="cart_price"> -->
+<!-- 								<p>¥59</p> -->
+<!-- 							</td> -->
+<!-- 							<td class="cart_quantity"> -->
+<!-- 								<div class="cart_quantity_button"> -->
+<!-- 									<a class="cart_quantity_up" href=""> + </a> -->
+<!-- 									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2"> -->
+<!-- 									<a class="cart_quantity_down" href=""> - </a> -->
+<!-- 								</div> -->
+<!-- 							</td> -->
+<!-- 							<td class="cart_total"> -->
+<!-- 								<p class="cart_total_price">¥59</p> -->
+<!-- 							</td> -->
+<!-- 							<td class="cart_delete"> -->
+<!-- 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+						
+						
+						
 						<tr>
 							<td colspan="4">&nbsp;</td>
 							<td colspan="2">
@@ -348,11 +302,11 @@ select{
 									<tbody>
 									<tr style="font-size: x-large;text-align: right">
 										<td style="text-align: right">合计</td>
-										<td style="text-align: right;color: #FE980F;"><span>¥157</span></td>
+										<td style="text-align: right;color: #FE980F;"><span id="cart_total">¥${totalPrice }</span></td>
 									</tr>
 									<tr style="border-bottom: 0;">
-										<td><div style="text-align: right"><a class="btn btn-default update" href="">更新购物车</a></div></td>
-										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="checkout.jsp">去结算</a></div></td>
+										<!-- <td><div style="text-align: right"><a class="btn btn-default update" href="">更新购物车</a></div></td> -->
+										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="submit-order.jsp">去结算</a></div></td>
 									</tr>
 								</tbody>
 								</table>
@@ -458,28 +412,99 @@ select{
 							width: 'auto', //auto or any width like 600px
 							fit: true   // 100% fit in a container
 						});
+						
+						showCart();
+						UpdateTotalCartPrice();
 					});
+
+					
+					$(".cart_quantity_input").blur(function(){
+						alert();
+						var num = $(this).attr("value");
+						var buyItemID = $(this).parents("tr")[0].attr("id");
+						updateCart(buyItemID, num);
+						return false;
+					});
+					
+					
 					function showCart(){
 						$.ajax({
 							url:"GetCartItemList",
-							dataType:"json",	/* 服务器返回的数据类型 */
+							dataType:"json",
 							success:function(data){
 								$.each(data,function(i,list){  
-                       				 var _tr = $("<tr id=\""+list.buyItemID+"\">"
-                       				 +"<td class=\"cart_product\"><a href><img src=\""+list.imageUrl+"\"></a></td>"
+                       				 var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
+                       				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\"><a href><img src=\""+list.imageUrl+"\"></a></td>"
                        				 +"<td class=\"cart_description\"><h4><a href>"+ list.bookName+"</a></h4></td>"
                        				 +"<td class=\"cart_price\"><p>¥"+list.price+"</p></td>"
-                       				 +"<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\"> + </a> "
-                       				 	+ "<input class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+" autocomplete=\"off\" size=\"2\">"
-									 	+ "<a class=\"cart_quantity_down\" href=\"\"> - </a></div></td>"
+                       				 +"<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\" onclick='return QuantityUp(" + list.buyItemID + ")'> + </a> "
+                       				 	+ "<input class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+"\"autocomplete=\"off\" size=\"2\" >"
+									 	+ "<a class=\"cart_quantity_down\" href=\"\" onclick='return QuantityDown("+ list.buyItemID +")'> - </a></div></td>"
 									 +"<td class=\"cart_total\"> <p class=\"cart_total_price\"> ¥"+list.buyItemPrice+"</p></td>"
-									 +"<td class=\"cart_delete\"><a class=\"cart_quantity_delete\" href=\"\"><i class=\"fa fa-times\"></i></a></td>"
+									 +"<td class=\"cart_delete\"><a class=\"cart_quantity_delete\" href=\"\" onclick=\"return deleteCart( "+ list.buyItemID +")\"><i class=\"fa fa-times\"></i></a></td>"
 									 +"</tr>");  
-                       			 	 $("tbody[id='cartItem']").append(_tr);  
+                       			 	 $("tbody[id='cartItem']").prepend(_tr);  
                     			})  
 							}
 						})
 					}
+					
+					function QuantityUp(buyItemID){
+						var currentNum = parseInt($("tr#" + buyItemID).find(".cart_quantity_input").attr("value"));
+						updateCart(buyItemID, currentNum+1);
+						return false;
+					}
+					
+					function QuantityDown(buyItemID){
+						var currentNum = parseInt($("tr#" + buyItemID).find(".cart_quantity_input").attr("value"));
+						updateCart(buyItemID, currentNum-1);
+						return false;
+					}
+					
+					
+					function updateCart(buyItemID,num){
+						$.ajax({
+							url: "UpdateCartItem?buyItemID=" + buyItemID + "&num=" + num,
+							dataType:"json",
+							success:function(data){
+								//data便是更新之后这条数据的trCartItem
+								//更新这条数据对应的html
+								var tr = $("tr#" + buyItemID);
+								var numInput = tr.find(".cart_quantity_input");
+								var itemTotalPrice = tr.find(".cart_total_price");
+								numInput.attr("value", data.num);
+								itemTotalPrice.html("¥" + data.buyItemPrice);
+								UpdateTotalCartPrice();
+							}
+						})
+					}
+					
+					function deleteCart(buyItemID){
+						$.ajax({
+							url: "DeleteCartItem?buyItemID=" + buyItemID,
+							dataType:"json",
+							success:function(data){
+								//删除这条数据
+								$("#" + buyItemID).slideDown();
+								$("#" + buyItemID).remove();
+								UpdateTotalCartPrice();
+							}
+						})
+						return false;
+					}
+					
+					function UpdateTotalCartPrice(){
+						$.ajax({
+							url: "GetCartTotal",
+							dataType:"json",
+							success:function(data){
+								$("#cart_total").html("¥" + data);
+							}
+						})
+					}
+					
+
+					
 				   </script>
 
 </body>

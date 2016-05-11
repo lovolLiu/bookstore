@@ -3,39 +3,49 @@ package com.bookstore.action;
 import com.bookstore.domain.User;
 import com.bookstore.service.RegisterService;
 
+/**
+ * @author Chang Su
+ * @description 注册Action实现
+ * @modify
+ * @modifyDate
+ */
 public class RegisterAction {
 	RegisterService registerService;
 	String userName;
 	String password;
 	String userTel;
 	String userEmail;
-	
-	public String hasUsername(String userName){
-		if(registerService.hasUsername(userName)){
-			return "exist";
-		}else
-			return "noexist";
-		
-	}
-	
-	public String hasUserEmail(String userEmail){
+	String result;
+
+	public String hasEmail(){
 		if(registerService.hasUserEmail(userEmail)){
-			return "exist";
-		}else
-			return "noexist";
-		
+			this.result = "true";
+			return "true";
+		}
+		this.result="false";
+		return "false";
 	}
 	
-	public String execute(){
+	public String hasUsername(){
+		if(registerService.hasUsername(userName)){
+			this.result = "true";
+			return "true";
+		}
+		this.result="false";
+		return "false";
+	}
+	public String registerUser(){
 		User user = new User();
 		user.setUserName(userName);
 		user.setPassword(password);
 		user.setUserTel(userTel);
 		user.setUserEmail(userEmail);
 		if(registerService.resgister(user)){
+			this.result = "success";
 			return "success";
 		}
 		else{
+			this.result = "fail";
 			return "fail";
 		}
 	}
@@ -70,7 +80,12 @@ public class RegisterAction {
 		this.userEmail = userEmail;
 	}
 
-	
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
 	
 	
 }

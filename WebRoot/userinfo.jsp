@@ -81,8 +81,9 @@
 .pic img {
 	float: left;
 	max-width: 80px;
-	max-height: 80px;
-	margin-right: 15%;
+	max-height: 90px;
+	margin-right: 5%; 
+	margin-bottom: 5%;
 }
 
 .msg p {
@@ -170,6 +171,28 @@
 .mail {
 	font-size: large;
 }
+
+.order_list tbody td {
+	vertical-align: top;
+    text-align: center;
+}
+
+.order_list thead th {
+	vertical-align: top;
+    text-align: center;
+}
+
+.order_list thead .order_number {
+	vertical-align: top;
+    text-align: left;
+}
+
+.order-table col-md-9 col-md-offset-1 col-xs-12 table tbody td{
+	vertical-align: top;
+    text-align: center;
+}
+
+
 </style>
 </head>
 <body>
@@ -426,18 +449,8 @@
 	<script src="js/jquerypp.custom.js"></script>
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
-	<script type="application/x-javascript">
-		
-		
-		
-		
-		
+	<script type="application/x-javascript">	
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-	
-	
-	
-	
-	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script src="js/bootstrap-editable.min.js"></script>
@@ -506,7 +519,75 @@
 				fit : true
 			// 100% fit in a container
 			});
+			showOrder();
+			showPaidOrderNumber();
 		});
+		
+		function formatDate(data){
+			var d = new Date(data);
+			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+			var	hours = ((d.getHours()+16)%24 < 10) ? "0" + (d.getHours()+16)%24 : (d.getHours()+16)%24;
+			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
+			var formattedTime = hours + ":" + minutes + ":" + seconds;
+			formattedDate = formattedDate + "<br>" + formattedTime;
+			return formattedDate;
+		}
+		
+		function showOrder(){
+			$.ajax({
+				url:"ShowOrderInUserInfo",
+				dataType:"json",
+				success:function(data){
+					$.each(data,function(i,list){  
+							var divPic = "";
+             				$.each(list.orderItemList,function(j,order){
+             					divPic = "<div class='pic'>"
+             										+"<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
+           										+"</div>";
+             				});
+             				 var table1 = $("<table class='order_list'>"
+             							+"<thead>"
+	             						+"<tr>"
+   									 	+"<th class='order_number'>订单号:<a href='xxxxx'>"+list.orderId+"</a></th>"/*xxxx表示以后要添加跳转href */
+   									 	+"<th class='consignee'>收货人</th>"
+   									 	+"<th class='total_price'>金额</th>"
+   									 	+"<th class='deal_time'>交易时间</th>"
+   									 	+"<th class='status'>订单状态</th>"
+   									 	+"<th class='op'>操作</th>"
+   									 	+"<tr>"
+             							+"</thead>"
+             							+"<tbody>"
+             							+"<tr class='item'>"
+             							+"<td class='itemdetail'>"
+             							+"<div>"+divPic+"</div>"
+             											+"</td>"
+             											+"<td class='deliver'><span data-toggle='tooltip' data-placement='bottom' title='xxxxxx'>"+list.consignee
+             											+"</td>"
+             											+"<td class='sum'><span>￥"+list.totalPrice+"</span></td>"
+             											+"<td class='time'><span>"+formatDate(list.dealTime)+"</span></td>"
+             											+"<td class='status'><span>"+list.orderStats+"</span></td>"
+             											+"<td class='operate'><span><a href='xxxx'>查看</a></span><br><span>删除</sapn></td>"
+           											+"</tr>"
+       											+"</tbody>"
+   											+"</table>");
+             											
+             			 	 $("div[class='order-table col-md-9 col-md-offset-1 col-xs-12']").append(table1);  
+             		
+          			});  
+				}
+			})
+		}
+		
+		function showPaidOrderNumber(){
+			$.ajax({
+				url:"ShowPaidNumber",
+				dataType:"json",
+				success:function(data){
+					$("a[id='paid']").html(data);
+				}
+			})
+		}
 	</script>
 </body>
 </html>

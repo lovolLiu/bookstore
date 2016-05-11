@@ -204,7 +204,7 @@
 							var res=mailReg.test(String(emailAddress)); 
 							if(!res){
 								$("#result").html("您输入的邮箱地址不合法，请重新输入");
-								$("#result").css("color","#FF9606");
+								$("#result").css("color","red");
 							}else{
 								$.ajax({
 									url:"SendEmail.action",
@@ -217,10 +217,10 @@
 						               		$("#result").css("color","#FF9606"); 
 						          		}else if(data=="fail"){ 
 								            $("#result").html("邮件发送失败，请重新发送");
-						               		$("#result").css("color","#FF9606"); 
+						               		$("#result").css("color","red"); 
 						          		}else if(data=="nouser"){
 						          			$("#result").html("此邮箱还没有注册到Bookaholic");
-						               		$("#result").css("color","#FF9606"); 
+						               		$("#result").css("color","red"); 
 						          		}
 									}
 								})

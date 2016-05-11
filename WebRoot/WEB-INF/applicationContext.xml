@@ -53,7 +53,6 @@
 				<value>com/bookstore/domain/Picture.hbm.xml</value>
 				<value>com/bookstore/domain/Publisher.hbm.xml</value>
 				<value>com/bookstore/domain/User.hbm.xml</value>
-				<value>com/bookstore/domain/News.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -80,9 +79,6 @@
     
     
     
-    <bean id="newsDao" class="com.bookstore.dao.impl.NewsDaoImpl">
- 		<property name="sessionFactory" ref="sessionFactory" />    <!-- 除了action类是自动装配，其他的类都需要显示的写出注入 -->
-	</bean>
 	
 	<bean id="addressDAO" class="com.bookstore.dao.impl.AddressDAOImpl">
  		<property name="sessionFactory" ref="sessionFactory" />
@@ -129,13 +125,21 @@
     
     
     
-    <!-- 这个是例子 -->
-	<bean id="helloWorldService" class="com.bookstore.service.impl.HelloWorldServiceImpl">
-		<property name="newsDao" ref="newsDao" />
+	
+	<bean id="cartService" class="com.bookstore.service.impl.CartServiceImpl">
+		<property name="cartItemDAO" ref="cartItemDAO" />
+		<property name="buyItemDAO" ref="buyItemDAO"/>
+		<property name="bookDAO" ref="bookDAO"/>
 	</bean>
-
-
-
+	
+	<bean id="convertorService" class="com.bookstore.service.impl.ConvertorServiceImpl">
+		<property name="bookDAO" ref="bookDAO"/>
+		<property name="pictureDAO" ref="pictureDAO"/>
+		<property name="buyItemDAO" ref="buyItemDAO"/>
+		<property name="addressDAO" ref="addressDAO"/>
+		<property name="orderDAO" ref="orderDAO"/>
+	</bean>
+	
 	<bean id="buyService" class="com.bookstore.service.impl.BuyServiceImpl">
 		<property name="orderDAO" ref="orderDAO" />
 		<property name="buyItemDAO" ref="buyItemDAO"/>
@@ -153,5 +157,20 @@
 	<bean id="findPasswordService" class="com.bookstore.service.impl.FindPasswordServiceImpl">
 		<property name="userDao" ref="userDAO"/>
 	</bean>
+	
+	<bean id="bookDetailService" class="com.bookstore.service.impl.BookDetailServiceImpl">
+		<property name="bookDao" ref="bookDAO"/>
+		<property name="appriseDao" ref="appriseDAO"/>
+		<property name="publisherDao" ref="publisherDAO"/>
+	</bean>
+	
+	<bean id="personalInfoService" class="com.bookstore.service.impl.PersonalInfoServiceImpl">
+		<property name="orderDAO" ref="orderDAO"/>
+		<property name="userDAO" ref="userDAO"/>
+		<property name="addressDAO" ref="addressDAO"/>
+		<property name="buyItemDAO" ref="buyItemDAO"/>
+		<property name="bookDAO" ref="bookDAO"/>
+	</bean>
+	
 
 </beans>

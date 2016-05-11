@@ -14,6 +14,12 @@ import com.bookstore.dao.UserDAO;
 import com.bookstore.domain.User;
 import com.bookstore.service.FindPasswordService;
 
+/**
+ * @author Chang Su
+ * @description 找回密码Service实现
+ * @modify
+ * @modifyDate
+ */
 public class FindPasswordServiceImpl implements FindPasswordService{
 	
 	UserDAO userDao;

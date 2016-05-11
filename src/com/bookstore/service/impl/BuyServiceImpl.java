@@ -23,11 +23,10 @@ public class BuyServiceImpl implements BuyService {
 	@Override
 	public int createBuyItem(int userID, int bookID, int num) {
 		BuyItem buyItem = new BuyItem();
-		buyItem.setBoughtDate(new Timestamp(System.currentTimeMillis()));
 		buyItem.setBuyNum(num);
 		buyItem.setCurrentPrice(bookDAO.findByID(bookID).getPrice());
 		buyItem.setHasApprise(false);
-		buyItem.setBookID(9);
+		buyItem.setBookID(bookID);
 		return buyItemDAO.save(buyItem);
 	}
 

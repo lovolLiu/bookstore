@@ -3,41 +3,42 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="true" />
+
 	<package name="hello" namespace="/" extends="struts-default">
-	
-		<action name="hello" class="com.bookstore.action.HelloWorldAction">
-			<result>/success.jsp</result>
-		</action>
-		
-		<action name="Login" class="com.bookstore.action.LoginAction">
-			<result>/index.jsp</result>
-			<result name="fail">/login.jsp</result>
+
+		<action name="LookCart" class="com.bookstore.action.CartAction"
+			method="showBuyItemList">
+			<result>/cart.jsp</result>
 		</action>
 
-		<action name="Register" class="com.bookstore.action.RegisterAction">
-			<result name="success">/login.jsp</result>
-			<result name="fail">/index.jsp</result>
-		</action>
+<!-- 		<action name="Login" class="com.bookstore.action.LoginAction">
+			<result>/index.jsp</result>
+			<result name="fail">/login.jsp</result>
+		</action> -->
 
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
 			<result>/submit-order.jsp</result>
 		</action>
-		
+
 		<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
 			<result>/pay.jsp</result>
 		</action>
-<!-- 		<action name="hello" class="com.bookstore.action.HelloWorldAction"> -->
-<!-- 			<result>/success.jsp</result> -->
-<!-- 		</action> -->
-
-
-<!--         <action name="*_*" class="com.bookstore.action.{1}Action" method="{2}"> -->
-<!--             <result name="success">/{1}/{2}.jsp</result> -->
-<!--         </action> -->
+		
+		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
+			<result>/book-detail.jsp</result>
+		</action>
     </package>
+    
+    
+    
+    
+    
+    
     <package name="ajax_json" namespace="/" extends="json-default">
+    	<!-- FindPassword相关的2个action -->
 		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
+
 			<result name="nouser" type="json">
 				<param name="root">result</param>
 			</result>
@@ -55,6 +56,87 @@
 			</result>
 			<result name="fail" type="json">
 				<param name="root">result</param>>
+			</result>
+		</action>
+		
+		<!-- Register相关的3个action -->
+		<action name="CheckUsername" class="com.bookstore.action.RegisterAction" method="hasUsername">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="CheckEmail" class="com.bookstore.action.RegisterAction" method="hasEmail">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="RegisterUser" class="com.bookstore.action.RegisterAction" method="registerUser">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- Login相关的1个action -->
+		<action name="Login" class="com.bookstore.action.LoginAction" method="execute">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- Cart相关的5个action -->
+		<action name="AddCartItem" class="com.bookstore.action.CartAction"
+			method="addCartItem">
+			<result type="json"><param name="root">isSuccess</param></result>	
+		</action>
+		
+		<action name="GetCartItemList" class="com.bookstore.action.CartAction"
+			method="showBuyItemList">
+			<result type="json"><param name="root">trCartList</param></result>
+		</action>
+
+		<action name="DeleteCartItem" class="com.bookstore.action.CartAction"
+			method="deleteBuyItem">
+			<result type="json"><param name="root">isSuccess</param></result>
+		</action>
+
+		<action name="UpdateCartItem" class="com.bookstore.action.CartAction"
+			method="updateBuyItem">
+			<result type="json">
+				<param name="root">isSuccess</param>
+				<param name="root">trCartItem</param>
+			</result>
+		</action>
+
+		<action name="GetCartTotal" class="com.bookstore.action.CartAction"
+			method="showBuyItemList">   <!-- 这个地方没写错，就是这样的 -->
+			<result type="json"><param name="root">totalPrice</param></result>
+		</action>
+
+		<!-- UserInfo 页相关的Action -->
+		<action name="ShowOrderInUserInfo" class="com.bookstore.action.UserAction"
+			method="showOrderListInUserIndex">  
+			<result type="json">
+				<param name="root">divOrderList</param>
+			</result>
+		</action>
+		<action name="ShowPaidNumber" class="com.bookstore.action.UserAction"
+			method="showPaidOrderNumber">
+			<result type="json">
+				<param name="root">paidNum</param>
 			</result>
 		</action>
 	</package>

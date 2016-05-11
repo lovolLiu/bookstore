@@ -2,6 +2,12 @@ package com.bookstore.action;
 
 import com.bookstore.service.FindPasswordService;
 
+/**
+ * @author Chang Su
+ * @description 找回密码Action实现
+ * @modify
+ * @modifyDate
+ */
 public class FindPasswordAction {
 	FindPasswordService findPasswordService;
 	String email;

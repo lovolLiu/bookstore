@@ -4,6 +4,12 @@ import com.bookstore.dao.UserDAO;
 import com.bookstore.domain.User;
 import com.bookstore.service.RegisterService;
 
+/**
+ * @author Chang Su
+ * @description 注册Service实现
+ * @modify
+ * @modifyDate
+ */
 public class RegisterServiceImpl implements RegisterService {
 
 	UserDAO userDAO;
@@ -15,7 +21,6 @@ public class RegisterServiceImpl implements RegisterService {
 	
 	@Override
 	public boolean hasUserEmail(String userEmail) {
-		// TODO Auto-generated method stub
 		return (userDAO.findByEmail(userEmail)!=null);
 	}
 	
