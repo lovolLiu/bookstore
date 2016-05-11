@@ -106,7 +106,7 @@
 								<input type="submit" value="登陆" onclick="loginUser()"/>
 							</form>
 							<p>
-								忘记密码?<a href="#"> 点击这里</a>
+								忘记密码?<a href="findpassword.jsp"> 点击这里</a>
 							</p>
 						</div>
 					</div>

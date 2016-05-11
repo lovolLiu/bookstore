@@ -261,8 +261,8 @@
 		</div>
 		<!--BANNER END-->
 		<!--CONTENT START-->
-		<div class="panel bk-widget bk-border-off bk-noradius col-md-6">
-			<div class="panel-body text-center bk-padding-off bk-wrapper">
+		<div class="panel col-md-6 col-sm-12">
+			<div class="panel-body text-center">
 				<img src="images/flat-landscape.jpg" alt="" class="img-responsive">
 				<div class="bk-avatar bk-avatar80-halfdown">
 					<div class="bk-vcenter"></div>
@@ -320,10 +320,10 @@
 									<th>订单状态</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="ordertable">
 								<tr class="itemhead">
 									<td colspan="4"><span class="dealtime">2016-4-15
-											10:20:39</span> <span class="orderno">订单号：14567</span></td>
+											10:20:39</span>  <span class="orderno">订单号: <a>14567</a></span></td>
 								</tr>
 								<tr class="item">
 									<td class="itemdetail">
@@ -344,12 +344,11 @@
 									<td class="sum"><span>￥50</span></td>
 									<td class="status"><span>已支付</span></td>
 								</tr>
-								<tr>
-									<td colspan="4" style="text-align:center;"><a
-										class="btn btn-primary">查看所有订单</a></td>
-								</tr>
 							</tbody>
 						</table>
+						<div style="text-align: center;">
+						    <a class="btn btn-primary">查看所有订单</a>
+						</div>
 					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="info">
@@ -473,7 +472,7 @@
 			overDiv.style.width = w + "px";
 			/*遮罩层的内部div垂直居中*/
 			var childDiv = document.getElementById("over_child");
-			var middle = Math.floor((h - 300) / 2);
+			var middle = Math.floor((h - 200) / 2);
 			childDiv.style.top = middle + "px";
 		}
 		$('#cancel').click(function() {
@@ -530,7 +529,7 @@
 			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
 			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
 			var formattedTime = hours + ":" + minutes + ":" + seconds;
-			formattedDate = formattedDate + "<br>" + formattedTime;
+			formattedDate = formattedDate + " " + formattedTime;
 			return formattedDate;
 		}
 		
@@ -541,39 +540,42 @@
 				success:function(data){
 					$.each(data,function(i,list){  
 							var divPic = "";
+							var bookName= "";
              				$.each(list.orderItemList,function(j,order){
              					divPic = "<div class='pic'>"
              										+"<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
            										+"</div>";
+           						bookName = order.bookName;
              				});
-             				 var table1 = $("<table class='order_list'>"
-             							+"<thead>"
-	             						+"<tr>"
-   									 	+"<th class='order_number'>订单号:<a href='xxxxx'>"+list.orderId+"</a></th>"/*xxxx表示以后要添加跳转href */
-   									 	+"<th class='consignee'>收货人</th>"
-   									 	+"<th class='total_price'>金额</th>"
-   									 	+"<th class='deal_time'>交易时间</th>"
-   									 	+"<th class='status'>订单状态</th>"
-   									 	+"<th class='op'>操作</th>"
-   									 	+"<tr>"
-             							+"</thead>"
-             							+"<tbody>"
-             							+"<tr class='item'>"
-             							+"<td class='itemdetail'>"
-             							+"<div>"+divPic+"</div>"
-             											+"</td>"
-             											+"<td class='deliver'><span data-toggle='tooltip' data-placement='bottom' title='xxxxxx'>"+list.consignee
-             											+"</td>"
-             											+"<td class='sum'><span>￥"+list.totalPrice+"</span></td>"
-             											+"<td class='time'><span>"+formatDate(list.dealTime)+"</span></td>"
-             											+"<td class='status'><span>"+list.orderStats+"</span></td>"
-             											+"<td class='operate'><span><a href='xxxx'>查看</a></span><br><span>删除</sapn></td>"
-           											+"</tr>"
-       											+"</tbody>"
-   											+"</table>");
-             											
-             			 	 $("div[class='order-table col-md-9 col-md-offset-1 col-xs-12']").append(table1);  
-             		
+             				 var table1 = $(
+	             						"<tr class='itemhead'>"
+   									 	+"<td colspan='4'>"
+   									 	+"<span class='dealtime'>"
+   									 	+formatDate(list.dealTime)
+   									 	+"</span>"
+   									 	+"<span class='orderno'>"
+   									 	+"订单号: <a href='xxxxx'>"+list.orderId+"</a></span>"/*xxxx表示以后要添加跳转href */
+   									 	+"</tr>"
+   									 	+"<tr class='item'>"
+   									 	+"<td class='itemdetail'>"
+   									 	+"<div>"
+   									 	+divPic
+   									 	+"<div class='msg'>"
+   									 	+"<p class='book-title'>"
+   									 	+bookName
+   									 	+"</p>"//书名
+   									 	+"<p>"
+   									 	+"</p>"//作者名
+   									 	+"<p>"
+   									 	+"</p>"//ISBN
+   									 	+"</div></div></td>"
+   									 	+"<td class='deliver'>"
+   									 	+"<span data-toggle='tooltip' data-placement='bottom' title=''>"+list.consignee
+   									 	+"</span>"
+   									 	+"</td>"
+   									 	+"<td class='sum'><span>￥"+list.totalPrice+"</span></td>"
+   									 	+"<td class='status'><span>"+list.orderStats+"</span></td></tr>");			
+             			 	 $("tbody[id='ordertable']").append(table1);  
           			});  
 				}
 			})
