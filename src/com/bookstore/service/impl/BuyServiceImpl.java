@@ -4,12 +4,13 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
+
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.dao.OrderDAO;
+import com.bookstore.domain.Book;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
-
 import com.bookstore.service.BuyService;
 
 public class BuyServiceImpl implements BuyService {
@@ -22,9 +23,11 @@ public class BuyServiceImpl implements BuyService {
 	
 	@Override
 	public int createBuyItem(int userID, int bookID, int num) {
+		Book book = bookDAO.findByID(bookID);
+		Double currentPrice = book.getPrice() * book.getDiscount()/100;
 		BuyItem buyItem = new BuyItem();
 		buyItem.setBuyNum(num);
-		buyItem.setCurrentPrice(bookDAO.findByID(bookID).getPrice());
+		buyItem.setCurrentPrice(currentPrice);
 		buyItem.setHasApprise(false);
 		buyItem.setBookID(bookID);
 		return buyItemDAO.save(buyItem);

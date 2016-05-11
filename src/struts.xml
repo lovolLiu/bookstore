@@ -18,6 +18,10 @@
 		</action>
 
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
+			<result type="chain">CheckOrderInfo</result>
+		</action>
+		
+		<action name="CheckOrderInfo" class="com.bookstore.action.CheckOrderInfoAction">
 			<result>/submit-order.jsp</result>
 		</action>
 
