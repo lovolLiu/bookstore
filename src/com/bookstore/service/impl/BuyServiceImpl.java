@@ -44,8 +44,8 @@ public class BuyServiceImpl implements BuyService {
 		for(Integer buyItemID : buyItemIDList){
 			BuyItem buyItem = buyItemDAO.findByID(buyItemID);
 			buyItem.setOrderID(orderID);
-			buyItemDAO.update(buyItem);
 			buyItem.setBoughtDate(new Timestamp(System.currentTimeMillis()));
+			buyItemDAO.update(buyItem);
 		}
 		return orderID;
 	}

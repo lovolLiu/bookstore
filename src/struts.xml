@@ -29,15 +29,17 @@
 			<result>/pay.jsp</result>
 		</action>
 		
+		<action name="Payment" class="com.bookstore.action.PaymentAction">
+			<result>/goods-ontheway.jsp</result>
+		</action>
+		
 		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
 			<result>/book-detail.jsp</result>
 		</action>
     </package>
     
     
-    
-    
-    
+
     
     <package name="ajax_json" namespace="/" extends="json-default">
     	<!-- FindPassword相关的2个action -->

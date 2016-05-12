@@ -172,5 +172,9 @@
 		<property name="bookDAO" ref="bookDAO"/>
 	</bean>
 	
+	<bean id="addressService" class="com.bookstore.service.impl.AddressServiceImpl">
+		<property name="addressDao" ref="addressDAO" />
+	</bean>
+	
 
 </beans>

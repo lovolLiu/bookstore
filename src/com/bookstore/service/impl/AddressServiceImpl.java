@@ -30,5 +30,15 @@ public class AddressServiceImpl implements AddressService{
 		// TODO Auto-generated method stub
 		return addressDao.findByID(addressID);
 	}
+
+	public AddressDAO getAddressDao() {
+		return addressDao;
+	}
+
+	public void setAddressDao(AddressDAO addressDao) {
+		this.addressDao = addressDao;
+	}
+	
+	
 	
 }

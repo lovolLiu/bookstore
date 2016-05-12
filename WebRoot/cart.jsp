@@ -251,6 +251,7 @@ select{
         <section id="cart_items">
 		<div class="container">
 			<div class="table-responsive cart_info">
+			<form action="CheckOrderInfo" id="cart_form">
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
@@ -306,14 +307,16 @@ select{
 									</tr>
 									<tr style="border-bottom: 0;">
 										<!-- <td><div style="text-align: right"><a class="btn btn-default update" href="">更新购物车</a></div></td> -->
-										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="submit-order.jsp">去结算</a></div></td>
+										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="" onclick="SubmitForm(); return false;">去结算</a></div></td>
 									</tr>
+									
 								</tbody>
 								</table>
 							</td>
 						</tr>
 					</tbody>
 				</table>
+				</form>
 			</div>
 		</div>
 	</section> <!--/#cart_items-->
@@ -417,6 +420,11 @@ select{
 						UpdateTotalCartPrice();
 					});
 
+					
+					function SubmitForm(){
+						$("#cart_form").submit();
+					}
+					
 					
 					$(".cart_quantity_input").blur(function(){
 						alert();

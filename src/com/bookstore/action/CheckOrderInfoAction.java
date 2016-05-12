@@ -29,6 +29,7 @@ public class CheckOrderInfoAction {
 		trOrderItemList = convertorService.buyItemIDListToTrCartList(buyItemIDList);
 		addressList = personalInfoService.getAddress(userID);
 		totalPrice = convertorService.calculateTotalPrice(trOrderItemList);
+		
 		return "success";
 	}
 
