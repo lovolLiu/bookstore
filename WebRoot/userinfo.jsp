@@ -279,15 +279,15 @@
 			</div>
 			<div class="panel-body bk-ltr">
 				<div class="row text-center userinfo">
-					<a class="col-xs-4"> <i class="icon-money"></i><small
+					<a class="col-xs-4" > <i class="icon-money"></i><small
 						class="bk-fg-inverse bk-fg-darken">代付款</small>
-						<h4 class="bk-margin-off-bottom">2</h4>
-					</a> <a class="col-xs-4"> <i class="icon-truck"></i><small
+						<h4 class="bk-margin-off-bottom" id="unpaid">2</h4>
+					</a> <a class="col-xs-4" > <i class="icon-truck"></i><small
 						class="bk-fg-inverse bk-fg-darken">待收货</small>
-						<h4 class="bk-margin-off-bottom">6</h4>
-					</a> <a class="col-xs-4"> <i class="icon-paint-brush"></i><small
+						<h4 class="bk-margin-off-bottom" id="paid">6</h4>
+					</a> <a class="col-xs-4" > <i class="icon-paint-brush"></i><small
 						class="bk-fg-inverse bk-fg-darken">待评价</small>
-						<h4 class="bk-margin-off-bottom">4</h4>
+						<h4 class="bk-margin-off-bottom" id="unapprise">4</h4>
 					</a>
 				</div>
 			</div>
@@ -331,10 +331,17 @@
 											<div class="pic">
 												<img src="images/book.png" />
 											</div>
-											<div class="msg">
-												<p class="book-title">Life is a trip</p>
-												<p>H.Laurence</p>
-												<p>ISBN:76889-0</p>
+											<div class="pic">
+												<img src="images/book.png" />
+											</div>
+											<div class="pic">
+												<img src="images/book.png" />
+											</div>
+											<div class="pic">
+												<img src="images/book.png" />
+											</div>
+											<div class="pic">
+												<img src="images/book.png" />
 											</div>
 										</div>
 									</td>
@@ -542,10 +549,10 @@
 							var divPic = "";
 							var bookName= "";
              				$.each(list.orderItemList,function(j,order){
-             					divPic = "<div class='pic'>"
-             										+"<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
-           										+"</div>";
-           						bookName = order.bookName;
+             					divPic += "<div class='pic'>"
+            										+"<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
+       										+"</div>";
+           						/* bookName = order.bookName; */
              				});
              				 var table1 = $(
 	             						"<tr class='itemhead'>"
@@ -560,15 +567,7 @@
    									 	+"<td class='itemdetail'>"
    									 	+"<div>"
    									 	+divPic
-   									 	+"<div class='msg'>"
-   									 	+"<p class='book-title'>"
-   									 	+bookName
-   									 	+"</p>"//书名
-   									 	+"<p>"
-   									 	+"</p>"//作者名
-   									 	+"<p>"
-   									 	+"</p>"//ISBN
-   									 	+"</div></div></td>"
+   									 	+"</div></td>"
    									 	+"<td class='deliver'>"
    									 	+"<span data-toggle='tooltip' data-placement='bottom' title=''>"+list.consignee
    									 	+"</span>"
