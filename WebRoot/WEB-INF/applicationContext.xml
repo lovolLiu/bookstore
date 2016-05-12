@@ -170,7 +170,12 @@
 		<property name="addressDAO" ref="addressDAO"/>
 		<property name="buyItemDAO" ref="buyItemDAO"/>
 		<property name="bookDAO" ref="bookDAO"/>
-	</bean>
+	</bean >
 	
+	<bean id="searchService" class="com.bookstore.service.impl.SearchServiceImpl">
+		<property name="bookDAO" ref="bookDAO"/>
+		<property name="bookTypeDAO" ref="bookTypeDAO"/>
+		<property name="publisherDAO" ref="publisherDAO"/>
+	</bean>
 
 </beans>

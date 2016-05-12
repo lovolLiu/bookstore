@@ -46,7 +46,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 	@Override
 	public List<Book> findByTypeID(final Integer typeID) {
 		List<Book> list = getHibernateTemplate().executeFind(new HibernateCallback(){
-			String sql = "selete * from Book b, Book_has_BookType r where b.BookID=r.Book_BookID and r.BookType_TypeID=?";
+			String sql = "selete * from Book b, Book_has_BookType r where b.bookID=r.Book_BookID and r.BookType_TypeID=?";
 			@Override
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {
@@ -63,7 +63,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 	@Override
 	public List<Book> findByPublisherID(Integer publisherID) {
 		return (List<Book>)getHibernateTemplate()
-				.find("from Book as b where b.Publisher_PublisherID=?", publisherID);
+				.find("from Book as b where b.publisherID=?", publisherID);
 	}
 
 	@Override
@@ -84,19 +84,19 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 	@Override
 	public List<Book> fuzzyfindByName(String bookname) {
 		return (List<Book>)getHibernateTemplate()
-				.find("from Book as b where b.BookName like ?", bookname);
+				.find("from Book as b where b.bookName = ? ", bookname);
 	}
 
 	@Override
 	public List<Book> fuzzyfindByAuthor(String authorname) {
 		return (List<Book>)getHibernateTemplate()
-				.find("from Book as b where b.Author like ?", authorname);
+				.find("from Book as b where b.author = ? ", authorname);
 	}
 
 	@Override
 	public List<Book> fuzzyfindByPublisher(Integer id) {
 		return (List<Book>)getHibernateTemplate()
-				.find("from Book as b where b.Publisher_PublisherID like ?", id);
+				.find("from Book as b where b.publisherID = ?", id);
 	}
 
 }

@@ -28,6 +28,11 @@
 		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
 			<result>/book-detail.jsp</result>
 		</action>
+		
+		<action name="Search" class="com.bookstore.action.SearchAction">
+			<result name="success">/books.jsp</result>
+			<result name="false">/books.jsp</result>
+		</action>
     </package>
     
     

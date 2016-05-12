@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,20 +108,12 @@
 						<div class="widget widget-search">
 							<h2>搜索</h2>
 							<div class="input-container">
-								<input type="text" placeholder="输入关键词"> <i
-									class="fa fa-search"></i>
+								<input id="searchinput" type="text" placeholder="输入关键词" > 
+								<i class="fa fa-search" ></i>
+							    <a onclick="filter()" class="btn btn-primary">搜索</a>
 							</div>
 						</div>
 						<!--SEARCH WIDGET END-->
-						<!--PRICE FILTER WIDGET START-->
-						<div class="widget widget-price-filter">
-							<h2>按价格过滤</h2>
-							<b>¥ 10</b> <b class="pull-right">¥ 1000</b> <input id="ex2"
-								type="text" class="span2" value="" data-slider-min="10"
-								data-slider-max="1000" data-slider-step="5"
-								data-slider-value="[10,400]" /> <a href="#" class="filter">过滤</a>
-						</div>
-						<!--PRICE FILTER WIDGET END-->
 						<!--NEW ARRIVAL WIDGET START-->
 						<div class="widget widget-new-arrival">
 							<h2>新品上架</h2>
@@ -250,21 +243,22 @@
 					<div class="col-md-9">
 						<div class="row">
 							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
+							<s:iterator value="divBook">
+							  <div class="col-md-4 col-sm-6">
 								<div class="books-listing-4">
 									<div class="kode-thumb">
-										<a href="#"><img src="images/book.png" alt=""></a>
+										<a href="#"><img src="${URL }" alt=""></a>
 									</div>
 									<div class="kode-text">
 										<h3>
-											<a href="#">Basic Time Management Course</a>
+											<a href="#">${bookName }</a>
 										</h3>
 										<p>
 											<a href="books-detail.jsp">详情</a>
 										</p>
 									</div>
 									<div class="book-price">
-										<p>$24.75</p>
+										<p>${bookPrice }</p>
 										<div class="rating">
 											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 										</div>
@@ -272,198 +266,9 @@
 									<a href="#" class="add-to-cart">Add to cart</a>
 								</div>
 							</div>
-							<!--BOOK LISTING END-->
-							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#"><img src="images/book2.png" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="#">Basic Time Management Course</a>
-										</h3>
-										<p>
-											<a href="books-detail.jsp">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>$24.75</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-										</div>
-									</div>
-									<a href="#" class="add-to-cart">Add to cart</a>
-								</div>
-							</div>
-							<!--BOOK LISTING END-->
-							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#"><img src="images/book3.png" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="#">Basic Time Management Course</a>
-										</h3>
-										<p>
-											<a href="books-detail.jsp">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>$24.75</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-										</div>
-									</div>
-									<a href="#" class="add-to-cart">Add to cart</a>
-								</div>
-							</div>
-							<!--BOOK LISTING END-->
-							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#"><img src="images/book4.png" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="#">Basic Time Management Course</a>
-										</h3>
-										<p>
-											<a href="books-detail.jsp">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>$24.75</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-										</div>
-									</div>
-									<a href="#" class="add-to-cart">Add to cart</a>
-								</div>
-							</div>
-							<!--BOOK LISTING END-->
-							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#"><img src="images/book5.png" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="#">Basic Time Management Course</a>
-										</h3>
-										<p>
-											<a href="books-detail.jsp">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>$24.75</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-										</div>
-									</div>
-									<a href="#" class="add-to-cart">Add to cart</a>
-								</div>
-							</div>
-							<!--BOOK LISTING END-->
-							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#"><img src="images/book6.png" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="#">Basic Time Management Course</a>
-										</h3>
-										<p>
-											<a href="books-detail.jsp">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>$24.75</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-										</div>
-									</div>
-									<a href="#" class="add-to-cart">Add to cart</a>
-								</div>
-							</div>
-							<!--BOOK LISTING END-->
-							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#"><img src="images/book7.png" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="#">Basic Time Management Course</a>
-										</h3>
-										<p>
-											<a href="books-detail.jsp">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>$24.75</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-										</div>
-									</div>
-									<a href="#" class="add-to-cart">Add to cart</a>
-								</div>
-							</div>
-							<!--BOOK LISTING END-->
-							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#"><img src="images/book8.png" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="#">Basic Time Management Course</a>
-										</h3>
-										<p>
-											<a href="books-detail.jsp">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>$24.75</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-										</div>
-									</div>
-									<a href="#" class="add-to-cart">Add to cart</a>
-								</div>
-							</div>
-							<!--BOOK LISTING END-->
-							<!--BOOK LISTING START-->
-							<div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#"><img src="images/book9.png" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="#">Basic Time Management Course</a>
-										</h3>
-										<p>
-											<a href="books-detail.jsp">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>$24.75</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-										</div>
-									</div>
-									<a href="#" class="add-to-cart">Add to cart</a>
-								</div>
-							</div>
+							</s:iterator>
+							
+
 							<!--BOOK LISTING END-->
 							<nav>
 								<ul class="pagination">
@@ -619,6 +424,10 @@
 	<script src="js/functions.js"></script>
 	<script src="js/classie.js"></script>
 	<script>
+	    function filter(){
+	    	var keyword = document.getElementById("searchinput").value;
+	    	location.href = "Search?keyword="+keyword;
+	    }
 		(function() {
 			var dummy = document.getElementById('dummy-grid');
 			[].slice
