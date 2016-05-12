@@ -24,6 +24,7 @@ public class UserAction {
 	Integer paidNum;
 	Integer unpaidNum;
 	Integer unapprisedNum;
+	String result;
 	
 	//To myAddress.jsp
 	List<Address> addressList;
@@ -34,7 +35,9 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
-	
+	public String isPasswordValid(){
+		return "success";
+	}
 	public String showOrderListInUserIndex() {
 		List<Order> orderList = personalInfoService.getLatestOrder(userID);
 		divOrderList = new ArrayList<DivOrder>();
@@ -144,5 +147,11 @@ public class UserAction {
 		this.unapprisedNum = unapprisedNum;
 	}
 	
+	public String getResult() {
+		return result;
+	}
 	
+	public void setResult(String result) {
+		this.result = result;
+	}
 }

@@ -126,7 +126,7 @@
 }
 
 #over {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	z-index: 1;
@@ -140,7 +140,7 @@
 	margin-right: auto;
 	background-color: white;
 	opacity: 1;
-	position: relative;
+	position: fixed;
 	z-index: 100;
 	border-radius: 20px;
 	border: 5px solid orange;
@@ -479,8 +479,10 @@
 			overDiv.style.width = w + "px";
 			/*遮罩层的内部div垂直居中*/
 			var childDiv = document.getElementById("over_child");
-			var middle = Math.floor((h - 200) / 2);
-			childDiv.style.top = middle + "px";
+			var vmiddle = Math.floor((h - 200) / 2);
+			var hmiddle = Math.floor((w - 400) / 2);
+			childDiv.style.top = vmiddle + "px";
+			childDiv.style.left = hmiddle + "px";
 		}
 		$('#cancel').click(function() {
 			//将遮罩层的内容隐藏掉

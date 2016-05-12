@@ -139,5 +139,14 @@
 				<param name="root">paidNum</param>
 			</result>
 		</action>
+		<action name="IsPasswordValid" class="com.bookstore.action.UserAction"
+			method="isPasswordValid">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 	</package>
 </struts>
