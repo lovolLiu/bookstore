@@ -14,6 +14,8 @@ public class BookDetailAction {
 	
 	Book book;
 	Publisher publisher;
+	int bookScore = 0;
+	int totalScore=0;
 	List<Apprise> appriseList;
 	List<Book> relatedBookList;
 	List<Book> hotestBookList;
@@ -25,9 +27,12 @@ public class BookDetailAction {
 	public String execute(){
 		book = bookDetailService.getBookInfo(9);
 		publisher = bookDetailService.getBookPublisher(9);
-		System.out.println("出版商"+publisher.getPublisherName());
-		System.out.println("书名"+book.getBookName());
+
 		appriseList = bookDetailService.getAppriseList(9);
+		for(int i=0; i< appriseList.size();i++){
+			totalScore += appriseList.get(i).getScore();
+		}
+		bookScore = totalScore/appriseList.size();
 		//relatedBookList = selectService.selectPersonalBook();
         
 		hotestBookList = selectBookService.selectHottestBook();
@@ -120,6 +125,22 @@ public class BookDetailAction {
 
 	public void setSelectBookService(SelectBookService selectBookService) {
 		this.selectBookService = selectBookService;
+	}
+
+	public int getBookScore() {
+		return bookScore;
+	}
+
+	public void setBookScore(int bookScore) {
+		this.bookScore = bookScore;
+	}
+
+	public int getTotalScore() {
+		return totalScore;
+	}
+
+	public void setTotalScore(int totalScore) {
+		this.totalScore = totalScore;
 	}
 
 

@@ -244,7 +244,7 @@
                                         <div class="rating">
                                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                         </div>
-                                        <p>4 评论</p>
+                                        <p><s:property value = "bookScore" />评论</p>
                                     </div>
                                     <div class="product-price">
                                         <h4><s:property value="book.price"/> RMB</h4>
