@@ -54,7 +54,7 @@ public class SelectBookServiceImpl implements SelectBookService {
 
 	@Override
 	public List<Book> selectHottestBook() {
-		return bookDAO.findAllOrderByClickCount();
+		return bookDAO.findAllOrderByTotalSell();
 	}
 
 	@Override

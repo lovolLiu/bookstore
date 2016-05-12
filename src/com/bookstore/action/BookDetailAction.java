@@ -30,7 +30,7 @@ public class BookDetailAction {
 		appriseList = bookDetailService.getAppriseList(9);
 		//relatedBookList = selectService.selectPersonalBook();
         
-		//hotestBookList = selectService.selectHottestBook();
+		hotestBookList = selectBookService.selectHottestBook();
 	
 		newestBookList = selectBookService.selectNewestBook();
 

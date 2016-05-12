@@ -172,8 +172,8 @@
                                         <a href="#"><img src="images/new-arrival2.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                                        <h3><s:property value="hotestBookList[0].bookName"/></h3>
+                                        <p><s:property value="hotestBookList[0].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
@@ -181,8 +181,8 @@
                                         <a href="#"><img src="images/new-arrival1.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et</p>
+                                        <h3><s:property value="hotestBookList[1].bookName"/></h3>
+                                        <p><s:property value="hotestBookList[1].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
@@ -190,8 +190,8 @@
                                         <a href="#"><img src="images/new-arrival3.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                                        <h3><s:property value="hotestBookList[2].bookName"/></h3>
+                                        <p><s:property value="hotestBookList[2].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -201,8 +201,8 @@
                                         <a href="#"><img src="images/new-arrival3.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                                        <h3><s:property value="hotestBookList[3].bookName"/></h3>
+                                        <p><s:property value="hotestBookList[3].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
@@ -210,8 +210,8 @@
                                         <a href="#"><img src="images/new-arrival2.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                                        <h3><s:property value="hotestBookList[4].bookName"/></h3>
+                                        <p><s:property value="hotestBookList[4].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
@@ -219,8 +219,8 @@
                                         <a href="#"><img src="images/new-arrival1.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                                        <h3><s:property value="hotestBookList[5].bookName"/></h3>
+                                        <p><s:property value="hotestBookList[5].description"/></p>
                                     </div>
                                 </div>
                             </li>
