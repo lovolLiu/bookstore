@@ -241,7 +241,7 @@ a {
 			    <input type="text" placeholder="收货人姓名" value="" id="consignee" />
 				<input type="text" placeholder="电话号码" value="" id="tel" />
 			</form>
-			<div class="error">dfdf</div>
+			<div class="error">我是错误信息</div>
 			<a id="confirmaddaddress" class="btn btn-primary">确定</a>
 			<a id="canceladdaddress" class="btn btn-primary">取消</a>
 		</div>
@@ -727,7 +727,6 @@ a {
 		});
 		//添加新地址form的确定按钮
 		$('#confirmaddaddress').click(function() {
-		    alert("sfdfd");
 		});
 		$(document).ready(function() {
 			$('#horizontalTab').easyResponsiveTabs({
