@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,76 +39,81 @@
 <![endif]-->
 </head>
 <body>
-<div id="loader-wrapper">
-	<div id="loader"></div>
+	<div id="loader-wrapper">
+		<div id="loader"></div>
 
-	<div class="loader-section section-left"></div>
-	<div class="loader-section section-right"></div>
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
 
-</div>
-<!--WRAPPER START-->
-<div class="wrapper kode-header-class-3">
-	<!--HEADER START-->
-	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand">Bookaholic</a>
-			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="hidden-sm"><a href="index.jsp">主页</a></li>
-					<li class="hidden-sm"><a href="books.jsp">开始选购</a></li>
-					<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
-					<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
-			    </ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
 	</div>
-    <!--HEADER END-->
-    <!--BANNER START-->
-    <div class="kode-inner-banner">
-    	<div class="kode-page-heading">
-        	<h2>账户登陆</h2>
-            <ol class="breadcrumb">
-              <li><a href="#">主页</a></li>
-              <li class="active">登陆</li>
-            </ol>
-        </div>
-    </div>
-    <!--BANNER END-->
-    <!--LOGINFORM START-->
-    <div class="main-content col-md-4 col-md-offset-4">
-		<div class="sap_tabs">	
-			 
-			<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-			 
-				  <ul>
-					  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Login</span></li>
-					  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>create account</span></li>
-					  
-				  </ul>		
-				  <!---->
+	<!--WRAPPER START-->
+	<div class="wrapper kode-header-class-3">
+		<!--HEADER START-->
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand">Bookaholic</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
+						<li class="hidden-sm"><a href="books.jsp">开始选购</a></li>
+						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
+						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+		<!--HEADER END-->
+		<!--BANNER START-->
+		<div class="kode-inner-banner">
+			<div class="kode-page-heading">
+				<h2>账户登陆</h2>
+				<ol class="breadcrumb">
+					<li><a href="#">主页</a></li>
+					<li class="active">登陆</li>
+				</ol>
+			</div>
+		</div>
+		<!--BANNER END-->
+		<!--LOGINFORM START-->
+		<div class="main-content col-md-4 col-md-offset-4">
+			<div class="sap_tabs">
 
-				<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+				<div id="horizontalTab"
+					style="display: block; width: 100%; margin: 0px;">
+
+					<ul>
+						<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Login</span></li>
+						<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>create
+								account</span></li>
+
+					</ul>
+					<!---->
+
+					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 						<div class="register">
 							<form onSubmit="return false;">								
 								<input placeholder="用户名" class="mail" type="text" id="loginusrname" required="" name="username">									
 								<input placeholder="密码" class="lock" type="password" id="loginpwd" required="" name="password">				
 								<input type="submit" value="登陆" onclick="loginUser()"/>
 							</form>
-							<p>忘记密码?<a href="#"> 点击这里</a></p>
+							<p>
+								忘记密码?<a href="findpassword.jsp"> 点击这里</a>
+							</p>
 						</div>
-				</div>	
+					</div>
 
-				<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
+					<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 						<div class="register">
+
 							<h4 id="register-success" style="width: 100%;display: inline-block;text-align: center;display: none;"></h4>
 							<form id="registerform" onSubmit="return false;">	
 								<input id="usrname" placeholder="用户名" type="text" required="required" onblur="checkusrname()">
@@ -125,10 +130,64 @@
 								</div>
 							</form>
 						</div>
-					</div> 	        					            	      
-					
-			</div>	
-			
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<!--LOGINFORM END-->
+		<footer class="footer-3">
+			<div class="container">
+				<div class="row">
+					<!--CATEGORY WIDGET START-->
+					<div class="col-md-6 col-sm-6">
+						<div class="widget widget-categories">
+							<h2>站点地图</h2>
+							<ul>
+								<li><a href="index.jsp">主页</a></li>
+								<li><a href="books.jsp">开始选购</a></li>
+								<li><a href="cart.jsp">购物车</a></li>
+								<li><a href="userinfo.jsp">我的账户</a></li>
+							</ul>
+						</div>
+					</div>
+					<!--CATEGORY WIDGET END-->
+					<!--NEWSLETTER START-->
+					<div class="col-md-6 col-sm-6">
+						<div class="widget widget-contact-info">
+							<h2>联系我们</h2>
+							<ul>
+								<li><i class="fa fa-paper-plane"></i>
+									<div class="kode-text">
+										<h4>地址</h4>
+										<p>北京市海淀区西土城路10号北京邮电大学</p>
+									</div></li>
+								<li><i class="fa fa-phone"></i>
+									<div class="kode-text">
+										<h4>电话号码</h4>
+										<p>+55(62) 55258-4570</p>
+										<p>+55(62) 55258-4570</p>
+									</div></li>
+								<li><i class="fa fa-envelope-o"></i>
+									<div class="kode-text">
+										<h4>电子邮箱</h4>
+										<a href="#">teamx@bupt.edu.cn</a>
+									</div></li>
+							</ul>
+						</div>
+					</div>
+					<!--NEWSLETTER START END-->
+				</div>
+			</div>
+		</footer>
+		<div class="copyrights">
+			<div class="container">
+				<p>Copyrights © 2015-16 BUPTSSE. All rights reserved</p>
+				<div class="cards">
+					<img src="images/cards.png" alt="">
+				</div>
+			</div>
 		</div>
 	</div>
     <!--LOGINFORM END-->

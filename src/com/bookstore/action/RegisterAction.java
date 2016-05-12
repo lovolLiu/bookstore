@@ -16,7 +16,7 @@ public class RegisterAction {
 	String userTel;
 	String userEmail;
 	String result;
-	
+
 	public String hasEmail(){
 		if(registerService.hasUserEmail(userEmail)){
 			this.result = "true";
