@@ -281,13 +281,13 @@
 				<div class="row text-center userinfo">
 					<a class="col-xs-4" > <i class="icon-money"></i><small
 						class="bk-fg-inverse bk-fg-darken">代付款</small>
-						<h4 class="bk-margin-off-bottom" id="unpaid">2</h4>
+						<h4 class="bk-margin-off-bottom" id="unpaid"></h4>
 					</a> <a class="col-xs-4" > <i class="icon-truck"></i><small
 						class="bk-fg-inverse bk-fg-darken">待收货</small>
-						<h4 class="bk-margin-off-bottom" id="paid">6</h4>
+						<h4 class="bk-margin-off-bottom" id="paid"></h4>
 					</a> <a class="col-xs-4" > <i class="icon-paint-brush"></i><small
 						class="bk-fg-inverse bk-fg-darken">待评价</small>
-						<h4 class="bk-margin-off-bottom" id="unapprise">4</h4>
+						<h4 class="bk-margin-off-bottom" id="unapprise"></h4>
 					</a>
 				</div>
 			</div>
@@ -529,6 +529,8 @@
 			});
 			showOrder();
 			showPaidOrderNumber();
+			showUnpaidOrderNumber();
+			showUnapprisedOrderNumber();
 		});
 		
 		function formatDate(data){
@@ -544,7 +546,7 @@
 		
 		function showOrder(){
 			$.ajax({
-				url:"ShowOrderInUserInfo",
+				url:"ShowOrderInUserInfo.action",
 				dataType:"json",
 				success:function(data){
 					$.each(data,function(i,list){  
@@ -587,7 +589,25 @@
 				url:"ShowPaidNumber",
 				dataType:"json",
 				success:function(data){
-					$("a[id='paid']").html(data);
+					$("h4[id='paid']").html(data);
+				}
+			})
+		}
+		function showUnpaidOrderNumber(){
+			$.ajax({
+				url:"ShowUnpaidNumber",
+				dataType:"json",
+				success:function(data){
+					$("h4[id='unpaid']").html(data);
+				}
+			})
+		}
+		function showUnapprisedOrderNumber(){
+			$.ajax({
+				url:"ShowUnapprisedNumber",
+				dataType:"json",
+				success:function(data){
+					$("h4[id='unapprise']").html(data);
 				}
 			})
 		}

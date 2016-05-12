@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.domain.Address;
+import com.bookstore.domain.Book;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.service.ConvertorService;
@@ -35,11 +36,17 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
+<<<<<<< Updated upstream
 	public String isPasswordValid(){
 		return "success";
 	}
 	public String showOrderListInUserIndex() {
 		List<Order> orderList = personalInfoService.getLatestOrder(userID);
+=======
+	
+	public String showPaidOrder() {
+		List<Order> orderList = personalInfoService.getPaidOrder(userID);
+>>>>>>> Stashed changes
 		divOrderList = new ArrayList<DivOrder>();
 		for(Order order: orderList){
 			Integer orderId = order.getOrderID();
@@ -71,11 +78,19 @@ public class UserAction {
 	}
 	
 	public String showUnpaidOrderNumber() {
-		return "";
+		List<Order> orderList = personalInfoService.getUnpaidOrder(userID);
+		if(orderList.isEmpty())
+			unpaidNum = 0;
+		else unpaidNum = orderList.size();
+		return "success";
 	}
 	
 	public String showUnapprisedBooksNumber() {
-		return "";
+		List<Book> bookList = personalInfoService.getUnappriseBook(userID);
+		if(bookList.isEmpty())
+			unapprisedNum = 0;
+		else unapprisedNum = bookList.size();
+		return "success";
 	}
 	
 	public String showCanceledOrderList() {

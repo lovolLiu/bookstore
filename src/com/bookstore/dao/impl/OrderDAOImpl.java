@@ -2,12 +2,15 @@ package com.bookstore.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bookstore.dao.OrderDAO;
 import com.bookstore.domain.Order;
 
 public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
+	Session session = null;
 
 	@Override
 	public Order findById(Integer id) {
@@ -47,7 +50,9 @@ public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
 	}
 	
 	public List<Order> findByUserIDandStats(Integer stats, Integer userID){
-		return (List<Order>)getHibernateTemplate().find("from Order as a where a.userID=? and a.stats=? order by a.buyTime desc",userID, stats);
+		String hql="from Order as a where a.userID=? and a.stats=? order by a.buyTime desc";                          
+	    Query query= session.createQuery(hql).setParameter(0, userID).setParameter(1, stats);
+		return (List<Order>)getHibernateTemplate().find(hql);
 	}
 	
 

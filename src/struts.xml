@@ -128,7 +128,7 @@
 
 		<!-- UserInfo 页相关的Action -->
 		<action name="ShowOrderInUserInfo" class="com.bookstore.action.UserAction"
-			method="showOrderListInUserIndex">  
+			method="showPaidOrder">  
 			<result type="json">
 				<param name="root">divOrderList</param>
 			</result>
@@ -139,6 +139,7 @@
 				<param name="root">paidNum</param>
 			</result>
 		</action>
+<<<<<<< Updated upstream
 		<action name="IsPasswordValid" class="com.bookstore.action.UserAction"
 			method="isPasswordValid">
 			<result name="true" type="json">
@@ -146,6 +147,18 @@
 			</result>
 			<result name="false" type="json">
 				<param name="root">result</param>
+=======
+		<action name="ShowUnpaidNumber" class="com.bookstore.action.UserAction"
+			method="showUnpaidOrderNumber">
+			<result type="json">
+				<param name="root">unpaidNum</param>
+			</result>
+		</action>
+		<action name="ShowUnapprisedNumber" class="com.bookstore.action.UserAction"
+			method="showUnapprisedBooksNumber">
+			<result type="json">
+				<param name="root">unapprisedNum</param>
+>>>>>>> Stashed changes
 			</result>
 		</action>
 	</package>
