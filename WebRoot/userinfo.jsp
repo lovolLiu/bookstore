@@ -306,13 +306,13 @@ a{
 				<div class="row text-center userinfo">
 					<a class="col-xs-4"> <i class="icon-money"></i><small
 						class="bk-fg-inverse bk-fg-darken">代付款</small>
-						<h4 class="bk-margin-off-bottom" id="unpaid">2</h4>
-					</a> <a class="col-xs-4"> <i class="icon-truck"></i><small
+						<h4 class="bk-margin-off-bottom" id="unpaid"></h4>
+					</a> <a class="col-xs-4" > <i class="icon-truck"></i><small
 						class="bk-fg-inverse bk-fg-darken">待收货</small>
-						<h4 class="bk-margin-off-bottom" id="paid">6</h4>
-					</a> <a class="col-xs-4"> <i class="icon-paint-brush"></i><small
+						<h4 class="bk-margin-off-bottom" id="paid"></h4>
+					</a> <a class="col-xs-4" > <i class="icon-paint-brush"></i><small
 						class="bk-fg-inverse bk-fg-darken">待评价</small>
-						<h4 class="bk-margin-off-bottom" id="unapprise">4</h4>
+						<h4 class="bk-margin-off-bottom" id="unapprise"></h4>
 					</a>
 				</div>
 			</div>
@@ -329,7 +329,7 @@ a{
 					aria-expanded="false">修改个人信息</a></li>
 				<li role="presentation" class=""><a href="#address"
 					aria-controls="reviews" role="tab" data-toggle="tab"
-					aria-expanded="false">管理收货地址</a></li>
+					aria-expanded="false" onclick="showAddress()">管理收货地址</a></li>
 			</ul>
 			<!--NAV TABS END-->
 			<!--TAB PANEL START-->
@@ -747,6 +747,8 @@ a{
 			});
 			showOrder();
 			showPaidOrderNumber();
+			showUnpaidOrderNumber();
+			showUnapprisedOrderNumber();
 		});
 
 		function formatDate(data) {
@@ -763,68 +765,96 @@ a{
 			formattedDate = formattedDate + " " + formattedTime;
 			return formattedDate;
 		}
-
-		function showOrder() {
-			$
-					.ajax({
-						url : "ShowOrderInUserInfo",
-						dataType : "json",
-						success : function(data) {
-							$
-									.each(
-											data,
-											function(i, list) {
-												var divPic = "";
-												var bookName = "";
-												$
-														.each(
-																list.orderItemList,
-																function(j,
-																		order) {
-																	divPic += "<div class='pic'>"
-																			+ "<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
-																			+ "</div>";
-																	/* bookName = order.bookName; */
-																});
-												var table1 = $("<tr class='itemhead'>"
-														+ "<td colspan='4'>"
-														+ "<span class='dealtime'>"
-														+ formatDate(list.dealTime)
-														+ "</span>"
-														+ "<span class='orderno'>"
-														+ "订单号: <a href='xxxxx'>"
-														+ list.orderId
-														+ "</a></span>"/*xxxx表示以后要添加跳转href */
-														+ "</tr>"
-														+ "<tr class='item'>"
-														+ "<td class='itemdetail'>"
-														+ "<div>"
-														+ divPic
-														+ "</div></td>"
-														+ "<td class='deliver'>"
-														+ "<span data-toggle='tooltip' data-placement='bottom' title=''>"
-														+ list.consignee
-														+ "</span>"
-														+ "</td>"
-														+ "<td class='sum'><span>￥"
-														+ list.totalPrice
-														+ "</span></td>"
-														+ "<td class='status'><span>"
-														+ list.orderStats
-														+ "</span></td></tr>");
-												$("tbody[id='ordertable']")
-														.append(table1);
-											});
-						}
-					})
+		function showOrder(){
+			$.ajax({
+				url:"ShowOrderInUserInfo.action",
+				dataType:"json",
+				success:function(data){
+					$.each(data,function(i,list){  
+							var divPic = "";
+							var bookName= "";
+             				$.each(list.orderItemList,function(j,order){
+             					divPic += "<div class='pic'>"
+            										+"<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
+       										+"</div>";
+           						/* bookName = order.bookName; */
+             				});
+             				 var table1 = $(
+	             						"<tr class='itemhead'>"
+   									 	+"<td colspan='4'>"
+   									 	+"<span class='dealtime'>"
+   									 	+formatDate(list.dealTime)
+   									 	+"</span>"
+   									 	+"<span class='orderno'>"
+   									 	+"订单号: <a href='xxxxx'>"+list.orderId+"</a></span>"/*xxxx表示以后要添加跳转href */
+   									 	+"</tr>"
+   									 	+"<tr class='item'>"
+   									 	+"<td class='itemdetail'>"
+   									 	+"<div>"
+   									 	+divPic
+   									 	+"</div></td>"
+   									 	+"<td class='deliver'>"
+   									 	+"<span data-toggle='tooltip' data-placement='bottom' title=''>"+list.consignee
+   									 	+"</span>"
+   									 	+"</td>"
+   									 	+"<td class='sum'><span>￥"+list.totalPrice+"</span></td>"
+   									 	+"<td class='status'><span>"+list.orderStats+"</span></td></tr>");			
+             			 	 $("tbody[id='ordertable']").append(table1);  
+          			});  
+				}
+			})
 		}
 
 		function showPaidOrderNumber() {
 			$.ajax({
-				url : "ShowPaidNumber",
-				dataType : "json",
-				success : function(data) {
-					$("a[id='paid']").html(data);
+				url:"ShowPaidNumber",
+				dataType:"json",
+				success:function(data){
+					$("h4[id='paid']").html(data);
+				}
+			})
+		}
+		function showUnpaidOrderNumber(){
+			$.ajax({
+				url:"ShowUnpaidNumber",
+				dataType:"json",
+				success:function(data){
+					$("h4[id='unpaid']").html(data);
+				}
+			})
+		}
+		function showUnapprisedOrderNumber(){
+			$.ajax({
+				url:"ShowUnapprisedNumber",
+				dataType:"json",
+				success:function(data){
+					$("h4[id='unapprise']").html(data);
+				}
+			})
+		}
+		function showAddress(){
+			$.ajax({
+				url:"ShowAddress",
+				dataType:"json",
+				success:function(data){
+					$.each(data,function(i,list){  
+             				var table1 = $(
+	             						"<div class='panel col-sm-3 item'>"
+   									 		+"<div class='panel-body text-center bk-padding-off bk-wrapper'>"
+   									 			+"<img src='images/flat-landscape.jpg' alt='' class='img-responsive'>"
+   									 		+"</div>"
+   									 	+"<div class='panel-body text-center'>"
+   									 		+"<h3 class='bk-margin-off'>"
+   									 			+"<strong>"+list.person+"</strong>"
+   									 		+"</h3>"
+  									 	+"<small class='bk-fg-inverse'>"+list.tel+"</small>"
+  									 	+"<p class='bk-margin-off-bottom bk-fg-gray'>"
+  									 		+"<em>"+list.address+"</em>"
+  									 	+"</p>"
+  									 	+"<a class='btn btn-primary itemselect'>选择</a>"
+  									 	+"</div>");		
+             			 	 $("div[id='selectaddress']").append(table1);  
+          			});  
 				}
 			})
 		}
