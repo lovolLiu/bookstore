@@ -50,9 +50,10 @@ public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
 	}
 	
 	public List<Order> findByUserIDandStats(Integer stats, Integer userID){
-		String hql="from Order as a where a.userID=? and a.stats=? order by a.buyTime desc";                          
-	    Query query= session.createQuery(hql).setParameter(0, userID).setParameter(1, stats);
-		return (List<Order>)getHibernateTemplate().find(hql);
+		String hql="from Order as a where a.userID=? and a.stats=? order by a.buyTime desc";    
+		Object[] param=new Object[]{userID,stats};
+//	    Query query= session.createQuery(hql).setParameter(0, userID).setParameter(1, stats);
+		return (List<Order>)getHibernateTemplate().find(hql,param);
 	}
 	
 

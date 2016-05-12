@@ -36,17 +36,9 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
-<<<<<<< Updated upstream
-	public String isPasswordValid(){
-		return "success";
-	}
-	public String showOrderListInUserIndex() {
-		List<Order> orderList = personalInfoService.getLatestOrder(userID);
-=======
 	
 	public String showPaidOrder() {
 		List<Order> orderList = personalInfoService.getPaidOrder(userID);
->>>>>>> Stashed changes
 		divOrderList = new ArrayList<DivOrder>();
 		for(Order order: orderList){
 			Integer orderId = order.getOrderID();
