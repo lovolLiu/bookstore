@@ -352,42 +352,22 @@ select {
 										<div class="bill-to">
 											<p>寄送到</p>
 											<div class="form-one">
-												<form>
-													<select>
-														<option>-- 省份 --</option>
-														<option></option>
-														<option>北京</option>
-														<option>云南</option>
-														<option>河南</option>
-														<option>河北</option>
-														<option>湖南</option>
-														<option>湖北</option>
-														<option>广东</option>
-													</select> <select>
-														<option>-- 城市/地区 --</option>
-														<option>昆明</option>
-														<option>大理</option>
-														<option>曲靖</option>
-														<option>丽江</option>
-													</select> <input type="text" placeholder="详细地址"
-														value="${address.address }"> <input type="text"
-														placeholder="邮政编码">
+												<form onSubmit="return false;">
+												    <input type="text" placeholder="省份" id="address1">
+												     <input type="text" placeholder="地区" id="address2">
+													<input type="text" placeholder="详细地址"
+														value="${address.address }" id="address3"> <input type="text"
+														placeholder="邮政编码" id="address4">
+													<a class="btn btn-primary" onclick="addAddress()">确定</a>
 												</form>
 											</div>
 											<div class="form-two">
-												<form>
+												<form onSubmit="return false;">
 													<input type="text" placeholder="收货人姓名"
-														value="${address.person }"> <input type="text"
-														placeholder="电话号码" value="${address.tel }">
+														value="${address.person }" id="consignee"> <input type="text"
+														placeholder="电话号码" value="${address.tel }" id="tel">
 												</form>
 											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="order-message">
-											<p>备注</p>
-											<textarea name="message" placeholder="注明特殊的投递需求以及包装要求。"
-												rows="16"></textarea>
 										</div>
 									</div>
 								</div>
@@ -556,6 +536,37 @@ select {
 			// 100% fit in a container
 			});
 		});
+		
+		function addAddress(){
+			var consignee = $("input[id='consignee']").val();
+			var tel = $("input[id='tel']").val();
+			var address = $("input[id='address1']").val()+$("input[id='address2']").val()+$("input[id='address3']").val()+$("input[id='address4']").val();
+			$.ajax({
+				url:"AddAddress",
+				data:{"consignee":consignee,"tel":tel,"address":String(address)},
+				dataType:"json",
+				success:function(data){
+					var address =  $(
+	             						"<div class='panel col-sm-3 item'>"
+   									 		+"<div class='panel-body text-center bk-padding-off bk-wrapper'>"
+   									 			+"<img src='images/flat-landscape.jpg' alt='' class='img-responsive'>"
+   									 		+"</div>"
+   									 	+"<div class='panel-body text-center'>"
+   									 		+"<h3 class='bk-margin-off'>"
+   									 			+"<strong>"+data.person+"</strong>"
+   									 		+"</h3>"
+  									 	+"<small class='bk-fg-inverse'>"+data.tel+"</small>"
+  									 	+"<p class='bk-margin-off-bottom bk-fg-gray'>"
+  									 		+"<em>"+data.address+"</em>"
+  									 	+"</p>"
+  									 	+"<a class='btn btn-primary itemselect'>选择</a>"
+  									 	+"</div>");		
+					
+             		 $("div[id='selectaddress']").prepend(address);  
+				}
+			})
+		}
+		
 	</script>
 
 </body>

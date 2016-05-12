@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.domain.Address;
+import com.bookstore.domain.Book;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.service.ConvertorService;
@@ -24,6 +25,7 @@ public class UserAction {
 	Integer paidNum;
 	Integer unpaidNum;
 	Integer unapprisedNum;
+	String result;
 	
 	//To myAddress.jsp
 	List<Address> addressList;
@@ -35,8 +37,8 @@ public class UserAction {
 	///////////////////////////
 	Integer userID = 1;
 	
-	public String showOrderListInUserIndex() {
-		List<Order> orderList = personalInfoService.getLatestOrder(userID);
+	public String showPaidOrder() {
+		List<Order> orderList = personalInfoService.getPaidOrder(userID);
 		divOrderList = new ArrayList<DivOrder>();
 		for(Order order: orderList){
 			Integer orderId = order.getOrderID();
@@ -68,11 +70,24 @@ public class UserAction {
 	}
 	
 	public String showUnpaidOrderNumber() {
-		return "";
+		List<Order> orderList = personalInfoService.getUnpaidOrder(userID);
+		if(orderList.isEmpty())
+			unpaidNum = 0;
+		else unpaidNum = orderList.size();
+		return "success";
 	}
 	
 	public String showUnapprisedBooksNumber() {
-		return "";
+		List<Book> bookList = personalInfoService.getUnappriseBook(userID);
+		if(bookList.isEmpty())
+			unapprisedNum = 0;
+		else unapprisedNum = bookList.size();
+		return "success";
+	}
+	
+	public String showAddress(){
+		addressList = personalInfoService.getAddress(userID);
+		return "success";
 	}
 	
 	public String showCanceledOrderList() {
@@ -144,5 +159,11 @@ public class UserAction {
 		this.unapprisedNum = unapprisedNum;
 	}
 	
+	public String getResult() {
+		return result;
+	}
 	
+	public void setResult(String result) {
+		this.result = result;
+	}
 }

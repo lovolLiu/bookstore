@@ -133,7 +133,7 @@
 
 		<!-- UserInfo 页相关的Action -->
 		<action name="ShowOrderInUserInfo" class="com.bookstore.action.UserAction"
-			method="showOrderListInUserIndex">  
+			method="showPaidOrder">  
 			<result type="json">
 				<param name="root">divOrderList</param>
 			</result>
@@ -142,6 +142,30 @@
 			method="showPaidOrderNumber">
 			<result type="json">
 				<param name="root">paidNum</param>
+			</result>
+		</action>
+		<action name="ShowUnpaidNumber" class="com.bookstore.action.UserAction"
+			method="showUnpaidOrderNumber">
+			<result type="json">
+				<param name="root">unpaidNum</param>
+			</result>
+		</action>
+		<action name="ShowUnapprisedNumber" class="com.bookstore.action.UserAction"
+			method="showUnapprisedBooksNumber">
+			<result type="json">
+				<param name="root">unapprisedNum</param>
+			</result>
+		</action>
+		<action name="ShowAddress" class="com.bookstore.action.UserAction"
+			method="showAddress">
+			<result type="json">
+				<param name="root">addressList</param>
+			</result>
+		</action>
+		<action name="AddAddress" class="com.bookstore.action.AddressAction"
+			method="addAddress">
+			<result type="json">
+				<param name="root">addressObject</param>
 			</result>
 		</action>
 	</package>

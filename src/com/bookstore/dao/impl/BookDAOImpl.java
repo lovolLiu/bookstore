@@ -68,7 +68,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
 	@Override
 	public List<Book> findAllOrderByPublishTime() {
-		return (List<Book>)getHibernateTemplate().find("from Book b order by b.publishTime");
+		return (List<Book>)getHibernateTemplate().find("from Book b order by b.publishTime desc");
 	}
 
 	@Override
@@ -97,6 +97,11 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 	public List<Book> fuzzyfindByPublisher(Integer id) {
 		return (List<Book>)getHibernateTemplate()
 				.find("from Book as b where b.publisherID = ?", id);
+	}
+
+	@Override
+	public List<Book> findAllOrderByTotalSell() {
+		return (List<Book>)getHibernateTemplate().find("from Book b order by b.totalSell desc");
 	}
 
 }
