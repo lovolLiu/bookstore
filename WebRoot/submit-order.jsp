@@ -353,26 +353,14 @@ select {
 											<p>寄送到</p>
 											<div class="form-one">
 												<form>
-													<select>
-														<option>-- 省份 --</option>
-														<option></option>
-														<option>北京</option>
-														<option>云南</option>
-														<option>河南</option>
-														<option>河北</option>
-														<option>湖南</option>
-														<option>湖北</option>
-														<option>广东</option>
-													</select> <select>
-														<option>-- 城市/地区 --</option>
-														<option>昆明</option>
-														<option>大理</option>
-														<option>曲靖</option>
-														<option>丽江</option>
-													</select> <input type="text" placeholder="详细地址"
-														value="${address.address }"> <input type="text"
+												<input type="text" placeholder="省份">
+												<input type="text" placeholder="地区">
+												<input type="text" placeholder="详细地址"
+														value="${address.address }"> 
+												<input type="text"
 														placeholder="邮政编码">
 												</form>
+												<a class="btn btn-primary">添加新地址</a>
 											</div>
 											<div class="form-two">
 												<form>

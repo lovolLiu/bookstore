@@ -35,9 +35,34 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
+	String oldpassword;
+	String newpassword;
+	String newemail;
+	
 	public String isPasswordValid(){
-		return "success";
+		if(personalInfoService.isPasswordValid(userID, oldpassword))
+			result = "success";
+		else
+			result = "fail";
+		return result;
 	}
+	
+	public String modifyPassword(){
+		if(personalInfoService.modifyPassword(userID, newpassword))
+			result = "success";
+		else
+			result = "false";
+		return result;
+	}
+	
+	public String modifyEmail(){
+		if(personalInfoService.modifyEmail(userID, newemail))
+			result = "success";
+		else
+			result = "false";
+		return result;
+	}
+	
 	public String showOrderListInUserIndex() {
 		List<Order> orderList = personalInfoService.getLatestOrder(userID);
 		divOrderList = new ArrayList<DivOrder>();
@@ -147,6 +172,21 @@ public class UserAction {
 		this.unapprisedNum = unapprisedNum;
 	}
 	
+	public String getOldpassword() {
+		return oldpassword;
+	}
+	
+	public void setOldpassword(String oldpassword) {
+		this.oldpassword = oldpassword;
+	}
+	
+	public String getNewpassword() {
+		return newpassword;
+	}
+	
+	public void setNewpassword(String newpassword) {
+		this.newpassword = newpassword;
+	}
 	public String getResult() {
 		return result;
 	}
@@ -154,4 +194,13 @@ public class UserAction {
 	public void setResult(String result) {
 		this.result = result;
 	}
+
+	public String getNewemail() {
+		return newemail;
+	}
+
+	public void setNewemail(String newemail) {
+		this.newemail = newemail;
+	}
+	
 }
