@@ -27,6 +27,11 @@ public class UserAction {
 	Integer unapprisedNum;
 	String result;
 	
+	//To changepassword function
+	String oldpassword;
+	String newpassword;
+	String newemail;
+	
 	//To myAddress.jsp
 	List<Address> addressList;
 	
@@ -36,9 +41,6 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
-	String oldpassword;
-	String newpassword;
-	String newemail;
 	
 	public String isPasswordValid(){
 		if(personalInfoService.isPasswordValid(userID, oldpassword))

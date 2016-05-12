@@ -151,7 +151,7 @@
                     <div class="widget widget-categories">
                     	<h2>类别</h2>
                         <ul>
-                        	<li><a href="#">Photoshop</a></li>
+                        	<li><a href="#"><s:property value=""/></a></li>
                             <li><a href="#">Web/Graphic Design</a></li>
                             <li><a href="#">Mobile Development</a></li>
                             <li><a href="#">Video Editing</a></li>

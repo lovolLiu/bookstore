@@ -21,6 +21,14 @@ public class AddressAction {
 		addressService.createAddress(addressObject);
 		return "success";
 	}
+	
+	public String updateAddress(){
+		return "success";
+	}
+	public String deleteAddress(){
+		
+		return "success";
+	}
 	public String getConsignee() {
 		return consignee;
 	}
