@@ -85,6 +85,11 @@ public class UserAction {
 		return "success";
 	}
 	
+	public String showAddress(){
+		addressList = personalInfoService.getAddress(userID);
+		return "success";
+	}
+	
 	public String showCanceledOrderList() {
 		return "";
 	}

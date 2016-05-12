@@ -303,7 +303,7 @@
 					aria-expanded="false">修改个人信息</a></li>
 				<li role="presentation" class=""><a href="#address"
 					aria-controls="reviews" role="tab" data-toggle="tab"
-					aria-expanded="false">管理收货地址</a></li>
+					aria-expanded="false" onclick="showAddress()">管理收货地址</a></li>
 			</ul>
 			<!--NAV TABS END-->
 			<!--TAB PANEL START-->
@@ -608,6 +608,32 @@
 				dataType:"json",
 				success:function(data){
 					$("h4[id='unapprise']").html(data);
+				}
+			})
+		}
+		function showAddress(){
+			$.ajax({
+				url:"ShowAddress",
+				dataType:"json",
+				success:function(data){
+					$.each(data,function(i,list){  
+             				var table1 = $(
+	             						"<div class='panel col-sm-3 item'>"
+   									 		+"<div class='panel-body text-center bk-padding-off bk-wrapper'>"
+   									 			+"<img src='images/flat-landscape.jpg' alt='' class='img-responsive'>"
+   									 		+"</div>"
+   									 	+"<div class='panel-body text-center'>"
+   									 		+"<h3 class='bk-margin-off'>"
+   									 			+"<strong>"+list.person+"</strong>"
+   									 		+"</h3>"
+  									 	+"<small class='bk-fg-inverse'>"+list.tel+"</small>"
+  									 	+"<p class='bk-margin-off-bottom bk-fg-gray'>"
+  									 		+"<em>"+list.address+"</em>"
+  									 	+"</p>"
+  									 	+"<a class='btn btn-primary itemselect'>选择</a>"
+  									 	+"</div>");		
+             			 	 $("div[id='selectaddress']").append(table1);  
+          			});  
 				}
 			})
 		}

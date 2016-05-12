@@ -151,5 +151,17 @@
 				<param name="root">unapprisedNum</param>
 			</result>
 		</action>
+		<action name="ShowAddress" class="com.bookstore.action.UserAction"
+			method="showAddress">
+			<result type="json">
+				<param name="root">addressList</param>
+			</result>
+		</action>
+		<action name="AddAddress" class="com.bookstore.action.AddressAction"
+			method="addAddress">
+			<result type="json">
+				<param name="root">addressObject</param>
+			</result>
+		</action>
 	</package>
 </struts>

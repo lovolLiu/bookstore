@@ -352,22 +352,29 @@ select {
 										<div class="bill-to">
 											<p>寄送到</p>
 											<div class="form-one">
-												<form onSubmit="return false;">
-												    <input type="text" placeholder="省份" id="address1">
-												     <input type="text" placeholder="地区" id="address2">
+												<form>
+												    <input type="text" placeholder="省份">
+												     <input type="text" placeholder="地区">
 													<input type="text" placeholder="详细地址"
-														value="${address.address }" id="address3"> <input type="text"
-														placeholder="邮政编码" id="address4">
-													<a class="btn btn-primary" onclick="addAddress()">确定</a>
+														value="${address.address }"> <input type="text"
+														placeholder="邮政编码">
 												</form>
+												<a class="btn btn-primary" onclick="addAdress()">确定</a>
 											</div>
 											<div class="form-two">
-												<form onSubmit="return false;">
+												<form>
 													<input type="text" placeholder="收货人姓名"
-														value="${address.person }" id="consignee"> <input type="text"
-														placeholder="电话号码" value="${address.tel }" id="tel">
+														value="${address.person }"> <input type="text"
+														placeholder="电话号码" value="${address.tel }">
 												</form>
 											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="order-message">
+											<p>备注</p>
+											<textarea name="message" placeholder="注明特殊的投递需求以及包装要求。"
+												rows="16"></textarea>
 										</div>
 									</div>
 								</div>
@@ -535,38 +542,48 @@ select {
 				fit : true
 			// 100% fit in a container
 			});
+			showAddress();
 		});
 		
-		function addAddress(){
-			var consignee = $("input[id='consignee']").val();
-			var tel = $("input[id='tel']").val();
-			var address = $("input[id='address1']").val()+$("input[id='address2']").val()+$("input[id='address3']").val()+$("input[id='address4']").val();
+		function showAddress(){
 			$.ajax({
-				url:"AddAddress",
-				data:{"consignee":consignee,"tel":tel,"address":String(address)},
+				url:"ShowAddress",
 				dataType:"json",
 				success:function(data){
-					var address =  $(
-	             						"<div class='panel col-sm-3 item'>"
-   									 		+"<div class='panel-body text-center bk-padding-off bk-wrapper'>"
-   									 			+"<img src='images/flat-landscape.jpg' alt='' class='img-responsive'>"
-   									 		+"</div>"
-   									 	+"<div class='panel-body text-center'>"
-   									 		+"<h3 class='bk-margin-off'>"
-   									 			+"<strong>"+data.person+"</strong>"
-   									 		+"</h3>"
-  									 	+"<small class='bk-fg-inverse'>"+data.tel+"</small>"
-  									 	+"<p class='bk-margin-off-bottom bk-fg-gray'>"
-  									 		+"<em>"+data.address+"</em>"
-  									 	+"</p>"
-  									 	+"<a class='btn btn-primary itemselect'>选择</a>"
-  									 	+"</div>");		
-					
-             		 $("div[id='selectaddress']").prepend(address);  
+					$.each(data,function(i,list){  
+							var divPic = "";
+							var bookName= "";
+             				$.each(list.orderItemList,function(j,order){
+             					divPic += "<div class='pic'>"
+            										+"<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
+       										+"</div>";
+           						/* bookName = order.bookName; */
+             				});
+             				 var table1 = $(
+	             						"<tr class='itemhead'>"
+   									 	+"<td colspan='4'>"
+   									 	+"<span class='dealtime'>"
+   									 	+formatDate(list.dealTime)
+   									 	+"</span>"
+   									 	+"<span class='orderno'>"
+   									 	+"订单号: <a href='xxxxx'>"+list.orderId+"</a></span>"/*xxxx表示以后要添加跳转href */
+   									 	+"</tr>"
+   									 	+"<tr class='item'>"
+   									 	+"<td class='itemdetail'>"
+   									 	+"<div>"
+   									 	+divPic
+   									 	+"</div></td>"
+   									 	+"<td class='deliver'>"
+   									 	+"<span data-toggle='tooltip' data-placement='bottom' title=''>"+list.consignee
+   									 	+"</span>"
+   									 	+"</td>"
+   									 	+"<td class='sum'><span>￥"+list.totalPrice+"</span></td>"
+   									 	+"<td class='status'><span>"+list.orderStats+"</span></td></tr>");			
+             			 	 $("div[id='selectaddress']").append(table1);  
+          			});  
 				}
 			})
 		}
-		
 	</script>
 
 </body>
