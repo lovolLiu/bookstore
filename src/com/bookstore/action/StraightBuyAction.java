@@ -1,5 +1,6 @@
 package com.bookstore.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.domain.BuyItem;
@@ -22,6 +23,7 @@ public class StraightBuyAction {
 	
 	public String execute(){
 		Integer buyItemID = buyService.createBuyItem(userID, bookID, num);
+		buyItemIDList = new ArrayList();
 		buyItemIDList.add(buyItemID);
 		return "success";
 	}

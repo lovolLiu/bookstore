@@ -10,6 +10,7 @@ public class TrCartItem {
 	Integer buyItemID;
 	String imageUrl;
 	String bookName;
+	String authorName;
 	Double price;
 	Double buyItemPrice;
 	Integer num;
@@ -49,6 +50,12 @@ public class TrCartItem {
 	}
 	public void setBuyItemPrice(Double buyItemPrice) {
 		this.buyItemPrice = buyItemPrice;
+	}
+	public String getAuthorName() {
+		return authorName;
+	}
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
 	

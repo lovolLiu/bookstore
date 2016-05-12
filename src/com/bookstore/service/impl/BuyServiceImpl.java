@@ -15,8 +15,6 @@ import com.bookstore.service.BuyService;
 
 public class BuyServiceImpl implements BuyService {
 	
-	BuyItemDAO buyItemDao;
-
 	OrderDAO orderDAO;
 	BuyItemDAO buyItemDAO;
 	BookDAO bookDAO;

@@ -275,7 +275,7 @@ select {
 		<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
 		<blockquote>
 		    <h2>收货人信息</h2>
-			<p>${address.person } &nbsp ${address.tel } &nbsp ${address.address }</p>
+			<p>收货人姓名：${address.person }</br>联系方式：${address.tel }</br>收货地址：${address.address }</p>
 		</blockquote>
 		</div>
 		<section id="cart_items">

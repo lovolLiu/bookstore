@@ -234,9 +234,28 @@ select {
 .panel-body > p{
     height:50px;
 }
+
+		.time_messagebox{
+			position: fixed;
+			margin:auto;
+			left:0; 
+			right:0; 
+			top:0; 
+			bottom:0;
+			width:250px; 
+			height:80px;
+			background: orange;
+			color: white;
+			display: none;
+			border-radius:10px;
+			z-index:99;
+		}
 </style>
 </head>
 <body>
+<div class="time_messagebox">
+		<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">请选择一个收货地址哦亲~~</span></p>
+</div>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 		<div class="loader-section section-left"></div>
@@ -390,16 +409,18 @@ select {
 									</h4>
 								</td>
 								<td class="cart_price">
-									<p>${price }</p>
+									<p>¥${price }</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
+									<a class="cart_quantity_up" href="" onclick="return QuantityUp(${buyItemID})"> + </a>
 										<input class="cart_quantity_input" type="text" name="quantity"
-											value="${num }" autocomplete="off" size="2">
+											value="${num }" autocomplete="off" size="2"/>
+									<a class="cart_quantity_down" href="" onclick="return QuantityDown(${buyItemID})"> - </a>
 									</div>
 								</td>
 								<td class="cart_total">
-									<p class="cart_total_price">${buyItemPrice }</p>
+									<p class="cart_total_price">¥${buyItemPrice }</p>
 								</td>
 
 							</tr>
@@ -412,11 +433,11 @@ select {
 										<tbody>
 											<tr style="font-size: x-large;">
 												<td>总价</td>
-												<td style="color:#FE980F;"><span id="orderTotal">${totalPrice }</span></td>
+												<td style="color:#FE980F;"><span id="orderTotal">¥${totalPrice }</span></td>
 											</tr>
 											<tr style="border-bottom: 0;">
-												<td></td>
-												<td><div style="text-align: right;">
+												<td ></td>
+												<td><div style="text-align: right;" id="div_submit">
 														<a class="btn btn-default check_out" onclick="SubmitOrder(); return false;">提交订单</a>
 													</div></td>
 
@@ -536,6 +557,11 @@ select {
 		
 		function SubmitOrder(){
 
+			if(g_addressID == -1){
+				
+				messageToast();
+				return false;
+			}
 			var url = "SubmitOrder?addressID=" + g_addressID;
 			var trs = $(".itemtr");
 			$.each(trs,function(i,list){
@@ -566,6 +592,7 @@ select {
 		
 		function QuantityDown(buyItemID){
 			var currentNum = parseInt($("tr#" + buyItemID).find(".cart_quantity_input").attr("value"));
+			if(currentNum == 1) return false;
 			updateCart(buyItemID, currentNum-1);
 			return false;
 		}
@@ -583,12 +610,12 @@ select {
 					var itemTotalPrice = tr.find(".cart_total_price");
 					numInput.attr("value", data.num);
 					
-					var oldItemTotalPrice = itemTotalPrice.html().substr(1, -1);
+					var oldItemTotalPrice = parseInt(itemTotalPrice.html().substr(1, itemTotalPrice.html().length));
 					
 					itemTotalPrice.html("¥" + data.buyItemPrice);
 					
-					g_totalPrice = g_totalPrice - oldItemTotalPrice + data.buyItemPrice;
-					
+					g_totalPrice = parseInt(g_totalPrice) - parseInt(oldItemTotalPrice) + parseInt(data.buyItemPrice);
+					$("#orderTotal").html("¥" + g_totalPrice);
 					
 				}
 			})
@@ -620,7 +647,9 @@ select {
   									 	+"<a class='btn btn-primary itemselect'>选择</a>"
   									 	+"</div>");		
 					
-             		 $("div[id='selectaddress']").prepend(address);  
+             		 $("div[id='selectaddress']").prepend(address);
+             		 
+             		location.reload()
 				}
 			})
 		}
@@ -628,6 +657,14 @@ select {
 
 	</script>
 	
+
+	<script>
+	   function messageToast(){
+			$(".time_messagebox").fadeIn(300);
+			setTimeout("$('.time_messagebox').fadeOut(300);",1200)
+	   }
+</script>
+
 	
 	
 	

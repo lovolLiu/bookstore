@@ -317,31 +317,31 @@
 									<th>&nbsp;</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<td>Imitations <span>Mark Lanegan</span></td>
-									<td>1</td>
-									<td>$12.90</td>
-									<td><button class="checkout__action">
-											<i class="icon fa fa-trash"></i>
-										</button></td>
-								</tr>
-								<tr>
-									<td>Out Of Exile <span>Audioslave</span></td>
-									<td>1</td>
-									<td>$15.90</td>
-									<td><button class="checkout__action">
-											<i class="icon fa fa-trash"></i>
-										</button></td>
-								</tr>
-								<tr>
-									<td>Cure For Pain <span>Morphine</span></td>
-									<td>1</td>
-									<td>$11.90</td>
-									<td><button class="checkout__action">
-											<i class="icon fa fa-trash"></i>
-										</button></td>
-								</tr>
+							<tbody id="tbody_cart">
+<!-- 								<tr> -->
+<!-- 									<td>Imitations <span>Mark Lanegan</span></td> -->
+<!-- 									<td>1</td> -->
+<!-- 									<td>$12.90</td> -->
+<!-- 									<td><button class="checkout__action"> -->
+<!-- 											<i class="icon fa fa-trash"></i> -->
+<!-- 										</button></td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td>Out Of Exile <span>Audioslave</span></td> -->
+<!-- 									<td>1</td> -->
+<!-- 									<td>$15.90</td> -->
+<!-- 									<td><button class="checkout__action"> -->
+<!-- 											<i class="icon fa fa-trash"></i> -->
+<!-- 										</button></td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td>Cure For Pain <span>Morphine</span></td> -->
+<!-- 									<td>1</td> -->
+<!-- 									<td>$11.90</td> -->
+<!-- 									<td><button class="checkout__action"> -->
+<!-- 											<i class="icon fa fa-trash"></i> -->
+<!-- 										</button></td> -->
+<!-- 								</tr> -->
 							</tbody>
 						</table>
 						<!-- /checkout__summary -->
@@ -458,6 +458,49 @@
 							});
 		})();
 		
+	</script>
+	
+	<script>
+	//用在其他页面时只需将 html相对应的id加为tbody_cart即可
+		function DownloadCartList(){
+					$(".tr_cartitem").remove();
+					$.ajax({
+						url:"GetCartItemList",
+						dataType:"json",
+						success:function(data){
+							$.each(data,function(i,list){  
+		                       	var _tr = 	'<tr class="tr_cartitem" id="' + list.buyItemID + '">' + 
+											'<td>' + list.bookName + '<span>' + list.authorName + '</span></td>' + 
+											'<td>' + list.num + '</td>' +
+											'<td>' + list.buyItemPrice + '</td>' +
+											'<td><button class="checkout__action" onclick="deleteCart(' + list.buyItemID + ')">' +
+													'<i class="icon fa fa-trash"></i>' +
+												'</button></td>' +
+											'</tr>';
+		                       			 	 $("tbody[id='tbody_cart']").prepend(_tr);
+		                    })
+						}
+					})
+		}
+	
+	
+		$(".checkout__final-text").click(function(){
+			setTimeout("DownloadCartList()", 200);
+		})
+		
+		function deleteCart(buyItemID){
+						$.ajax({
+							url: "DeleteCartItem?buyItemID=" + buyItemID,
+							dataType:"json",
+							success:function(data){
+								//删除这条数据
+								$("#" + buyItemID).slideDown();
+								$("#" + buyItemID).remove();
+								
+							}
+						})
+						return false;
+		}
 	</script>
 </body>
 </html>

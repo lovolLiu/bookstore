@@ -71,6 +71,7 @@ public class ConvertorServiceImpl implements ConvertorService{
 		Book book = bookDAO.findByID(bookID);
 		trCartItem.setBookName(book.getBookName());
 		trCartItem.setBuyItemID(buyItem.getBuyItemID());
+		trCartItem.setAuthorName(book.getAuthor());
 		List<Picture> pictureList = pictureDAO.findByBookID(book.getBookID());
 		String pictureUrl;
 		if(pictureList.isEmpty()) 
