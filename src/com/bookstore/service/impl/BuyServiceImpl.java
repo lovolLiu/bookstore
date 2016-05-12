@@ -45,13 +45,16 @@ public class BuyServiceImpl implements BuyService {
 			BuyItem buyItem = buyItemDAO.findByID(buyItemID);
 			buyItem.setOrderID(orderID);
 			buyItemDAO.update(buyItem);
+			buyItem.setBoughtDate(new Timestamp(System.currentTimeMillis()));
 		}
 		return orderID;
 	}
 
 	@Override
 	public boolean payOrder(int orderID) {
-		// TODO Auto-generated method stub
+		Order order = orderDAO.findById(orderID);
+		order.setStats(1);
+		orderDAO.update(order);
 		return false;
 	}
 

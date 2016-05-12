@@ -2,8 +2,7 @@ package com.bookstore.util;
 
 /**
  * @author Zhiqi Yang
- * @description 购物车列表的tr的数据封装对象
- * @modify
+ * @description 购物车列表的tr的数据封装对象. -------别看此对象里面有Cart，我们的Order的每一行其实用的也是这个(#_#)-----
  * @modifyDate 
  */
 public class TrCartItem {

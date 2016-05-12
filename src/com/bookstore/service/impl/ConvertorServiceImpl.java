@@ -33,10 +33,28 @@ public class ConvertorServiceImpl implements ConvertorService{
 	AddressDAO addressDAO;
 	OrderDAO orderDAO;
 	
+	public Double calculateTotalPrice(List<TrCartItem> trCartItemList){
+		Double totalPrice = 0.0;
+		for(TrCartItem trCartItem : trCartItemList){
+			totalPrice += trCartItem.getBuyItemPrice();
+		}
+		return totalPrice;
+	}
+	
+	
 	public List<TrCartItem> buyItemListToTrCartList(List<BuyItem> buyItemList){
 		List<TrCartItem> trCartItemList = new ArrayList<TrCartItem>();
 		for(BuyItem buyItem : buyItemList){
 			trCartItemList.add(buyItemToTrCartItem(buyItem));
+		}
+		return trCartItemList;
+	}
+	
+	@Override
+	public List<TrCartItem> buyItemIDListToTrCartList(List<Integer> buyItemIDList) {
+		List<TrCartItem> trCartItemList = new ArrayList<TrCartItem>();
+		for(Integer buyItemID : buyItemIDList){
+			trCartItemList.add(buyItemIDToTrCartItem(buyItemID));
 		}
 		return trCartItemList;
 	}
@@ -67,6 +85,13 @@ public class ConvertorServiceImpl implements ConvertorService{
 		BuyItem buyItem = buyItemDAO.findByID(buyItemID);
 		return buyItemToTrCartItem(buyItem);
 	}
+	
+	
+	public DivOrder orderIDToDivOrder(Integer orderID){
+		return buyItemListAddToDivOrder(getBuyItemList(orderID), orderID);
+	}
+	
+	
 	
 	// 以下是和Order显示有关
 	@Override
@@ -187,6 +212,10 @@ public class ConvertorServiceImpl implements ConvertorService{
 	public void setOrderDAO(OrderDAO orderDAO) {
 		this.orderDAO = orderDAO;
 	}
+
+
+
+
 
 
 

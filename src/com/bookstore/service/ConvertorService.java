@@ -7,9 +7,12 @@ import com.bookstore.util.DivOrder;
 import com.bookstore.util.TrCartItem;
 
 public interface ConvertorService {
+	Double calculateTotalPrice(List<TrCartItem> trCartItemList);
 	List<TrCartItem> buyItemListToTrCartList(List<BuyItem> buyItemList);
+	List<TrCartItem> buyItemIDListToTrCartList(List<Integer> buyItemIDList);
 	TrCartItem buyItemToTrCartItem(BuyItem buyItem);
 	TrCartItem buyItemIDToTrCartItem(Integer buyItemID);
+	DivOrder orderIDToDivOrder(Integer orderID);
 	
 	DivOrder buyItemListAddToDivOrder(List<BuyItem> buyItemList, Integer orderId);
 	DivOrder buyItemIDListAddToDivOrder(List<Integer> buyItemIDList, Integer orderId);

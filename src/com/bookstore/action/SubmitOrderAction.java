@@ -1,58 +1,54 @@
 package com.bookstore.action;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-import com.bookstore.dao.AddressDAO;
-import com.bookstore.dao.BookDAO;
-import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.domain.Address;
-import com.bookstore.domain.Book;
+import com.bookstore.service.AddressService;
 import com.bookstore.service.BuyService;
+import com.bookstore.service.CartService;
+import com.bookstore.service.ConvertorService;
+import com.bookstore.util.DivOrder;
 
 public class SubmitOrderAction {
 	
+	//in
 	Integer userID = 1;
+	List<Integer> buyItemIDList;
+	Integer addressID;
 	
-	Integer buyItemID;
-	Integer addressID = 4;
-	
-	
-	Integer orderID;
-	
-	BuyService buyService;
-	
-	
-	AddressDAO addressDAO;
+	//out
 	Address address;
-	Book book;
-	BookDAO bookDAO;
-	BuyItemDAO buyItemDAO;
+	DivOrder divOrder;
+	Double totalPrice;
 	
+	//IOC Service
+	BuyService buyService;
+	CartService cartService;
+	ConvertorService convertorService;
+	AddressService addressService;
+
 	public String execute(){
-		List<Integer> buyItemIDList = new ArrayList();
-		buyItemIDList.add(buyItemID);
-		orderID = buyService.createOrder(buyItemIDList, userID, addressID);
-		address = addressDAO.findByID(addressID);
-		book = bookDAO.findByID(buyItemDAO.findByID(buyItemID).getBookID());
-		System.out.println(buyItemID);
+		//建立订单
+		Integer orderID = buyService.createOrder(buyItemIDList, userID, addressID);
+		
+		divOrder = convertorService.orderIDToDivOrder(orderID);
+		address = addressService.selectAddress(addressID);
+		totalPrice = convertorService.calculateTotalPrice(divOrder.getOrderItemList());
+		
+		//最后，如果这些buyItem来自购物车，需要将这些项从购物车中清除.
+		for(Integer buyItemID : buyItemIDList){
+			cartService.deleteCartItem(buyItemID);
+		}
 		return "success";
 	}
 
-	public Integer getUserID() {
-		return userID;
+	public List<Integer> getBuyItemIDList() {
+		return buyItemIDList;
 	}
 
-	public void setUserID(Integer userID) {
-		this.userID = userID;
-	}
-
-	public Integer getBuyItemID() {
-		return buyItemID;
-	}
-
-	public void setBuyItemID(Integer buyItemID) {
-		this.buyItemID = buyItemID;
+	public void setBuyItemIDList(List<Integer> buyItemIDList) {
+		this.buyItemIDList = buyItemIDList;
 	}
 
 	public Integer getAddressID() {
@@ -63,12 +59,28 @@ public class SubmitOrderAction {
 		this.addressID = addressID;
 	}
 
-	public Integer getOrderID() {
-		return orderID;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setOrderID(Integer orderID) {
-		this.orderID = orderID;
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public DivOrder getDivOrder() {
+		return divOrder;
+	}
+
+	public void setDivOrder(DivOrder divOrder) {
+		this.divOrder = divOrder;
+	}
+
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	public BuyService getBuyService() {
@@ -79,45 +91,31 @@ public class SubmitOrderAction {
 		this.buyService = buyService;
 	}
 
-	public Address getAddress() {
-		return address;
+	public CartService getCartService() {
+		return cartService;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setCartService(CartService cartService) {
+		this.cartService = cartService;
 	}
 
-	public AddressDAO getAddressDAO() {
-		return addressDAO;
+	public ConvertorService getConvertorService() {
+		return convertorService;
 	}
 
-	public void setAddressDAO(AddressDAO addressDAO) {
-		this.addressDAO = addressDAO;
+	public void setConvertorService(ConvertorService convertorService) {
+		this.convertorService = convertorService;
 	}
 
-	public Book getBook() {
-		return book;
+	public AddressService getAddressService() {
+		return addressService;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setAddressService(AddressService addressService) {
+		this.addressService = addressService;
 	}
 
-	public BookDAO getBookDAO() {
-		return bookDAO;
-	}
-
-	public void setBookDAO(BookDAO bookDAO) {
-		this.bookDAO = bookDAO;
-	}
-
-	public BuyItemDAO getBuyItemDAO() {
-		return buyItemDAO;
-	}
-
-	public void setBuyItemDAO(BuyItemDAO buyItemDAO) {
-		this.buyItemDAO = buyItemDAO;
-	}
+	
 	
 	
 	
