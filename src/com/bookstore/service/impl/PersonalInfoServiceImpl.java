@@ -149,6 +149,31 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 		return bookList;
 	}
 	
+	@Override
+	public boolean isPasswordValid(int userID, String oldpassword) {
+		User user = userDAO.findById(userID);
+		if(oldpassword.equals(user.getPassword()))
+			return true;
+		else
+		    return false;
+	}
+	
+	@Override
+	public boolean modifyPassword(int userID, String newpassword) {
+		User user = userDAO.findById(userID);
+		user.setPassword(newpassword);
+		userDAO.update(user);
+		return true;
+	}
+	
+	@Override
+	public boolean modifyEmail(int userID, String newemail) {
+		User user = userDAO.findById(userID);
+		user.setUserEmail(newemail);
+		userDAO.update(user);
+		return true;
+	}
+	
 	public OrderDAO getOrderDAO() {
 		return orderDAO;
 	}
@@ -188,5 +213,9 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	public void setBookDAO(BookDAO bookDAO) {
 		this.bookDAO = bookDAO;
 	}
+
+	
+
+	
 
 }

@@ -27,6 +27,11 @@ public class UserAction {
 	Integer unapprisedNum;
 	String result;
 	
+	//To changepassword function
+	String oldpassword;
+	String newpassword;
+	String newemail;
+	
 	//To myAddress.jsp
 	List<Address> addressList;
 	
@@ -36,6 +41,30 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
+	
+	public String isPasswordValid(){
+		if(personalInfoService.isPasswordValid(userID, oldpassword))
+			result = "success";
+		else
+			result = "fail";
+		return result;
+	}
+	
+	public String modifyPassword(){
+		if(personalInfoService.modifyPassword(userID, newpassword))
+			result = "success";
+		else
+			result = "false";
+		return result;
+	}
+	
+	public String modifyEmail(){
+		if(personalInfoService.modifyEmail(userID, newemail))
+			result = "success";
+		else
+			result = "false";
+		return result;
+	}
 	
 	public String showPaidOrder() {
 		List<Order> orderList = personalInfoService.getPaidOrder(userID);
@@ -159,6 +188,21 @@ public class UserAction {
 		this.unapprisedNum = unapprisedNum;
 	}
 	
+	public String getOldpassword() {
+		return oldpassword;
+	}
+	
+	public void setOldpassword(String oldpassword) {
+		this.oldpassword = oldpassword;
+	}
+	
+	public String getNewpassword() {
+		return newpassword;
+	}
+	
+	public void setNewpassword(String newpassword) {
+		this.newpassword = newpassword;
+	}
 	public String getResult() {
 		return result;
 	}
@@ -166,4 +210,13 @@ public class UserAction {
 	public void setResult(String result) {
 		this.result = result;
 	}
+
+	public String getNewemail() {
+		return newemail;
+	}
+
+	public void setNewemail(String newemail) {
+		this.newemail = newemail;
+	}
+	
 }

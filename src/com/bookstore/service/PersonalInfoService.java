@@ -29,4 +29,10 @@ public interface PersonalInfoService {
 	boolean deleteOrder(int orderID);
 	
 	boolean cancelOrder(int orderID);
+	
+	boolean isPasswordValid(int userID, String oldpassword);
+	
+	boolean modifyPassword(int userID, String newpassword);
+	
+	boolean modifyEmail(int userID, String newemail);
 }

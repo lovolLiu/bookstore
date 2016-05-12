@@ -150,6 +150,33 @@
 				<param name="root">paidNum</param>
 			</result>
 		</action>
+		<action name="IsPasswordValid" class="com.bookstore.action.UserAction"
+			method="isPasswordValid">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="modifyPassword" class="com.bookstore.action.UserAction"
+		    method="modifyPassword">
+		    <result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="modifyEmail" class="com.bookstore.action.UserAction"
+		    method="modifyEmail">
+		    <result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 		<action name="ShowUnpaidNumber" class="com.bookstore.action.UserAction"
 			method="showUnpaidOrderNumber">
 			<result type="json">

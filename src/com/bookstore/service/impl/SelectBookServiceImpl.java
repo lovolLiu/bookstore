@@ -62,11 +62,6 @@ public class SelectBookServiceImpl implements SelectBookService {
 		return bookDAO.findAllOrderByDiscount();
 	}
 
-	@Override
-	public List<Book> selectPersonalBook() {
-		return null;
-	}
-
 	public BookDAO getBookDAO() {
 		return bookDAO;
 	}
