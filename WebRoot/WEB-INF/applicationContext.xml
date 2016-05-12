@@ -164,17 +164,29 @@
 		<property name="publisherDao" ref="publisherDAO"/>
 	</bean>
 	
+	<bean id="addressService" class="com.bookstore.service.impl.AddressServiceImpl">
+		<property name="addressDao" ref="addressDAO"/>
+	</bean>
+	
 	<bean id="personalInfoService" class="com.bookstore.service.impl.PersonalInfoServiceImpl">
 		<property name="orderDAO" ref="orderDAO"/>
 		<property name="userDAO" ref="userDAO"/>
 		<property name="addressDAO" ref="addressDAO"/>
 		<property name="buyItemDAO" ref="buyItemDAO"/>
 		<property name="bookDAO" ref="bookDAO"/>
-	</bean>
+	</bean >
 	
-	<bean id="addressService" class="com.bookstore.service.impl.AddressServiceImpl">
-		<property name="addressDao" ref="addressDAO" />
+	<bean id="searchService" class="com.bookstore.service.impl.SearchServiceImpl">
+		<property name="bookDAO" ref="bookDAO"/>
+		<property name="bookTypeDAO" ref="bookTypeDAO"/>
+		<property name="publisherDAO" ref="publisherDAO"/>
 	</bean>
-	
+
+	<bean id="selectBookService" class="com.bookstore.service.impl.SelectBookServiceImpl">
+		<property name="bookTypeDAO" ref="bookTypeDAO" />
+		<property name="bookDAO" ref="bookDAO" />
+	</bean>
+
+
 
 </beans>

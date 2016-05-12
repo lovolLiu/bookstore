@@ -14,6 +14,7 @@ import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.domain.Picture;
 import com.bookstore.service.ConvertorService;
+import com.bookstore.util.DivBook;
 import com.bookstore.util.DivOrder;
 import com.bookstore.util.TrCartItem;
 
@@ -60,6 +61,9 @@ public class ConvertorServiceImpl implements ConvertorService{
 	}
 	
 	
+	
+
+	
 	@Override
 	public TrCartItem buyItemToTrCartItem(BuyItem buyItem) {
 		TrCartItem trCartItem = new TrCartItem();
@@ -99,7 +103,33 @@ public class ConvertorServiceImpl implements ConvertorService{
 		List<BuyItem> buyItemList = buyItemDAO.findByOrderID(orderID);
 		return buyItemList;
 	}
-
+	
+	@Override
+	public List<DivBook> bookIDToDivBook(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		List<DivBook> divBookList = new ArrayList<DivBook>();
+		DivBook divBook = new DivBook();
+		
+		int i = 0;
+		for(Book book: bookList){
+			book = bookDAO.findByID(bookList.get(i).getBookID());
+			Picture picture = pictureDAO.findByBookID(book.getBookID()).get(0);
+			
+			divBook.setBookID(book.getBookID());
+			divBook.setBookName(book.getBookName());
+			divBook.setBookPrice(book.getPrice());
+			
+			
+			divBook.setPictureID(picture.getPictureID());
+			divBook.setURL(picture.getUrl());
+			
+			
+			divBookList.add(divBook);
+			i++;
+		}
+		
+		return divBookList;
+	}
 	@Override
 	public DivOrder buyItemListAddToDivOrder(List<BuyItem> buyItemList, Integer orderId) {
 		List<TrCartItem> trCartItemList = buyItemListToTrCartList(buyItemList);
@@ -212,7 +242,6 @@ public class ConvertorServiceImpl implements ConvertorService{
 	public void setOrderDAO(OrderDAO orderDAO) {
 		this.orderDAO = orderDAO;
 	}
-
 
 
 

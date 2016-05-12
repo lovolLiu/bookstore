@@ -54,7 +54,7 @@ public class SelectBookServiceImpl implements SelectBookService {
 
 	@Override
 	public List<Book> selectHottestBook() {
-		return bookDAO.findAllOrderByClickCount();
+		return bookDAO.findAllOrderByTotalSell();
 	}
 
 	@Override
@@ -73,6 +73,14 @@ public class SelectBookServiceImpl implements SelectBookService {
 
 	public void setBookDAO(BookDAO bookDAO) {
 		this.bookDAO = bookDAO;
+	}
+
+	public BookTypeDAO getBookTypeDAO() {
+		return bookTypeDAO;
+	}
+
+	public void setBookTypeDAO(BookTypeDAO bookTypeDAO) {
+		this.bookTypeDAO = bookTypeDAO;
 	}
 
 

@@ -39,6 +39,4 @@ public class AddressServiceImpl implements AddressService{
 		this.addressDao = addressDao;
 	}
 	
-	
-	
 }

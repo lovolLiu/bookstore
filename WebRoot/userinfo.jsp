@@ -126,7 +126,7 @@
 }
 
 #over {
-	position: absolute;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	z-index: 1;
@@ -140,7 +140,7 @@
 	margin-right: auto;
 	background-color: white;
 	opacity: 1;
-	position: relative;
+	position: fixed;
 	z-index: 100;
 	border-radius: 20px;
 	border: 5px solid orange;
@@ -281,13 +281,13 @@
 				<div class="row text-center userinfo">
 					<a class="col-xs-4" > <i class="icon-money"></i><small
 						class="bk-fg-inverse bk-fg-darken">代付款</small>
-						<h4 class="bk-margin-off-bottom" id="unpaid">2</h4>
+						<h4 class="bk-margin-off-bottom" id="unpaid"></h4>
 					</a> <a class="col-xs-4" > <i class="icon-truck"></i><small
 						class="bk-fg-inverse bk-fg-darken">待收货</small>
-						<h4 class="bk-margin-off-bottom" id="paid">6</h4>
+						<h4 class="bk-margin-off-bottom" id="paid"></h4>
 					</a> <a class="col-xs-4" > <i class="icon-paint-brush"></i><small
 						class="bk-fg-inverse bk-fg-darken">待评价</small>
-						<h4 class="bk-margin-off-bottom" id="unapprise">4</h4>
+						<h4 class="bk-margin-off-bottom" id="unapprise"></h4>
 					</a>
 				</div>
 			</div>
@@ -303,7 +303,7 @@
 					aria-expanded="false">修改个人信息</a></li>
 				<li role="presentation" class=""><a href="#address"
 					aria-controls="reviews" role="tab" data-toggle="tab"
-					aria-expanded="false">管理收货地址</a></li>
+					aria-expanded="false" onclick="showAddress()">管理收货地址</a></li>
 			</ul>
 			<!--NAV TABS END-->
 			<!--TAB PANEL START-->
@@ -479,8 +479,10 @@
 			overDiv.style.width = w + "px";
 			/*遮罩层的内部div垂直居中*/
 			var childDiv = document.getElementById("over_child");
-			var middle = Math.floor((h - 200) / 2);
-			childDiv.style.top = middle + "px";
+			var vmiddle = Math.floor((h - 200) / 2);
+			var hmiddle = Math.floor((w - 400) / 2);
+			childDiv.style.top = vmiddle + "px";
+			childDiv.style.left = hmiddle + "px";
 		}
 		$('#cancel').click(function() {
 			//将遮罩层的内容隐藏掉
@@ -527,6 +529,8 @@
 			});
 			showOrder();
 			showPaidOrderNumber();
+			showUnpaidOrderNumber();
+			showUnapprisedOrderNumber();
 		});
 		
 		function formatDate(data){
@@ -542,7 +546,7 @@
 		
 		function showOrder(){
 			$.ajax({
-				url:"ShowOrderInUserInfo",
+				url:"ShowOrderInUserInfo.action",
 				dataType:"json",
 				success:function(data){
 					$.each(data,function(i,list){  
@@ -585,7 +589,51 @@
 				url:"ShowPaidNumber",
 				dataType:"json",
 				success:function(data){
-					$("a[id='paid']").html(data);
+					$("h4[id='paid']").html(data);
+				}
+			})
+		}
+		function showUnpaidOrderNumber(){
+			$.ajax({
+				url:"ShowUnpaidNumber",
+				dataType:"json",
+				success:function(data){
+					$("h4[id='unpaid']").html(data);
+				}
+			})
+		}
+		function showUnapprisedOrderNumber(){
+			$.ajax({
+				url:"ShowUnapprisedNumber",
+				dataType:"json",
+				success:function(data){
+					$("h4[id='unapprise']").html(data);
+				}
+			})
+		}
+		function showAddress(){
+			$.ajax({
+				url:"ShowAddress",
+				dataType:"json",
+				success:function(data){
+					$.each(data,function(i,list){  
+             				var table1 = $(
+	             						"<div class='panel col-sm-3 item'>"
+   									 		+"<div class='panel-body text-center bk-padding-off bk-wrapper'>"
+   									 			+"<img src='images/flat-landscape.jpg' alt='' class='img-responsive'>"
+   									 		+"</div>"
+   									 	+"<div class='panel-body text-center'>"
+   									 		+"<h3 class='bk-margin-off'>"
+   									 			+"<strong>"+list.person+"</strong>"
+   									 		+"</h3>"
+  									 	+"<small class='bk-fg-inverse'>"+list.tel+"</small>"
+  									 	+"<p class='bk-margin-off-bottom bk-fg-gray'>"
+  									 		+"<em>"+list.address+"</em>"
+  									 	+"</p>"
+  									 	+"<a class='btn btn-primary itemselect'>选择</a>"
+  									 	+"</div>");		
+             			 	 $("div[id='selectaddress']").append(table1);  
+          			});  
 				}
 			})
 		}
