@@ -297,7 +297,7 @@ select {
 					<div role="tabpanel" class="tab-pane fade active in" id="selectaddress">
 						<div class="panel col-sm-3 item selected">
 							<div class="panel-body text-center bk-padding-off bk-wrapper">
-								<img src="images/flat-landscape.jpg" alt=""
+								<img src="images/addressheader.jpg" alt=""
 									class="img-responsive">
 							</div>
 							<div class="panel-body text-center">
@@ -313,7 +313,7 @@ select {
 						</div>
 						<div class="panel col-sm-3 item">
 							<div class="panel-body text-center bk-padding-off bk-wrapper">
-								<img src="images/flat-landscape.jpg" alt=""
+								<img src="images/addressheader.jpg" alt=""
 									class="img-responsive">
 							</div>
 							<div class="panel-body text-center">
@@ -329,7 +329,7 @@ select {
 						</div>
 						<div class="panel col-sm-3 item">
 							<div class="panel-body text-center bk-padding-off bk-wrapper">
-								<img src="images/flat-landscape.jpg" alt=""
+								<img src="images/addressheader.jpg" alt=""
 									class="img-responsive">
 							</div>
 							<div class="panel-body text-center">
@@ -356,7 +356,8 @@ select {
 												    <input type="text" placeholder="省份" id="address1">
 												     <input type="text" placeholder="地区" id="address2">
 													<input type="text" placeholder="详细地址"
-														value="${address.address }" id="address3"> <input type="text"
+														value="" id="address3"> 
+													<input type="text"
 														placeholder="邮政编码" id="address4">
 													<a class="btn btn-primary" onclick="addAddress()">确定</a>
 												</form>
@@ -365,8 +366,8 @@ select {
 											<div class="form-two">
 												<form onSubmit="return false;">
 													<input type="text" placeholder="收货人姓名"
-														value="${address.person }" id="consignee"> <input type="text"
-														placeholder="电话号码" value="${address.tel }" id="tel">
+														value="" id="consignee"> <input type="text"
+														placeholder="电话号码" value="" id="tel">
 												</form>
 											</div>
 										</div>
@@ -550,7 +551,7 @@ select {
 					var address =  $(
 	             						"<div class='panel col-sm-3 item'>"
    									 		+"<div class='panel-body text-center bk-padding-off bk-wrapper'>"
-   									 			+"<img src='images/flat-landscape.jpg' alt='' class='img-responsive'>"
+   									 			+"<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
    									 		+"</div>"
    									 	+"<div class='panel-body text-center'>"
    									 		+"<h3 class='bk-margin-off'>"

@@ -36,7 +36,6 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
-<<<<<<< HEAD
 	String oldpassword;
 	String newpassword;
 	String newemail;
