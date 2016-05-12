@@ -19,10 +19,7 @@ public class BookDetailAction {
 	List<Book> hotestBookList;
 	List<Book> newestBookList;
 	List<BookType> typeList;
-	Book hotestBook1;
-	Book hotestBook2;
-	Book hotestBook3;
-	Book hotestBook4;
+
 	
 	
 	public String execute(){
@@ -36,7 +33,7 @@ public class BookDetailAction {
 		//hotestBookList = selectService.selectHottestBook();
 	
 		newestBookList = selectBookService.selectNewestBook();
-		hotestBook1 = newestBookList.get(3);
+
 		//typeList = selectService.getTypeList();
 		return "success";
 		
@@ -116,37 +113,6 @@ public class BookDetailAction {
 		this.publisher = publisher;
 	}
 
-	public Book getHotestBook1() {
-		return hotestBook1;
-	}
-
-	public void setHotestBook1(Book hotestBook1) {
-		this.hotestBook1 = hotestBook1;
-	}
-
-	public Book getHotestBook2() {
-		return hotestBook2;
-	}
-
-	public void setHotestBook2(Book hotestBook2) {
-		this.hotestBook2 = hotestBook2;
-	}
-
-	public Book getHotestBook3() {
-		return hotestBook3;
-	}
-
-	public void setHotestBook3(Book hotestBook3) {
-		this.hotestBook3 = hotestBook3;
-	}
-
-	public Book getHotestBook4() {
-		return hotestBook4;
-	}
-
-	public void setHotestBook4(Book hotestBook4) {
-		this.hotestBook4 = hotestBook4;
-	}
 
 	public SelectBookService getSelectBookService() {
 		return selectBookService;

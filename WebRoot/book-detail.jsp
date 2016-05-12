@@ -117,8 +117,8 @@
                                         <a href="#"><img src="images/new-arrival1.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBook1.bookName"/></h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                                        <h3><s:property value="newestBookList[0].bookName"/></h3>
+                                        <p><s:property value="newestBookList[0].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -128,8 +128,8 @@
                                         <a href="#"><img src="images/new-arrival2.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                                        <h3><s:property value="newestBookList[1].bookName"/></h3>
+                                        <p><s:property value="newestBookList[1].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -139,8 +139,8 @@
                                         <a href="#"><img src="images/new-arrival3.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
-                                        <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                                        <h3><s:property value="newestBookList[2].bookName"/></h3>
+                                        <p><s:property value="newestBookList[2].description"/></p>
                                     </div>
                                 </div>
                             </li>
