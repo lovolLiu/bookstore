@@ -9,7 +9,7 @@ import com.bookstore.service.SelectBookService;
 public class BookDetailAction {
 	Integer bookID;
 	BookDetailService bookDetailService;
-	SelectBookService selectService;
+	SelectBookService selectBookService;
 	
 	
 	Book book;
@@ -19,6 +19,11 @@ public class BookDetailAction {
 	List<Book> hotestBookList;
 	List<Book> newestBookList;
 	List<BookType> typeList;
+	Book hotestBook1;
+	Book hotestBook2;
+	Book hotestBook3;
+	Book hotestBook4;
+	
 	
 	public String execute(){
 		book = bookDetailService.getBookInfo(9);
@@ -27,8 +32,11 @@ public class BookDetailAction {
 		System.out.println("书名"+book.getBookName());
 		appriseList = bookDetailService.getAppriseList(9);
 		//relatedBookList = selectService.selectPersonalBook();
+        
 		//hotestBookList = selectService.selectHottestBook();
-		//newestBookList = selectService.selectNewestBook();
+	
+		newestBookList = selectBookService.selectNewestBook();
+		hotestBook1 = newestBookList.get(3);
 		//typeList = selectService.getTypeList();
 		return "success";
 		
@@ -98,13 +106,7 @@ public class BookDetailAction {
 		this.typeList = typeList;
 	}
 
-	public SelectBookService getSelectService() {
-		return selectService;
-	}
 
-	public void setSelectService(SelectBookService selectService) {
-		this.selectService = selectService;
-	}
 
 	public Publisher getPublisher() {
 		return publisher;
@@ -112,6 +114,46 @@ public class BookDetailAction {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	public Book getHotestBook1() {
+		return hotestBook1;
+	}
+
+	public void setHotestBook1(Book hotestBook1) {
+		this.hotestBook1 = hotestBook1;
+	}
+
+	public Book getHotestBook2() {
+		return hotestBook2;
+	}
+
+	public void setHotestBook2(Book hotestBook2) {
+		this.hotestBook2 = hotestBook2;
+	}
+
+	public Book getHotestBook3() {
+		return hotestBook3;
+	}
+
+	public void setHotestBook3(Book hotestBook3) {
+		this.hotestBook3 = hotestBook3;
+	}
+
+	public Book getHotestBook4() {
+		return hotestBook4;
+	}
+
+	public void setHotestBook4(Book hotestBook4) {
+		this.hotestBook4 = hotestBook4;
+	}
+
+	public SelectBookService getSelectBookService() {
+		return selectBookService;
+	}
+
+	public void setSelectBookService(SelectBookService selectBookService) {
+		this.selectBookService = selectBookService;
 	}
 
 

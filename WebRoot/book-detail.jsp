@@ -117,7 +117,7 @@
                                         <a href="#"><img src="images/new-arrival1.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3>consetetur sadip scing</h3>
+                                        <h3><s:property value="hotestBook1.bookName"/></h3>
                                         <p>Sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
                                     </div>
                                 </div>

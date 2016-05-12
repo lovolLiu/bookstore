@@ -75,6 +75,14 @@ public class SelectBookServiceImpl implements SelectBookService {
 		this.bookDAO = bookDAO;
 	}
 
+	public BookTypeDAO getBookTypeDAO() {
+		return bookTypeDAO;
+	}
+
+	public void setBookTypeDAO(BookTypeDAO bookTypeDAO) {
+		this.bookTypeDAO = bookTypeDAO;
+	}
+
 
 	
 

@@ -172,5 +172,13 @@
 		<property name="bookDAO" ref="bookDAO"/>
 	</bean>
 	
+	<bean id="selectBookService" class="com.bookstore.service.impl.SelectBookServiceImpl">
+		<property name="bookTypeDAO" ref="bookTypeDAO" />
+		<property name="bookDAO" ref="bookDAO" />
+	</bean>
+
+	
+
+	
 
 </beans>
