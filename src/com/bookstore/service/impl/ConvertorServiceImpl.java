@@ -109,12 +109,13 @@ public class ConvertorServiceImpl implements ConvertorService{
 	public List<DivBook> bookIDToDivBook(List<Book> bookList) {
 		// TODO Auto-generated method stub
 		List<DivBook> divBookList = new ArrayList<DivBook>();
-		DivBook divBook = new DivBook();
 		
 		int i = 0;
-		for(Book book: bookList){
-			book = bookDAO.findByID(bookList.get(i).getBookID());
+		
+		for(; i < bookList.size();i++){
+			Book book = bookDAO.findByID(bookList.get(i).getBookID());
 			Picture picture = pictureDAO.findByBookID(book.getBookID()).get(0);
+			DivBook divBook = new DivBook();
 			
 			divBook.setBookID(book.getBookID());
 			divBook.setBookName(book.getBookName());
@@ -123,12 +124,15 @@ public class ConvertorServiceImpl implements ConvertorService{
 			
 			divBook.setPictureID(picture.getPictureID());
 			divBook.setURL(picture.getUrl());
-			
+			//System.out.println(divBook.getBookID()+" "+divBook.getPictureID());
 			
 			divBookList.add(divBook);
-			i++;
+			//System.out.println(divBookList.get(i).getBookID()+" "+ divBookList.get(i).getPictureID());
 		}
 		
+		for(int j = 0; j<divBookList.size();j++){
+			System.out.println(divBookList.get(j).getBookID()+" "+ divBookList.get(j).getPictureID());
+		}
 		return divBookList;
 	}
 	@Override

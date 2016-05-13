@@ -35,6 +35,12 @@ public class SearchServiceImpl implements SearchService {
 		
 	}
 
+	@Override
+	public List<Book> searchAllBook() {
+		// TODO Auto-generated method stub
+		
+		return bookDAO.findAll();
+	}
 	public BookDAO getBookDAO() {
 		return bookDAO;
 	}
@@ -58,5 +64,7 @@ public class SearchServiceImpl implements SearchService {
 	public void setPublisherDAO(PublisherDAO publisherDAO) {
 		this.publisherDAO = publisherDAO;
 	}
+
+
 	
 }

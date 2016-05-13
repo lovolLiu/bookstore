@@ -10,4 +10,6 @@ public interface SearchService {
 	public List<Book> searchByAuthor(String name);
 	
 	public List<Book> searchByPublisher(String name);
+	
+	public List<Book> searchAllBook();
 }
