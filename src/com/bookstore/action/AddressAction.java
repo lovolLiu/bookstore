@@ -10,6 +10,7 @@ public class AddressAction {
 	String address;
 	Address addressObject;
 	Integer userID = 1;
+	Integer addressID;
 	AddressService addressService;
 	
 	public String addAddress(){
@@ -18,15 +19,20 @@ public class AddressAction {
 		addressObject.setPerson(consignee);
 		addressObject.setTel(tel);
 		addressObject.setUserID(userID);
-		addressService.createAddress(addressObject);
+		addressID = addressService.createAddress(addressObject);
+		addressObject.setAddressID(addressID);
 		return "success";
 	}
 	
 	public String updateAddress(){
+		addressObject = addressService.selectAddress(addressID);
+		addressObject.setAddress(address);
+		addressObject.setPerson(consignee);
+		addressObject.setTel(tel);
 		return "success";
 	}
 	public String deleteAddress(){
-		
+		addressService.deleteAddress(addressID);
 		return "success";
 	}
 	public String getConsignee() {
@@ -64,6 +70,14 @@ public class AddressAction {
 	}
 	public void setAddressService(AddressService addressService) {
 		this.addressService = addressService;
+	}
+
+	public Integer getAddressID() {
+		return addressID;
+	}
+
+	public void setAddressID(Integer addressID) {
+		this.addressID = addressID;
 	}
 	
 	
