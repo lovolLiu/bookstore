@@ -119,7 +119,8 @@
 	<bean id="userDAO" class="com.bookstore.dao.impl.UserDAOImpl">
  		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-    
+	
+	    
     
     
     
@@ -186,6 +187,7 @@
 		<property name="bookTypeDAO" ref="bookTypeDAO" />
 		<property name="bookDAO" ref="bookDAO" />
 	</bean>
+
 
 
 

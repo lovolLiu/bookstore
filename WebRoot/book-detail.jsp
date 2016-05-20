@@ -117,8 +117,8 @@
                                         <a href="#"><img src="images/new-arrival1.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="newestBookList[0].bookName"/></h3>
-                                        <p><s:property value="newestBookList[0].description"/></p>
+                                        <h3><s:property value="newestDivBookList[0].bookName"/></h3>
+                                        <p><s:property value="newestDivBookList[0].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -128,8 +128,8 @@
                                         <a href="#"><img src="images/new-arrival2.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="newestBookList[1].bookName"/></h3>
-                                        <p><s:property value="newestBookList[1].description"/></p>
+                                        <h3><s:property value="newestDivBookList[1].bookName"/></h3>
+                                        <p><s:property value="newestDivBookList[1].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -139,8 +139,8 @@
                                         <a href="#"><img src="images/new-arrival3.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="newestBookList[2].bookName"/></h3>
-                                        <p><s:property value="newestBookList[2].description"/></p>
+                                        <h3><s:property value="newestDivBookList[2].bookName"/></h3>
+                                        <p><s:property value="newestDivBookList[2].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -172,8 +172,8 @@
                                         <a href="#"><img src="images/new-arrival2.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[0].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[0].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[0].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[0].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
@@ -181,8 +181,8 @@
                                         <a href="#"><img src="images/new-arrival1.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[1].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[1].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[1].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[1].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
@@ -190,8 +190,8 @@
                                         <a href="#"><img src="images/new-arrival3.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[2].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[2].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[2].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[2].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -201,8 +201,8 @@
                                         <a href="#"><img src="images/new-arrival3.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[3].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[3].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[3].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[3].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
@@ -210,8 +210,8 @@
                                         <a href="#"><img src="images/new-arrival2.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[4].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[4].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[4].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[4].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
@@ -219,8 +219,8 @@
                                         <a href="#"><img src="images/new-arrival1.png" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[5].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[5].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[5].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[5].description"/></p>
                                     </div>
                                 </div>
                             </li>

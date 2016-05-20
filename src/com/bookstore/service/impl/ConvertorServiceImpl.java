@@ -120,6 +120,7 @@ public class ConvertorServiceImpl implements ConvertorService{
 			divBook.setBookID(book.getBookID());
 			divBook.setBookName(book.getBookName());
 			divBook.setBookPrice(book.getPrice());
+			divBook.setDescription(book.getDescription());
 			
 			
 			divBook.setPictureID(picture.getPictureID());
