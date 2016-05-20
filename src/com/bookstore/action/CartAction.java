@@ -4,9 +4,7 @@ package com.bookstore.action;
 import java.util.List;
 import java.util.Map;
 
-import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.domain.BuyItem;
-import com.bookstore.domain.CartItem;
 import com.bookstore.service.BuyService;
 import com.bookstore.service.CartService;
 import com.bookstore.service.ConvertorService;
@@ -39,16 +37,14 @@ public class CartAction {
 	ConvertorService convertorService;
 	BuyService buyService;
 	
-	//////////////////////////////////////////
-	Integer userID = 1;
 	
 	/*in: userID
 	* out: trCartList
 	*      totalPrice -- should be canceled
 	*/
 	public String showBuyItemList(){    
-//		Map session = ActionContext.getContext().getSession();
-//		Integer userID = (Integer) session.get("userID");
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		
 		List<BuyItem> buyItemList = cartService.getCartItemList(userID);
 		trCartList = convertorService.buyItemListToTrCartList(buyItemList);
@@ -85,6 +81,8 @@ public class CartAction {
 	 * @out: isSuccess
 	 */
 	public String addCartItem(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		isSuccess = cartService.addCartItem(userID, bookID, num);
 		return "success";
 	}

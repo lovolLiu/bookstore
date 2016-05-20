@@ -1,16 +1,16 @@
 package com.bookstore.action;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bookstore.domain.Address;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.PersonalInfoService;
 import com.bookstore.util.TrCartItem;
+import com.opensymphony.xwork2.ActionContext;
 
 public class CheckOrderInfoAction {
 	
-	//session
-	Integer userID = 1;
 	
 	//in
 	List<Integer> buyItemIDList;
@@ -26,6 +26,8 @@ public class CheckOrderInfoAction {
 	
 	
 	public String execute(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		trOrderItemList = convertorService.buyItemIDListToTrCartList(buyItemIDList);
 		addressList = personalInfoService.getAddress(userID);
 		totalPrice = convertorService.calculateTotalPrice(trOrderItemList);
