@@ -447,7 +447,6 @@ select{
 							if(this.checked){
 								flag = true;
 							}
-							return false;
 						})
 
 						if(!flag){
