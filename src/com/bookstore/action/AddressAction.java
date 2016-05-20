@@ -7,28 +7,29 @@ public class AddressAction {
 	
 	String consignee;
 	String tel;
-	String address;
-	Address addressObject;
+	String addressDetail;
+	Address address;
 	Integer userID = 1;
 	Integer addressID;
 	AddressService addressService;
+	String result;
 	
 	public String addAddress(){
-		addressObject = new Address();
-		addressObject.setAddress(address);
-		addressObject.setPerson(consignee);
-		addressObject.setTel(tel);
-		addressObject.setUserID(userID);
-		addressID = addressService.createAddress(addressObject);
-		addressObject.setAddressID(addressID);
+		address = new Address();
+		address.setAddress(addressDetail);
+		address.setPerson(consignee);
+		address.setTel(tel);
+		address.setUserID(userID);
+		addressID = addressService.createAddress(address);
+		address.setAddressID(addressID);
 		return "success";
 	}
 	
 	public String updateAddress(){
-		addressObject = addressService.selectAddress(addressID);
-		addressObject.setAddress(address);
-		addressObject.setPerson(consignee);
-		addressObject.setTel(tel);
+		address = addressService.selectAddress(addressID);
+		address.setAddress(addressDetail);
+		address.setPerson(consignee);
+		address.setTel(tel);
 		return "success";
 	}
 	public String deleteAddress(){
@@ -46,18 +47,6 @@ public class AddressAction {
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public Address getAddressObject() {
-		return addressObject;
-	}
-	public void setAddressObject(Address addressObject) {
-		this.addressObject = addressObject;
 	}
 	public Integer getUserID() {
 		return userID;
@@ -78,6 +67,30 @@ public class AddressAction {
 
 	public void setAddressID(Integer addressID) {
 		this.addressID = addressID;
+	}
+
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Address getAddress() {
+		return address;
 	}
 	
 	

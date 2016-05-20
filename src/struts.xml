@@ -203,7 +203,17 @@
 		<action name="AddAddress" class="com.bookstore.action.AddressAction"
 			method="addAddress">
 			<result type="json">
-				<param name="root">addressObject</param>
+				<param name="root">address</param>
+			</result>
+		</action>
+		<action name="UpdateAddress" class="com.bookstore.action.AddressAction"
+			method="updateAddress">
+			<result type="json">
+			</result>
+		</action>
+		<action name="DeleteAddress" class="com.bookstore.action.AddressAction"
+			method="deleteAddress">
+			<result type="json">
 			</result>
 		</action>
 	</package>
