@@ -114,7 +114,7 @@
                         	<li>
                             	<div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival1.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='newestDivBookList[0].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
                                         <h3><s:property value="newestDivBookList[0].bookName"/></h3>
@@ -125,7 +125,7 @@
                             <li>
                             	<div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival2.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='newestDivBookList[1].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
                                         <h3><s:property value="newestDivBookList[1].bookName"/></h3>
@@ -136,7 +136,7 @@
                             <li>
                             	<div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival3.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='newestDivBookList[2].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
                                         <h3><s:property value="newestDivBookList[2].bookName"/></h3>
