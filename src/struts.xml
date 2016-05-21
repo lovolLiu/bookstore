@@ -33,6 +33,11 @@
 			<result name="success">/books.jsp</result>
 			<result name="false">/books.jsp</result>
 		</action>
+		
+		<action name="InitMyOrder" class="com.bookstore.action.UserAction" method="showOrderListAll">
+		    <result name="success">/myorder.jsp</result>
+		    <result name="false">/myorder.jsp</result>
+		</action>
     </package>
     
     

@@ -210,10 +210,11 @@ a {
 .btn {
 	margin: 2px;
 }
-.addaddressform{
-    width:40%;
-    height:540px;
-    padding: 15px;
+
+.addaddressform {
+	width: 40%;
+	height: 540px;
+	padding: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: white;
@@ -221,29 +222,37 @@ a {
 	position: fixed;
 	z-index: 100;
 }
-.addaddressform input{
-    margin-bottom:8px;
-    width:80%;
+
+.addaddressform input {
+	margin-bottom: 8px;
+	width: 80%;
+}
+
+.apprisepic{
+    width:100px;
+    float:left;
+    margin-bottom:40px;
 }
 </style>
 </head>
 <body>
-	<div id="addaddressform" class="panel addaddressform" style="display:none">
+	<div id="addaddressform" class="panel addaddressform"
+		style="display:none">
 		<div class="panel-body text-center bk-padding-off bk-wrapper">
 			<img src="images/addressheader.jpg" alt="" class="img-responsive">
 		</div>
 		<div class="panel-body text-center">
 			<form onSubmit="return false;">
-				<input type="text" placeholder="省份" id="address1" /> 
-				<input type="text" placeholder="地区" id="address2" /> 
-				<input type="text" placeholder="详细地址" value="" id="address3" /> 
-			    <input type="text" placeholder="邮政编码" id="address4" /> 
-			    <input type="text" placeholder="收货人姓名" value="" id="consignee" />
-				<input type="text" placeholder="电话号码" value="" id="tel" />
+				<input type="text" placeholder="省份" id="address1" /> <input
+					type="text" placeholder="地区" id="address2" /> <input type="text"
+					placeholder="详细地址" value="" id="address3" /> <input type="text"
+					placeholder="邮政编码" id="address4" /> <input type="text"
+					placeholder="收货人姓名" value="" id="consignee" /> <input type="text"
+					placeholder="电话号码" value="" id="tel" />
 			</form>
 			<div class="error">我是错误信息</div>
-			<a id="confirmaddaddress" class="btn btn-primary">确定</a>
-			<a id="canceladdaddress" class="btn btn-primary">取消</a>
+			<a id="confirmaddaddress" class="btn btn-primary">确定</a> <a
+				id="canceladdaddress" class="btn btn-primary">取消</a>
 		</div>
 	</div>
 	<div id="oldpasswordform" class="over" style="display:none;">
@@ -291,6 +300,24 @@ a {
 			</table>
 		</div>
 	</div>
+	<div id="appriseform" class="panel addaddressform" style="display:none">
+		<div class="panel-body text-center bk-padding-off bk-wrapper">
+			<img src="images/addressheader.jpg" alt="" class="img-responsive">
+		</div>
+		<div class="panel-body text-center">
+		    <div id="apprise-item">
+		        <img class="apprisepic" src="" alt="" />
+		        <h4></h4>
+		        <p></p>
+		    </div>
+			<form onSubmit="return false;">
+				<textarea name="" id="message" rows="6" class="form-control" placeholder="在这儿加上一段走心的评论吧~~"></textarea>
+			</form>
+			<div class="error">我是错误信息</div>
+			<a id="confirmapprise" class="btn btn-primary">确定</a> 
+			<a id="cancelapprise" class="btn btn-primary">取消</a>
+		</div>
+	</div>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 		<div class="loader-section section-left"></div>
@@ -298,8 +325,7 @@ a {
 	</div>
 	<!--WRAPPER START-->
 	<div class="wrapper kode-header-class-3">
-		<!--HEADER START
-		-->
+		<!--HEADER START-->
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
@@ -358,13 +384,14 @@ a {
 			</div>
 			<div class="panel-body bk-ltr">
 				<div class="row text-center userinfo">
-					<a class="col-xs-4"> <i class="icon-money"></i><small
-						class="bk-fg-inverse bk-fg-darken">代付款</small>
+					<a class="col-xs-4" href="InitMyOrder?filter=0"> <i
+						class="icon-money"></i><small class="bk-fg-inverse bk-fg-darken">待付款</small>
 						<h4 class="bk-margin-off-bottom" id="unpaid"></h4>
-					</a> <a class="col-xs-4"> <i class="icon-truck"></i><small
-						class="bk-fg-inverse bk-fg-darken">待收货</small>
+					</a> <a class="col-xs-4" href="InitMyOrder?filter=1"> <i
+						class="icon-truck"></i><small class="bk-fg-inverse bk-fg-darken">已付款</small>
 						<h4 class="bk-margin-off-bottom" id="paid"></h4>
-					</a> <a class="col-xs-4"> <i class="icon-paint-brush"></i><small
+					</a> <a class="col-xs-4" onclick="goapprise()"> <i
+						class="icon-paint-brush"></i><small
 						class="bk-fg-inverse bk-fg-darken">待评价</small>
 						<h4 class="bk-margin-off-bottom" id="unapprise"></h4>
 					</a>
@@ -374,7 +401,7 @@ a {
 		<div class="product-review-tabs col-md-12 col-md-8 col-md-offset-2"
 			style="margin-top:10px;">
 			<!--NAV TABS START-->
-			<ul class="nav nav-tabs" role="tablist">
+			<ul id="nav-tabs" class="nav nav-tabs" role="tablist">
 				<li role="presentation" class="active"><a href="#orders"
 					aria-controls="Description" role="tab" data-toggle="tab"
 					aria-expanded="true">我的订单</a></li>
@@ -383,11 +410,14 @@ a {
 					aria-expanded="false">修改个人信息</a></li>
 				<li role="presentation" class=""><a href="#address"
 					aria-controls="reviews" role="tab" data-toggle="tab"
-					aria-expanded="false" onclick="">管理收货地址</a></li>
+					aria-expanded="false">管理收货地址</a></li>
+				<li id="apprise-tab" role="presentation" class=""><a
+					href="#apprise" aria-controls="reviews" role="tab"
+					data-toggle="tab" aria-expanded="false">评价已购书籍</a></li>
 			</ul>
 			<!--NAV TABS END-->
 			<!--TAB PANEL START-->
-			<div class="tab-content">
+			<div id="tab-content" class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active in" id="orders">
 					<h4>最近的订单</h4>
 					<div class="table-responsive">
@@ -435,6 +465,32 @@ a {
 							</h3>
 							<a onclick="addaddress()"><i class="fa fa-plus"
 								style="font-size:xx-large;"></i></a>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane fade" id="apprise">
+					<div class="col-md-4">
+						<div class="best-seller-pro">
+							<figure>
+								<img src="images/book7.png" alt="" />
+							</figure>
+							<div class="kode-caption">
+								<h3>Art History Mystery</h3>
+								<p>Sara Wisseman</p>
+								<a class="add-to-cart" onclick="startapprise(event)">评价</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="best-seller-pro">
+							<figure>
+								<img src="images/book8.png" alt="" />
+							</figure>
+							<div class="kode-caption">
+								<h3>Brain Science In The Eyes Of A Student</h3>
+								<p>Walter White</p>
+								<a class="add-to-cart" onclick="startapprise(event)">评价</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -521,31 +577,12 @@ a {
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
 	<script type="application/x-javascript">
-		
-		
-		
-		
-		
-		
-		
-		
-			
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-	
-	
-	
-	
-	
-	
-	
-	
 	</script>
-
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script src="js/bootstrap-editable.min.js"></script>
 	<script type="text/javascript">
-		var ti
-		me = 0;
+		var time = 0;
 		var flag = false;
 		//修改email
 		$('#enable').click(function() {
@@ -607,13 +644,9 @@ a {
 			overDiv.style.display = "none";
 		});
 		//输入旧密码div的ok按钮
-		$('#ok')
-				.click(
-						function() {
-							var oldpassword = document
-									.getElementById("oldpassword").value;
-							$
-									.ajax({
+		$('#ok').click(function() {
+							var oldpassword = document.getElementById("oldpassword").value;
+							$.ajax({
 										url : "IsPasswordValid.action",
 										type : "post",
 										data : {
@@ -626,8 +659,7 @@ a {
 														.getElementById("oldpasswordform");
 												overDiv.style.display = "none";
 												//1.获得隐藏的DIV
-												var overDiv = document
-														.getElementById("newpasswordform");
+												var overDiv = document.getElementById("newpasswordform");
 												//2.将隐藏的div有隐藏显现出来hidden-->block
 												overDiv.style.display = "block";
 												var w = window.innerWidth;//返回窗口的文档显示区的宽度;
@@ -741,17 +773,60 @@ a {
 			showUnpaidOrderNumber();
 			showUnapprisedOrderNumber();
 		});
-
+		//查看未评价订单的function
+		function goapprise() {
+			$('#nav-tabs').find('li').removeClass('active');
+			$('#apprise-tab').addClass('active');
+			$('#tab-content').find('div').removeClass('active');
+			$('#tab-content').find('div').removeClass('in');
+			$('#apprise').addClass('active');
+			$('#apprise').addClass('in');
+		}
+		//显示隐藏的评价框
+		function startapprise(e){
+		    //1.获得隐藏的DIV
+			var overDiv = document.getElementById("appriseform");
+			//2.将隐藏的div有隐藏显现出来hidden-->block
+			overDiv.style.display = "block";
+			/**
+			 *控制遮罩层的宽度，高度；
+			 *
+			 */
+			var w = window.innerWidth;//返回窗口的文档显示区的宽度;
+			var h = window.innerHeight;//返回窗口的文档显示区的高度;
+			console.log("w=" + w + "h=" + h);
+			/*遮罩层的内部div垂直居中*/
+			var vmiddle = Math.floor((h - 540) / 2);
+			var hmiddle = Math.floor(0.3 * w);
+			overDiv.style.top = vmiddle + "px";
+			overDiv.style.left = hmiddle + "px";
+			var targ = e.target;
+			var bookauthor = targ.previousElementSibling.innerHTML;
+			var bookname = targ.previousElementSibling.previousElementSibling.innerHTML;
+			var picurl = targ.parentNode.parentNode.firstElementChild.firstElementChild.getAttribute("src");
+			var appriseinfo = document.getElementById("apprise-item");
+			appriseinfo.firstElementChild.setAttribute("src", picurl);
+			appriseinfo.firstElementChild.nextElementSibling.innerHTML = bookname;
+			appriseinfo.firstElementChild.nextElementSibling.nextElementSibling.innerHTML = bookauthor;
+		}
+		//添加评论form的取消按钮
+		$('#cancelapprise').click(function() {
+			//将遮罩层的内容隐藏掉
+			//1.获得隐藏div
+			var overDiv = document.getElementById("appriseform");
+			overDiv.style.display = "none";
+		});
+		//添加评论form的确定按钮
+		$('#confirmapprise').click(function() {
+		});
 		function formatDate(data) {
-			var d = new Date(data);
+			var d = new Date(data); //for date in the format "YYYY-MM-DDTHH:MM:SS" where T means timezone!!! 
 			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1)
 					+ "-" + d.getDate();
 			var hours = ((d.getHours() + 16) % 24 < 10) ? "0"
 					+ (d.getHours() + 16) % 24 : (d.getHours() + 16) % 24;
-			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d
-					.getMinutes();
-			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d
-					.getSeconds();
+			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
 			var formattedTime = hours + ":" + minutes + ":" + seconds;
 			formattedDate = formattedDate + " " + formattedTime;
 			return formattedDate;

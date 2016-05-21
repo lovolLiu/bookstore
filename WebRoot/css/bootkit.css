@@ -1044,7 +1044,6 @@ a.bk-opacity-inverse img {
 .bk-avatar.bk-avatar100-halfdown,
 .bk-avatar.bk-avatar80-halfdown {
   position: absolute;
-  z-index: 1;
   left: 50%;
 }
 .bk-avatar.bk-avatar120-halfdown {
