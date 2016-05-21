@@ -455,7 +455,7 @@ a {
 					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="address">
-					<div class="panel col-sm-4 item">
+					<div class="panel col-sm-4 item" id="addNew">
 						<div class="panel-body text-center bk-padding-off bk-wrapper">
 							<img src="images/addressheader.jpg" alt="" class="img-responsive">
 						</div>
@@ -759,6 +759,40 @@ a {
 		});
 		//添加新地址form的确定按钮
 		$('#confirmaddaddress').click(function() {
+			var addressDetail = $("input[id='address1']").val()+$("input[id='address2']").val()+$("input[id='address3']").val()+$("input[id='address4']").val();
+			var consignee = $("input[id='consignee']").val();
+			var tel = $("input[id='tel']").val();
+			$.ajax({
+				url : "AddAddress",
+				type:"post",
+				data:{"addressDetail":addressDetail,"consignee":consignee,"tel":tel},
+				dataType : "json",
+				success : function(data) {
+									var table1 = $("<div class='panel col-sm-4 item' title='"+data.addressID+"'>"
+														+ "<div class='panel-body text-center bk-padding-off bk-wrapper'>"
+														+ "<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
+														+ "</div>"
+														+ "<div class='panel-body text-center' firsttime='yes'>"
+														+ "<h3 class='bk-margin-off'>"
+														+ "<strong><a href='#' id='consignee' data-type='text' data-original-title='收货人' class='editable editable-click editable-disabled address'>"
+														+ data.person
+														+ "</a></strong>"
+														+ "</h3>"
+														+ "<small class='bk-fg-inverse'><a href='#' id='tel' data-type='text' data-original-title='电话' class='editable editable-click editable-disabled address'>"
+														+ data.tel
+														+ "</a></small>"
+														+ "<p class='bk-margin-off-bottom bk-fg-gray'>"
+														+ "<em><a href='#' id='detailaddress' data-type='text' data-original-title='详细地址' class='editable editable-click editable-disabled address'>"
+														+ data.address
+														+ "</a></em>"
+														+ "</p>"
+														+ "<a id='modifyaddress' class='btn btn-primary itemselect col-xs-12' onclick='modifyaddress()'>编辑</a> "
+														+ "<a id='saveaddress' class='btn btn-primary itemsave col-xs-12' onclick='saveaddress()'>保存</a> "
+														+ "<a id='deleteaddress' class='btn btn-primary itemdelete col-xs-12' onclick='deleteaddress()'>删除</a>"
+														+ "</div></div>");
+					$("div[id='addNew']").after(table1);
+				}
+			})
 		});
 		$(document).ready(function() {
 			$('#horizontalTab').easyResponsiveTabs({
@@ -930,6 +964,10 @@ a {
 			//保存修改的地址
 			$('.itemsave').click(function(e) {
 				alert("保存");
+				var addressDetail = $("a[id='detailaddress',class='editable editable-click address']").val();
+				var consignee = $("a[id='consignee',class='editable editable-click address']").val();
+				var tel = $("a[id='tel',class='editable editable-click address']").val();
+				var addressID = $("div[id='tel']").getAttribute("title");//这里需要在编辑的div里添加一个编辑的属性，方便取值，编辑成功之后需要将这个属性删除
 			});
 			//删除地址
 			$('.itemdelete').click(function(e) {
@@ -950,7 +988,7 @@ a {
 									.each(
 											data,
 											function(i, list) {
-												var table1 = $("<div class='panel col-sm-4 item'>"
+												var table1 = $("<div class='panel col-sm-4 item' title='"+list.addressID+"'>"
 														+ "<div class='panel-body text-center bk-padding-off bk-wrapper'>"
 														+ "<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
 														+ "</div>"

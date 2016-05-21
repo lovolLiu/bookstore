@@ -70,6 +70,9 @@ public class CartServiceImpl implements CartService {
 		return buyItemList;
 	}
 
+	/**
+	 * @description 如果购物车中没有此buyItemID，什么都不做，直接返回
+	 */
 	@Override
 	public boolean deleteCartItem(int buyItemID) {
 		List<CartItem> cartItemList =  cartItemDAO.findByBuyItemID(buyItemID);

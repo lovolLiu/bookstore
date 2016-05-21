@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -233,9 +234,28 @@ select {
 .panel-body > p{
     height:50px;
 }
+
+		.time_messagebox{
+			position: fixed;
+			margin:auto;
+			left:0; 
+			right:0; 
+			top:0; 
+			bottom:0;
+			width:250px; 
+			height:80px;
+			background: orange;
+			color: white;
+			display: none;
+			border-radius:10px;
+			z-index:99;
+		}
 </style>
 </head>
 <body>
+<div class="time_messagebox">
+		<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">请选择一个收货地址哦亲~~</span></p>
+</div>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 		<div class="loader-section section-left"></div>
@@ -295,22 +315,9 @@ select {
 				<!--TAB PANEL START-->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade active in" id="selectaddress">
-						<div class="panel col-sm-3 item selected">
-							<div class="panel-body text-center bk-padding-off bk-wrapper">
-								<img src="images/addressheader.jpg" alt=""
-									class="img-responsive">
-							</div>
-							<div class="panel-body text-center">
-								<h3 class="bk-margin-off">
-									<strong>张三</strong>
-								</h3>
-								<small class="bk-fg-inverse">13275436789</small>
-								<p class="bk-margin-off-bottom bk-fg-gray">
-									<em>北京市海淀区西土城路10号北京邮电大学</em>
-								</p>
-								<a class="btn btn-primary itemselect">选择</a>
-							</div>
-						</div>
+
+					<s:iterator value="addressList">
+
 						<div class="panel col-sm-3 item">
 							<div class="panel-body text-center bk-padding-off bk-wrapper">
 								<img src="images/addressheader.jpg" alt=""
@@ -318,31 +325,35 @@ select {
 							</div>
 							<div class="panel-body text-center">
 								<h3 class="bk-margin-off">
-									<strong>Aria</strong>
+									<strong>${person }</strong>
 								</h3>
-								<small class="bk-fg-inverse">13245098761</small>
+								<small class="bk-fg-inverse">${tel }</small>
 								<p class="bk-margin-off-bottom bk-fg-gray">
-									<em>上海市松江区文汇路上海外国语大学</em>
+									<em>${address }</em>
 								</p>
-								<a class="btn btn-primary itemselect">选择</a>
+
+								<a class="btn btn-primary itemselect" onclick="SelectAddress(${addressID}); return false;">选择</a>
+
 							</div>
 						</div>
-						<div class="panel col-sm-3 item">
-							<div class="panel-body text-center bk-padding-off bk-wrapper">
-								<img src="images/addressheader.jpg" alt=""
-									class="img-responsive">
-							</div>
-							<div class="panel-body text-center">
-								<h3 class="bk-margin-off">
-									<strong>赵四</strong>
-								</h3>
-								<small class="bk-fg-inverse">13275678900</small>
-								<p class="bk-margin-off-bottom bk-fg-gray">
-									<em>昆明市盘龙区白云路128号</em>
-								</p>
-								<a class="btn btn-primary itemselect">选择</a>
-							</div>
-						</div>
+					</s:iterator>
+						
+<!-- 						<div class="panel col-sm-3 item  selected"> -->
+<!-- 							<div class="panel-body text-center bk-padding-off bk-wrapper"> -->
+<!-- 								<img src="images/flat-landscape.jpg" alt="" -->
+<!-- 									class="img-responsive"> -->
+<!-- 							</div> -->
+<!-- 							<div class="panel-body text-center"> -->
+<!-- 								<h3 class="bk-margin-off"> -->
+<!-- 									<strong>赵四</strong> -->
+<!-- 								</h3> -->
+<!-- 								<small class="bk-fg-inverse">13275678900</small> -->
+<!-- 								<p class="bk-margin-off-bottom bk-fg-gray"> -->
+<!-- 									<em>昆明市盘龙区白云路128号</em> -->
+<!-- 								</p> -->
+<!-- 								<a class="btn btn-primary itemselect">选择</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="newaddress">
 						<div class="shopper-informations">
@@ -393,32 +404,33 @@ select {
 								<td></td>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
+						<tbody id='cartItem'>
+						<s:iterator value="trOrderItemList">
+							<tr id="${buyItemID }" class="itemtr">
 								<td class="cart_product"><a href=""><img
-										src="images/book-detail.jpg"></a></td>
+										src="${imageUrl }"></a></td>
 								<td class="cart_description">
 									<h4>
-										<a href="">${book.bookName}</a>
+										<a href="">${bookName}</a>
 									</h4>
-									<p>ISBN: 1089772</p>
 								</td>
 								<td class="cart_price">
-									<p>${book.price }</p>
+									<p>¥${price }</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
+									<a class="cart_quantity_up" href="" onclick="return QuantityUp(${buyItemID})"> + </a>
 										<input class="cart_quantity_input" type="text" name="quantity"
-											value="1" autocomplete="off" size="2">
+											value="${num }" autocomplete="off" size="2"/>
+									<a class="cart_quantity_down" href="" onclick="return QuantityDown(${buyItemID})"> - </a>
 									</div>
 								</td>
 								<td class="cart_total">
-									<p class="cart_total_price">${book.price }</p>
+									<p class="cart_total_price">¥${buyItemPrice }</p>
 								</td>
-								<td class="cart_delete"><a class="cart_quantity_delete"
-									href=""><i class="fa fa-times"></i></a></td>
-							</tr>
 
+							</tr>
+						</s:iterator>
 							<tr>
 
 								<td colspan="4">&nbsp;</td>
@@ -427,13 +439,12 @@ select {
 										<tbody>
 											<tr style="font-size: x-large;">
 												<td>总价</td>
-												<td style="color:#FE980F;"><span>${book.price }</span></td>
+												<td style="color:#FE980F;"><span id="orderTotal">¥${totalPrice }</span></td>
 											</tr>
 											<tr style="border-bottom: 0;">
-												<td></td>
-												<td><div style="text-align: right;">
-														<a class="btn btn-default check_out"
-															href="SubmitOrder?buyItemID=${buyItemID }&addressID=${addressID }">提交订单</a>
+												<td ></td>
+												<td><div style="text-align: right;" id="div_submit">
+														<a class="btn btn-default check_out" onclick="SubmitOrder(); return false;">提交订单</a>
 													</div></td>
 
 											</tr>
@@ -537,8 +548,86 @@ select {
 				fit : true
 			// 100% fit in a container
 			});
+
+		});
+	</script>
+
+
+	<script>
+		var g_addressID = -1;
+		var g_totalPrice = ${totalPrice};
+		function SelectAddress(addressID){
+			g_addressID = addressID;
+		}
+		
+		
+		function SubmitOrder(){
+
+			if(g_addressID == -1){
+				
+				messageToast();
+				return false;
+			}
+			var url = "SubmitOrder?addressID=" + g_addressID;
+			var trs = $(".itemtr");
+			$.each(trs,function(i,list){
+				url += "&buyItemIDList=" + list.getAttribute("id");
+			})
+
+			window.location.href = url;
+			
+		}
+		
+
+		$(".cart_quantity_input").blur(function(){
+			alert();
+			var num = $(this).attr("value");
+			var buyItemID = $(this).parents("tr")[0].attr("id");
+			updateCart(buyItemID, num);
+			return false;
 		});
 		
+
+		
+
+		function QuantityUp(buyItemID){
+			var currentNum = parseInt($("tr#" + buyItemID).find(".cart_quantity_input").attr("value"));
+			updateCart(buyItemID, currentNum+1);
+			return false;
+		}
+		
+		function QuantityDown(buyItemID){
+			var currentNum = parseInt($("tr#" + buyItemID).find(".cart_quantity_input").attr("value"));
+			if(currentNum == 1) return false;
+			updateCart(buyItemID, currentNum-1);
+			return false;
+		}
+		
+		
+		function updateCart(buyItemID,num){
+			$.ajax({
+				url: "UpdateCartItem?buyItemID=" + buyItemID + "&num=" + num,
+				dataType:"json",
+				success:function(data){
+					//data便是更新之后这条数据的trCartItem
+					//更新这条数据对应的html
+					var tr = $("tr#" + buyItemID);
+					var numInput = tr.find(".cart_quantity_input");
+					var itemTotalPrice = tr.find(".cart_total_price");
+					numInput.attr("value", data.num);
+					
+					var oldItemTotalPrice = parseInt(itemTotalPrice.html().substr(1, itemTotalPrice.html().length));
+					
+					itemTotalPrice.html("¥" + data.buyItemPrice);
+					
+					g_totalPrice = parseInt(g_totalPrice) - parseInt(oldItemTotalPrice) + parseInt(data.buyItemPrice);
+					$("#orderTotal").html("¥" + g_totalPrice);
+					
+				}
+			})
+		}
+
+
 		function addAddress(){
 			var consignee = $("input[id='consignee']").val();
 			var tel = $("input[id='tel']").val();
@@ -564,12 +653,27 @@ select {
   									 	+"<a class='btn btn-primary itemselect'>选择</a>"
   									 	+"</div>");		
 					
-             		 $("div[id='selectaddress']").prepend(address);  
+             		 $("div[id='selectaddress']").prepend(address);
+             		 
+             		location.reload()
 				}
 			})
 		}
 		
+
 	</script>
+	
+
+	<script>
+	   function messageToast(){
+			$(".time_messagebox").fadeIn(300);
+			setTimeout("$('.time_messagebox').fadeOut(300);",1200)
+	   }
+</script>
+
+	
+	
+	
 
 </body>
 </html>

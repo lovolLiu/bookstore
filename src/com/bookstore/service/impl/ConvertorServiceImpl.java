@@ -34,10 +34,28 @@ public class ConvertorServiceImpl implements ConvertorService{
 	AddressDAO addressDAO;
 	OrderDAO orderDAO;
 	
+	public Double calculateTotalPrice(List<TrCartItem> trCartItemList){
+		Double totalPrice = 0.0;
+		for(TrCartItem trCartItem : trCartItemList){
+			totalPrice += trCartItem.getBuyItemPrice();
+		}
+		return totalPrice;
+	}
+	
+	
 	public List<TrCartItem> buyItemListToTrCartList(List<BuyItem> buyItemList){
 		List<TrCartItem> trCartItemList = new ArrayList<TrCartItem>();
 		for(BuyItem buyItem : buyItemList){
 			trCartItemList.add(buyItemToTrCartItem(buyItem));
+		}
+		return trCartItemList;
+	}
+	
+	@Override
+	public List<TrCartItem> buyItemIDListToTrCartList(List<Integer> buyItemIDList) {
+		List<TrCartItem> trCartItemList = new ArrayList<TrCartItem>();
+		for(Integer buyItemID : buyItemIDList){
+			trCartItemList.add(buyItemIDToTrCartItem(buyItemID));
 		}
 		return trCartItemList;
 	}
@@ -53,6 +71,7 @@ public class ConvertorServiceImpl implements ConvertorService{
 		Book book = bookDAO.findByID(bookID);
 		trCartItem.setBookName(book.getBookName());
 		trCartItem.setBuyItemID(buyItem.getBuyItemID());
+		trCartItem.setAuthorName(book.getAuthor());
 		List<Picture> pictureList = pictureDAO.findByBookID(book.getBookID());
 		String pictureUrl;
 		if(pictureList.isEmpty()) 
@@ -72,6 +91,13 @@ public class ConvertorServiceImpl implements ConvertorService{
 		return buyItemToTrCartItem(buyItem);
 	}
 	
+	
+	public DivOrder orderIDToDivOrder(Integer orderID){
+		return buyItemListAddToDivOrder(getBuyItemList(orderID), orderID);
+	}
+	
+	
+	
 	// 以下是和Order显示有关
 	@Override
 	public List<BuyItem> getBuyItemList(Integer orderID) {
@@ -83,26 +109,31 @@ public class ConvertorServiceImpl implements ConvertorService{
 	public List<DivBook> bookIDToDivBook(List<Book> bookList) {
 		// TODO Auto-generated method stub
 		List<DivBook> divBookList = new ArrayList<DivBook>();
-		DivBook divBook = new DivBook();
 		
 		int i = 0;
-		for(Book book: bookList){
-			book = bookDAO.findByID(bookList.get(i).getBookID());
+		
+		for(; i < bookList.size();i++){
+			Book book = bookDAO.findByID(bookList.get(i).getBookID());
 			Picture picture = pictureDAO.findByBookID(book.getBookID()).get(0);
+			DivBook divBook = new DivBook();
 			
 			divBook.setBookID(book.getBookID());
 			divBook.setBookName(book.getBookName());
 			divBook.setBookPrice(book.getPrice());
+			divBook.setDescription(book.getDescription());
 			
 			
 			divBook.setPictureID(picture.getPictureID());
 			divBook.setURL(picture.getUrl());
-			
+			//System.out.println(divBook.getBookID()+" "+divBook.getPictureID());
 			
 			divBookList.add(divBook);
-			i++;
+			//System.out.println(divBookList.get(i).getBookID()+" "+ divBookList.get(i).getPictureID());
 		}
 		
+		for(int j = 0; j<divBookList.size();j++){
+			System.out.println(divBookList.get(j).getBookID()+" "+ divBookList.get(j).getPictureID());
+		}
 		return divBookList;
 	}
 	@Override

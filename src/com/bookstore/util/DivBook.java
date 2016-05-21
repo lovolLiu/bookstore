@@ -7,6 +7,7 @@ public class DivBook {
 	String bookName;
 	Integer bookID;
 	Integer pictureID;
+	String description;
 	String URL;
 	public double getBookPrice() {
 		return bookPrice;
@@ -38,6 +39,12 @@ public class DivBook {
 	}
 	public void setBookID(Integer bookID) {
 		this.bookID = bookID;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

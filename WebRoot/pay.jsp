@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -274,7 +275,7 @@ select {
 		<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
 		<blockquote>
 		    <h2>收货人信息</h2>
-			<p>${address.person } &nbsp ${address.tel } &nbsp ${address.address }</p>
+			<p>收货人姓名：${address.person }</br>联系方式：${address.tel }</br>收货地址：${address.address }</p>
 		</blockquote>
 		</div>
 		<section id="cart_items">
@@ -291,28 +292,31 @@ select {
 							</tr>
 						</thead>
 						<tbody>
+						
+						<s:iterator value="divOrder.orderItemList">
 							<tr>
 								<td class="cart_product"><a href=""><img
-										src="images/book-detail.jpg"></a></td>
+										src="${imageUrl }"></a></td>
 								<td class="cart_description">
 									<h4>
-										<a href="">${book.bookName }</a>
+										<a href="">${bookName }</a>
 									</h4>
-									<p>ISBN: 1089772</p>
 								</td>
 								<td class="cart_price">
-									<p>${book.price }</p>
+									<p>${price }</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
 										<input class="cart_quantity_input" type="text" name="quantity"
-											value="1" autocomplete="off" size="2">
+											value="${num }" autocomplete="off" size="2">
 									</div>
 								</td>
 								<td class="cart_total">
-									<p class="cart_total_price">${book.price }</p>
+									<p class="cart_total_price">${buyItemPrice }</p>
 								</td>
 							</tr>
+							
+						</s:iterator>
 								<tr>
 								<td colspan="4">&nbsp;</td>
 								<td colspan="2">
@@ -320,12 +324,12 @@ select {
 										<tbody>
 											<tr style="font-size: x-large;">
 												<td>总价</td>
-												<td style="color:#FE980F;"><span>${book.price }</span></td>
+												<td style="color:#FE980F;"><span>${totalPrice }</span></td>
 											</tr>
 											<tr style="border-bottom: 0;">
 												<td></td>
 												<td><div style="text-align: right;">
-														<a class="btn btn-default check_out" href="goods-ontheway.jsp">付款</a>
+														<a class="btn btn-default check_out" href="Payment?orderID=${divOrder.orderId }">付款</a>
 													</div></td>
 											</tr>
 										</tbody>

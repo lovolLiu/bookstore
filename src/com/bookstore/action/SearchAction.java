@@ -1,5 +1,6 @@
 package com.bookstore.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.domain.*;
@@ -14,8 +15,14 @@ public class SearchAction {
 	Integer tag = 0; //0表示按书名 1表示按出版社 2表示按书的作者 进行搜索
 	SearchService searchService;
 	List<Book> bookList;
-	List<DivBook> divBook;
+	List<DivBook> divBook ;
 	ConvertorService convertorService;
+	public List<Book> searchAllBook(){
+		List<Book> list;
+		System.out.println("222222333333");
+		list = searchService.searchAllBook();
+		return list;
+	}
 	public List<Book> searchBookList(){
 		List<Book> list;
 		if(tag == 0){
@@ -52,11 +59,22 @@ public class SearchAction {
 		 if(searchBookList() != null){
 			 bookList = searchBookList();
 			 divBook = convertorService.bookIDToDivBook(bookList);
-			 
 			 return "success";
 		 }
 			 
 		 else return "false";
+	 }
+	 //显示所有书目的action
+	 public String initSearchExecute(){
+		 //init findall
+		 
+		 bookList = searchAllBook();
+		 divBook = convertorService.bookIDToDivBook(bookList);
+//		 for(int i =0;i <divBook.size();i++){
+//			 System.out.println(divBook.get(i).getBookID()+" "+divBook.get(i).getPictureID());
+//		 }
+		 
+		 return "success";
 	 }
 	public String getKeyword() {
 		return keyword;

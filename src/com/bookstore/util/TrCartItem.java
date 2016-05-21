@@ -2,8 +2,7 @@ package com.bookstore.util;
 
 /**
  * @author Zhiqi Yang
- * @description 购物车列表的tr的数据封装对象
- * @modify
+ * @description 购物车列表的tr的数据封装对象. -------别看此对象里面有Cart，我们的Order的每一行其实用的也是这个(#_#)-----
  * @modifyDate 
  */
 public class TrCartItem {
@@ -11,6 +10,7 @@ public class TrCartItem {
 	Integer buyItemID;
 	String imageUrl;
 	String bookName;
+	String authorName;
 	Double price;
 	Double buyItemPrice;
 	Integer num;
@@ -50,6 +50,12 @@ public class TrCartItem {
 	}
 	public void setBuyItemPrice(Double buyItemPrice) {
 		this.buyItemPrice = buyItemPrice;
+	}
+	public String getAuthorName() {
+		return authorName;
+	}
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
 	

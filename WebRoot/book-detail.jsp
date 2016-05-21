@@ -114,33 +114,33 @@
                         	<li>
                             	<div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival1.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='newestDivBookList[0].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="newestBookList[0].bookName"/></h3>
-                                        <p><s:property value="newestBookList[0].description"/></p>
+                                        <h3><s:property value="newestDivBookList[0].bookName"/></h3>
+                                        <p><s:property value="newestDivBookList[0].description"/></p>
                                     </div>
                                 </div>
                             </li>
                             <li>
                             	<div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival2.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='newestDivBookList[1].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="newestBookList[1].bookName"/></h3>
-                                        <p><s:property value="newestBookList[1].description"/></p>
+                                        <h3><s:property value="newestDivBookList[1].bookName"/></h3>
+                                        <p><s:property value="newestDivBookList[1].description"/></p>
                                     </div>
                                 </div>
                             </li>
                             <li>
                             	<div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival3.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='newestDivBookList[2].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="newestBookList[2].bookName"/></h3>
-                                        <p><s:property value="newestBookList[2].description"/></p>
+                                        <h3><s:property value="newestDivBookList[2].bookName"/></h3>
+                                        <p><s:property value="newestDivBookList[2].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -169,58 +169,58 @@
                             <li>
                             	<div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival2.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='hotestDivBookList[0].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[0].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[0].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[0].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[0].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival1.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='hotestDivBookList[1].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[1].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[1].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[1].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[1].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival3.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='hotestDivBookList[2].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[2].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[2].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[2].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[2].description"/></p>
                                     </div>
                                 </div>
                             </li>
                             <li>
                             	<div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival3.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='hotestDivBookList[3].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[3].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[3].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[3].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[3].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival2.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='hotestDivBookList[4].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[4].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[4].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[4].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[4].description"/></p>
                                     </div>
                                 </div>
                                 <div class="new-arrival">
                                     <div class="kode-thumb">
-                                        <a href="#"><img src="images/new-arrival1.png" alt=""></a>
+                                        <a href="#"><img src="<s:property value='hotestDivBookList[5].URL'/>" alt=""></a>
                                     </div>
                                     <div class="kode-text">
-                                        <h3><s:property value="hotestBookList[5].bookName"/></h3>
-                                        <p><s:property value="hotestBookList[5].description"/></p>
+                                        <h3><s:property value="hotestDivBookList[5].bookName"/></h3>
+                                        <p><s:property value="hotestDivBookList[5].description"/></p>
                                     </div>
                                 </div>
                             </li>
@@ -519,7 +519,8 @@
 <script src="js/jquerypp.custom.js"></script>
 <script src="js/jquery.bookblock.js"></script>
 <script src="js/functions.js"></script>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="application/x-javascript"> 
+addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 				<script type="text/javascript">
@@ -530,7 +531,6 @@
 							fit: true   // 100% fit in a container
 						});
 					});
-				   </script>
-
+</script>
 </body>
 </html>

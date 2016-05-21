@@ -4,27 +4,28 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
+
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.dao.OrderDAO;
+import com.bookstore.domain.Book;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
-
 import com.bookstore.service.BuyService;
 
 public class BuyServiceImpl implements BuyService {
 	
-	BuyItemDAO buyItemDao;
-
 	OrderDAO orderDAO;
 	BuyItemDAO buyItemDAO;
 	BookDAO bookDAO;
 	
 	@Override
 	public int createBuyItem(int userID, int bookID, int num) {
+		Book book = bookDAO.findByID(bookID);
+		Double currentPrice = book.getPrice() * book.getDiscount()/100;
 		BuyItem buyItem = new BuyItem();
 		buyItem.setBuyNum(num);
-		buyItem.setCurrentPrice(bookDAO.findByID(bookID).getPrice());
+		buyItem.setCurrentPrice(currentPrice);
 		buyItem.setHasApprise(false);
 		buyItem.setBookID(bookID);
 		return buyItemDAO.save(buyItem);
@@ -41,6 +42,7 @@ public class BuyServiceImpl implements BuyService {
 		for(Integer buyItemID : buyItemIDList){
 			BuyItem buyItem = buyItemDAO.findByID(buyItemID);
 			buyItem.setOrderID(orderID);
+			buyItem.setBoughtDate(new Timestamp(System.currentTimeMillis()));
 			buyItemDAO.update(buyItem);
 		}
 		return orderID;
@@ -48,7 +50,9 @@ public class BuyServiceImpl implements BuyService {
 
 	@Override
 	public boolean payOrder(int orderID) {
-		// TODO Auto-generated method stub
+		Order order = orderDAO.findById(orderID);
+		order.setStats(1);
+		orderDAO.update(order);
 		return false;
 	}
 

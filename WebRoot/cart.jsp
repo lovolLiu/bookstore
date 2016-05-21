@@ -200,9 +200,28 @@ select{
     float:left;
     width:10%;
 }
+
+		.time_messagebox{
+			position: fixed;
+			margin:auto;
+			left:0; 
+			right:0; 
+			top:0; 
+			bottom:0;
+			width:250px; 
+			height:80px;
+			background: orange;
+			color: white;
+			display: none;
+			border-radius:10px;
+		}
+
 </style>
 </head>
 <body>
+<div class="time_messagebox">
+		<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">您还没有勾选任何商品哦亲~~</span></p>
+</div>
 <div id="loader-wrapper">
 	<div id="loader"></div>
 
@@ -251,6 +270,7 @@ select{
         <section id="cart_items">
 		<div class="container">
 			<div class="table-responsive cart_info">
+			<form action="CheckOrderInfo" id="cart_form">
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
@@ -306,14 +326,16 @@ select{
 									</tr>
 									<tr style="border-bottom: 0;">
 										<!-- <td><div style="text-align: right"><a class="btn btn-default update" href="">更新购物车</a></div></td> -->
-										<td><div style="text-align: right;"><a class="btn btn-default check_out" href="submit-order.jsp">去结算</a></div></td>
+										<td><div style="text-align: right;"><a class="btn btn-default check_out" onclick="SubmitForm(); return false;">去结算</a></div></td>
 									</tr>
+									
 								</tbody>
 								</table>
 							</td>
 						</tr>
 					</tbody>
 				</table>
+				</form>
 			</div>
 		</div>
 	</section> <!--/#cart_items-->
@@ -418,6 +440,25 @@ select{
 					});
 
 					
+					function SubmitForm(){
+						//首先需要判断，如果一个都没有勾选，不能提交
+						var flag = false;
+						$("input[type='checkbox']").each(function() {
+							if(this.checked){
+								flag = true;
+							}
+						})
+
+						if(!flag){
+							messageToast();
+							return false;
+						}
+
+
+						$("#cart_form").submit();
+					}
+					
+					
 					$(".cart_quantity_input").blur(function(){
 						alert();
 						var num = $(this).attr("value");
@@ -434,7 +475,7 @@ select{
 							success:function(data){
 								$.each(data,function(i,list){  
                        				 var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
-                       				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\"><a href><img src=\""+list.imageUrl+"\"></a></td>"
+                       				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href><img src=\""+list.imageUrl+"\"></a></td>"
                        				 +"<td class=\"cart_description\"><h4><a href>"+ list.bookName+"</a></h4></td>"
                        				 +"<td class=\"cart_price\"><p>¥"+list.price+"</p></td>"
                        				 +"<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\" onclick='return QuantityUp(" + list.buyItemID + ")'> + </a> "
@@ -457,6 +498,7 @@ select{
 					
 					function QuantityDown(buyItemID){
 						var currentNum = parseInt($("tr#" + buyItemID).find(".cart_quantity_input").attr("value"));
+						if(currentNum == 1) return false;
 						updateCart(buyItemID, currentNum-1);
 						return false;
 					}
@@ -503,9 +545,18 @@ select{
 						})
 					}
 					
-
+					
+				
+					
+					
 					
 				   </script>
+				   <script>
+				   function messageToast(){
+						$(".time_messagebox").fadeIn(300);
+						setTimeout("$('.time_messagebox').fadeOut(300);",1200)
+				   }
+	</script>
 
 </body>
 </html>

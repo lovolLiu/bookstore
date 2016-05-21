@@ -4,15 +4,26 @@ import java.util.List;
 
 import com.bookstore.domain.*;
 import com.bookstore.service.BookDetailService;
+import com.bookstore.service.ConvertorService;
 import com.bookstore.service.SelectBookService;
+import com.bookstore.util.DivBook;
+
+/**
+ * 
+ * @author Xintong Liu
+ * @description 书目详情和书的个性推荐
+ * 
+ */
 
 public class BookDetailAction {
 	Integer bookID;
 	BookDetailService bookDetailService;
 	SelectBookService selectBookService;
+	ConvertorService convertorService;
 	
 	
 	Book book;
+	DivBook divBook;
 	Publisher publisher;
 	int bookScore = 0;
 	int totalScore=0;
@@ -21,6 +32,10 @@ public class BookDetailAction {
 	List<Book> hotestBookList;
 	List<Book> newestBookList;
 	List<BookType> typeList;
+	List<DivBook> relatedDivBookList;
+	List<DivBook> hotestDivBookList;
+	List<DivBook> newestDivBookList;
+
 
 	
 	
@@ -36,8 +51,12 @@ public class BookDetailAction {
 		//relatedBookList = selectService.selectPersonalBook();
         
 		hotestBookList = selectBookService.selectHottestBook();
+		hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
+		System.out.println(hotestDivBookList.get(9).getURL());
+		
 	
 		newestBookList = selectBookService.selectNewestBook();
+		newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
 
 		//typeList = selectService.getTypeList();
 		return "success";
@@ -141,6 +160,46 @@ public class BookDetailAction {
 
 	public void setTotalScore(int totalScore) {
 		this.totalScore = totalScore;
+	}
+
+	public ConvertorService getConvertorService() {
+		return convertorService;
+	}
+
+	public void setConvertorService(ConvertorService convertorService) {
+		this.convertorService = convertorService;
+	}
+
+	public DivBook getDivBook() {
+		return divBook;
+	}
+
+	public void setDivBook(DivBook divBook) {
+		this.divBook = divBook;
+	}
+
+	public List<DivBook> getRelatedDivBookList() {
+		return relatedDivBookList;
+	}
+
+	public void setRelatedDivBookList(List<DivBook> relatedDivBookList) {
+		this.relatedDivBookList = relatedDivBookList;
+	}
+
+	public List<DivBook> getHotestDivBookList() {
+		return hotestDivBookList;
+	}
+
+	public void setHotestDivBookList(List<DivBook> hotestDivBookList) {
+		this.hotestDivBookList = hotestDivBookList;
+	}
+
+	public List<DivBook> getNewestDivBookList() {
+		return newestDivBookList;
+	}
+
+	public void setNewestDivBookList(List<DivBook> newestDivBookList) {
+		this.newestDivBookList = newestDivBookList;
 	}
 
 
