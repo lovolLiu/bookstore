@@ -236,25 +236,27 @@ a {
 </style>
 </head>
 <body>
+    <!-- 添加新地址form -->
 	<div id="addaddressform" class="panel addaddressform"
 		style="display:none">
 		<div class="panel-body text-center bk-padding-off bk-wrapper">
 			<img src="images/addressheader.jpg" alt="" class="img-responsive">
 		</div>
 		<div class="panel-body text-center">
-			<form onSubmit="return false;">
-				<input type="text" placeholder="省份" id="address1" /> <input
-					type="text" placeholder="地区" id="address2" /> <input type="text"
-					placeholder="详细地址" value="" id="address3" /> <input type="text"
-					placeholder="邮政编码" id="address4" /> <input type="text"
-					placeholder="收货人姓名" value="" id="consignee" /> <input type="text"
-					placeholder="电话号码" value="" id="tel" />
+			<form id="filladdress" onSubmit="return false;">
+				<input type="text" placeholder="省份" id="address1" required=""/> 
+				<input type="text" placeholder="地区" id="address2" required=""/> 
+				<input type="text" placeholder="详细地址" value="" id="address3" required=""/> 
+				<input type="text" placeholder="邮政编码" id="address4" required=""/> 
+			    <input type="text" placeholder="收货人姓名" value="" id="consignee" required=""/> 
+			    <input type="text" placeholder="电话号码" value="" id="tel" required=""/>
 			</form>
-			<div class="error">我是错误信息</div>
-			<a id="confirmaddaddress" class="btn btn-primary">确定</a> <a
-				id="canceladdaddress" class="btn btn-primary">取消</a>
+			<div id="addresserror" class="error"></div>
+			<a id="confirmaddaddress" class="btn btn-primary">确定</a> 
+			<a id="canceladdaddress" class="btn btn-primary">取消</a>
 		</div>
 	</div>
+	<!-- 输入旧密码form -->
 	<div id="oldpasswordform" class="over" style="display:none;">
 		<div id="oldpasswordform_child" class="over_child">
 			<table>
@@ -275,6 +277,7 @@ a {
 			</table>
 		</div>
 	</div>
+	<!-- 输入新密码form -->
 	<div id="newpasswordform" class="over" style="display:none;">
 		<div id="newpasswordform_child" class="over_child">
 			<table>
@@ -300,6 +303,7 @@ a {
 			</table>
 		</div>
 	</div>
+	<!-- 输入评价form -->
 	<div id="appriseform" class="panel addaddressform" style="display:none">
 		<div class="panel-body text-center bk-padding-off bk-wrapper">
 			<img src="images/addressheader.jpg" alt="" class="img-responsive">
@@ -310,10 +314,10 @@ a {
 		        <h4></h4>
 		        <p></p>
 		    </div>
-			<form onSubmit="return false;">
-				<textarea name="" id="message" rows="6" class="form-control" placeholder="在这儿加上一段走心的评论吧~~"></textarea>
+			<form id="fillapprise" onSubmit="return false;">
+				<textarea name="" id="apprisemessage" rows="6" class="form-control" placeholder="在这儿加上一段走心的评论吧~~"></textarea>
 			</form>
-			<div class="error">我是错误信息</div>
+			<div id="appriseerror" class="error">我是错误信息</div>
 			<a id="confirmapprise" class="btn btn-primary">确定</a> 
 			<a id="cancelapprise" class="btn btn-primary">取消</a>
 		</div>
@@ -435,7 +439,7 @@ a {
 							</tbody>
 						</table>
 						<div style="text-align: center;">
-							<a class="btn btn-primary">查看所有订单</a>
+							<a class="btn btn-primary" href="InitMyOrder?">查看所有订单</a>
 						</div>
 					</div>
 				</div>
@@ -584,6 +588,186 @@ a {
 	<script type="text/javascript">
 		var time = 0;
 		var flag = false;
+		//格式化日期
+		function formatDate(data) {
+			var d = new Date(data); //for date in the format "YYYY-MM-DDTHH:MM:SS" where T means timezone!!! 
+			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1)
+					+ "-" + d.getDate();
+			var hours = ((d.getHours() + 16) % 24 < 10) ? "0"
+					+ (d.getHours() + 16) % 24 : (d.getHours() + 16) % 24;
+			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
+			var formattedTime = hours + ":" + minutes + ":" + seconds;
+			formattedDate = formattedDate + " " + formattedTime;
+			return formattedDate;
+		}
+		//显示订单
+		function showOrder() {
+			$
+					.ajax({
+						url : "ShowOrderInUserInfo.action",
+						dataType : "json",
+						success : function(data) {
+							$
+									.each(
+											data,
+											function(i, list) {
+												var divPic = "";
+												var bookName = "";
+												$
+														.each(
+																list.orderItemList,
+																function(j,
+																		order) {
+																	divPic += "<div class='pic'>"
+																			+ "<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
+																			+ "</div>";
+																	/* bookName = order.bookName; */
+																});
+												var table1 = $("<tr class='itemhead'>"
+														+ "<td colspan='4'>"
+														+ "<span class='dealtime'>"
+														+ formatDate(list.dealTime)
+														+ "</span>"
+														+ "<span class='orderno'>"
+														+ "订单号: <a href='xxxxx'>"
+														+ list.orderId
+														+ "</a></span>"/*xxxx表示以后要添加跳转href */
+														+ "</tr>"
+														+ "<tr class='item'>"
+														+ "<td class='itemdetail'>"
+														+ "<div>"
+														+ divPic
+														+ "</div></td>"
+														+ "<td class='deliver'>"
+														+ "<span data-toggle='tooltip' data-placement='bottom' title=''>"
+														+ list.consignee
+														+ "</span>"
+														+ "</td>"
+														+ "<td class='sum'><span>￥"
+														+ list.totalPrice
+														+ "</span></td>"
+														+ "<td class='status'><span>"
+														+ list.orderStats
+														+ "</span></td></tr>");
+												$("tbody[id='ordertable']")
+														.append(table1);
+											});
+						}
+					})
+		}
+		//显示已付款订单数
+		function showPaidOrderNumber() {
+			$.ajax({
+				url : "ShowPaidNumber",
+				dataType : "json",
+				success : function(data) {
+					$("h4[id='paid']").html(data);
+				}
+			})
+		}
+		//显示未付款订单数
+		function showUnpaidOrderNumber() {
+			$.ajax({
+				url : "ShowUnpaidNumber",
+				dataType : "json",
+				success : function(data) {
+					$("h4[id='unpaid']").html(data);
+				}
+			})
+		}
+		//显示未评论的书本数
+		function showUnapprisedOrderNumber() {
+			$.ajax({
+				url : "ShowUnapprisedNumber",
+				dataType : "json",
+				success : function(data) {
+					$("h4[id='unapprise']").html(data);
+				}
+			})
+		}
+		function bindbutton() {
+			//修改地址
+			$('.itemselect').click(function(e) {
+				var parent = $(e.target).parent();
+				var flag = true;
+				if (parent.attr('firsttime') == "yes")
+					flag = false;
+				if (flag == false) {
+					parent.find('.address').editable('toggleDisabled');
+					parent.find('.address').editable('toggleDisabled');
+					parent.attr("firsttime", "no");
+				} else
+					parent.find('.address').editable('toggleDisabled');
+			});
+			//保存修改的地址
+			$('.itemsave').click(function(e) {
+				alert("保存");
+				var addressDetail = $("a[id='detailaddress',class='editable editable-click address']").val();
+				var consignee = $("a[id='consignee',class='editable editable-click address']").val();
+				var tel = $("a[id='tel',class='editable editable-click address']").val();
+				var addressID = $("div[id='tel']").getAttribute("title");//这里需要在编辑的div里添加一个编辑的属性，方便取值，编辑成功之后需要将这个属性删除
+			});
+			//删除地址
+			$('.itemdelete').click(function(e) {
+				var flag = window.confirm("确定删除？");
+				if (flag) {
+					$(e.target).parent().parent().remove();
+				}
+			});
+		}
+		//显示地址
+		function showAddress() {
+			$.ajax({
+						url : "ShowAddress",
+						dataType : "json",
+						success : function(data) {
+							$.each(
+											data,
+											function(i, list) {
+												var table1 = $("<div class='panel col-sm-4 item' title='"+list.addressID+"'>"
+														+ "<div class='panel-body text-center bk-padding-off bk-wrapper'>"
+														+ "<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
+														+ "</div>"
+														+ "<div class='panel-body text-center' firsttime='yes'>"
+														+ "<h3 class='bk-margin-off'>"
+														+ "<strong><a href='#' id='consignee' data-type='text' data-original-title='收货人' class='editable editable-click editable-disabled address'>"
+														+ list.person
+														+ "</a></strong>"
+														+ "</h3>"
+														+ "<small class='bk-fg-inverse'><a href='#' id='tel' data-type='text' data-original-title='电话' class='editable editable-click editable-disabled address'>"
+														+ list.tel
+														+ "</a></small>"
+														+ "<p class='bk-margin-off-bottom bk-fg-gray'>"
+														+ "<em><a href='#' id='detailaddress' data-type='text' data-original-title='详细地址' class='editable editable-click editable-disabled address'>"
+														+ list.address
+														+ "</a></em>"
+														+ "</p>"
+														+ "<a id='modifyaddress' class='btn btn-primary itemselect col-xs-12'>编辑</a> "
+														+ "<a id='saveaddress' class='btn btn-primary itemsave col-xs-12'>保存</a> "
+														+ "<a id='deleteaddress' class='btn btn-primary itemdelete col-xs-12'>删除</a>"
+														+ "</div></div>");
+												$("div[id='address']").append(
+														table1);
+											});
+							bindbutton();
+						}
+					})
+		}
+		//页面加载后执行的函数
+		$(document).ready(function() {
+			$('#horizontalTab').easyResponsiveTabs({
+				type : 'default', //Types: default, vertical, accordion           
+				width : 'auto', //auto or any width like 600px
+				fit : true
+			// 100% fit in a container
+			});
+			showOrder();
+			showAddress();
+			showPaidOrderNumber();
+			showUnpaidOrderNumber();
+			showUnapprisedOrderNumber();
+		});
 		//修改email
 		$('#enable').click(function() {
 			if (time == 0) {
@@ -733,6 +917,8 @@ a {
 		});
 		//添加新地址
 		function addaddress() {
+			$('#addresserror').html("");
+			$('#filladdress input').val("");
 			//1.获得隐藏的DIV
 			var overDiv = document.getElementById("addaddressform");
 			//2.将隐藏的div有隐藏显现出来hidden-->block
@@ -762,6 +948,17 @@ a {
 			var addressDetail = $("input[id='address1']").val()+$("input[id='address2']").val()+$("input[id='address3']").val()+$("input[id='address4']").val();
 			var consignee = $("input[id='consignee']").val();
 			var tel = $("input[id='tel']").val();
+			if(addressDetail == "" || consignee == "" || tel == ""){
+			    $('#addresserror').html("请填写完所有的信息再提交！");
+			    return;
+			}else{
+			    var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+			    if(!reg.test(tel)){
+			        $('#addresserror').html("请输入有效的电话号码！");
+			        return;
+			    }
+			    $('#addresserror').html("");
+			}
 			$.ajax({
 				url : "AddAddress",
 				type:"post",
@@ -786,26 +983,46 @@ a {
 														+ data.address
 														+ "</a></em>"
 														+ "</p>"
-														+ "<a id='modifyaddress' class='btn btn-primary itemselect col-xs-12' onclick='modifyaddress()'>编辑</a> "
-														+ "<a id='saveaddress' class='btn btn-primary itemsave col-xs-12' onclick='saveaddress()'>保存</a> "
-														+ "<a id='deleteaddress' class='btn btn-primary itemdelete col-xs-12' onclick='deleteaddress()'>删除</a>"
+														+ "<a id='modifyaddress" + data.addressID +"'class='btn btn-primary itemselect col-xs-12'>编辑</a> "
+														+ "<a id='saveaddress" + data.addressID + "'class='btn btn-primary itemsave col-xs-12'>保存</a> "
+														+ "<a id='deleteaddress" + data.addressID +"'class='btn btn-primary itemdelete col-xs-12'>删除</a>"
 														+ "</div></div>");
 					$("div[id='addNew']").after(table1);
+					//修改地址
+			$('#modifyaddress' + data.addressID).click(function(e) {
+				var parent = $(e.target).parent();
+				var flag = true;
+				if (parent.attr('firsttime') == "yes")
+					flag = false;
+				if (flag == false) {
+					parent.find('.address').editable('toggleDisabled');
+					parent.find('.address').editable('toggleDisabled');
+					parent.attr("firsttime", "no");
+				} else
+					parent.find('.address').editable('toggleDisabled');
+			});
+			//保存修改的地址
+			$('#saveaddress' + data.addressID).click(function(e) {
+				alert("保存");
+				var addressDetail = $("a[id='detailaddress',class='editable editable-click address']").val();
+				var consignee = $("a[id='consignee',class='editable editable-click address']").val();
+				var tel = $("a[id='tel',class='editable editable-click address']").val();
+				var addressID = $("div[id='tel']").getAttribute("title");//这里需要在编辑的div里添加一个编辑的属性，方便取值，编辑成功之后需要将这个属性删除
+			});
+			//删除地址
+			$('#deleteaddress' + data.addressID).click(function(e) {
+				var flag = window.confirm("确定删除？");
+				if (flag) {
+					$(e.target).parent().parent().remove();
+				}
+			});
+			alert('您的地址已保存！');
+			//将遮罩层的内容隐藏掉
+			//1.获得隐藏div
+			var overDiv = document.getElementById("addaddressform");
+			overDiv.style.display = "none";
 				}
 			})
-		});
-		$(document).ready(function() {
-			$('#horizontalTab').easyResponsiveTabs({
-				type : 'default', //Types: default, vertical, accordion           
-				width : 'auto', //auto or any width like 600px
-				fit : true
-			// 100% fit in a container
-			});
-			showOrder();
-			showAddress();
-			showPaidOrderNumber();
-			showUnpaidOrderNumber();
-			showUnapprisedOrderNumber();
 		});
 		//查看未评价订单的function
 		function goapprise() {
@@ -818,6 +1035,8 @@ a {
 		}
 		//显示隐藏的评价框
 		function startapprise(e){
+		    $('#appriseerror').html("");
+		    $('#apprisemessage').val("");
 		    //1.获得隐藏的DIV
 			var overDiv = document.getElementById("appriseform");
 			//2.将隐藏的div有隐藏显现出来hidden-->block
@@ -852,171 +1071,19 @@ a {
 		});
 		//添加评论form的确定按钮
 		$('#confirmapprise').click(function() {
+		    var apprise = $('#apprisemessage').val();
+		    if(apprise == ""){
+		        $('#appriseerror').html("亲，评论不能为空!");
+		        return;
+		    }else{
+		        $('#appriseerror').html("");
+		    }
+		    //将遮罩层的内容隐藏掉
+			//1.获得隐藏div
+			alert("添加评论成功！");
+			var overDiv = document.getElementById("appriseform");
+			overDiv.style.display = "none";
 		});
-		function formatDate(data) {
-			var d = new Date(data); //for date in the format "YYYY-MM-DDTHH:MM:SS" where T means timezone!!! 
-			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1)
-					+ "-" + d.getDate();
-			var hours = ((d.getHours() + 16) % 24 < 10) ? "0"
-					+ (d.getHours() + 16) % 24 : (d.getHours() + 16) % 24;
-			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
-			var formattedTime = hours + ":" + minutes + ":" + seconds;
-			formattedDate = formattedDate + " " + formattedTime;
-			return formattedDate;
-		}
-		function showOrder() {
-			$
-					.ajax({
-						url : "ShowOrderInUserInfo.action",
-						dataType : "json",
-						success : function(data) {
-							$
-									.each(
-											data,
-											function(i, list) {
-												var divPic = "";
-												var bookName = "";
-												$
-														.each(
-																list.orderItemList,
-																function(j,
-																		order) {
-																	divPic += "<div class='pic'>"
-																			+ "<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
-																			+ "</div>";
-																	/* bookName = order.bookName; */
-																});
-												var table1 = $("<tr class='itemhead'>"
-														+ "<td colspan='4'>"
-														+ "<span class='dealtime'>"
-														+ formatDate(list.dealTime)
-														+ "</span>"
-														+ "<span class='orderno'>"
-														+ "订单号: <a href='xxxxx'>"
-														+ list.orderId
-														+ "</a></span>"/*xxxx表示以后要添加跳转href */
-														+ "</tr>"
-														+ "<tr class='item'>"
-														+ "<td class='itemdetail'>"
-														+ "<div>"
-														+ divPic
-														+ "</div></td>"
-														+ "<td class='deliver'>"
-														+ "<span data-toggle='tooltip' data-placement='bottom' title=''>"
-														+ list.consignee
-														+ "</span>"
-														+ "</td>"
-														+ "<td class='sum'><span>￥"
-														+ list.totalPrice
-														+ "</span></td>"
-														+ "<td class='status'><span>"
-														+ list.orderStats
-														+ "</span></td></tr>");
-												$("tbody[id='ordertable']")
-														.append(table1);
-											});
-						}
-					})
-		}
-
-		function showPaidOrderNumber() {
-			$.ajax({
-				url : "ShowPaidNumber",
-				dataType : "json",
-				success : function(data) {
-					$("h4[id='paid']").html(data);
-				}
-			})
-		}
-		function showUnpaidOrderNumber() {
-			$.ajax({
-				url : "ShowUnpaidNumber",
-				dataType : "json",
-				success : function(data) {
-					$("h4[id='unpaid']").html(data);
-				}
-			})
-		}
-		function showUnapprisedOrderNumber() {
-			$.ajax({
-				url : "ShowUnapprisedNumber",
-				dataType : "json",
-				success : function(data) {
-					$("h4[id='unapprise']").html(data);
-				}
-			})
-		}
-		function bindbutton() {
-			//修改地址
-			$('.itemselect').click(function(e) {
-				var parent = $(e.target).parent();
-				var flag = true;
-				if (parent.attr('firsttime') == "yes")
-					flag = false;
-				if (flag == false) {
-					parent.find('.address').editable('toggleDisabled');
-					parent.find('.address').editable('toggleDisabled');
-					parent.attr("firsttime", "no");
-				} else
-					parent.find('.address').editable('toggleDisabled');
-			});
-			//保存修改的地址
-			$('.itemsave').click(function(e) {
-				alert("保存");
-				var addressDetail = $("a[id='detailaddress',class='editable editable-click address']").val();
-				var consignee = $("a[id='consignee',class='editable editable-click address']").val();
-				var tel = $("a[id='tel',class='editable editable-click address']").val();
-				var addressID = $("div[id='tel']").getAttribute("title");//这里需要在编辑的div里添加一个编辑的属性，方便取值，编辑成功之后需要将这个属性删除
-			});
-			//删除地址
-			$('.itemdelete').click(function(e) {
-				var flag = window.confirm("确定删除？");
-				if (flag) {
-					$(e.target).parent().parent().remove();
-				}
-			});
-		}
-		function showAddress() {
-			$
-					.ajax({
-						url : "ShowAddress",
-						dataType : "json",
-						success : function(data) {
-
-							$
-									.each(
-											data,
-											function(i, list) {
-												var table1 = $("<div class='panel col-sm-4 item' title='"+list.addressID+"'>"
-														+ "<div class='panel-body text-center bk-padding-off bk-wrapper'>"
-														+ "<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
-														+ "</div>"
-														+ "<div class='panel-body text-center' firsttime='yes'>"
-														+ "<h3 class='bk-margin-off'>"
-														+ "<strong><a href='#' id='consignee' data-type='text' data-original-title='收货人' class='editable editable-click editable-disabled address'>"
-														+ list.person
-														+ "</a></strong>"
-														+ "</h3>"
-														+ "<small class='bk-fg-inverse'><a href='#' id='tel' data-type='text' data-original-title='电话' class='editable editable-click editable-disabled address'>"
-														+ list.tel
-														+ "</a></small>"
-														+ "<p class='bk-margin-off-bottom bk-fg-gray'>"
-														+ "<em><a href='#' id='detailaddress' data-type='text' data-original-title='详细地址' class='editable editable-click editable-disabled address'>"
-														+ list.address
-														+ "</a></em>"
-														+ "</p>"
-														+ "<a id='modifyaddress' class='btn btn-primary itemselect col-xs-12' onclick='modifyaddress()'>编辑</a> "
-														+ "<a id='saveaddress' class='btn btn-primary itemsave col-xs-12' onclick='saveaddress()'>保存</a> "
-														+ "<a id='deleteaddress' class='btn btn-primary itemdelete col-xs-12' onclick='deleteaddress()'>删除</a>"
-														+ "</div></div>");
-												$("div[id='address']").append(
-														table1);
-											});
-							bindbutton();
-						}
-					})
-		}
 	</script>
 
 </body>

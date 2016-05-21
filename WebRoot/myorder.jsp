@@ -204,7 +204,7 @@
 					</ul>
 				</section>
 				<div id="isotope-container" class="container">
-				    <s:iterator value="divOrderList">
+				    <s:iterator value="divOrderList" var="u">
 				        <table id="<s:property value='orderId'/>" class="table table-striped isotope-item <s:property value='orderStats'/>">
 					    <tbody>
 					        <tr class="itemhead">
@@ -230,9 +230,17 @@
 					            </td>
 					            <td class="sum"><span><s:property value='totalPrice'/></span></td>
 					            <td class="status"><span><s:property value='orderStats'/></span></td>
-					            <td class="operation">
-					                <a class="btn btn-primary">删除</a>
-					            </td>
+					            <s:if test="#u.orderStats == '未付款'">
+					                <td class="operation">
+					                    <a class="btn btn-primary canelorder">取消</a>
+					                    <a class="btn btn-primary deleteorder">删除</a>
+					                </td>
+					            </s:if>
+					            <s:else>
+					                <td class="operation">
+					                    <a class="btn btn-primary deleteorder">删除</a>
+					                </td>
+					            </s:else>
 					        </tr>
 					    </tbody>
 				    </table>
