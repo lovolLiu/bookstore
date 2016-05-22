@@ -706,14 +706,40 @@ a {
 				var addressDetail = $("a[id='detailaddress',class='editable editable-click address']").val();
 				var consignee = $("a[id='consignee',class='editable editable-click address']").val();
 				var tel = $("a[id='tel',class='editable editable-click address']").val();
-				var addressID = $("div[id='tel']").getAttribute("title");//这里需要在编辑的div里添加一个编辑的属性，方便取值，编辑成功之后需要将这个属性删除
+				var addressID = $(e.target).parent().parent().attr("title");
+				$.ajax({
+					url:"DeleteAddress",
+					type:"post",
+					data:{"addressDetail":addressDetail,"consignee":consignee,"tel":tel},
+					dataType:"json",	/* 服务器返回的数据类型 */
+					success:function(data){
+						if(data=="success"){
+		          		}else{
+		          			alert("修改失败");
+		          		}
+					}
+				});
 			});
 			//删除地址
 			$('.itemdelete').click(function(e) {
-				var flag = window.confirm("确定删除？");
+/* 				var flag = window.confirm("确定删除？");
 				if (flag) {
 					$(e.target).parent().parent().remove();
-				}
+				} */
+				var addressID = $(e.target).parent().parent().attr("title");
+				$.ajax({
+					url:"DeleteAddress",
+					type:"post",
+					data:{"addressID":addressID},
+					dataType:"json",	/* 服务器返回的数据类型 */
+					success:function(data){
+						if(data=="success"){
+							$(e.target).parent().parent().remove();
+		          		}else{
+		          			alert("删除失败");
+		          		}
+					}
+				});
 			});
 		}
 		//显示地址

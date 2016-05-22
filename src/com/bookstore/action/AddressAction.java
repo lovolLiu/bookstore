@@ -36,10 +36,12 @@ public class AddressAction {
 		address.setAddress(addressDetail);
 		address.setPerson(consignee);
 		address.setTel(tel);
+		this.result = "success";
 		return "success";
 	}
 	public String deleteAddress(){
 		addressService.deleteAddress(addressID);
+		this.result = "success";
 		return "success";
 	}
 	public String getConsignee() {

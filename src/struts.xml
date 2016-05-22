@@ -219,6 +219,7 @@
 		<action name="DeleteAddress" class="com.bookstore.action.AddressAction"
 			method="deleteAddress">
 			<result type="json">
+				<param name="root">result</param>
 			</result>
 		</action>
 	</package>
