@@ -199,6 +199,12 @@
 				<param name="root">unapprisedNum</param>
 			</result>
 		</action>
+		<action name="ShowUnapprisedBookList" class="com.bookstore.action.UserAction"
+			method="showUnapprisedBookList">
+			<result type="json">
+				<param name="root">unapprisedList</param>
+			</result>
+		</action>
 		<action name="ShowAddress" class="com.bookstore.action.UserAction"
 			method="showAddress">
 			<result type="json">
@@ -214,10 +220,17 @@
 		<action name="UpdateAddress" class="com.bookstore.action.AddressAction"
 			method="updateAddress">
 			<result type="json">
+				<param name="root">result</param>
 			</result>
 		</action>
 		<action name="DeleteAddress" class="com.bookstore.action.AddressAction"
 			method="deleteAddress">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="AddApprise" class="com.bookstore.action.AppriseAction"
+			method="addApprise">
 			<result type="json">
 				<param name="root">result</param>
 			</result>

@@ -187,6 +187,12 @@
 		<property name="bookTypeDAO" ref="bookTypeDAO" />
 		<property name="bookDAO" ref="bookDAO" />
 	</bean>
+	
+	<bean id="appriseService" class="com.bookstore.service.impl.AppriseServiceImpl">
+		<property name="buyItemDao" ref="buyItemDAO" />
+		<property name="appriseDao" ref="appriseDAO" />
+		<property name="orderDao" ref="orderDAO" />
+	</bean>
 
 
 

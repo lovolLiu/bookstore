@@ -107,7 +107,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	@Override
 	public List<Book> getUnappriseBook(int userID) {
 		List<Book> bookList = new ArrayList<Book>();
-		List<Order> personalOrderList = orderDAO.findByUserIDandStats(userID,1);
+		List<Order> personalOrderList = orderDAO.findByUserIDandStats(1,userID);
 		for (int i = 0; i < personalOrderList.size(); i++){
 			List<BuyItem> buyItemList = buyItemDAO.findNotApprise(personalOrderList.get(i).getOrderID());
 			for(int j = 0; j < buyItemList.size(); j++){

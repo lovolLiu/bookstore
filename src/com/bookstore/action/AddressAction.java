@@ -5,7 +5,7 @@ import com.bookstore.service.AddressService;
 
 /**
  * @author Chang Su
- * @description 用户个人主页相关Action实现
+ * @description 地址增删改查Action实现
  * @modify
  * @modifyDate
  */
