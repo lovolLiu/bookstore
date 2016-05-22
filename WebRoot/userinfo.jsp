@@ -577,6 +577,7 @@ a {
 			formattedDate = formattedDate + " " + formattedTime;
 			return formattedDate;
 		}
+		//显示未评论的书籍
 		function showUnappriseBook() {
 			$.ajax({
 				url : "ShowUnapprisedBookList",
@@ -1097,18 +1098,32 @@ a {
 		});
 		//添加评论form的确定按钮
 		$('#confirmapprise').click(function() {
-		    var apprise = $('#apprisemessage').val();
-		    if(apprise == ""){
+		    var content = $('#apprisemessage').val();
+		    var bookID = 9;
+		    var score = 3;	//先写的死的
+		    if(content == ""){
 		        $('#appriseerror').html("亲，评论不能为空!");
 		        return;
 		    }else{
 		        $('#appriseerror').html("");
 		    }
+		    $.ajax({
+				url:"AddApprise",
+				type:"post",
+				data:{"content":content,"bookID":bookID,"score":score},
+				dataType:"json",	
+				success:function(data){
+					if(data=="success"){
+						var overDiv = document.getElementById("appriseform");
+						overDiv.style.display = "none";
+	          		}else{
+						alert("Sorry,评论失败!请重新评论~");
+	          		}
+				}
+			});
 		    //将遮罩层的内容隐藏掉
 			//1.获得隐藏div
-			alert("添加评论成功！");
-			var overDiv = document.getElementById("appriseform");
-			overDiv.style.display = "none";
+
 		});
 	</script>
 

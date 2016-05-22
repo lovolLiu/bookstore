@@ -18,7 +18,7 @@ public class AppriseAction {
 	String result;
 	
 	public String addApprise(){
-		appriseService.addApprise(userID, bookID, 3, content);
+		appriseService.addApprise(userID, bookID, score, content);
 		this.result = "success";
 		return "success";
 	}
@@ -62,5 +62,14 @@ public class AppriseAction {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
 	
 }
