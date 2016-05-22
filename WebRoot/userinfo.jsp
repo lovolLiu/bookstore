@@ -701,15 +701,14 @@ a {
 			});
 			//保存修改的地址
 			$('.itemsave').click(function(e) {
-				alert("保存");
-				var consigne = $(e.target).prev().prev().prev().prev().find("a[id='consignee']").val();
-				var addressDetail = $(e.target).prev().prev().find("a[id='detailaddress']").val();
-				var tel = $(e.target).prev().prev().prev().find("a[id='tel']").val();
+				var consignee = $(e.target).siblings().find("a[id='consignee']").text();
+				var addressDetail = $(e.target).siblings().find("a[id='detailaddress']").text();
+				var tel = $(e.target).siblings().find("a[id='tel']").text();
 				var addressID = $(e.target).parent().parent().attr("title");
 				$.ajax({
-					url:"DeleteAddress",
+					url:"UpdateAddress",
 					type:"post",
-					data:{"addressDetail":addressDetail,"consignee":consignee,"tel":tel},
+					data:{"addressDetail":addressDetail,"consignee":consignee,"tel":tel,"addressID":addressID},
 					dataType:"json",	/* 服务器返回的数据类型 */
 					success:function(data){
 						if(data=="success"){
