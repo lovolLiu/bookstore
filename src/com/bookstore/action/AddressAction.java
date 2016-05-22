@@ -3,6 +3,12 @@ package com.bookstore.action;
 import com.bookstore.domain.Address;
 import com.bookstore.service.AddressService;
 
+/**
+ * @author Chang Su
+ * @description 用户个人主页相关Action实现
+ * @modify
+ * @modifyDate
+ */
 public class AddressAction {
 	
 	String consignee;

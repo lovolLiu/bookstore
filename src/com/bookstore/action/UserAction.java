@@ -9,11 +9,12 @@ import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.PersonalInfoService;
+import com.bookstore.util.DivBook;
 import com.bookstore.util.DivOrder;
 
 /**
  * @author Chang Su
- * @description 用户个人主页相关Action实现
+ * @description 用户个人主页相关Action实现:订单的取消与删除，个人订单的显示，评论，用户信息，地址
  * @modify
  * @modifyDate
  */
@@ -22,6 +23,7 @@ public class UserAction {
 	
 	//To userinfo.jsp -- dataType: json
 	List<DivOrder> divOrderList;	//To order-detail.jsp
+	List<DivBook> unapprisedList;
 	Integer paidNum;
 	Integer unpaidNum;
 	Integer unapprisedNum;
@@ -111,6 +113,12 @@ public class UserAction {
 		if(bookList.isEmpty())
 			unapprisedNum = 0;
 		else unapprisedNum = bookList.size();
+		return "success";
+	}
+	
+	public String showUnapprisedBookList(){
+		List<Book> bookList = personalInfoService.getUnappriseBook(userID);
+		unapprisedList = convertorService.bookIDToDivBook(bookList);
 		return "success";
 	}
 	
@@ -217,6 +225,14 @@ public class UserAction {
 
 	public void setNewemail(String newemail) {
 		this.newemail = newemail;
+	}
+
+	public List<DivBook> getUnapprisedList() {
+		return unapprisedList;
+	}
+
+	public void setUnapprisedList(List<DivBook> unapprisedList) {
+		this.unapprisedList = unapprisedList;
 	}
 	
 }
