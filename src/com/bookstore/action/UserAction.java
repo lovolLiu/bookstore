@@ -125,11 +125,13 @@ public class UserAction {
 	
 	public String showAddress(){
 		addressList = personalInfoService.getAddress(userID);
+		this.result = "success";
 		return "success";
 	}
 	
 	public String cancelOrder(){
 		personalInfoService.cancelOrder(orderID);
+		this.result = "success";
 		return "success";
 	}
 	
