@@ -702,9 +702,9 @@ a {
 			//保存修改的地址
 			$('.itemsave').click(function(e) {
 				alert("保存");
-				var addressDetail = $("a[id='detailaddress',class='editable editable-click address']").val();
-				var consignee = $("a[id='consignee',class='editable editable-click address']").val();
-				var tel = $("a[id='tel',class='editable editable-click address']").val();
+				var consigne = $(e.target).prev().prev().prev().prev().find("a[id='consignee']").val();
+				var addressDetail = $(e.target).prev().prev().find("a[id='detailaddress']").val();
+				var tel = $(e.target).prev().prev().prev().find("a[id='tel']").val();
 				var addressID = $(e.target).parent().parent().attr("title");
 				$.ajax({
 					url:"DeleteAddress",

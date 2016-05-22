@@ -33,14 +33,21 @@ public class AddressAction {
 	
 	public String updateAddress(){
 		address = addressService.selectAddress(addressID);
-		address.setAddress(addressDetail);
-		address.setPerson(consignee);
-		address.setTel(tel);
+		Address addressNew = new Address();
+		addressNew.setAddress(addressDetail);
+		addressNew.setPerson(consignee);
+		addressNew.setTel(tel);
+		addressNew.setUserID(userID);
+		address.setUserID(null);
+		addressService.updateAddress(address);
+		addressService.createAddress(addressNew);
 		this.result = "success";
 		return "success";
 	}
 	public String deleteAddress(){
-		addressService.deleteAddress(addressID);
+		address = addressService.selectAddress(addressID);
+		address.setUserID(null);
+		addressService.updateAddress(address);
 		this.result = "success";
 		return "success";
 	}

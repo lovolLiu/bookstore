@@ -149,7 +149,15 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 			for(int j = 0; j < buyItemList.size(); j++){
 				int bookId = buyItemList.get(j).getBookID();
 				Book book = bookDAO.findByID(bookId);
-				if (!bookList.contains(book)){
+				int hasBook = 0;
+				for(Book b:bookList){
+					int bId = b.getBookID();
+					if(bId == book.getBookID()){
+						hasBook = 1;
+						break;
+					}
+				}
+				if(hasBook == 0){
 					bookList.add(book);
 				}
 			}

@@ -161,11 +161,9 @@
 						<div class="widget widget-categories">
 							<h2>图书分类</h2>
 							<ul>
-								<li><a href="#">摄影</a></li>
-								<li><a href="#">图像设计</a></li>
-								<li><a href="#">移动开发</a></li>
-								<li><a href="#">视频剪辑</a></li>
-								<li><a href="#">Photoshop</a></li>
+								<s:iterator value="btList">
+								<li><a href="#">${type }</a></li>
+								</s:iterator>
 							</ul>
 						</div>
 						<!--CATEGORY WIDGET END-->
