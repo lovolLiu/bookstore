@@ -47,6 +47,23 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 		}
 		return false;
 	}
+	
+	@Override
+	public Order getOrderById(int orderID){
+		return orderDAO.findById(orderID);
+	}
+	
+	@Override
+	public List<BuyItem> findBuyItemByOrderID(int orderID) {
+		return buyItemDAO.findByOrderID(orderID);
+	}
+	
+
+	@Override
+	public boolean updateBuyItem(BuyItem buyItem) {
+		buyItemDAO.update(buyItem);
+		return true;
+	}
 
 	/**
 	 * 2 - 已取消
@@ -229,6 +246,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	public void setBookDAO(BookDAO bookDAO) {
 		this.bookDAO = bookDAO;
 	}
+
 
 	
 

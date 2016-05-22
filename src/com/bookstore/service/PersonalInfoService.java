@@ -24,6 +24,12 @@ public interface PersonalInfoService {
 	
 	List<Book> getPersonalBookList(int userID);
 	
+	Order getOrderById(int orderID);
+	
+	List<BuyItem> findBuyItemByOrderID(int orderID);
+	
+	boolean updateBuyItem(BuyItem buyItem);
+	
 	boolean generateOrder(Order order);
 	
 	boolean deleteOrder(int orderID);

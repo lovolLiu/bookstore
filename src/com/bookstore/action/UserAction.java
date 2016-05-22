@@ -88,13 +88,26 @@ public class UserAction {
 	}
 	
 	public String cancelOrder(){
+		List<BuyItem> buyItemInOrder = personalInfoService.findBuyItemByOrderID(orderID);
+		for(BuyItem buyItem: buyItemInOrder){
+			buyItem.setBoughtDate(null);
+			buyItem.setOrderID(null);
+			personalInfoService.updateBuyItem(buyItem);
+		}
 		personalInfoService.cancelOrder(orderID);
 		this.result = "success";
 		return "success";
 	}
 	
 	public String deleteOrder(){
+		List<BuyItem> buyItemInOrder = personalInfoService.findBuyItemByOrderID(orderID);
+		for(BuyItem buyItem: buyItemInOrder){
+			buyItem.setBoughtDate(null);
+			buyItem.setOrderID(null);
+			personalInfoService.updateBuyItem(buyItem);
+		}
 		personalInfoService.deleteOrder(orderID);
+		this.result = "success";
 		return "success";
 	}
 	

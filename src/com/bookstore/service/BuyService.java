@@ -6,5 +6,4 @@ public interface BuyService {
 	int createOrder(List<Integer> buyItemID,int userID,int addressID);
 	boolean payOrder(int orderID);
 	boolean cancelOrder(int orderID);
-
 }
