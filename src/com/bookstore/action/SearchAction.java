@@ -1,14 +1,12 @@
 package com.bookstore.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.domain.*;
-import com.bookstore.service.BookDetailService;
 import com.bookstore.service.ConvertorService;
-import com.bookstore.service.SelectBookService;
 import com.bookstore.service.SearchService;
 import com.bookstore.util.DivBook;
+
 public class SearchAction {
 	String keyword = "1";
 	Integer pageNo;
