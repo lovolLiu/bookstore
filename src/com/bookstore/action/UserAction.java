@@ -43,6 +43,7 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
+	Integer orderID;
 	
 	public String isPasswordValid(){
 		if(personalInfoService.isPasswordValid(userID, oldpassword))
@@ -127,8 +128,14 @@ public class UserAction {
 		return "success";
 	}
 	
-	public String showCanceledOrderList() {
-		return "";
+	public String cancelOrder(){
+		personalInfoService.cancelOrder(orderID);
+		return "success";
+	}
+	
+	public String deleteOrder(){
+		personalInfoService.deleteOrder(orderID);
+		return "success";
 	}
 	
 	public List<DivOrder> getDivOrderList() {
@@ -233,6 +240,14 @@ public class UserAction {
 
 	public void setUnapprisedList(List<DivBook> unapprisedList) {
 		this.unapprisedList = unapprisedList;
+	}
+
+	public Integer getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(Integer orderID) {
+		this.orderID = orderID;
 	}
 	
 }
