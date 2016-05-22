@@ -473,30 +473,6 @@ a {
 					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="apprise">
-					<div class="col-md-4">
-						<div class="best-seller-pro">
-							<figure>
-								<img src="images/book7.png" alt="" />
-							</figure>
-							<div class="kode-caption">
-								<h3>Art History Mystery</h3>
-								<p>Sara Wisseman</p>
-								<a class="add-to-cart" onclick="startapprise(event)">评价</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="best-seller-pro">
-							<figure>
-								<img src="images/book8.png" alt="" />
-							</figure>
-							<div class="kode-caption">
-								<h3>Brain Science In The Eyes Of A Student</h3>
-								<p>Walter White</p>
-								<a class="add-to-cart" onclick="startapprise(event)">评价</a>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -607,7 +583,18 @@ a {
 				dataType : "json",
 				success : function(data) {
 					$.each(data,function(i,list){
-						var strDiv = "";
+						var strDiv = "<div class='col-md-4'>"
+										+"<div class='best-seller-pro'>"
+											+"<figure>"
+												+"<img src='"+list.URL+"' alt=''/>"
+											+"</figure>"
+											+"<div class='kode-caption'>"
+												+"<h3>"+list.bookName+"</h3>"
+												+"<p>"+list.author+"</p>"
+												+"<a class='add-to-cart' onclick='startapprise(event)'>评价</a>"
+											+"</div>"
+										+"</div>";
+						$("div[id=apprise]").append(strDiv);
 					})
 				}
 			})
@@ -805,6 +792,7 @@ a {
 			showPaidOrderNumber();
 			showUnpaidOrderNumber();
 			showUnapprisedOrderNumber();
+			showUnappriseBook();
 		});
 		//修改email
 		$('#enable').click(function() {
