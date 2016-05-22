@@ -239,6 +239,18 @@
 				<param name="root">result</param>
 			</result>
 		</action>
+		<action name="CancelOrder" class="com.bookstore.action.UserAction"
+			method="cancelOrder">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="DeleteOrder" class="com.bookstore.action.UserAction"
+			method="deleteOrder">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 	</package>
 </struts>
 

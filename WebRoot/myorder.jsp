@@ -215,7 +215,8 @@
 					                        $('#<s:property value='orderId'/>').find('tbody').find('.dealtime').html(formatedDate);
 					                    </script>
 					                </span>
-					                <span class="orderno">订单号: <s:property value='orderId'/></span>
+					                <span class="orderhead"> 订单号：</span>
+					                <span class="orderno"><s:property value='orderId'/></span>
 					            </td>
 					        </tr>
 					        <tr class="item">
@@ -371,6 +372,40 @@
 				filter : selector
 			});
 			return false;
+		})
+		
+		$("a[class='btn btn-primary canelorder']").click(function cancelOrder(){
+			var orderID = $(this).parent().parent().prev().find("span[class='orderno']").text();
+			$.ajax({
+					url:"CancelOrder",
+					type:"post",
+					data:{"orderID":orderID},
+					dataType:"json",	/* 服务器返回的数据类型 */
+					success:function(data){
+						if(data=="success"){
+							//$(e.target).parent().parent().parent().remove();
+		          		}else{
+		          			alert("取消失败");
+		          		}
+					}
+				});
+		})
+		
+		$("a[class='btn btn-primary deleteorder']").click(function deleteOrder(){
+			var orderID = $(this).parent().parent().prev().find("span[class='orderno']").text();
+			$.ajax({
+					url:"DeleteOrder",
+					type:"post",
+					data:{"orderID":orderID},
+					dataType:"json",	/* 服务器返回的数据类型 */
+					success:function(data){
+						if(data=="success"){
+							$(this).parent().parent().parent().remove();
+		          		}else{
+		          			alert("删除失败");
+		          		}
+					}
+				});
 		})
 	</script>
 
