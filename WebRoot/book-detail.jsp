@@ -38,6 +38,38 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+<style>
+.cart_quantity_button{
+	width:100px;
+}
+.cart_quantity_button a {
+    background: #F0F0E9;
+    color: #696763;
+    display: inline-block;
+    font-size: 16px;
+    height: 28px;
+    overflow: hidden;
+    text-align: center;
+    width: 20%;
+    float: left;
+}
+.cart_quantity_input {
+    color: #696763;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Roboto',sans-serif;
+    float: left;
+    height:28px;
+    padding: 0;
+    width: 60%;
+    
+}
+.button_div{
+	clear:both;
+	margin-top: 20px;
+}
+</style>
+</head>
 <body>
 <div id="loader-wrapper">
 	<div id="loader"></div>
@@ -259,7 +291,19 @@
                                         <p>出版商:<s:property value="publisher.publisherName"/> </p>
                                         <p>书目ID: 1100</p>
                                     </div>
-                                    <a href="StraightBuy?bookID=9&num=1" class="add-to-cart">立即购买</a>
+									<div class="cart_quantity">
+										<div class="cart_quantity_button">
+											<a class="cart_quantity_up" href="" onclick="QuantityUp();return false;"> + </a> <input
+													class="cart_quantity_input" type="text" name="quantity"
+													value="1" autocomplete="off" size="2" readonly="readonly"> <a
+													class="cart_quantity_down" href="" onclick="QuantityDown();return false;"> - </a>
+										</div>
+									</div>
+									<br>
+									<div class="button_div">
+										<a href="#" class="add-to-cart" onclick="StraightBuy();return false;">立即购买</a>
+	                                    <a href="#" class="add-to-cart" onclick="AddCartItem();return false;">加入购物车</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -523,7 +567,7 @@
 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-				<script type="text/javascript">
+<script type="text/javascript">
 					$(document).ready(function () {
 						$('#horizontalTab').easyResponsiveTabs({
 							type: 'default', //Types: default, vertical, accordion           
@@ -531,6 +575,55 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 							fit: true   // 100% fit in a container
 						});
 					});
+</script>
+<script>
+	
+
+
+
+	function StraightBuy(){
+		var url = "StraightBuy?bookID=${book.bookID }&num=" + $(".cart_quantity_input").attr("value");
+		window.location.href = url;
+	}
+	
+	function AddCartItem(){
+		var url = "AddCartItem?bookID=${book.bookID }&num=" + $(".cart_quantity_input").attr("value");
+		$.ajax({
+			url: url,
+			dataType: "json",
+			success: function(data){
+				messageToast("成功加入购物车~");
+			}
+		})
+	}
+	
+
+	function QuantityUp() {
+		var currentNum = parseInt($(".cart_quantity_input").attr("value"));
+		$(".cart_quantity_input").attr("value", currentNum + 1);
+		return false;
+	}
+
+	function QuantityDown() {
+		var currentNum = $(".cart_quantity_input").attr("value");
+		if (currentNum == 1)
+			return false;
+		$(".cart_quantity_input").attr("value", currentNum - 1);
+	}
+	
+	 function messageToast(messageText){
+	 	 var htmlText = '<div id="time_messagebox" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width:250px; ' +
+	 	 'height:80px;background: orange;color: white;display: none;border-radius:10px;">' +
+	 	 				'<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">' + messageText + '</span></p></div>';
+	     if($("#time_messagebox").length == 0){
+	     	$("body").append(htmlText);
+	     }
+	     else{
+	     	$("#time_messagebox").find("span").html(messageText);
+	     }
+		 $("#time_messagebox").fadeIn(300);
+		 setTimeout("$('#time_messagebox').fadeOut(300);",1200)
+	 }
 </script>
 </body>
 </html>
