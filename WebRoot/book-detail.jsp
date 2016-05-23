@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,10 +73,8 @@
 <body>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
-
 		<div class="loader-section section-left"></div>
 		<div class="loader-section section-right"></div>
-
 	</div>
 	<!--WRAPPER START-->
 	<div class="wrapper kode-header-class-3">
@@ -340,6 +337,7 @@
 														class="star"><i class="glyphicon glyphicon-star"></i></span><span
 														class="star"><i class="glyphicon glyphicon-star"></i></span></span>
 												</div>
+												<div class="caption"><span id="scorecaption" class=""></span></div>
 											</div>
 										</div>
 										<div class="product-price">
@@ -348,8 +346,7 @@
 												RMB
 											</h4>
 											<p>
-												作者: <span class="color"><s:property
-														value="book.author" /></span>
+												作者: <span class="color"><s:property value="book.author" /></span>
 											</p>
 										</div>
 										<div class="book-text">
@@ -663,7 +660,7 @@
 	<script src="js/functions.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script type="application/x-javascript">	 
-addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
@@ -674,6 +671,37 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 				fit : true
 			// 100% fit in a container
 			});
+			var score = <s:property value="bookScore"/>;
+			switch(score){
+			    case 1:
+			        $('#scorecaption').html("一星");
+			        $('#scorecaption').attr("class","label label-danger");
+			        $('.rating-container .rating .filled-stars').css("width","20%");
+                    break;
+                case 2:
+                    $('#scorecaption').html("两星");
+			        $('#scorecaption').attr("class","label label-warning");
+			        $('.rating-container .rating .filled-stars').css("width","40%");
+                    break;
+			    case 3:
+			        $('#scorecaption').html("三星");
+			        $('#scorecaption').attr("class","label label-info");
+			        $('.rating-container .rating .filled-stars').css("width","60%");
+                    break;
+			    case 4:
+			        $('#scorecaption').html("四星");
+			        $('#scorecaption').attr("class","label label-primary");
+			        $('.rating-container .rating .filled-stars').css("width","80%");
+                    break;
+			    case 5:
+			        $('#scorecaption').html("五星");
+			        $('#scorecaption').attr("class","label label-success");
+			        $('.rating-container .rating .filled-stars').css("width","100%");
+                    break;
+			    default:
+			        $('#scorecaption').html("暂无评价");
+			        $('#scorecaption').attr("class","label label-default");
+			}
 		});
 	</script>
 <script>

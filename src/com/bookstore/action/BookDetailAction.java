@@ -42,7 +42,6 @@ public class BookDetailAction {
 	public String execute(){
 		book = bookDetailService.getBookInfo(9);
 		publisher = bookDetailService.getBookPublisher(9);
-
 		appriseList = bookDetailService.getAppriseList(9);
 		for(int i=0; i< appriseList.size();i++){
 			totalScore += appriseList.get(i).getScore();

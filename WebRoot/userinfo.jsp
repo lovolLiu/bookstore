@@ -1060,7 +1060,6 @@ a {
 			$('#tab-content').find('div').removeClass('in');
 			$('#apprise').addClass('active');
 			$('#apprise').addClass('in');
-			startapprise();
 		}
 		//显示隐藏的评价框
 		function startapprise(e){
@@ -1107,8 +1106,8 @@ a {
 		$('#confirmapprise').click(function() {
 		    var content = $('#apprisemessage').val();
 		    var bookID = $('#confirmapprise').attr('appriseid');
-		    var score = $('#input-rating').val();	//先写的死的
-		    if(scorewidth == "0%"){
+		    var score = $('#input-rating').val();	
+		    if(score == "0"){
 		        $('#appriseerror').html("亲，请给这本书评个级！");
 		        return;
 		    }
