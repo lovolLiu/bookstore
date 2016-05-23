@@ -7,6 +7,7 @@
 
 <!-- struts.xml改版啦， 所有需要登录才能访问的action放到authorityActions包中 。 其他不需要登录也允许访问的action放到unauthorityActions包中-->
 <!-- 用户如果在未登录的情况下试图访问authorityAction中的action，将会自动跳转到login.jsp -->
+<!-- 但为了调试方便起见，拦截器暂时设置为失效，默认向session中存入一个userID=1 -->
 
 
 	<package name="unAuthorityActions" namespace="/" extends="struts-default,json-default">
@@ -142,7 +143,7 @@
 			<result>/goods-ontheway.jsp</result>
 		</action>
 		
-		<!-- Cart相关的5个action -->
+		<!-- Cart相关的6个action -->
 		<action name="AddCartItem" class="com.bookstore.action.CartAction"
 			method="addCartItem">
 			<result type="json"><param name="root">isSuccess</param></result>	
@@ -164,6 +165,10 @@
 				<param name="root">isSuccess</param>
 				<param name="root">trCartItem</param>
 			</result>
+		</action>
+		
+		<action name="GetCartNum" class="com.bookstore.action.CartAction" method="showCartNum">
+			<result type="json"><param name="root">cartNum</param></result>
 		</action>
 
 		<action name="GetCartTotal" class="com.bookstore.action.CartAction"

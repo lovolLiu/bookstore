@@ -32,6 +32,9 @@ public class CartAction {
 	Boolean isSuccess;
 	TrCartItem trCartItem;
 	
+	//To books.jsp -- json variable
+	Integer cartNum;
+	
 	//IOC Service
 	CartService cartService;
 	ConvertorService convertorService;
@@ -52,6 +55,12 @@ public class CartAction {
 		for(TrCartItem trCartItem: trCartList){
 			totalPrice += trCartItem.getBuyItemPrice();
 		}
+		return "success";
+	}
+	
+	public String showCartNum(){
+		showBuyItemList();
+		cartNum = trCartList.size();
 		return "success";
 	}
 	
@@ -167,6 +176,14 @@ public class CartAction {
 
 	public void setBookID(Integer bookID) {
 		this.bookID = bookID;
+	}
+
+	public Integer getCartNum() {
+		return cartNum;
+	}
+
+	public void setCartNum(Integer cartNum) {
+		this.cartNum = cartNum;
 	}
 
 	
