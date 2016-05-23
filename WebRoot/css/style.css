@@ -1049,9 +1049,7 @@ header{
 .best-seller-pro .kode-caption p{
 	color:#fff;
 }
-.best-seller-pro .kode-caption .rating{
-	margin-bottom:10px;
-}
+
 .best-seller-pro .kode-caption p.price{
 	font-size:30px;
 	margin:5px 0px 20px;
@@ -1070,27 +1068,6 @@ header{
 .best-seller-pro .kode-caption a.add-to-cart:hover{
 	color:#000;
 	background-color:#fff;
-}
-
-/*
-==========================================
-			RATING START
-==========================================
-*/
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-}
-.rating > span {
-  display: inline-block;
-  position: relative;
-  color:#fff;
-  font-size:20px;
-}
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
 }
 
 /*
@@ -5149,14 +5126,6 @@ section.lib-call-to-action .container{
 .lib-book-detail .kode-thumb img{
 	width: 100%;
 	float: left;
-}
-.lib-book-detail .rating {
-	float: left;
-	margin-right: 10px;
-}
-.lib-book-detail .rating > span{
-	color: #ff9605;
-
 }
 .lib-book-detail .product-review{
 	float: left;

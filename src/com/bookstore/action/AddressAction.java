@@ -3,6 +3,12 @@ package com.bookstore.action;
 import com.bookstore.domain.Address;
 import com.bookstore.service.AddressService;
 
+/**
+ * @author Chang Su
+ * @description 地址增删改查Action实现
+ * @modify
+ * @modifyDate
+ */
 public class AddressAction {
 	
 	String consignee;
@@ -27,13 +33,22 @@ public class AddressAction {
 	
 	public String updateAddress(){
 		address = addressService.selectAddress(addressID);
-		address.setAddress(addressDetail);
-		address.setPerson(consignee);
-		address.setTel(tel);
+		Address addressNew = new Address();
+		addressNew.setAddress(addressDetail);
+		addressNew.setPerson(consignee);
+		addressNew.setTel(tel);
+		addressNew.setUserID(userID);
+		address.setUserID(null);
+		addressService.updateAddress(address);
+		addressService.createAddress(addressNew);
+		this.result = "success";
 		return "success";
 	}
 	public String deleteAddress(){
-		addressService.deleteAddress(addressID);
+		address = addressService.selectAddress(addressID);
+		address.setUserID(null);
+		addressService.updateAddress(address);
+		this.result = "success";
 		return "success";
 	}
 	public String getConsignee() {

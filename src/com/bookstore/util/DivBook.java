@@ -3,12 +3,28 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class DivBook {
-	double bookPrice;
-	String bookName;
+	// book 类
 	Integer bookID;
-	Integer pictureID;
+	String bookName;
+	String author;
+	double bookPrice;
+	Integer discount;
 	String description;
+	Integer restNum;
+	Integer totalSell;
+	String size;
+	Integer pageNum;
+	
+	Timestamp publisherTime;
+	
+	//picture类
+	Integer pictureID;
 	String URL;
+	
+	//publisher  类
+	Integer publisherID;
+	String publisherName;
+	
 	public double getBookPrice() {
 		return bookPrice;
 	}
@@ -45,6 +61,60 @@ public class DivBook {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Integer getRestNum() {
+		return restNum;
+	}
+	public void setRestNum(Integer restNum) {
+		this.restNum = restNum;
+	}
+	public Integer getTotalSell() {
+		return totalSell;
+	}
+	public void setTotalSell(Integer totalSell) {
+		this.totalSell = totalSell;
+	}
+	public Integer getDiscount() {
+		return discount;
+	}
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
+	public Timestamp getPublisherTime() {
+		return publisherTime;
+	}
+	public void setPublisherTime(Timestamp publisherTime) {
+		this.publisherTime = publisherTime;
+	}
+	public Integer getPublisherID() {
+		return publisherID;
+	}
+	public void setPublisherID(Integer publisherID) {
+		this.publisherID = publisherID;
+	}
+	public String getPublisherName() {
+		return publisherName;
+	}
+	public void setPublisherName(String publisherName) {
+		this.publisherName = publisherName;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public Integer getPageNum() {
+		return pageNum;
+	}
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
 	}
 	
 }

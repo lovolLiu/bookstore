@@ -8,6 +8,7 @@ package com.bookstore.util;
 public class TrCartItem {
 	
 	Integer buyItemID;
+	Integer bookID;
 	String imageUrl;
 	String bookName;
 	String authorName;
@@ -56,6 +57,12 @@ public class TrCartItem {
 	}
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
+	}
+	public Integer getBookID() {
+		return bookID;
+	}
+	public void setBookID(Integer bookID) {
+		this.bookID = bookID;
 	}
 
 	

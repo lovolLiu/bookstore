@@ -251,7 +251,7 @@ select {
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
-						<li class="hidden-sm"><a href="books.jsp">开始选购</a></li>
+						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
 						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
 						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
 					</ul>
@@ -295,11 +295,11 @@ select {
 						
 						<s:iterator value="divOrder.orderItemList">
 							<tr>
-								<td class="cart_product"><a href=""><img
+								<td class="cart_product"><a href='BookDetail?id=${bookID }'><img
 										src="${imageUrl }"></a></td>
 								<td class="cart_description">
 									<h4>
-										<a href="">${bookName }</a>
+										<a href='BookDetail?id=${bookID }'>${bookName }</a>
 									</h4>
 								</td>
 								<td class="cart_price">
