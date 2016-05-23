@@ -3,9 +3,12 @@ package com.bookstore.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bookstore.domain.BookType;
+import com.bookstore.service.BookTypeService;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.SelectBookService;
 import com.bookstore.util.DivBook;
+import com.bookstore.util.TypeAndBookListItem;
 
 /**
  * @author Chang Su
@@ -17,9 +20,11 @@ public class IndexAction {
 	List<DivBook> divBookList;
 	List<DivBook> divBookListNewest;
 	List<DivBook> divBookListHottest;
+	List<TypeAndBookListItem> typeAndBookListItemList;
 	
 	ConvertorService convertorService;
 	SelectBookService selectBookService;
+	BookTypeService bookTypeService;
 	
 	public String getCommendationForYou(){
 		divBookListHottest = new ArrayList<DivBook>();
@@ -29,6 +34,10 @@ public class IndexAction {
 		for(int i = 0; i < 6; i++){
 			divBookListHottest.add(tempHottest.get(i));
 		}
+		
+		List<BookType> bookTypeList = bookTypeService.getBookTypeList();
+		typeAndBookListItemList = convertorService.bookTypeToTypeAndBookListItemList(bookTypeList);
+		
 		return "success";
 	}
 
@@ -70,6 +79,23 @@ public class IndexAction {
 
 	public void setDivBookListHottest(List<DivBook> divBookListHottest) {
 		this.divBookListHottest = divBookListHottest;
+	}
+
+	public List<TypeAndBookListItem> getTypeAndBookListItemList() {
+		return typeAndBookListItemList;
+	}
+
+	public void setTypeAndBookListItemList(
+			List<TypeAndBookListItem> typeAndBookListItemList) {
+		this.typeAndBookListItemList = typeAndBookListItemList;
+	}
+
+	public BookTypeService getBookTypeService() {
+		return bookTypeService;
+	}
+
+	public void setBookTypeService(BookTypeService bookTypeService) {
+		this.bookTypeService = bookTypeService;
 	}
 	
 	

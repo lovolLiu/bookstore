@@ -2,10 +2,12 @@ package com.bookstore.service;
 
 import java.util.List;
 
+import com.bookstore.domain.BookType;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.util.DivOrder;
 import com.bookstore.util.TrCartItem;
 import com.bookstore.util.DivBook;
+import com.bookstore.util.TypeAndBookListItem;
 import com.bookstore.domain.Book;
 public interface ConvertorService {
 	Double calculateTotalPrice(List<TrCartItem> trCartItemList);
@@ -20,4 +22,6 @@ public interface ConvertorService {
 	List<BuyItem> getBuyItemList(Integer orderID);
 	
 	List<DivBook> bookIDToDivBook(List<Book> bookList);
+	
+	List<TypeAndBookListItem> bookTypeToTypeAndBookListItemList(List<BookType> bookTypeList);
 }

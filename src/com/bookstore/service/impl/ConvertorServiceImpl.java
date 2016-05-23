@@ -10,6 +10,7 @@ import com.bookstore.dao.OrderDAO;
 import com.bookstore.dao.PictureDAO;
 import com.bookstore.domain.Address;
 import com.bookstore.domain.Book;
+import com.bookstore.domain.BookType;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.domain.Picture;
@@ -17,6 +18,7 @@ import com.bookstore.service.ConvertorService;
 import com.bookstore.util.DivBook;
 import com.bookstore.util.DivOrder;
 import com.bookstore.util.TrCartItem;
+import com.bookstore.util.TypeAndBookListItem;
 
 /**
  * @author Zhiqi Yang
@@ -211,6 +213,20 @@ public class ConvertorServiceImpl implements ConvertorService{
 		divOrder.setOrderItemList(trCartItemList);
 		return divOrder;
 	}
+	
+	public List<TypeAndBookListItem> bookTypeToTypeAndBookListItemList(List<BookType> bookTypeList){
+		List<TypeAndBookListItem> resultList = new ArrayList();
+		for(BookType bookType : bookTypeList){
+			TypeAndBookListItem item = new TypeAndBookListItem();
+			item.setBookType(bookType);
+			List<Book> bookList = bookDAO.findByTypeID(bookType.getTypeID());
+			List<DivBook> divBookList = bookIDToDivBook(bookList);
+			item.setBookList(divBookList);
+			resultList.add(item);
+		}
+		return resultList;
+	}
+	
 	
 	public BookDAO getBookDAO() {
 		return bookDAO;
