@@ -389,7 +389,7 @@ a {
 			<div class="panel-body bk-ltr">
 				<div class="row text-center userinfo">
 					<a class="col-xs-4" href="InitMyOrder?filter=0"> <i
-						class="icon-money"></i><small class="bk-fg-inverse bk-fg-darken">待付款</small>
+						class="icon-money"></i><small class="bk-fg-inverse bk-fg-darken">未付款</small>
 						<h4 class="bk-margin-off-bottom" id="unpaid"></h4>
 					</a> <a class="col-xs-4" href="InitMyOrder?filter=1"> <i
 						class="icon-truck"></i><small class="bk-fg-inverse bk-fg-darken">已付款</small>

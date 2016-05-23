@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +114,7 @@ ul, ol {
 	background: url(images/progressbar.png) no-repeat 50% -102px;
 }
 
-.flowstep .step-last .step-cur .step-no {
+.flowstep .step-last .step-done .step-no {
 	background-position: 50% -68px;
 }
 
@@ -156,6 +157,7 @@ ul, ol {
 	background-color: orange;
 	border-color: orange;
 }
+
 #cart_items .cart_info .cart_price p {
 	color: #696763;
 	font-size: 18px;
@@ -215,6 +217,7 @@ ul, ol {
 	margin-top: 10px;
 	padding: 7px 20px;
 }
+
 .cart_info .cart_menu {
 	background: #FE980F;
 	color: #fff;
@@ -243,31 +246,8 @@ ul, ol {
 	border: none;
 }
 
-.cart_quantity_button {
-	width: 100px;
-}
-
-.cart_quantity_button a {
-	background: #F0F0E9;
-	color: #696763;
-	display: inline-block;
-	font-size: 16px;
-	height: 28px;
-	overflow: hidden;
-	text-align: center;
-	width: 20%;
-	float: left;
-}
-
-.cart_quantity_input {
-	color: #696763;
-	font-size: 16px;
-	text-align: center;
-	font-family: 'Roboto', sans-serif;
-	float: left;
-	height: 28px;
-	padding: 0;
-	width: 60%;
+.cart_quantity p{
+    font-size:18px;
 }
 </style>
 </head>
@@ -319,18 +299,18 @@ ul, ol {
 			<div class="col-md-4 text-center">
 				<blockquote style="background-color:white">
 					<div style="margin-bottom:15px;">
-						订单号：<span id="orderID">10202</span><br />
+						订单号：<span id="orderID"><s:property value="orderID"/></span><br />
 					</div>
 					<div style="margin-bottom:15px;">
-						<span class="label label-warning">待付款</span>
+						<span id="orderstatuslabel" class=""><s:property value="divOrder.orderStats"/></span>
 					</div>
-					<a class="btn btn-primary" style="width:50%">去付款</a>
+					<a id="gosw" class="btn btn-primary" style="width:50%" href="InitMyOrder?">去付款</a>
 				</blockquote>
 			</div>
 			<div class="row text-center col-md-8" style="margin-top:50px;">
 				<div class="flowstep">
 					<!-- 订单状态 -->
-					<ol class="flowstep-5">
+					<ol id="normalstats" class="flowstep-5" style="">
 						<li class="step-first">
 							<div class="step-done">
 								<div class="step-name">提交订单</div>
@@ -338,27 +318,21 @@ ul, ol {
 							</div>
 						</li>
 						<li>
-							<div class="">
-								<div class="step-name">待付款</div>
-								<div class="step-no">2</div>
-							</div>
-						</li>
-						<li>
-							<div class="">
-								<div class="step-name">待评价</div>
-								<div class="step-no">3</div>
+							<div id="unpaidstats" class="">
+								<div class="step-name">未付款</div>
+								<div id="unpaidstats-num" class="step-no">2</div>
 							</div>
 						</li>
 						<li class="step-last">
-							<div class="">
-								<div class="step-name">完成</div>
-								<div class="step-no">4</div>
+							<div id="paidstats" class="">
+								<div class="step-name">已付款</div>
+								<div id="paidstats-num" class="step-no">3</div>
 							</div>
 						</li>
 					</ol>
 					<!-- 订单状态 -->
 					<!-- 订单取消状态 -->
-					<ol class="flowstep-5 ordecancelstatus" style="display:none;">
+					<ol id="cancelstats" class="flowstep-5 ordecancelstatus" style="display:none;">
 						<li class="step-first" style="width:50%;">
 							<div class="step-done">
 								<div class="step-name">提交订单</div>
@@ -366,9 +340,9 @@ ul, ol {
 							</div>
 						</li>
 						<li class="step-last" style="width:50%;">
-							<div class="step-cur">
+							<div class="step-done">
 								<div class="step-name">取消</div>
-								<div class="step-no"></div>
+								<div class="step-no">2</div>
 							</div>
 						</li>
 					</ol>
@@ -389,17 +363,17 @@ ul, ol {
 									<tr>
 										<td><i class="fa  fa-user"></i></td>
 										<td>收货人:</td>
-										<td>刘懿萱</td>
+										<td><s:property value="divOrder.consignee" /></td>
 									</tr>
 									<tr>
 										<td><i class="fa fa-phone"></i></td>
 										<td>联系方式：</td>
-										<td>18976324578</td>
+										<td><s:property value="divOrder.tel" /></td>
 									</tr>
 									<tr>
 										<td><i class="fa  fa-location-arrow"></i></td>
 										<td>收货地址：</td>
-										<td>上海市松江区文汇路上海外国语大学松江校区</td>
+										<td><s:property value="divOrder.address" /></td>
 									</tr>
 								</tbody>
 							</table>
@@ -440,25 +414,26 @@ ul, ol {
 							</tr>
 						</thead>
 						<tbody id="cartItem">
-
-							<tr id="119" class="itemtr">
-								<td class="cart_product"><a href="BookDetail?id=1"><img
-										src="images/book3.png"></a></td>
-								<td class="cart_description">
-									<h4>
-										<a href="BookDetail?id=1">书1</a>
-									</h4>
-								</td>
-								<td class="cart_price">
-									<p>¥25.0</p>
-								</td>
-								<td class="cart_quantity">
-									<p>2</p>
-								</td>
-								<td class="cart_total">
-									<p class="cart_total_price">¥25</p>
-								</td>
-							</tr>
+							<s:iterator value="divOrder.orderItemList">
+								<tr>
+									<td class="cart_product"><a
+										href='BookDetail?id=${bookID }'><img src="${imageUrl }"></a></td>
+									<td class="cart_description">
+										<h4>
+											<a href='BookDetail?id=${bookID }'>${bookName }</a>
+										</h4>
+									</td>
+									<td class="cart_price">
+										<p>￥${price }</p>
+									</td>
+									<td class="cart_quantity">								
+											<p>${num }</p>
+									</td>
+									<td class="cart_total">
+										<p class="cart_total_price">￥${buyItemPrice }</p>
+									</td>
+								</tr>
+							</s:iterator>
 							<tr>
 								<td colspan="4">&nbsp;</td>
 								<td colspan="2">
@@ -466,7 +441,7 @@ ul, ol {
 										<tbody>
 											<tr style="font-size: x-large;border-bottom: 0;">
 												<td>总价</td>
-												<td style="color:#FE980F;"><span id="orderTotal">¥50</span></td>
+												<td style="color:#FE980F;"><span id="orderTotal">￥<s:property value="divOrder.totalPrice"/></span></td>
 											</tr>
 										</tbody>
 									</table>
@@ -549,33 +524,7 @@ ul, ol {
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
 	<script type="application/x-javascript">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		 
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
@@ -586,6 +535,28 @@ ul, ol {
 				fit : true
 			// 100% fit in a container
 			});
+			var orderStats = $('#orderstatuslabel').html();
+			switch(orderStats){
+			    case "未付款":
+			    $('#orderstatuslabel').attr("class","label label-warning");
+			    $('#unpaidstats').attr("class","step-cur");
+			    $('#gopay/myorder').html("去付款");
+			    break;
+			    case "已付款":
+			    $('#orderstatuslabel').attr("class","label label-success");
+			    $('#unpaidstats').attr("class","step-done");
+			    $('#unpaidstats-num').html("");
+			    $('#paidstats').attr("class","step-done");
+			    $('#gosw').html("返回");
+			    break;
+			    case "已取消":
+			    $('#orderstatuslabel').attr("class","label label-danger");
+			    $('#normalstats').attr("style","display:none;");
+			    $('#cancelstats').attr("style","");
+			    $('#gosw').html("返回");
+			    break;
+			}
+			
 		});
 	</script>
 </body>

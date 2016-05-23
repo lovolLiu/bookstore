@@ -110,8 +110,8 @@
 							<div class="input-container">
 								<input id="searchinput" type="text" placeholder="输入关键词" > 
 								<i class="fa fa-search" ></i>
-							    <a onclick="filter()" class="btn btn-primary">搜索</a>
 							</div>
+							<a onclick="filter()" class="btn btn-primary col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">搜索</a>
 						</div>
 						<!--SEARCH WIDGET END-->
 						<!--NEW ARRIVAL WIDGET START-->
@@ -252,7 +252,7 @@
 											<a href="BookDetail?bookID=${bookID }" >${bookName }</a>
 										</h3>
 										<p>
-											<a href="BookDetail?bookID=${bookID }">详情</a>
+											<a href="BookDetail?bookID=${bookID }" class="btn btn-primary">详情</a>
 										</p>
 									</div>
 									<div class="book-price">

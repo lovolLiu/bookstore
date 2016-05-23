@@ -328,7 +328,7 @@ select {
 											<tr style="border-bottom: 0;">
 												<td></td>
 												<td><div style="text-align: right;">
-														<a class="btn btn-default check_out" href="Payment?orderID=${divOrder.orderId }">付款</a>
+														<a class="btn btn-primary check_out" href="Payment?orderID=${divOrder.orderId }">付款</a>
 													</div></td>
 											</tr>
 										</tbody>

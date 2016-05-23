@@ -251,7 +251,7 @@ select{
                     <span>您的订单已经成功提交</span>
                 </div>
                 <p>我们将尽快给您发货。</p>
-                <a href="books.jsp" class="go-back">继续逛逛</a>
+                <a href="initSearchAction?" class="go-back">继续逛逛</a>
             </div>   
         </div>    
     </div>

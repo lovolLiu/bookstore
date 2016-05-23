@@ -120,6 +120,12 @@
 			<result name="false">/books.jsp</result>
 		</action>
 		
+		<!-- 订单详情 -->
+		<action name="OrderDetail" class="com.bookstore.action.OrderAction" method="getOrderDetail">
+		    <result name="success">/orderdetail.jsp</result>
+			<result name="false">/orderdetail.jsp</result>
+		</action>
+		
 	</package>
 	
 	
