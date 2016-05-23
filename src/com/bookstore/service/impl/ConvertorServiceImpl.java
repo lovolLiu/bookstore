@@ -157,6 +157,8 @@ public class ConvertorServiceImpl implements ConvertorService{
 			divOrder.setOrderStats("已取消");
 		}else if(stats == 0) { 
 			divOrder.setOrderStats("未付款");
+		}else {
+			divOrder.setOrderStats("已删除");
 		}
 		divOrder.setTel(address.getTel());
 		Double totalPrice = 0.0;

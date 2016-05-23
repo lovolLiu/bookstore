@@ -26,7 +26,7 @@ public class BookTypeAction {
 	
 	BookTypeService btService;
 	ConvertorService cvtService;
-	
+		
 	public String getBTList(){
 		btList = btService.getBookTypeList();
 		return "success";
@@ -57,6 +57,7 @@ public class BookTypeAction {
 				}
 			}
 		}
+		divBookList = cvtService.bookIDToDivBook(relatedBookList);
 		return "success";
 	}
 	
