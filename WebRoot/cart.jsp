@@ -475,8 +475,8 @@ select{
 							success:function(data){
 								$.each(data,function(i,list){  
                        				 var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
-                       				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href><img src=\""+list.imageUrl+"\"></a></td>"
-                       				 +"<td class=\"cart_description\"><h4><a href>"+ list.bookName+"</a></h4></td>"
+                       				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?id=" + list.bookID  + "'><img src=\""+list.imageUrl+"\"></a></td>"
+                       				 +"<td class=\"cart_description\"><h4><a href='BookDetail?id=" + list.bookID  + "'>"+ list.bookName+"</a></h4></td>"
                        				 +"<td class=\"cart_price\"><p>¥"+list.price+"</p></td>"
                        				 +"<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\" onclick='return QuantityUp(" + list.buyItemID + ")'> + </a> "
                        				 	+ "<input class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+"\"autocomplete=\"off\" size=\"2\" >"
