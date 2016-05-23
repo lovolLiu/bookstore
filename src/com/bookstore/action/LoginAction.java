@@ -1,6 +1,9 @@
 package com.bookstore.action;
 
+import java.util.Map;
+
 import com.bookstore.service.LoginService;
+import com.opensymphony.xwork2.ActionContext;
 
 public class LoginAction {
 	
@@ -10,7 +13,10 @@ public class LoginAction {
 	String result;
 	
 	public String execute(){
-		if(loginService.login(username, password)){
+		Integer userID;
+		if((userID = loginService.login(username, password)) > 0){
+			Map session = ActionContext.getContext().getSession();
+			session.put("userID", userID);
 			this.result="success";
 			return "success";
 		}

@@ -2,6 +2,7 @@ package com.bookstore.action;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.bookstore.domain.Address;
 import com.bookstore.service.AddressService;
@@ -9,11 +10,11 @@ import com.bookstore.service.BuyService;
 import com.bookstore.service.CartService;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.util.DivOrder;
+import com.opensymphony.xwork2.ActionContext;
 
 public class SubmitOrderAction {
 	
 	//in
-	Integer userID = 1;
 	List<Integer> buyItemIDList;
 	Integer addressID;
 	
@@ -29,6 +30,8 @@ public class SubmitOrderAction {
 	AddressService addressService;
 
 	public String execute(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		//建立订单
 		Integer orderID = buyService.createOrder(buyItemIDList, userID, addressID);
 		

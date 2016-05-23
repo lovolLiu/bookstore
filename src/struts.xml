@@ -5,34 +5,12 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
 
-	<package name="hello" namespace="/" extends="struts-default">
+<!-- struts.xml改版啦， 所有需要登录才能访问的action放到authorityActions包中 。 其他不需要登录也允许访问的action放到unauthorityActions包中-->
+<!-- 用户如果在未登录的情况下试图访问authorityAction中的action，将会自动跳转到login.jsp -->
+<!-- 但为了调试方便起见，拦截器暂时设置为失效，默认向session中存入一个userID=1 -->
 
-		<action name="LookCart" class="com.bookstore.action.CartAction"
-			method="showBuyItemList">
-			<result>/cart.jsp</result>
-		</action>
 
-<!-- 		<action name="Login" class="com.bookstore.action.LoginAction">
-			<result>/index.jsp</result>
-			<result name="fail">/login.jsp</result>
-		</action> -->
-
-		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
-			<result type="chain">CheckOrderInfo</result>
-		</action>
-		
-		<action name="CheckOrderInfo" class="com.bookstore.action.CheckOrderInfoAction">
-			<result>/submit-order.jsp</result>
-		</action>
-
-		<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
-			<result>/pay.jsp</result>
-		</action>
-		
-		<action name="Payment" class="com.bookstore.action.PaymentAction">
-			<result>/goods-ontheway.jsp</result>
-		</action>
-		
+	<package name="unAuthorityActions" namespace="/" extends="struts-default,json-default">
 		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
 			<result>/book-detail.jsp</result>
 		</action>
@@ -42,18 +20,14 @@
 			<result name="false">/books.jsp</result>
 		</action>
 		
-
-		<action name="InitMyOrder" class="com.bookstore.action.UserAction" method="showOrderListAll">
-		    <result name="success">/myorder.jsp</result>
-		    <result name="false">/myorder.jsp</result>
-		</action>
 		<!-- 初始化所有书籍页 显示书库内的所有图书 -->
 		<action name="initSearchAction" class="com.bookstore.action.SearchAction" method="initSearchExecute">
 			<result name="success">/books.jsp</result>
 		</action>
-		<action name="GetBookType" class="com.bookstore.action.BookTypeAction" method="getBTList">
-		    <result name="success">/books.jsp</result>
-		    <result name="false">/books.jsp</result>
+
+		<!-- 初始化书籍详情页 显示当前选定的图书 -->
+		<action name="initBookDetailAction" class="com.bookstore.action.BookDetailAction" method="initBookDetailExecute">
+			<result name="success">/book-detail.jsp</result>
 		</action>
     </package>
     
@@ -62,6 +36,14 @@
     
     <package name="ajax_json" namespace="/" extends="json-default">
     	<!-- FindPassword相关的2个action -->
+
+		<action name="GetBookType" class="com.bookstore.action.BookTypeAction" method="getBTList">
+		    <result name="success">/books.jsp</result>
+		    <result name="false">/books.jsp</result>
+		</action>
+		
+		    	<!-- FindPassword相关的2个action -->
+
 		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
 
 			<result name="nouser" type="json">
@@ -84,7 +66,7 @@
 			</result>
 		</action>
 		
-		<!-- Register相关的3个action -->
+				<!-- Register相关的3个action -->
 		<action name="CheckUsername" class="com.bookstore.action.RegisterAction" method="hasUsername">
 			<result name="true" type="json">
 				<param name="root">result</param>
@@ -111,8 +93,7 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-		
-		<!-- Login相关的1个action -->
+				<!-- Login相关的1个action -->
 		<action name="Login" class="com.bookstore.action.LoginAction" method="execute">
 			<result name="success" type="json">
 				<param name="root">result</param>
@@ -122,7 +103,47 @@
 			</result>
 		</action>
 		
-		<!-- Cart相关的5个action -->
+	</package>
+	
+	
+
+
+	<package name="authorityActions" namespace="/" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor name="authority" class="com.bookstore.interceptor.AuthorityInterceptor" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="authority"/>
+			</interceptor-stack>
+		</interceptors>
+	
+		<default-interceptor-ref name="mydefault"/>
+	
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+		
+		<action name="Logout" class="com.bookstore.action.LogoutAction">
+			<result type="json"/>
+		</action>
+		
+		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
+			<result type="chain">CheckOrderInfo</result>
+		</action>
+		
+		<action name="CheckOrderInfo" class="com.bookstore.action.CheckOrderInfoAction">
+			<result>/submit-order.jsp</result>
+		</action>
+
+		<action name="SubmitOrder" class="com.bookstore.action.SubmitOrderAction">
+			<result>/pay.jsp</result>
+		</action>
+		
+		<action name="Payment" class="com.bookstore.action.PaymentAction">
+			<result>/goods-ontheway.jsp</result>
+		</action>
+		
+		<!-- Cart相关的6个action -->
 		<action name="AddCartItem" class="com.bookstore.action.CartAction"
 			method="addCartItem">
 			<result type="json"><param name="root">isSuccess</param></result>	
@@ -145,10 +166,19 @@
 				<param name="root">trCartItem</param>
 			</result>
 		</action>
+		
+		<action name="GetCartNum" class="com.bookstore.action.CartAction" method="showCartNum">
+			<result type="json"><param name="root">cartNum</param></result>
+		</action>
 
 		<action name="GetCartTotal" class="com.bookstore.action.CartAction"
 			method="showBuyItemList">   <!-- 这个地方没写错，就是这样的 -->
 			<result type="json"><param name="root">totalPrice</param></result>
+		</action>
+		
+		<action name="InitMyOrder" class="com.bookstore.action.UserAction" method="showOrderListAll">
+		    <result name="success">/myorder.jsp</result>
+		    <result name="false">/myorder.jsp</result>
 		</action>
 
 		<!-- UserInfo 页相关的Action -->
@@ -158,6 +188,7 @@
 				<param name="root">divOrderList</param>
 			</result>
 		</action>
+		
 		<action name="ShowPaidNumber" class="com.bookstore.action.UserAction"
 			method="showPaidOrderNumber">
 			<result type="json">
@@ -251,7 +282,10 @@
 				<param name="root">result</param>
 			</result>
 		</action>
+
 	</package>
+
+
 </struts>
 
 

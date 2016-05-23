@@ -288,7 +288,7 @@
 							dataType:"json",
 							success:function(data){
 								if(data=="success"){
-									window.location.href="http://localhost:8080/BookStore/index.jsp";
+									window.location.href="http://localhost:8080/bookstore/index.jsp";
 								}else{
 									alert("登录失败");
 								}

@@ -16,14 +16,14 @@ public class LoginServiceImpl implements LoginService {
 	UserDAO userDAO;
 	
 	@Override
-	public boolean login(String username, String password) {
+	public int login(String username, String password) {
 		User user = userDAO.findByName(username);
 		if(user != null){
 			if(password.equals(user.getPassword())){
-				return true;
+				return user.getUserID();
 			}
 		}
-		return false;
+		return -1;
 	}
 
 	public UserDAO getUserDAO() {
