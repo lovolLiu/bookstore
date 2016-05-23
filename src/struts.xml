@@ -122,7 +122,7 @@
 			</result>
 		</action>
 		
-		<!-- Cart相关的5个action -->
+		<!-- Cart相关的6个action -->
 		<action name="AddCartItem" class="com.bookstore.action.CartAction"
 			method="addCartItem">
 			<result type="json"><param name="root">isSuccess</param></result>	
@@ -132,6 +132,10 @@
 			method="showBuyItemList">
 			<result type="json"><param name="root">trCartList</param></result>
 		</action>
+
+<!-- 		<action name="GetCartNum" class="com.bookstore.action.CartAction" method="showCartNum"> -->
+<!-- 			<result type="json"><param name="root">trCartList</param></result> -->
+<!-- 		</action> -->
 
 		<action name="DeleteCartItem" class="com.bookstore.action.CartAction"
 			method="deleteBuyItem">
