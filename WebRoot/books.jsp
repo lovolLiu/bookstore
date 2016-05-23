@@ -252,7 +252,7 @@
 											<a href="BookDetail?bookID=${bookID }" >${bookName }</a>
 										</h3>
 										<p>
-											<a href="books-detail.jsp">详情</a>
+											<a href="BookDetail?bookID=${bookID }">详情</a>
 										</p>
 									</div>
 									<div class="book-price">
