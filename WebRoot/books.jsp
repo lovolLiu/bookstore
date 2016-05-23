@@ -459,6 +459,24 @@
 	</script>
 	
 	<script>
+		$(document).ready(function(){
+			UpdateCartNum();
+		})
+	
+	
+		function UpdateCartNum(){
+			var num = 0;
+			$.ajax({
+				url: "GetCartNum",
+				dataType: "json",
+				success:function(data){
+					$(".checkout__count").html(data);
+				}
+			})
+			
+		}
+	
+	
 	//用在其他页面时只需将 html相对应的id加为tbody_cart即可
 		function DownloadCartList(){
 					$(".tr_cartitem").remove();
@@ -499,7 +517,7 @@
 								//删除这条数据
 								$("#" + buyItemID).slideDown();
 								$("#" + buyItemID).remove();
-								
+								UpdateCartNum();
 							}
 						})
 						return false;
@@ -512,6 +530,7 @@
 				dataType: "json",
 				success: function(data){
 					messageToast("成功加入购物车~");
+					UpdateCartNum();
 				}
 			})
 		}
