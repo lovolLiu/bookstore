@@ -32,7 +32,7 @@
 <!-- Icomoon Icon Fonts-->
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
-
+<link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -308,12 +308,13 @@ a {
 			<img src="images/addressheader.jpg" alt="" class="img-responsive">
 		</div>
 		<div class="panel-body text-center">
-		    <div id="apprise-item">
+		    <div id="apprise-item" style="height:150px;">
 		        <img class="apprisepic" src="" alt="" />
 		        <h4></h4>
 		        <p></p>
 		    </div>
 			<form id="fillapprise" onSubmit="return false;">
+				<input id="input-rating" value="2" type="number" class="rating" min=0 max=5 step=1 data-size="xs">
 				<textarea name="" id="apprisemessage" rows="6" class="form-control" placeholder="在这儿加上一段走心的评论吧~~"></textarea>
 			</form>
 			<div id="appriseerror" class="error">我是错误信息</div>
@@ -555,6 +556,7 @@ a {
 	<script src="js/jquerypp.custom.js"></script>
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
+	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script type="application/x-javascript">
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 	</script>
@@ -792,6 +794,7 @@ a {
 			showUnpaidOrderNumber();
 			showUnapprisedOrderNumber();
 			showUnappriseBook();
+			$('#input-rating').rating();
 		});
 		//修改email
 		$('#enable').click(function() {
@@ -1057,11 +1060,15 @@ a {
 			$('#tab-content').find('div').removeClass('in');
 			$('#apprise').addClass('active');
 			$('#apprise').addClass('in');
+			startapprise();
 		}
 		//显示隐藏的评价框
 		function startapprise(e){
 		    $('#appriseerror').html("");
 		    $('#apprisemessage').val("");
+		    $('.rating .filled-stars').css("width","0%");
+		    $('.rating-container .caption span').attr("class","label label-default");
+		    $('.rating-container .caption span').html("未评价");
 		    //1.获得隐藏的DIV
 			var overDiv = document.getElementById("appriseform");
 			//2.将隐藏的div有隐藏显现出来hidden-->block
@@ -1100,7 +1107,11 @@ a {
 		$('#confirmapprise').click(function() {
 		    var content = $('#apprisemessage').val();
 		    var bookID = $('#confirmapprise').attr('appriseid');
-		    var score = 3;	//先写的死的
+		    var score = $('#input-rating').val();	//先写的死的
+		    if(scorewidth == "0%"){
+		        $('#appriseerror').html("亲，请给这本书评个级！");
+		        return;
+		    }
 		    if(content == ""){
 		        $('#appriseerror').html("亲，评论不能为空!");
 		        return;
@@ -1121,9 +1132,6 @@ a {
 	          		}
 				}
 			});
-		    //将遮罩层的内容隐藏掉
-			//1.获得隐藏div
-
 		});
 	</script>
 </body>

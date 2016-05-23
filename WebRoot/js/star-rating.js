@@ -541,19 +541,19 @@
     $.fn.ratingLocales.en = {
         defaultCaption: '{rating} Stars',
         starCaptions: {
-            0.5: 'Half Star',
-            1: 'One Star',
-            1.5: 'One & Half Star',
-            2: 'Two Stars',
-            2.5: 'Two & Half Stars',
-            3: 'Three Stars',
-            3.5: 'Three & Half Stars',
-            4: 'Four Stars',
-            4.5: 'Four & Half Stars',
-            5: 'Five Stars'
+            0.5: '半星',
+            1: '一星',
+            1.5: '一星半',
+            2: '两星',
+            2.5: '两星半',
+            3: '三星',
+            3.5: '三星半',
+            4: '四星',
+            4.5: '四星半',
+            5: '五星'
         },
-        clearButtonTitle: 'Clear',
-        clearCaption: 'Not Rated'
+        clearButtonTitle: '清空',
+        clearCaption: '未评价'
     };
 
     $.fn.rating.Constructor = Rating;
