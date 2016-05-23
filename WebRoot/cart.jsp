@@ -484,7 +484,7 @@ select{
 									 +"<td class=\"cart_total\"> <p class=\"cart_total_price\"> ¥"+list.buyItemPrice+"</p></td>"
 									 +"<td class=\"cart_delete\"><a class=\"cart_quantity_delete\" href=\"\" onclick=\"return deleteCart( "+ list.buyItemID +")\"><i class=\"fa fa-times\"></i></a></td>"
 									 +"</tr>");  
-                       			 	 $("tbody[id='cartItem']").prepend(_tr);  
+                       			 	 $("tbody[id='cartItem']").prepend(_tr);
                     			})  
 							}
 						})

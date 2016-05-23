@@ -407,11 +407,11 @@ select {
 						<tbody id='cartItem'>
 						<s:iterator value="trOrderItemList">
 							<tr id="${buyItemID }" class="itemtr">
-								<td class="cart_product"><a href=""><img
+								<td class="cart_product"><a href='BookDetail?id=${bookID }'><img
 										src="${imageUrl }"></a></td>
 								<td class="cart_description">
 									<h4>
-										<a href="">${bookName}</a>
+										<a href='BookDetail?id=${bookID }'>${bookName}</a>
 									</h4>
 								</td>
 								<td class="cart_price">
