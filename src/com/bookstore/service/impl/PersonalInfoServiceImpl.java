@@ -41,11 +41,9 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	@Override
 	public boolean deleteOrder(int orderID) {
 		Order order = orderDAO.findById(orderID);
-		if(order != null){
-			orderDAO.delete(orderID);
-			return true;
-		}
-		return false;
+		order.setStats(3);
+		orderDAO.update(order);
+		return true;
 	}
 	
 	@Override
