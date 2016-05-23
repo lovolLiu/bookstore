@@ -367,7 +367,10 @@
 												出版商:
 												<s:property value="publisher.publisherName" />
 											</p>
-											<p>书目ID: 1100</p>
+											<p>
+												库存:
+												<s:property value="book.restNum" />
+											</p>
 										</div>
 										<div class="cart_quantity">
 											<div class="cart_quantity_button">
@@ -504,20 +507,21 @@
 								<div class="col-md-4 col-sm-6">
 									<div class="best-seller-pro">
 										<figure>
-											<img src="images/book7.png" alt="">
+											<a href="#"><img
+												src="<s:property value='personalFindByAuthorDivBookList[0].URL'/>" alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#">Burnt Siena</a>
+												<a href="#"><s:property value="personalFindByAuthorDivBookList[0].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3>Art History Mystery</h3>
+											<h3><s:property value="personalFindByAuthorDivBookList[0].bookName" /></h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p>Sara Wisseman</p>
-											<p class="price">$334.50</p>
+											<p><s:property value="personalFindByAuthorDivBookList[0].author" /></p>
+											<p class="price">$<s:property value="personalFindByAuthorDivBookList[0].bookPrice" /></p>
 											<a href="#" class="add-to-cart">Add To Cart</a>
 										</div>
 									</div>
@@ -527,20 +531,21 @@
 								<div class="col-md-4 col-sm-6">
 									<div class="best-seller-pro">
 										<figure>
-											<img src="images/book8.png" alt="">
+											<a href="#"><img
+												src="<s:property value='personalFindByAuthorDivBookList[1].URL'/>" alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#">Chrysalis</a>
+												<a href="#"><s:property value="personalFindByAuthorDivBookList[1].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3>The Brave Girl</h3>
+											<h3><s:property value="personalFindByAuthorDivBookList[1].bookName" /></h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p>William S.</p>
-											<p class="price">$24.75</p>
+											<p><s:property value="personalFindByAuthorDivBookList[1].author" /></p>
+											<p class="price">$<s:property value="personalFindByAuthorDivBookList[1].bookPrice" /></p>
 											<a href="#" class="add-to-cart">Add To Cart</a>
 										</div>
 									</div>
@@ -550,20 +555,21 @@
 								<div class="col-md-4">
 									<div class="best-seller-pro">
 										<figure>
-											<img alt="" src="images/book4.png">
+											<a href="#"><img
+												src="<s:property value='personalFindByAuthorDivBookList[2].URL'/>" alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#">Dead Water</a>
+												<a href="#"><s:property value="personalFindByAuthorDivBookList[2].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3>Dead Water in the Sea</h3>
+											<h3><s:property value="personalFindByAuthorDivBookList[2].bookName" /></h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p>Ann Grannger</p>
-											<p class="price">$777.75</p>
+											<p><s:property value="personalFindByAuthorDivBookList[2].author" /></p>
+											<p class="price">$<s:property value="personalFindByAuthorDivBookList[2].bookPrice" /></p>
 											<a class="add-to-cart" href="#">Add To Cart</a>
 										</div>
 									</div>
