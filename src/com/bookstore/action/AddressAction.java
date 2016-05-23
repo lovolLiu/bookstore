@@ -1,7 +1,10 @@
 package com.bookstore.action;
 
+import java.util.Map;
+
 import com.bookstore.domain.Address;
 import com.bookstore.service.AddressService;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * @author Chang Su
@@ -15,12 +18,14 @@ public class AddressAction {
 	String tel;
 	String addressDetail;
 	Address address;
-	Integer userID = 1;
+	Integer userID;
 	Integer addressID;
 	AddressService addressService;
 	String result;
 	
 	public String addAddress(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		address = new Address();
 		address.setAddress(addressDetail);
 		address.setPerson(consignee);
@@ -32,6 +37,8 @@ public class AddressAction {
 	}
 	
 	public String updateAddress(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		address = addressService.selectAddress(addressID);
 		Address addressNew = new Address();
 		addressNew.setAddress(addressDetail);

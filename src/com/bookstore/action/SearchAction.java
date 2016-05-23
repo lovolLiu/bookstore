@@ -22,12 +22,12 @@ public class SearchAction {
 	Integer typeID;
 	BookTypeService bookTypeService;
 	List<BookType> btList;
-	ConvertorService cvtService;
+
 	List<DivBook> divBookList;
 	//获得对应类别的书籍
 	public List<DivBook> getSortBookList(){
 		List<Book> bookList = bookTypeService.getBookByBookType(typeID);
-		divBookList = cvtService.bookIDToDivBook(bookList);
+		divBookList = convertorService.bookIDToDivBook(bookList);
 		return divBookList;
 	}
 	//选择所有图书
@@ -167,12 +167,12 @@ public class SearchAction {
 		this.bookTypeService = bookTypeService;
 	}
 
-	public ConvertorService getCvtService() {
-		return cvtService;
+	public ConvertorService getconvertorService() {
+		return convertorService;
 	}
 
-	public void setCvtService(ConvertorService cvtService) {
-		this.cvtService = cvtService;
+	public void setconvertorService(ConvertorService convertorService) {
+		this.convertorService = convertorService;
 	}
 
 	public List<DivBook> getDivBookList() {
