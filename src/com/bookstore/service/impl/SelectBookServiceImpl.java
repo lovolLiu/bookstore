@@ -78,6 +78,11 @@ public class SelectBookServiceImpl implements SelectBookService {
 		this.bookTypeDAO = bookTypeDAO;
 	}
 
+	@Override
+	public List<Book> selectPersonalBookByAuthor(String authorName) {
+		return bookDAO.fuzzyfindByAuthor(authorName);
+	}
+
 
 	
 

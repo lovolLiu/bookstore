@@ -31,32 +31,42 @@ public class BookDetailAction {
 	List<Book> relatedBookList;
 	List<Book> hotestBookList;
 	List<Book> newestBookList;
+	List<Book> personalFindByAuthorBookList;
 	List<BookType> typeList;
 	List<DivBook> relatedDivBookList;
 	List<DivBook> hotestDivBookList;
 	List<DivBook> newestDivBookList;
+	List<DivBook> personalFindByAuthorDivBookList;
 
-
-	
+	//显示详情
+	public String initBookDetailExecute(){
+		return "success";
+		
+	}
 	
 	public String execute(){
-		book = bookDetailService.getBookInfo(9);
-		publisher = bookDetailService.getBookPublisher(9);
-
-		appriseList = bookDetailService.getAppriseList(9);
+		book = bookDetailService.getBookInfo(bookID);
+		publisher = bookDetailService.getBookPublisher(bookID);
+		appriseList = bookDetailService.getAppriseList(bookID);
+		if(appriseList.size() ==0){
+			bookScore  = 0;
+		}else{
 		for(int i=0; i< appriseList.size();i++){
 			totalScore += appriseList.get(i).getScore();
-		}
+			}
 		bookScore = totalScore/appriseList.size();
-		//relatedBookList = selectService.selectPersonalBook();
-        
+		}
 		hotestBookList = selectBookService.selectHottestBook();
 		hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
-		System.out.println(hotestDivBookList.get(9).getURL());
+		System.out.println(hotestDivBookList.get(bookID).getURL());
 		
 	
 		newestBookList = selectBookService.selectNewestBook();
 		newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
+
+		
+		personalFindByAuthorBookList = selectBookService.selectPersonalBookByAuthor(book.getAuthor());
+		personalFindByAuthorDivBookList = convertorService.bookIDToDivBook(personalFindByAuthorBookList);
 
 		//typeList = selectService.getTypeList();
 		return "success";
@@ -200,6 +210,24 @@ public class BookDetailAction {
 
 	public void setNewestDivBookList(List<DivBook> newestDivBookList) {
 		this.newestDivBookList = newestDivBookList;
+	}
+
+	public List<Book> getPersonalFindByAuthorBookList() {
+		return personalFindByAuthorBookList;
+	}
+
+	public void setPersonalFindByAuthorBookList(
+			List<Book> personalFindByAuthorBookList) {
+		this.personalFindByAuthorBookList = personalFindByAuthorBookList;
+	}
+
+	public List<DivBook> getPersonalFindByAuthorDivBookList() {
+		return personalFindByAuthorDivBookList;
+	}
+
+	public void setPersonalFindByAuthorDivBookList(
+			List<DivBook> personalFindByAuthorDivBookList) {
+		this.personalFindByAuthorDivBookList = personalFindByAuthorDivBookList;
 	}
 
 

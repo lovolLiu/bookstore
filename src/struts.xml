@@ -24,6 +24,7 @@
 		<action name="initSearchAction" class="com.bookstore.action.SearchAction" method="initSearchExecute">
 			<result name="success">/books.jsp</result>
 		</action>
+
 		<action name="GetBookType" class="com.bookstore.action.BookTypeAction" method="showBTList">
 		    <result name="success" type="json"><param name="root">btList</param></result>
 		    <result name="false" type="json">btList</result>
@@ -38,6 +39,7 @@
 		</action>
 		
 		    	<!-- FindPassword相关的2个action -->
+
 		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
 
 			<result name="nouser" type="json">
