@@ -317,7 +317,7 @@ a {
 				<textarea name="" id="apprisemessage" rows="6" class="form-control" placeholder="在这儿加上一段走心的评论吧~~"></textarea>
 			</form>
 			<div id="appriseerror" class="error">我是错误信息</div>
-			<a id="confirmapprise" class="btn btn-primary">确定</a>
+			<a id="confirmapprise" class="btn btn-primary" appriseid = "">确定</a>
 			<a id="cancelapprise" class="btn btn-primary">取消</a>
 		</div>
 	</div>
@@ -588,7 +588,7 @@ a {
 											+"<figure>"
 												+"<img src='"+list.URL+"' alt=''/>"
 											+"</figure>"
-											+"<div class='kode-caption'>"
+											+"<div class='kode-caption' appriseid='" + list.bookID + "'>"
 												+"<h3>"+list.bookName+"</h3>"
 												+"<p>"+list.author+"</p>"
 												+"<a class='add-to-cart' onclick='startapprise(event)'>评价</a>"
@@ -1081,11 +1081,13 @@ a {
 			var targ = e.target;
 			var bookauthor = targ.previousElementSibling.innerHTML;
 			var bookname = targ.previousElementSibling.previousElementSibling.innerHTML;
+			var bookID = targ.parentNode.getAttribute("appriseid");
 			var picurl = targ.parentNode.parentNode.firstElementChild.firstElementChild.getAttribute("src");
 			var appriseinfo = document.getElementById("apprise-item");
 			appriseinfo.firstElementChild.setAttribute("src", picurl);
 			appriseinfo.firstElementChild.nextElementSibling.innerHTML = bookname;
 			appriseinfo.firstElementChild.nextElementSibling.nextElementSibling.innerHTML = bookauthor;
+			document.getElementById("confirmapprise").setAttribute("appriseid", bookID);
 		}
 		//添加评论form的取消按钮
 		$('#cancelapprise').click(function() {
@@ -1097,7 +1099,7 @@ a {
 		//添加评论form的确定按钮
 		$('#confirmapprise').click(function() {
 		    var content = $('#apprisemessage').val();
-		    var bookID = 9;
+		    var bookID = $('#confirmapprise').attr('appriseid');
 		    var score = 3;	//先写的死的
 		    if(content == ""){
 		        $('#appriseerror').html("亲，评论不能为空!");

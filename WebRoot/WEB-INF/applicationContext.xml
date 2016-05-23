@@ -194,11 +194,12 @@
 		<property name="orderDao" ref="orderDAO" />
 	</bean>
 	
+	<!--  
 	<bean id="bookTypeService" class="com.bookstore.service.impl.BookTypeServiceImpl">
 		<property name="bookTypeDao" ref="bookTypeDAO" />
 		<property name="bookDao" ref="bookDAO" />
 	</bean>
-
+	-->
 
 
 

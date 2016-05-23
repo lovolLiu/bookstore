@@ -222,8 +222,9 @@
 					        <tr class="item">
 					            <td class="itemdetail">
 					                <div>
-					                    <div class="pic"><img src="images/book9.png"></div>
-					                    <div class="pic"><img src="images/book2.png"></div>
+					                    <s:iterator value="#u.orderItemList">
+					                      <div class="pic"><img src="<s:property value='imageUrl' />"></div>
+					                    </s:iterator>
 					                </div>
 					            </td>
 					            <td class="deliver">

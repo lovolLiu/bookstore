@@ -32,6 +32,7 @@
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+<link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -273,8 +274,8 @@
                                 <div class="kode-text">
                                 	<h2> <s:property value="book.bookName"/></h2>
                                     <div class="product-review">
-                                        <div class="rating">
-                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                        <div>
+                                            <input id="input-21b" value="4" type="number" class="rating" min=0 max=5 step=1 data-size="lg">
                                         </div>
                                         <p><s:property value = "bookScore" />分</p>
                                     </div>
@@ -563,6 +564,7 @@
 <script src="js/jquerypp.custom.js"></script>
 <script src="js/jquery.bookblock.js"></script>
 <script src="js/functions.js"></script>
+<script src="js/star-rating.js" type="text/javascript"></script>
 <script type="application/x-javascript"> 
 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
@@ -574,6 +576,7 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 							width: 'auto', //auto or any width like 600px
 							fit: true   // 100% fit in a container
 						});
+						$("#input-id").rating();
 					});
 </script>
 <script>
