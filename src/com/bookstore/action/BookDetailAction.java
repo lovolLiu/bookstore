@@ -31,10 +31,12 @@ public class BookDetailAction {
 	List<Book> relatedBookList;
 	List<Book> hotestBookList;
 	List<Book> newestBookList;
+	List<Book> personalFindByAuthorBookList;
 	List<BookType> typeList;
 	List<DivBook> relatedDivBookList;
 	List<DivBook> hotestDivBookList;
 	List<DivBook> newestDivBookList;
+	List<DivBook> personalFindByAuthorDivBookList;
 
 
 	
@@ -57,6 +59,10 @@ public class BookDetailAction {
 	
 		newestBookList = selectBookService.selectNewestBook();
 		newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
+		
+		personalFindByAuthorBookList = selectBookService.selectPersonalBookByAuthor(book.getAuthor());
+		personalFindByAuthorDivBookList = convertorService.bookIDToDivBook(personalFindByAuthorBookList);
+		
 
 		//typeList = selectService.getTypeList();
 		return "success";

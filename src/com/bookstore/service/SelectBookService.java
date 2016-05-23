@@ -12,4 +12,6 @@ public interface SelectBookService {
 	List<Book> selectNewestBook();
 	List<Book> selectHottestBook();
 	List<Book> selectDiscountBook();
+	List<Book> selectPersonalBookByAuthor(String authorName);
+	
 }
