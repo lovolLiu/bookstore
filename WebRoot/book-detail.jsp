@@ -406,39 +406,7 @@
 								</div>
 								<div role="tabpanel" class="tab-pane fade" id="reviews">
 									<div class="kode-comments">
-										<ul>
-											<li>
-												<div class="kode-thumb">
-													<a href="#"><img alt="" src="images/author14.png"></a>
-												</div>
-												<div class="kode-text">
-													<h4>Saul Bellow</h4>
-													<p class="designation">JUNE 20, 2015</p>
-													<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-														elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-														dolore magna aliquyam erat, sed diam voluptua. At vero eos
-														et accusam et justo duo dolores et ea rebum. Stet clita
-														kasd gubergren, no sea takimata sanctus est Lorem ipsum
-														dolor sit amet.</p>
-													<a class="reply" href="#">Reply</a>
-												</div>
-											</li>
-											<li>
-												<div class="kode-thumb">
-													<a href="#"><img alt="" src="images/author14.png"></a>
-												</div>
-												<div class="kode-text">
-													<h4>Saul Bellow</h4>
-													<p class="designation">JUNE 20, 2015</p>
-													<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-														elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-														dolore magna aliquyam erat, sed diam voluptua. At vero eos
-														et accusam et justo duo dolores et ea rebum. Stet clita
-														kasd gubergren, no sea takimata sanctus est Lorem ipsum
-														dolor sit amet.</p>
-													<a class="reply" href="#">Reply</a>
-												</div>
-											</li>
+										<ul id="reviews">
 										</ul>
 									</div>
 								</div>
@@ -672,6 +640,7 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 				fit : true
 			// 100% fit in a container
 			});
+			getAppriseList();
 		});
 	</script>
 <script>
@@ -715,6 +684,44 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 	     }
 		 $("#time_messagebox").fadeIn(300);
 		 setTimeout("$('#time_messagebox').fadeOut(300);",1200)
+	 }
+	 function formatDate(data) {
+			var d = new Date(data); //for date in the format "YYYY-MM-DDTHH:MM:SS" where T means timezone!!! 
+			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1)
+					+ "-" + d.getDate();
+			var hours = ((d.getHours() + 16) % 24 < 10) ? "0"
+					+ (d.getHours() + 16) % 24 : (d.getHours() + 16) % 24;
+			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
+			var formattedTime = hours + ":" + minutes + ":" + seconds;
+			formattedDate = formattedDate + " " + formattedTime;
+			return formattedDate;
+		}
+	 
+	 function getAppriseList(){
+	 	$.ajax({
+				url : "ShowAppriseList",
+				type:"post",
+				data:{"bookID":2},
+				dataType : "json",
+				success : function(data) {
+					$.each(data,function(i,list){
+						var strLi = "<li>"
+										+"<div class='kode-thumb'>"
+											+"<a href='#'>"
+												+"<img src='images/author14.png' alt=''/>"
+											+"</a>"
+										+"</div>"
+										+"<div class='kode-text'>"
+											+"<h4>"+list.userName+"</h4>"
+											+"<p class='designation'>"+formatDate(list.appriseTime)+"</p>"
+											+"<p>"+list.text+"</p>"
+										+"</div>"
+									+"</li>";
+						$("ul[id='reviews']").append(strLi);
+					})
+				}
+			})
 	 }
 </script>
 </body>

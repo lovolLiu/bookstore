@@ -144,6 +144,8 @@
 		<property name="buyItemDAO" ref="buyItemDAO"/>
 		<property name="addressDAO" ref="addressDAO"/>
 		<property name="orderDAO" ref="orderDAO"/>
+		<property name="appriseDAO" ref="appriseDAO"/>
+		<property name="userDAO" ref="userDAO"/>
 	</bean>
 	
 	<bean id="buyService" class="com.bookstore.service.impl.BuyServiceImpl">

@@ -48,6 +48,12 @@
 			<result name="success" type="json"><param name="root">relatedBookList</param></result>
 		</action>
 		
+		<action name="ShowAppriseList" class="com.bookstore.action.AppriseAction" method="showAppriseList">
+			<result name="success" type="json">
+				<param name="root">liAppriseList</param>
+			</result>
+		</action>
+		
 		    	<!-- FindPassword相关的2个action -->
 
 		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
