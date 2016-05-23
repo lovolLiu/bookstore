@@ -369,7 +369,22 @@
 											</p>
 											<p>书目ID: 1100</p>
 										</div>
-										<a href="StraightBuy?bookID=9&num=1" class="add-to-cart">立即购买</a>
+										<div class="cart_quantity">
+											<div class="cart_quantity_button">
+												<a class="cart_quantity_up" href=""
+													onclick="QuantityUp();return false;"> + </a> <input
+													class="cart_quantity_input" type="text" name="quantity"
+													value="1" autocomplete="off" size="2" readonly="readonly">
+												<a class="cart_quantity_down" href=""
+													onclick="QuantityDown();return false;"> - </a>
+											</div>
+										</div>
+										<br>
+										<div class="button_div">
+											<a href="#" class="add-to-cart"
+												onclick="StraightBuy();return false;">立即购买</a> <a href="#"
+												class="add-to-cart" onclick="AddCartItem();return false;">加入购物车</a>
+										</div>
 									</div>
 								</div>
 							</div>
