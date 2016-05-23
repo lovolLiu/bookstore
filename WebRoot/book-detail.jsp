@@ -139,7 +139,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[0].bookID}" ><img
 												src="<s:property value='newestDivBookList[0].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -155,7 +155,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[1].bookID}" ><img
 												src="<s:property value='newestDivBookList[1].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -171,7 +171,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[2].bookID}" ><img
 												src="<s:property value='newestDivBookList[2].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -209,7 +209,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[0].bookID}" ><img
 												src="<s:property value='hotestDivBookList[0].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -223,7 +223,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[1].bookID}" ><img
 												src="<s:property value='hotestDivBookList[1].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -237,7 +237,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[2].bookID}" ><img
 												src="<s:property value='hotestDivBookList[2].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -253,7 +253,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[3].bookID}" ><img
 												src="<s:property value='hotestDivBookList[3].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -267,7 +267,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[4].bookID}" ><img
 												src="<s:property value='hotestDivBookList[4].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -281,7 +281,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[5].bookID}" ><img
 												src="<s:property value='hotestDivBookList[5].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
