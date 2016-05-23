@@ -1,6 +1,9 @@
 package com.bookstore.action;
 
+import java.util.Map;
+
 import com.bookstore.service.AppriseService;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * @author Chang Su
@@ -11,13 +14,15 @@ import com.bookstore.service.AppriseService;
 public class AppriseAction {
 	AppriseService appriseService;
 	
-	Integer userID = 1;
+	Integer userID;
 	Integer bookID;
 	Integer score;
 	String content;
 	String result;
 	
 	public String addApprise(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		appriseService.addApprise(userID, bookID, score, content);
 		this.result = "success";
 		return "success";
