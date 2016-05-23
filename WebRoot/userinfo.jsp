@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -244,15 +243,15 @@ a {
 		</div>
 		<div class="panel-body text-center">
 			<form id="filladdress" onSubmit="return false;">
-				<input type="text" placeholder="省份" id="address1" required=""/> 
-				<input type="text" placeholder="地区" id="address2" required=""/> 
-				<input type="text" placeholder="详细地址" value="" id="address3" required=""/> 
-				<input type="text" placeholder="邮政编码" id="address4" required=""/> 
-			    <input type="text" placeholder="收货人姓名" value="" id="consignee" required=""/> 
+				<input type="text" placeholder="省份" id="address1" required=""/>
+				<input type="text" placeholder="地区" id="address2" required=""/>
+				<input type="text" placeholder="详细地址" value="" id="address3" required=""/>
+				<input type="text" placeholder="邮政编码" id="address4" required=""/>
+			    <input type="text" placeholder="收货人姓名" value="" id="consignee" required=""/>
 			    <input type="text" placeholder="电话号码" value="" id="tel" required=""/>
 			</form>
 			<div id="addresserror" class="error"></div>
-			<a id="confirmaddaddress" class="btn btn-primary">确定</a> 
+			<a id="confirmaddaddress" class="btn btn-primary">确定</a>
 			<a id="canceladdaddress" class="btn btn-primary">取消</a>
 		</div>
 	</div>
@@ -318,7 +317,7 @@ a {
 				<textarea name="" id="apprisemessage" rows="6" class="form-control" placeholder="在这儿加上一段走心的评论吧~~"></textarea>
 			</form>
 			<div id="appriseerror" class="error">我是错误信息</div>
-			<a id="confirmapprise" class="btn btn-primary">确定</a> 
+			<a id="confirmapprise" class="btn btn-primary">确定</a>
 			<a id="cancelapprise" class="btn btn-primary">取消</a>
 		</div>
 	</div>
@@ -557,7 +556,7 @@ a {
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
 	<script type="application/x-javascript">
-		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script src="js/bootstrap-editable.min.js"></script>
@@ -782,7 +781,7 @@ a {
 		//页面加载后执行的函数
 		$(document).ready(function() {
 			$('#horizontalTab').easyResponsiveTabs({
-				type : 'default', //Types: default, vertical, accordion           
+				type : 'default', //Types: default, vertical, accordion
 				width : 'auto', //auto or any width like 600px
 				fit : true
 			// 100% fit in a container
@@ -1125,6 +1124,5 @@ a {
 
 		});
 	</script>
-
 </body>
 </html>
