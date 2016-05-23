@@ -162,7 +162,7 @@
 							<h2>图书分类</h2>
 							<ul>
 								<s:iterator value="btList">
-								<li><a href="#">${type }</a></li>
+								<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
 								</s:iterator>
 							</ul>
 						</div>

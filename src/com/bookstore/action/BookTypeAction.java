@@ -17,7 +17,7 @@ import com.bookstore.util.DivBook;
  * @modifyDate
  */
 public class BookTypeAction {
-	List<BookType> btList;
+	
 	List<DivBook> divBookList;
 	List<Book> relatedBookList;
 	
@@ -26,7 +26,7 @@ public class BookTypeAction {
 	
 	BookTypeService btService;
 	ConvertorService cvtService;
-		
+	List<BookType> btList;
 	public String getBTList(){
 		btList = btService.getBookTypeList();
 		return "success";

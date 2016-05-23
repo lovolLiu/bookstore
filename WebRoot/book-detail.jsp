@@ -126,18 +126,10 @@
 						<div class="widget widget-search">
 							<h2>搜索</h2>
 							<div class="input-container">
-								<input type="text" placeholder="输入关键字"> <i
-									class="fa fa-search"></i>
+								<input id="searchinput" type="text" placeholder="输入关键词" > 
+								<i class="fa fa-search" ></i>
+							    <a onclick="filter()" class="btn btn-primary">搜索</a>
 							</div>
-						</div>
-						<!--SEARCH WIDGET END-->
-						<!--PRICE FILTER WIDGET START-->
-						<div class="widget widget-price-filter">
-							<h2>按照价格筛选</h2>
-							<b>10 RMB</b> <b class="pull-right">1000 RMB</b> <input id="ex2"
-								type="text" class="span2" value="" data-slider-min="10"
-								data-slider-max="1000" data-slider-step="5"
-								data-slider-value="[10,400]" /> <a href="#" class="filter">筛选</a>
 						</div>
 						<!--PRICE FILTER WIDGET END-->
 						<!--NEW ARRIVAL WIDGET START-->
