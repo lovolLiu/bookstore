@@ -24,9 +24,17 @@
 		<action name="initSearchAction" class="com.bookstore.action.SearchAction" method="initSearchExecute">
 			<result name="success">/books.jsp</result>
 		</action>
-		<action name="GetBookType" class="com.bookstore.action.BookTypeAction" method="getBTList">
-		    <result name="success">/books.jsp</result>
-		    <result name="false">/books.jsp</result>
+		<action name="GetBookType" class="com.bookstore.action.BookTypeAction" method="showBTList">
+		    <result name="success" type="json"><param name="root">btList</param></result>
+		    <result name="false" type="json">btList</result>
+		</action>
+		
+		<action name="GetBookList" class="com.bookstore.action.BookTypeAction" method="showBookList">
+			<result name="success" type="json"><param name="root">divBookList</param></result>
+		</action>
+		
+		<action name="GetRelatedBookList" class="com.bookstore.action.BookTypeAction" method="showRelatedBookList">
+			<result name="success" type="json"><param name="root">relatedBookList</param></result>
 		</action>
 		
 		    	<!-- FindPassword相关的2个action -->

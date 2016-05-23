@@ -24,25 +24,33 @@ public class BookTypeAction {
 	Integer bookTypeID;
 	Integer bookID;
 	
-	BookTypeService btService;
-	ConvertorService cvtService;
+	BookTypeService bookTypeService;
+	ConvertorService convertorService;
 		
-	public String getBTList(){
-		btList = btService.getBookTypeList();
+	public String showBTList(){
+		btList = bookTypeService.getBookTypeList();
 		return "success";
 	}
 	
-	public String getBookList(){
-		List<Book> bookList = btService.getBookByBookType(bookTypeID);
-		divBookList = cvtService.bookIDToDivBook(bookList);
+	/**
+	 * @in: bookTypeID
+	 * @return
+	 */
+	public String showBookList(){
+		List<Book> bookList = bookTypeService.getBookByBookType(bookTypeID);
+		divBookList = convertorService.bookIDToDivBook(bookList);
 		return "success";
 	}
 	
-	public String getRelatedBookList(){
+	/**
+	 * @in: bookID
+	 * @return
+	 */
+	public String showRelatedBookList(){
 		relatedBookList = new ArrayList<Book>();
-		List<BookType> bookTypeList = btService.getBookTypeListByBook(bookID);
+		List<BookType> bookTypeList = bookTypeService.getBookTypeListByBook(bookID);
 		for(BookType bt:bookTypeList){
-			List<Book> bookList = btService.getBookByBookType(bt.getTypeID());
+			List<Book> bookList = bookTypeService.getBookByBookType(bt.getTypeID());
 			for(Book b:bookList){
 				int bId = b.getBookID();
 				int hasBook = 0;
@@ -57,9 +65,67 @@ public class BookTypeAction {
 				}
 			}
 		}
-		divBookList = cvtService.bookIDToDivBook(relatedBookList);
+		divBookList = convertorService.bookIDToDivBook(relatedBookList);
 		return "success";
 	}
+
+	public List<BookType> getBtList() {
+		return btList;
+	}
+
+	public void setBtList(List<BookType> btList) {
+		this.btList = btList;
+	}
+
+	public List<DivBook> getDivBookList() {
+		return divBookList;
+	}
+
+	public void setDivBookList(List<DivBook> divBookList) {
+		this.divBookList = divBookList;
+	}
+
+	public List<Book> getRelatedBookList() {
+		return relatedBookList;
+	}
+
+	public void setRelatedBookList(List<Book> relatedBookList) {
+		this.relatedBookList = relatedBookList;
+	}
+
+	public Integer getBookTypeID() {
+		return bookTypeID;
+	}
+
+	public void setBookTypeID(Integer bookTypeID) {
+		this.bookTypeID = bookTypeID;
+	}
+
+	public Integer getBookID() {
+		return bookID;
+	}
+
+	public void setBookID(Integer bookID) {
+		this.bookID = bookID;
+	}
+
+	public BookTypeService getBookTypeService() {
+		return bookTypeService;
+	}
+
+	public void setBookTypeService(BookTypeService bookTypeService) {
+		this.bookTypeService = bookTypeService;
+	}
+
+	public ConvertorService getConvertorService() {
+		return convertorService;
+	}
+
+	public void setConvertorService(ConvertorService convertorService) {
+		this.convertorService = convertorService;
+	}
+
+
 	
 	
 	
