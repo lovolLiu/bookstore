@@ -251,7 +251,7 @@
 									</div>
 									<div class="kode-text">
 										<h3>
-											<a href="#">${bookName }</a>
+											<a href="BookDetail?bookID=${bookID }" >${bookName }</a>
 										</h3>
 										<p>
 											<a href="books-detail.jsp">详情</a>

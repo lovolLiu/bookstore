@@ -36,14 +36,17 @@ public class BookDetailAction {
 	List<DivBook> hotestDivBookList;
 	List<DivBook> newestDivBookList;
 
-
-	
+	//显示详情
+	public String initBookDetailExecute(){
+		return "success";
+		
+	}
 	
 	public String execute(){
-		book = bookDetailService.getBookInfo(9);
-		publisher = bookDetailService.getBookPublisher(9);
+		book = bookDetailService.getBookInfo(bookID);
+		publisher = bookDetailService.getBookPublisher(bookID);
+		appriseList = bookDetailService.getAppriseList(bookID);
 
-		appriseList = bookDetailService.getAppriseList(9);
 		for(int i=0; i< appriseList.size();i++){
 			totalScore += appriseList.get(i).getScore();
 		}
@@ -52,12 +55,12 @@ public class BookDetailAction {
         
 		hotestBookList = selectBookService.selectHottestBook();
 		hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
-		System.out.println(hotestDivBookList.get(9).getURL());
+		System.out.println(hotestDivBookList.get(bookID).getURL());
 		
 	
 		newestBookList = selectBookService.selectNewestBook();
 		newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
-
+		System.out.println("1");
 		//typeList = selectService.getTypeList();
 		return "success";
 		

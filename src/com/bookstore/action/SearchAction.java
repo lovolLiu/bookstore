@@ -9,6 +9,12 @@ import com.bookstore.service.ConvertorService;
 import com.bookstore.service.SelectBookService;
 import com.bookstore.service.SearchService;
 import com.bookstore.util.DivBook;
+/**
+ * @author Yu Fu
+ * @description 书籍总览 搜索栏目 按类分书
+ * @modify 
+ * @modifyDate May 15
+ */
 public class SearchAction {
 	String keyword = "1";
 	Integer pageNo;

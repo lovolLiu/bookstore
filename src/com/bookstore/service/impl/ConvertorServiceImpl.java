@@ -104,7 +104,12 @@ public class ConvertorServiceImpl implements ConvertorService{
 		List<BuyItem> buyItemList = buyItemDAO.findByOrderID(orderID);
 		return buyItemList;
 	}
-	
+	/**
+	 * @author Yu Fu
+	 * @description 由book domain转换为divbook
+	 * @modify 
+	 * @modifyDate May 10
+	 */
 	@Override
 	public List<DivBook> bookIDToDivBook(List<Book> bookList) {
 		// TODO Auto-generated method stub

@@ -46,6 +46,10 @@
 		<action name="initSearchAction" class="com.bookstore.action.SearchAction" method="initSearchExecute">
 			<result name="success">/books.jsp</result>
 		</action>
+		<!-- 初始化书籍详情页 显示当前选定的图书 -->
+		<action name="initBookDetailAction" class="com.bookstore.action.BookDetailAction" method="initBookDetailExecute">
+			<result name="success">/book-detail.jsp</result>
+		</action>
     </package>
     
     
