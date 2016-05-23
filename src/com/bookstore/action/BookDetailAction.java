@@ -208,6 +208,24 @@ public class BookDetailAction {
 		this.newestDivBookList = newestDivBookList;
 	}
 
+	public List<Book> getPersonalFindByAuthorBookList() {
+		return personalFindByAuthorBookList;
+	}
+
+	public void setPersonalFindByAuthorBookList(
+			List<Book> personalFindByAuthorBookList) {
+		this.personalFindByAuthorBookList = personalFindByAuthorBookList;
+	}
+
+	public List<DivBook> getPersonalFindByAuthorDivBookList() {
+		return personalFindByAuthorDivBookList;
+	}
+
+	public void setPersonalFindByAuthorDivBookList(
+			List<DivBook> personalFindByAuthorDivBookList) {
+		this.personalFindByAuthorDivBookList = personalFindByAuthorDivBookList;
+	}
+
 
 
 	
