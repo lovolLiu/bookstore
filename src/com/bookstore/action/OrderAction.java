@@ -1,10 +1,15 @@
 package com.bookstore.action;
 
-import com.bookstore.domain.Order;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.PersonalInfoService;
 import com.bookstore.util.DivOrder;
 
+/**
+ * @author Chang Su
+ * @description 评价添加Action实现
+ * @modify
+ * @modifyDate
+ */
 public class OrderAction {
 	DivOrder divOrder;
 	Integer orderID;
