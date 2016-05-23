@@ -20,6 +20,11 @@
 			<result name="false">/books.jsp</result>
 		</action>
 		
+		<action name="Index" class="com.bookstore.action.IndexAction" method="getCommendationForYou">
+			<result name="success">/index.jsp</result>
+			<result name="false">/index.jsp</result>
+		</action>
+		
 		<!-- 初始化所有书籍页 显示书库内的所有图书 -->
 		<action name="initSearchAction" class="com.bookstore.action.SearchAction" method="initSearchExecute">
 			<result name="success">/books.jsp</result>

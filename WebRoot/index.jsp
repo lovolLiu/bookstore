@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,70 +124,29 @@
                         <div class="row">
                             <!--PRODUCT GRID START-->
                             <div class="container">
-                            <div class="col-md-4 col-sm-6">
-                                <div class="best-seller-pro">
-                                     <figure>
-                            	<img src="images/book7.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                            	<h3><a href="#">Burnt Siena</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                            	<h3>Art History Mystery</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Sara Wisseman</p>
-                                <p class="price">$334.50</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
+							<s:iterator value="divBookList">
                             <div class="col-md-4 col-sm-6">
                                 <div class="best-seller-pro">
                                     <figure>
-                            	<img src="images/book8.png" alt="">
-                            </figure>
-                            <div class="kode-text">
-                            	<h3><a href="#">Chrysalis</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                            	<h3>The Brave Girl</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>William S.</p>
-                                <p class="price">$24.75</p>
-                                <a href="#" class="add-to-cart">Add To Cart</a>
+                            			<img src=${URL } alt="">
+                           	 		</figure>
+                            		<div class="kode-text">
+                            			<h3><a href="#">${author }</a></h3>
+                            		</div>
+                            		<div class="kode-caption">
+                            			<h3>${bookName }</h3>
+                                			<div class="rating">
+												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+											</div>
+                                		<p>${author }</p>
+                                		<p class="price">${bookPrice }</p>
+                               			<a href="#" class="add-to-cart">Add To Cart</a>
                                     </div>
                                 </div>
                             </div>
+                            </s:iterator>
                             <!--PRODUCT GRID END-->
-                            <!--PRODUCT GRID START-->
-                            <div class="col-md-4">
-                                <div class="best-seller-pro">
-                                    <figure>
-                            	<img alt="" src="images/book4.png">
-                            </figure>
-                            <div class="kode-text">
-                            	<h3><a href="#">Dead Water</a></h3>
-                            </div>
-                            <div class="kode-caption">
-                            	<h3>Dead Water in the Sea</h3>
-                                <div class="rating">
-<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-                                <p>Ann Grannger</p>
-                                <p class="price">$777.75</p>
-                                <a class="add-to-cart" href="#">Add To Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            <!--PRODUCT GRID END-->
-                        </div>
+                         </div>
                     </div>
                     <!--RELATED PRODUCTS END-->
         <!--TOP SELLERS SECTION START-->
@@ -1175,320 +1135,29 @@
             <!--SECTION HEADING END-->
             <div class="owl-blog owl-theme">
                 <!--BLOG ITEM START-->
+                <s:iterator value="divBookListNewest">
                 <div class="item">
                     <div class="lib-blog-post">
                     	<div class="kode-thumb">
-                        	<img src="images/lib-blog.png" alt="">
+                        	<img src=${URL } alt="">
                             <div class="lib-btns">
                             	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
                                 <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
                             </div>
                         </div>
                         <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
+                        	<h2>${bookName }</h2>
                             <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
+                            	<li><p>by: <a href="#">${author }</a></p></li>
+                                <!-- <li><p><a href="#">20th August 2015</a></p></li> -->
                             </ul>
                             <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
+                </s:iterator>
                 <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog2.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog3.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog4.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog5.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog2.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog3.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog4.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog5.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog2.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog3.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog4.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
-                <!--BLOG ITEM START-->
-                <div class="item">
-                    <div class="lib-blog-post">
-                    	<div class="kode-thumb">
-                        	<img src="images/lib-blog5.png" alt="">
-                            <div class="lib-btns">
-                            	<a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-search"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Title"><i class="fa fa-picture-o"></i></a>
-                            </div>
-                        </div>
-                        <div class="kode-text">
-                        	<h2>Becky’s Book Reviews</h2>
-                            <ul>
-                            	<li><p>by: <a href="#">James Greig</a></p></li>
-                                <li><p><a href="#">20th August 2015</a></p></li>
-                            </ul>
-                            <a href="#" class="more"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!--BLOG ITEM END-->
+                
             </div>
         </section>
         <!--FROM THE BLOG SECTION END-->
@@ -1503,146 +1172,63 @@
                 <div class="row">
                     <!--SECTION CONTENT END-->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active col-md-4 col-sm-3">
-                        	<a href="#book1" role="tab" data-toggle="tab">
-                                <div class="lib-papular-thumb">
-                                    <img src="images/papular-books2.png" alt="">
-                                </div>
-                        	</a>
-                        </li>
-                        <li role="presentation" class="col-md-4 col-sm-3">
-                            <a href="#book2" role="tab" data-toggle="tab">
-                                <div class="lib-papular-thumb">
-                                    <img src="images/papular-books3.png" alt="">
-                                </div>
-                            </a>
-                        </li>
-                        <li role="presentation" class="col-md-4 col-sm-3">
-                            <a href="#book3" role="tab" data-toggle="tab">
-                            	<div class="lib-papular-thumb">
-                                    <img src="images/papular-books4.png" alt="">
-                                </div>
-                            </a>
-                        </li>
-                        <li role="presentation" class="col-md-4 col-sm-3">
-                        	<a href="#book4" role="tab" data-toggle="tab">
-                                <div class="lib-papular-thumb">
-                                    <img src="images/papular-books5.png" alt="">
-                                </div>
-                        	</a>
-                        </li>
+						<s:iterator value="divBookListHottest">
                         <li role="presentation" class="col-md-4 col-sm-3 visible-lg visible-md">
-                            <a href="#book5" role="tab" data-toggle="tab">
-                                <div class="lib-papular-thumb">
-                                    <img src="images/papular-books6.png" alt="">
-                                </div>
-                            </a>
-                        </li>
-                        <li role="presentation" class="col-md-4 col-sm-3 visible-lg visible-md">
-                            <a href="#book6" role="tab" data-toggle="tab">
+                            <a href="#${bookID }" role="tab" data-toggle="tab">
                             	<div class="lib-papular-thumb">
-                                    <img src="images/papular-books7.png" alt="">
+                                    <img src=${URL } alt=""/>
                                 </div>
                             </a>
                         </li>
+                        </s:iterator>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="book1">
+                    	<s:iterator value="divBookListHottest" var="d">
+                    	<s:if test="#d.bookID ==1 ">
+                        <div role="tabpanel" class="tab-pane fade in active" id=${bookID }>
                         	<div class="lib-papular">
                                 <div class="kode-thumb">
-                                    <img src="images/papular-books.png" alt="">
+                                    <img src=${URL } alt="">
                                 </div>
                                 <div class="kode-text">
-                                    <h2>Engaging Imagination</h2>
-                                    <h4>Gillian Judson</h4>
+                                    <h2>${bookName }</h2>
+                                    <h4>${author }</h4>
                                     <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
-                                    <p>When asked what they want colleges to emphasize most, employers didn’t put science, computing, math, or business management first. According to 2013 employer survey, 95% of employers give hiring preference to college graduates with skills that will enable them to contribute to innovation in the workplace. that will enable them to contribute to innovation in the workplace in the city town of the lost vallies.</p>
+                                    <p>${description }</p>
                                     <div class="lib-price">
-                                        <h3>$245</h3>
+                                        <h3>${bookPrice }</h3>
                                         <a href="#">See More</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="book2">
+                        </s:if>
+                        <s:else>
+                        <div role="tabpanel" class="tab-pane fade" id=${bookID }>
                         	<div class="lib-papular">
                                 <div class="kode-thumb">
-                                    <img src="images/papular-books11.png" alt="">
+                                    <img src=${URL } alt="">
                                 </div>
                                 <div class="kode-text">
-                                    <h2>Deception</h2>
-                                    <h4>John M Fluid</h4>
+                                    <h2>${bookName }</h2>
+                                    <h4>${author }</h4>
                                     <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                     </div>
-                                    <p>The world's most infamous hacker offers an insider's view of the low-tech threats to high-tech security. Kevin Mitnick's exploits as a cyber-desperado and fugitive form one of the most exhaustive FBI manhunts in history and have spawned dozens of articles, books, films, and documentaries. Since his release from federal prison, in 1998 that will enable them to contribute to innovation in the workplace</p>
+                                    <p>${description }</p>
                                     <div class="lib-price">
-                                        <h3>$245</h3>
+                                        <h3>${bookPrice }</h3>
                                         <a href="#">See More</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="book3">
-                        	<div class="lib-papular">
-                                <div class="kode-thumb">
-                                    <img src="images/papular-books22.png" alt="">
-                                </div>
-                                <div class="kode-text">
-                                    <h2>Last Days</h2>
-                                    <h4>Adam Nevill</h4>
-                                    <div class="rating">
-                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                    </div>
-                                    <p>Last Days (winner of the British Fantasy Award for Best Horror Novel of the Year) by Adam Nevill is a Blair Witch style novel in which a documentary film-maker undertakes the investigation of a dangerous. When guerrilla documentary maker, Kyle Freeman, is asked to shoot a film on the notorious cult known as the Temple of the Last Days that will enable them to contribute to innovation in the workplace</p>
-                                    <div class="lib-price">
-                                        <h3>$555</h3>
-                                        <a href="#">See More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="book4">
-                        	<div class="lib-papular">
-                                <div class="kode-thumb">
-                                    <img src="images/papular-books33.png" alt="">
-                                </div>
-                                <div class="kode-text">
-                                    <h2>Catching Fire</h2>
-                                    <h4>Suzanne Collin</h4>
-                                    <div class="rating">
-                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                    </div>
-                                    <p>Against all odds, Katniss Everdeen has won the annual Hunger Games with fellow district tribute Peeta Mellark. But it was a victory won by defiance of the Capitol and their harsh rules. Katniss and Peeta should be happy. After all, they have just won for themselves and their families a life of safety and plenty that will enable them to contribute to innovation in the workplace families a life of safety.</p>
-                                    <div class="lib-price">
-                                        <h3>$751</h3>
-                                        <a href="#">See More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="book5">
-                        	<div class="lib-papular">
-                                <div class="kode-thumb">
-                                    <img src="images/papular-books44.png" alt="">
-                                </div>
-                                <div class="kode-text">
-                                    <h2>The Fire of Life</h2>
-                                    <h4>Runshide </h4>
-                                    <div class="rating">
-                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                    </div>
-                                    <p>“You’ve reached the age at which people in this family cross the border into the magical world. It’s your turn for an adventure—yes, it’s finally here!” So says Haroun to his younger brother, twelve-year-old Luka. The adventure begins one beautiful starry night in the land of Alifbay, when Luka’s father, Rashid that will enable them to contribute to innovation in the workplace families a life of safety.</p>
-                                    <div class="lib-price">
-                                        <h3>$852</h3>
-                                        <a href="#">See More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </s:else>
+                        </s:iterator>
+                        
                         <div role="tabpanel" class="tab-pane fade" id="book6">
                         	<div class="lib-papular">
                                 <div class="kode-thumb">
