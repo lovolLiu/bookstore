@@ -2,15 +2,16 @@ package com.bookstore.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.bookstore.domain.BuyItem;
 import com.bookstore.service.BuyService;
+import com.opensymphony.xwork2.ActionContext;
 
 
 public class StraightBuyAction {
 	
 	//in
-	Integer userID = 1;
 	Integer bookID;
 	Integer num;
 	
@@ -22,6 +23,8 @@ public class StraightBuyAction {
 	
 	
 	public String execute(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		Integer buyItemID = buyService.createBuyItem(userID, bookID, num);
 		buyItemIDList = new ArrayList();
 		buyItemIDList.add(buyItemID);

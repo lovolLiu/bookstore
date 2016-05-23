@@ -123,18 +123,10 @@
 						<div class="widget widget-search">
 							<h2>搜索</h2>
 							<div class="input-container">
-								<input type="text" placeholder="输入关键字"> <i
-									class="fa fa-search"></i>
+								<input id="searchinput" type="text" placeholder="输入关键词" > 
+								<i class="fa fa-search" ></i>
+							    <a onclick="filter()" class="btn btn-primary">搜索</a>
 							</div>
-						</div>
-						<!--SEARCH WIDGET END-->
-						<!--PRICE FILTER WIDGET START-->
-						<div class="widget widget-price-filter">
-							<h2>按照价格筛选</h2>
-							<b>10 RMB</b> <b class="pull-right">1000 RMB</b> <input id="ex2"
-								type="text" class="span2" value="" data-slider-min="10"
-								data-slider-max="1000" data-slider-step="5"
-								data-slider-value="[10,400]" /> <a href="#" class="filter">筛选</a>
 						</div>
 						<!--PRICE FILTER WIDGET END-->
 						<!--NEW ARRIVAL WIDGET START-->
@@ -144,7 +136,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[0].bookID}" ><img
 												src="<s:property value='newestDivBookList[0].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -160,7 +152,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[1].bookID}" ><img
 												src="<s:property value='newestDivBookList[1].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -176,7 +168,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[2].bookID}" ><img
 												src="<s:property value='newestDivBookList[2].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -214,7 +206,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[0].bookID}" ><img
 												src="<s:property value='hotestDivBookList[0].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -228,7 +220,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[1].bookID}" ><img
 												src="<s:property value='hotestDivBookList[1].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -242,7 +234,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[2].bookID}" ><img
 												src="<s:property value='hotestDivBookList[2].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -258,7 +250,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[3].bookID}" ><img
 												src="<s:property value='hotestDivBookList[3].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -272,7 +264,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[4].bookID}" ><img
 												src="<s:property value='hotestDivBookList[4].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -286,7 +278,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[5].bookID}" ><img
 												src="<s:property value='hotestDivBookList[5].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -305,7 +297,7 @@
 					</div>
 					<div class="col-md-9">
 						<!--BOOK DETAIL START-->
-						<div class="lib-book-detail">
+						<div class="lib-book-detail"  >
 							<div class="row">
 								<div class="col-md-5">
 									<div class="kode-thumb">
@@ -364,7 +356,10 @@
 												出版商:
 												<s:property value="publisher.publisherName" />
 											</p>
-											<p>书目ID: 1100</p>
+											<p>
+												库存:
+												<s:property value="book.restNum" />
+											</p>
 										</div>
 										<div class="cart_quantity">
 											<div class="cart_quantity_button">
@@ -408,39 +403,7 @@
 								</div>
 								<div role="tabpanel" class="tab-pane fade" id="reviews">
 									<div class="kode-comments">
-										<ul>
-											<li>
-												<div class="kode-thumb">
-													<a href="#"><img alt="" src="images/author14.png"></a>
-												</div>
-												<div class="kode-text">
-													<h4>Saul Bellow</h4>
-													<p class="designation">JUNE 20, 2015</p>
-													<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-														elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-														dolore magna aliquyam erat, sed diam voluptua. At vero eos
-														et accusam et justo duo dolores et ea rebum. Stet clita
-														kasd gubergren, no sea takimata sanctus est Lorem ipsum
-														dolor sit amet.</p>
-													<a class="reply" href="#">Reply</a>
-												</div>
-											</li>
-											<li>
-												<div class="kode-thumb">
-													<a href="#"><img alt="" src="images/author14.png"></a>
-												</div>
-												<div class="kode-text">
-													<h4>Saul Bellow</h4>
-													<p class="designation">JUNE 20, 2015</p>
-													<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-														elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-														dolore magna aliquyam erat, sed diam voluptua. At vero eos
-														et accusam et justo duo dolores et ea rebum. Stet clita
-														kasd gubergren, no sea takimata sanctus est Lorem ipsum
-														dolor sit amet.</p>
-													<a class="reply" href="#">Reply</a>
-												</div>
-											</li>
+										<ul id="reviews">
 										</ul>
 									</div>
 								</div>
@@ -501,20 +464,21 @@
 								<div class="col-md-4 col-sm-6">
 									<div class="best-seller-pro">
 										<figure>
-											<img src="images/book7.png" alt="">
+											<a href="#"><img
+												src="<s:property value='personalFindByAuthorDivBookList[0].URL'/>" alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#">Burnt Siena</a>
+												<a href="#"><s:property value="personalFindByAuthorDivBookList[0].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3>Art History Mystery</h3>
+											<h3><s:property value="personalFindByAuthorDivBookList[0].bookName" /></h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p>Sara Wisseman</p>
-											<p class="price">$334.50</p>
+											<p><s:property value="personalFindByAuthorDivBookList[0].author" /></p>
+											<p class="price">$<s:property value="personalFindByAuthorDivBookList[0].bookPrice" /></p>
 											<a href="#" class="add-to-cart">Add To Cart</a>
 										</div>
 									</div>
@@ -524,20 +488,21 @@
 								<div class="col-md-4 col-sm-6">
 									<div class="best-seller-pro">
 										<figure>
-											<img src="images/book8.png" alt="">
+											<a href="#"><img
+												src="<s:property value='personalFindByAuthorDivBookList[1].URL'/>" alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#">Chrysalis</a>
+												<a href="#"><s:property value="personalFindByAuthorDivBookList[1].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3>The Brave Girl</h3>
+											<h3><s:property value="personalFindByAuthorDivBookList[1].bookName" /></h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p>William S.</p>
-											<p class="price">$24.75</p>
+											<p><s:property value="personalFindByAuthorDivBookList[1].author" /></p>
+											<p class="price">$<s:property value="personalFindByAuthorDivBookList[1].bookPrice" /></p>
 											<a href="#" class="add-to-cart">Add To Cart</a>
 										</div>
 									</div>
@@ -547,20 +512,21 @@
 								<div class="col-md-4">
 									<div class="best-seller-pro">
 										<figure>
-											<img alt="" src="images/book4.png">
+											<a href="#"><img
+												src="<s:property value='personalFindByAuthorDivBookList[2].URL'/>" alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#">Dead Water</a>
+												<a href="#"><s:property value="personalFindByAuthorDivBookList[2].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3>Dead Water in the Sea</h3>
+											<h3><s:property value="personalFindByAuthorDivBookList[2].bookName" /></h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p>Ann Grannger</p>
-											<p class="price">$777.75</p>
+											<p><s:property value="personalFindByAuthorDivBookList[2].author" /></p>
+											<p class="price">$<s:property value="personalFindByAuthorDivBookList[2].bookPrice" /></p>
 											<a class="add-to-cart" href="#">Add To Cart</a>
 										</div>
 									</div>
@@ -585,7 +551,7 @@
 							<h2>站点地图</h2>
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
-								<li><a href="books.jsp">开始选购</a></li>
+								<li><a href="initSearchAction">开始选购</a></li>
 								<li><a href="cart.jsp">购物车</a></li>
 								<li><a href="userinfo.jsp">我的账户</a></li>
 							</ul>
@@ -671,6 +637,7 @@
 				fit : true
 			// 100% fit in a container
 			});
+<<<<<<< HEAD
 			var score = <s:property value="bookScore"/>;
 			switch(score){
 			    case 1:
@@ -702,6 +669,9 @@
 			        $('#scorecaption').html("暂无评价");
 			        $('#scorecaption').attr("class","label label-default");
 			}
+=======
+			getAppriseList();
+>>>>>>> origin/master
 		});
 	</script>
 <script>
@@ -745,6 +715,44 @@
 	     }
 		 $("#time_messagebox").fadeIn(300);
 		 setTimeout("$('#time_messagebox').fadeOut(300);",1200)
+	 }
+	 function formatDate(data) {
+			var d = new Date(data); //for date in the format "YYYY-MM-DDTHH:MM:SS" where T means timezone!!! 
+			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1)
+					+ "-" + d.getDate();
+			var hours = ((d.getHours() + 16) % 24 < 10) ? "0"
+					+ (d.getHours() + 16) % 24 : (d.getHours() + 16) % 24;
+			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
+			var formattedTime = hours + ":" + minutes + ":" + seconds;
+			formattedDate = formattedDate + " " + formattedTime;
+			return formattedDate;
+		}
+	 
+	 function getAppriseList(){
+	 	$.ajax({
+				url : "ShowAppriseList",
+				type:"post",
+				data:{"bookID":2},
+				dataType : "json",
+				success : function(data) {
+					$.each(data,function(i,list){
+						var strLi = "<li>"
+										+"<div class='kode-thumb'>"
+											+"<a href='#'>"
+												+"<img src='images/author14.png' alt=''/>"
+											+"</a>"
+										+"</div>"
+										+"<div class='kode-text'>"
+											+"<h4>"+list.userName+"</h4>"
+											+"<p class='designation'>"+formatDate(list.appriseTime)+"</p>"
+											+"<p>"+list.text+"</p>"
+										+"</div>"
+									+"</li>";
+						$("ul[id='reviews']").append(strLi);
+					})
+				}
+			})
 	 }
 </script>
 </body>

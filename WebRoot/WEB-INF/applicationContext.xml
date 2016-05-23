@@ -55,6 +55,10 @@
 				<value>com/bookstore/domain/User.hbm.xml</value>
 			</list>
 		</property>
+		 
+		
+		
+		
 		<property name="hibernateProperties">
 			<props>
 			    <!-- 设置Hibernate方言 -->
@@ -72,6 +76,7 @@
 				<prop key="hibernate.use_sql_comments">true</prop>
 				<prop key="hibernate.cache.use_second_level_cache">false</prop>
  		  		<prop key="hibernate.cache.use_query_cache">false</prop>
+
 			</props>
 		</property>
 	</bean>                 
@@ -139,6 +144,8 @@
 		<property name="buyItemDAO" ref="buyItemDAO"/>
 		<property name="addressDAO" ref="addressDAO"/>
 		<property name="orderDAO" ref="orderDAO"/>
+		<property name="appriseDAO" ref="appriseDAO"/>
+		<property name="userDAO" ref="userDAO"/>
 	</bean>
 	
 	<bean id="buyService" class="com.bookstore.service.impl.BuyServiceImpl">
@@ -194,13 +201,13 @@
 		<property name="orderDao" ref="orderDAO" />
 	</bean>
 	
-	<!--  
+
 	<bean id="bookTypeService" class="com.bookstore.service.impl.BookTypeServiceImpl">
 		<property name="bookTypeDao" ref="bookTypeDAO" />
-		<property name="bookDao" ref="bookDAO" />
+		<property name="bookDao" ref="bookDAO"/>
+		
 	</bean>
-	-->
-
-
+	
+	
 
 </beans>

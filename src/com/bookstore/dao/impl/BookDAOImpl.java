@@ -46,7 +46,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 	@Override
 	public List<Book> findByTypeID(final Integer typeID) {
 		List<Book> list = getHibernateTemplate().executeFind(new HibernateCallback(){
-			String sql = "selete * from Book b, Book_has_BookType r where b.bookID=r.Book_BookID and r.BookType_TypeID=?";
+			String sql = "select * from Book b, Book_has_BookType r where b.BookID=r.Book_BookID and r.BookType_TypeID=?";
 			@Override
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {

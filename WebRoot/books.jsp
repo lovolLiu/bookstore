@@ -162,7 +162,7 @@
 							<h2>图书分类</h2>
 							<ul>
 								<s:iterator value="btList">
-								<li><a href="#">${type }</a></li>
+								<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
 								</s:iterator>
 							</ul>
 						</div>
@@ -249,10 +249,10 @@
 									</div>
 									<div class="kode-text">
 										<h3>
-											<a href="#">${bookName }</a>
+											<a href="BookDetail?bookID=${bookID }" >${bookName }</a>
 										</h3>
 										<p>
-											<a href="books-detail.jsp">详情</a>
+											<a href="BookDetail?bookID=${bookID }">详情</a>
 										</p>
 									</div>
 									<div class="book-price">
@@ -364,7 +364,7 @@
 							<h2>站点地图</h2>
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
-								<li><a href="books.jsp">开始选购</a></li>
+								<li><a href="initSearchAction">开始选购</a></li>
 								<li><a href="cart.jsp">购物车</a></li>
 								<li><a href="userinfo.jsp">我的账户</a></li>
 							</ul>
@@ -459,6 +459,24 @@
 	</script>
 	
 	<script>
+		$(document).ready(function(){
+			UpdateCartNum();
+		})
+	
+	
+		function UpdateCartNum(){
+			var num = 0;
+			$.ajax({
+				url: "GetCartNum",
+				dataType: "json",
+				success:function(data){
+					$(".checkout__count").html(data);
+				}
+			})
+			
+		}
+	
+	
 	//用在其他页面时只需将 html相对应的id加为tbody_cart即可
 		function DownloadCartList(){
 					$(".tr_cartitem").remove();
@@ -499,7 +517,7 @@
 								//删除这条数据
 								$("#" + buyItemID).slideDown();
 								$("#" + buyItemID).remove();
-								
+								UpdateCartNum();
 							}
 						})
 						return false;
@@ -512,6 +530,7 @@
 				dataType: "json",
 				success: function(data){
 					messageToast("成功加入购物车~");
+					UpdateCartNum();
 				}
 			})
 		}

@@ -47,6 +47,13 @@ public class AppriseServiceImpl implements AppriseService{
 		}
 	}
 
+	@Override
+	public List<Apprise> showAppriseByBookID(int bookid) {
+		List<Apprise> appriseList = appriseDao.findByBookID(bookid);
+		return appriseList;
+	}
+
+	
 	public AppriseDAO getAppriseDao() {
 		return appriseDao;
 	}
@@ -70,7 +77,6 @@ public class AppriseServiceImpl implements AppriseService{
 	public void setOrderDao(OrderDAO orderDao) {
 		this.orderDao = orderDao;
 	}
-
 
 	
 }
