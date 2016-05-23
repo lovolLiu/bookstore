@@ -109,6 +109,11 @@
 			</result>
 		</action>
 		
+		<action name="FindMoreBooks" class="com.bookstore.action.SearchAction" method="initSearchExecute">
+			<result name="success">/books.jsp</result>
+			<result name="false">/books.jsp</result>
+		</action>
+		
 	</package>
 	
 	

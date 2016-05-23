@@ -84,7 +84,7 @@
                 	<h2>海量书籍</h2>
                     <p>体验完美购书体验</p>
                     <div class="caption-btns">
-                    	<a href="searchbook.jsp">发现更多书籍</a>
+                    	<a href="FindMoreBooks">发现更多书籍</a>
                     </div>					
                 </div>
             </li>
@@ -95,7 +95,7 @@
                 	<h2>海量书籍</h2>
                     <p>体验完美购书体验</p>
                     <div class="caption-btns">
-                    	<a href="searchbook.jsp">发现更多书籍</a>
+                    	<a href="FindMoreBooks">发现更多书籍</a>
                     </div>					
                 </div>
             </li>
@@ -106,7 +106,7 @@
                 	<h2>海量书籍</h2>
                     <p>体验完美购书体验</p>
                     <div class="caption-btns">
-                    	<a href="searchbook.jsp">发现更多书籍</a>
+                    	<a href="FindMoreBooks">发现更多书籍</a>
                     </div>					
                 </div>
             </li>
