@@ -48,13 +48,14 @@ public class BookDetailAction {
 		book = bookDetailService.getBookInfo(bookID);
 		publisher = bookDetailService.getBookPublisher(bookID);
 		appriseList = bookDetailService.getAppriseList(bookID);
-
+		if(appriseList.size() ==0){
+			bookScore  = 0;
+		}else{
 		for(int i=0; i< appriseList.size();i++){
 			totalScore += appriseList.get(i).getScore();
-		}
+			}
 		bookScore = totalScore/appriseList.size();
-		//relatedBookList = selectService.selectPersonalBook();
-        
+		}
 		hotestBookList = selectBookService.selectHottestBook();
 		hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
 		System.out.println(hotestDivBookList.get(bookID).getURL());
