@@ -529,8 +529,13 @@
 				url: url,
 				dataType: "json",
 				success: function(data){
-					messageToast("成功加入购物车~");
-					UpdateCartNum();
+					if(data==true){
+						messageToast("成功加入购物车~");
+						UpdateCartNum();
+					}
+					else{
+						messageToast("仓库剩余量不足~");
+					}
 				}
 			})
 		}

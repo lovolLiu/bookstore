@@ -684,7 +684,13 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 	</script>
 <script>
 	function StraightBuy(){
-		var url = "StraightBuy?bookID=${book.bookID }&num=" + $(".cart_quantity_input").attr("value");
+		var restNum = ${book.restNum};
+		var wantedNum = $(".cart_quantity_input").attr("value");
+		if(wantedNum > restNum){
+			messageToast("仓库剩余量不足~");
+			return;
+		}
+		var url = "StraightBuy?bookID=${book.bookID }&num=" + wantedNum;
 		window.location.href = url;
 	}
 	
@@ -694,7 +700,12 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 			url: url,
 			dataType: "json",
 			success: function(data){
-				messageToast("成功加入购物车~");
+				if(data==true){
+					messageToast("成功加入购物车~");
+				}
+				else{
+					messageToast("仓库剩余量不足~");
+				}
 			}
 		})
 	}

@@ -6,6 +6,7 @@ import java.util.List;
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.dao.CartItemDAO;
+import com.bookstore.domain.Book;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.CartItem;
 import com.bookstore.service.CartService;
@@ -25,6 +26,9 @@ public class CartServiceImpl implements CartService {
 	
 	@Override
 	public boolean addCartItem(int userID, int bookID, int num) {
+		Book book = bookDAO.findByID(bookID);
+		if(num > book.getRestNum()) return false;
+		
 		//先检查是否已经有这本书的列表了，如果有直接改变数值并返回即可
 		List<CartItem> cartItemList = cartItemDAO.findByUserID(userID);
 		for(CartItem cartItem : cartItemList){
@@ -39,7 +43,7 @@ public class CartServiceImpl implements CartService {
 		//如果没有，需要新建一个buyItem，并新建一个cartItem
 		BuyItem buyItem = new BuyItem();
 		buyItem.setBuyNum(num);
-		buyItem.setCurrentPrice(bookDAO.findByID(bookID).getPrice());
+		buyItem.setCurrentPrice(book.getPrice());
 		buyItem.setHasApprise(false);
 		buyItem.setBookID(bookID);
 		Integer buyItemID =  buyItemDAO.save(buyItem);
