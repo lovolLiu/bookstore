@@ -201,20 +201,20 @@ select{
     width:10%;
 }
 
-		.time_messagebox{
-			position: fixed;
-			margin:auto;
-			left:0; 
-			right:0; 
-			top:0; 
-			bottom:0;
-			width:250px; 
-			height:80px;
-			background: orange;
-			color: white;
-			display: none;
-			border-radius:10px;
-		}
+.time_messagebox{
+	position: fixed;
+	margin:auto;
+	left:0; 
+	right:0; 
+	top:0; 
+	bottom:0;
+	width:250px; 
+	height:80px;
+	background: orange;
+	color: white;
+	display: none;
+	border-radius:10px;
+}
 
 </style>
 </head>
@@ -246,7 +246,7 @@ select{
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="hidden-sm"><a href="index.jsp">主页</a></li>
-					<li class="hidden-sm"><a href="books.jsp">开始选购</a></li>
+					<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
 					<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
 					<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
 			    </ul>
@@ -475,8 +475,8 @@ select{
 							success:function(data){
 								$.each(data,function(i,list){  
                        				 var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
-                       				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href><img src=\""+list.imageUrl+"\"></a></td>"
-                       				 +"<td class=\"cart_description\"><h4><a href>"+ list.bookName+"</a></h4></td>"
+                       				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?id=" + list.bookID  + "'><img src=\""+list.imageUrl+"\"></a></td>"
+                       				 +"<td class=\"cart_description\"><h4><a href='BookDetail?id=" + list.bookID  + "'>"+ list.bookName+"</a></h4></td>"
                        				 +"<td class=\"cart_price\"><p>¥"+list.price+"</p></td>"
                        				 +"<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\" onclick='return QuantityUp(" + list.buyItemID + ")'> + </a> "
                        				 	+ "<input class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+"\"autocomplete=\"off\" size=\"2\" >"
@@ -484,7 +484,7 @@ select{
 									 +"<td class=\"cart_total\"> <p class=\"cart_total_price\"> ¥"+list.buyItemPrice+"</p></td>"
 									 +"<td class=\"cart_delete\"><a class=\"cart_quantity_delete\" href=\"\" onclick=\"return deleteCart( "+ list.buyItemID +")\"><i class=\"fa fa-times\"></i></a></td>"
 									 +"</tr>");  
-                       			 	 $("tbody[id='cartItem']").prepend(_tr);  
+                       			 	 $("tbody[id='cartItem']").prepend(_tr);
                     			})  
 							}
 						})

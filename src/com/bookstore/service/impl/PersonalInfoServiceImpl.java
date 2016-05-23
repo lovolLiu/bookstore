@@ -47,6 +47,23 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 		}
 		return false;
 	}
+	
+	@Override
+	public Order getOrderById(int orderID){
+		return orderDAO.findById(orderID);
+	}
+	
+	@Override
+	public List<BuyItem> findBuyItemByOrderID(int orderID) {
+		return buyItemDAO.findByOrderID(orderID);
+	}
+	
+
+	@Override
+	public boolean updateBuyItem(BuyItem buyItem) {
+		buyItemDAO.update(buyItem);
+		return true;
+	}
 
 	/**
 	 * 2 - 已取消
@@ -107,13 +124,21 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	@Override
 	public List<Book> getUnappriseBook(int userID) {
 		List<Book> bookList = new ArrayList<Book>();
-		List<Order> personalOrderList = orderDAO.findByUserIDandStats(userID,1);
+		List<Order> personalOrderList = orderDAO.findByUserIDandStats(1,userID);	//找到已付款的订单列表
 		for (int i = 0; i < personalOrderList.size(); i++){
-			List<BuyItem> buyItemList = buyItemDAO.findNotApprise(personalOrderList.get(i).getOrderID());
+			List<BuyItem> buyItemList = buyItemDAO.findNotApprise(personalOrderList.get(i).getOrderID());	//对每一个订单，找到未评价的buyItem列表
 			for(int j = 0; j < buyItemList.size(); j++){
 				int bookId = buyItemList.get(j).getBookID();
 				Book book = bookDAO.findByID(bookId);
-				if (!bookList.contains(book)){
+				int hasBook = 0;
+				for(Book b:bookList){
+					int bId = b.getBookID();
+					if(bId == book.getBookID()){
+						hasBook = 1;
+						break;
+					}
+				}
+				if(hasBook == 0){
 					bookList.add(book);
 				}
 			}
@@ -141,7 +166,15 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 			for(int j = 0; j < buyItemList.size(); j++){
 				int bookId = buyItemList.get(j).getBookID();
 				Book book = bookDAO.findByID(bookId);
-				if (!bookList.contains(book)){
+				int hasBook = 0;
+				for(Book b:bookList){
+					int bId = b.getBookID();
+					if(bId == book.getBookID()){
+						hasBook = 1;
+						break;
+					}
+				}
+				if(hasBook == 0){
 					bookList.add(book);
 				}
 			}
@@ -213,6 +246,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 	public void setBookDAO(BookDAO bookDAO) {
 		this.bookDAO = bookDAO;
 	}
+
 
 	
 

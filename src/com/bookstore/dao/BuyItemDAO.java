@@ -13,4 +13,5 @@ public interface BuyItemDAO {
 	void delete(Integer id);
 	List<BuyItem> findByOrderID(Integer orderID);
 	List<BuyItem> findNotApprise(Integer orderID);
+	List<BuyItem> findByBookID(Integer bookID);
 }

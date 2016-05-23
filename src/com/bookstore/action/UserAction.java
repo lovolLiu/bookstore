@@ -9,11 +9,16 @@ import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.PersonalInfoService;
+import com.bookstore.util.DivBook;
 import com.bookstore.util.DivOrder;
 
 /**
  * @author Chang Su
- * @description 用户个人主页相关Action实现
+ * @author Chang Wei
+ * @description 用户个人主页相关Action实现:订单的取消与删除，个人订单的显示，评论，用户密码与邮箱修改(CW)，地址
+ * @descriotion password and email line 51-74
+ * @descriotion order line 78-127
+ * @descriotion bookunapprised line 128-142
  * @modify
  * @modifyDate
  */
@@ -22,6 +27,7 @@ public class UserAction {
 	
 	//To userinfo.jsp -- dataType: json
 	List<DivOrder> divOrderList;	//To order-detail.jsp
+	List<DivBook> unapprisedList;
 	Integer paidNum;
 	Integer unpaidNum;
 	Integer unapprisedNum;
@@ -41,7 +47,9 @@ public class UserAction {
 	
 	///////////////////////////
 	Integer userID = 1;
+	Integer orderID;
 	
+	//Password and Email
 	public String isPasswordValid(){
 		if(personalInfoService.isPasswordValid(userID, oldpassword))
 			result = "success";
@@ -66,6 +74,7 @@ public class UserAction {
 		return result;
 	}
 	
+	//Order
 	public String showPaidOrder() {
 		List<Order> orderList = personalInfoService.getPaidOrder(userID);
 		divOrderList = new ArrayList<DivOrder>();
@@ -75,6 +84,30 @@ public class UserAction {
 			DivOrder divOrder = convertorService.buyItemListAddToDivOrder(buyItemList, orderId);
 			divOrderList.add(divOrder);
 		}
+		return "success";
+	}
+	
+	public String cancelOrder(){
+		List<BuyItem> buyItemInOrder = personalInfoService.findBuyItemByOrderID(orderID);
+		for(BuyItem buyItem: buyItemInOrder){
+			buyItem.setBoughtDate(null);
+			buyItem.setOrderID(null);
+			personalInfoService.updateBuyItem(buyItem);
+		}
+		personalInfoService.cancelOrder(orderID);
+		this.result = "success";
+		return "success";
+	}
+	
+	public String deleteOrder(){
+		List<BuyItem> buyItemInOrder = personalInfoService.findBuyItemByOrderID(orderID);
+		for(BuyItem buyItem: buyItemInOrder){
+			buyItem.setBoughtDate(null);
+			buyItem.setOrderID(null);
+			personalInfoService.updateBuyItem(buyItem);
+		}
+		personalInfoService.deleteOrder(orderID);
+		this.result = "success";
 		return "success";
 	}
 	
@@ -106,6 +139,7 @@ public class UserAction {
 		return "success";
 	}
 	
+	//Unapprised Book
 	public String showUnapprisedBooksNumber() {
 		List<Book> bookList = personalInfoService.getUnappriseBook(userID);
 		if(bookList.isEmpty())
@@ -114,15 +148,20 @@ public class UserAction {
 		return "success";
 	}
 	
-	public String showAddress(){
-		addressList = personalInfoService.getAddress(userID);
+	public String showUnapprisedBookList(){
+		List<Book> bookList = personalInfoService.getUnappriseBook(userID);
+		unapprisedList = convertorService.bookIDToDivBook(bookList);
 		return "success";
 	}
 	
-	public String showCanceledOrderList() {
-		return "";
+	//Address
+	public String showAddress(){
+		addressList = personalInfoService.getAddress(userID);
+		this.result = "success";
+		return "success";
 	}
 	
+	// getter and setter
 	public List<DivOrder> getDivOrderList() {
 		return divOrderList;
 	}
@@ -217,6 +256,22 @@ public class UserAction {
 
 	public void setNewemail(String newemail) {
 		this.newemail = newemail;
+	}
+
+	public List<DivBook> getUnapprisedList() {
+		return unapprisedList;
+	}
+
+	public void setUnapprisedList(List<DivBook> unapprisedList) {
+		this.unapprisedList = unapprisedList;
+	}
+
+	public Integer getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(Integer orderID) {
+		this.orderID = orderID;
 	}
 	
 }

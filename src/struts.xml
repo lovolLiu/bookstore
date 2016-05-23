@@ -10,8 +10,87 @@
 
 
 	<package name="unAuthorityActions" namespace="/" extends="struts-default,json-default">
+		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
+			<result>/book-detail.jsp</result>
+		</action>
+		
+		<action name="Search" class="com.bookstore.action.SearchAction">
+			<result name="success">/books.jsp</result>
+			<result name="false">/books.jsp</result>
+		</action>
+		
+		<!-- 初始化所有书籍页 显示书库内的所有图书 -->
+		<action name="initSearchAction" class="com.bookstore.action.SearchAction" method="initSearchExecute">
+			<result name="success">/books.jsp</result>
+		</action>
+		<action name="GetBookType" class="com.bookstore.action.BookTypeAction" method="getBTList">
+		    <result name="success">/books.jsp</result>
+		    <result name="false">/books.jsp</result>
+		</action>
+		
+		    	<!-- FindPassword相关的2个action -->
+		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
+
+			<result name="nouser" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="ChangePassword" class="com.bookstore.action.FindPasswordAction" method="changePassword">
+			<result name="success" type="json">
+				<param name="root">result</param>>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>>
+			</result>
+		</action>
+		
+				<!-- Register相关的3个action -->
+		<action name="CheckUsername" class="com.bookstore.action.RegisterAction" method="hasUsername">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="CheckEmail" class="com.bookstore.action.RegisterAction" method="hasEmail">
+			<result name="true" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="false" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="RegisterUser" class="com.bookstore.action.RegisterAction" method="registerUser">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+				<!-- Login相关的1个action -->
+		<action name="Login" class="com.bookstore.action.LoginAction" method="execute">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="fail" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 		
 	</package>
+	
+	
 
 
 	<package name="authorityActions" namespace="/" extends="struts-default,json-default">
@@ -77,96 +156,11 @@
 			method="showBuyItemList">   <!-- 这个地方没写错，就是这样的 -->
 			<result type="json"><param name="root">totalPrice</param></result>
 		</action>
-
-	</package>
-
-
-
-
-
-
-	<package name="hello" namespace="/" extends="struts-default">
-		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
-			<result>/book-detail.jsp</result>
-		</action>
 		
-		<action name="Search" class="com.bookstore.action.SearchAction">
-			<result name="success">/books.jsp</result>
-			<result name="false">/books.jsp</result>
+		<action name="InitMyOrder" class="com.bookstore.action.UserAction" method="showOrderListAll">
+		    <result name="success">/myorder.jsp</result>
+		    <result name="false">/myorder.jsp</result>
 		</action>
-		
-		<!-- 初始化所有书籍页 显示书库内的所有图书 -->
-		<action name="initSearchAction" class="com.bookstore.action.SearchAction" method="initSearchExecute">
-			<result name="success">/books.jsp</result>
-		</action>
-    </package>
-    
-    
-
-    
-    <package name="ajax_json" namespace="/" extends="json-default">
-    	<!-- FindPassword相关的2个action -->
-		<action name="SendEmail" class="com.bookstore.action.FindPasswordAction" method="sendEmail">
-
-			<result name="nouser" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="success" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="fail" type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
-		
-		<action name="ChangePassword" class="com.bookstore.action.FindPasswordAction" method="changePassword">
-			<result name="success" type="json">
-				<param name="root">result</param>>
-			</result>
-			<result name="fail" type="json">
-				<param name="root">result</param>>
-			</result>
-		</action>
-		
-		<!-- Register相关的3个action -->
-		<action name="CheckUsername" class="com.bookstore.action.RegisterAction" method="hasUsername">
-			<result name="true" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="false" type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
-		
-		<action name="CheckEmail" class="com.bookstore.action.RegisterAction" method="hasEmail">
-			<result name="true" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="false" type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
-		
-		<action name="RegisterUser" class="com.bookstore.action.RegisterAction" method="registerUser">
-			<result name="success" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="fail" type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
-		
-		<!-- Login相关的1个action -->
-		<action name="Login" class="com.bookstore.action.LoginAction" method="execute">
-			<result name="success" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="fail" type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
-		
-
 
 		<!-- UserInfo 页相关的Action -->
 		<action name="ShowOrderInUserInfo" class="com.bookstore.action.UserAction"
@@ -221,6 +215,12 @@
 				<param name="root">unapprisedNum</param>
 			</result>
 		</action>
+		<action name="ShowUnapprisedBookList" class="com.bookstore.action.UserAction"
+			method="showUnapprisedBookList">
+			<result type="json">
+				<param name="root">unapprisedList</param>
+			</result>
+		</action>
 		<action name="ShowAddress" class="com.bookstore.action.UserAction"
 			method="showAddress">
 			<result type="json">
@@ -230,10 +230,43 @@
 		<action name="AddAddress" class="com.bookstore.action.AddressAction"
 			method="addAddress">
 			<result type="json">
-				<param name="root">addressObject</param>
+				<param name="root">address</param>
 			</result>
 		</action>
+		<action name="UpdateAddress" class="com.bookstore.action.AddressAction"
+			method="updateAddress">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="DeleteAddress" class="com.bookstore.action.AddressAction"
+			method="deleteAddress">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="AddApprise" class="com.bookstore.action.AppriseAction"
+			method="addApprise">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="CancelOrder" class="com.bookstore.action.UserAction"
+			method="cancelOrder">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="DeleteOrder" class="com.bookstore.action.UserAction"
+			method="deleteOrder">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
 	</package>
+
+
 </struts>
 
 

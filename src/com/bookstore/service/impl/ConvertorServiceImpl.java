@@ -70,6 +70,7 @@ public class ConvertorServiceImpl implements ConvertorService{
 		Integer bookID = buyItem.getBookID();
 		Book book = bookDAO.findByID(bookID);
 		trCartItem.setBookName(book.getBookName());
+		trCartItem.setBookID(book.getBookID());
 		trCartItem.setBuyItemID(buyItem.getBuyItemID());
 		trCartItem.setAuthorName(book.getAuthor());
 		List<Picture> pictureList = pictureDAO.findByBookID(book.getBookID());
@@ -120,6 +121,8 @@ public class ConvertorServiceImpl implements ConvertorService{
 			divBook.setBookID(book.getBookID());
 			divBook.setBookName(book.getBookName());
 			divBook.setBookPrice(book.getPrice());
+			divBook.setDescription(book.getDescription());
+			divBook.setAuthor(book.getAuthor());
 			
 			
 			divBook.setPictureID(picture.getPictureID());
