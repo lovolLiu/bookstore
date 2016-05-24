@@ -440,12 +440,38 @@
 		<script src="js/jquery.bookblock.js"></script>
 		<script src="js/functions.js"></script>
 		<script>
+		
+		$('a[href="#typeid_1"]').one('shown.bs.tab', function (e) {
+			$('.bxslider-1').bxSlider();
+		});
+		$('a[href="#typeid_2"]').one('shown.bs.tab', function (e) {
+			$('.bxslider-2').bxSlider();
+		});
+		$('a[href="#typeid_3"]').one('shown.bs.tab', function (e) {
+			$('.bxslider-3').bxSlider();
+		});
+		$('a[href="#typeid_4"]').one('shown.bs.tab', function (e) {
+			$('.bxslider-4').bxSlider();
+		});
+		$('a[href="#typeid_5"]').one('shown.bs.tab', function (e) {
+			$('.bxslider-5').bxSlider();
+		});
+		$('a[href="#typeid_6"]').one('shown.bs.tab', function (e) {
+			$('.bxslider-6').bxSlider();
+		});
+		
+// 			$(document).ready(function (){
+// 				for(i = 1;i<7;i++){
+// 					$('.bxslider-' + i).bxSlider();
+// 				}
+// 			})
+			
 			function OnClickType(typeNum){
 // 				var selector = "#typeid_" + typeNum;
 // 				$("div.typetab").find("ul").attr("class", "bxslider-1");
 // 				$(selector).find("ul").attr("class", "bxslider");
-				if(typeNum > 0)
-					$('.bxslider-' + typeNum).bxSlider();
+// 				if(typeNum > 0)
+// 					$('.bxslider-' + typeNum).bxSlider();
 			}
 
 
