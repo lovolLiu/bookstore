@@ -9,6 +9,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>在线书城</title>
+<!-- icon -->
+<link rel="shortcut icon" href="siteicon.ico" type="image/x-icon" />
 <!-- CUSTOM STYLE -->
 <link href="css/style.css" rel="stylesheet">
 <!-- THEME TYPO -->
