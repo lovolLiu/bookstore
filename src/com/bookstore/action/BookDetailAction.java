@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bookstore.domain.*;
 import com.bookstore.service.BookDetailService;
+import com.bookstore.service.BookTypeService;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.SelectBookService;
 import com.bookstore.util.DivBook;
@@ -38,6 +39,15 @@ public class BookDetailAction {
 	List<DivBook> newestDivBookList;
 	List<DivBook> personalFindByAuthorDivBookList;
 
+	
+	
+	Integer typeID;
+	BookTypeService bookTypeService;
+	List<BookType> btList;
+
+	List<DivBook> divBookList;
+
+	
 	//显示详情
 	public String initBookDetailExecute(){
 		return "success";
@@ -64,6 +74,7 @@ public class BookDetailAction {
 		newestBookList = selectBookService.selectNewestBook();
 		newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
 
+		btList = bookTypeService.getBookTypeList();
 		
 		personalFindByAuthorBookList = selectBookService.selectPersonalBookByAuthor(book.getAuthor());
 		personalFindByAuthorDivBookList = convertorService.bookIDToDivBook(personalFindByAuthorBookList);
@@ -228,6 +239,46 @@ public class BookDetailAction {
 	public void setPersonalFindByAuthorDivBookList(
 			List<DivBook> personalFindByAuthorDivBookList) {
 		this.personalFindByAuthorDivBookList = personalFindByAuthorDivBookList;
+	}
+
+
+	public Integer getTypeID() {
+		return typeID;
+	}
+
+
+	public void setTypeID(Integer typeID) {
+		this.typeID = typeID;
+	}
+
+
+	public BookTypeService getBookTypeService() {
+		return bookTypeService;
+	}
+
+
+	public void setBookTypeService(BookTypeService bookTypeService) {
+		this.bookTypeService = bookTypeService;
+	}
+
+
+	public List<BookType> getBtList() {
+		return btList;
+	}
+
+
+	public void setBtList(List<BookType> btList) {
+		this.btList = btList;
+	}
+
+
+	public List<DivBook> getDivBookList() {
+		return divBookList;
+	}
+
+
+	public void setDivBookList(List<DivBook> divBookList) {
+		this.divBookList = divBookList;
 	}
 
 

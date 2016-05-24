@@ -123,6 +123,16 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 sidebar">
+					    <!--SEARCH WIDGET START-->
+						<div class="widget widget-search">
+							<h2>搜索</h2>
+							<div class="input-container">
+								<input id="searchinput" type="text" placeholder="输入关键词" > 
+								<i class="fa fa-search" ></i>
+							    <a onclick="filter()" class="btn btn-primary">搜索</a>
+							</div>
+						</div>
+						<!--SEARCH WIDGET END-->
 						<div class="widget widget-new-arrival">
 							<h2>新书上架</h2>
 							<ul>
@@ -181,14 +191,9 @@
 						<div class="widget widget-categories">
 							<h2>类别</h2>
 							<ul>
-								<li><a href="#"><s:property value="" /></a></li>
-								<li><a href="#">Web/Graphic Design</a></li>
-								<li><a href="#">Mobile Development</a></li>
-								<li><a href="#">Video Editing</a></li>
-								<li><a href="#">Photoshop</a></li>
-								<li><a href="#">Web/Graphic Design</a></li>
-								<li><a href="#">Mobile Development</a></li>
-								<li><a href="#">Video Editing</a></li>
+								<s:iterator value="btList">
+								<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
+								</s:iterator>
 							</ul>
 						</div>
 						<!--CATEGORY WIDGET END-->
