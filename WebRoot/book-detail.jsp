@@ -108,7 +108,7 @@
 								</a>
 								<div class="dropdown-menu">
 									<ul class="list-unstyled">
-										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										<li><a onclick="gouserinfo()"><i class="fa fa-user"></i>我的账户</a>
 										</li>
 										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
 									</ul>
@@ -140,13 +140,13 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 sidebar">
-					    <!--SEARCH WIDGET START-->
+						<!--SEARCH WIDGET START-->
 						<div class="widget widget-search">
 							<h2>搜索</h2>
 							<div class="input-container">
-								<input id="searchinput" type="text" placeholder="输入关键词" > 
-								<i class="fa fa-search" ></i>
-							    <a onclick="filter()" class="btn btn-primary">搜索</a>
+								<input id="searchinput" type="text" placeholder="输入关键词">
+								<i class="fa fa-search"></i> <a onclick="filter()"
+									class="btn btn-primary">搜索</a>
 							</div>
 						</div>
 						<!--SEARCH WIDGET END-->
@@ -209,7 +209,7 @@
 							<h2>类别</h2>
 							<ul>
 								<s:iterator value="btList">
-								<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
+									<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
 								</s:iterator>
 							</ul>
 						</div>
@@ -607,7 +607,7 @@
 								<li><a href="index.jsp">主页</a></li>
 								<li><a href="initSearchAction">开始选购</a></li>
 								<li><a onclick="gocart()">购物车</a></li>
-								<li id="myaccount" style="display:none;"><a href="userinfo.jsp">我的账户</a></li>
+								<li ><a onclick="gouserinfo()">我的账户</a></li>
 							</ul>
 						</div>
 					</div>
@@ -669,11 +669,43 @@
 	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script type="application/x-javascript">
 		
+		
+		
+		
 	     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	
+	
+	
 	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
+	    function gocart() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "cart.jsp"
+					}
+				}
+			})
+		}
+		function gouserinfo() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "userinfo.jsp"
+					}
+				}
+			})
+		}
 		$(document)
 				.ready(
 						function() {
@@ -735,7 +767,7 @@
 									} else {
 										$('#userbox').attr("style", "");
 										$('#usrName').html(data);
-										$('#myaccount').attr("style","");
+										$('#myaccount').attr("style", "");
 									}
 								}
 							})
@@ -743,48 +775,38 @@
 	</script>
 
 	<script>
-		function gocart(){
-		    var usrName = $('#usrName').html();
-		    if(usrName == "")
-		        location.href="login.jsp";
-		    else
-		        location.href="cart.jsp"
-		}
 		
-	
-	function StraightBuy(){
-		var restNum = ${book.restNum};
-		var wantedNum = $(".cart_quantity_input").attr("value");
-		if(wantedNum > restNum){
-			messageToast("仓库剩余量不足~");
-			return;
-		}
-		var url = "StraightBuy?bookID=${book.bookID }&num=" + wantedNum;
-		window.location.href = url;
-	}
-	
-	function AddCartItem(){
-		var url = "AddCartItem?bookID=${book.bookID }&num=" + $(".cart_quantity_input").attr("value");
-		$.ajax({
-			url: url,
-			dataType: "json",
-			success: function(data){
-				if(data==true){
-					messageToast("成功加入购物车~");
-				}
-				else{
-					messageToast("仓库剩余量不足~");
-				}
+		function StraightBuy() {
+			var restNum = ${book.restNum};
+			var wantedNum = $(".cart_quantity_input").attr("value");
+			if (wantedNum > restNum) {
+				messageToast("仓库剩余量不足~");
+				return;
 			}
-		})
-	}
-	function QuantityUp() {
-		var currentNum = parseInt($(".cart_quantity_input").attr("value"));
-		$(".cart_quantity_input").attr("value", currentNum + 1);
-		return false;
-	}
+			var url = "StraightBuy?bookID=${book.bookID }&num=" + wantedNum;
+			window.location.href = url;
+		}
 
-
+		function AddCartItem() {
+			var url = "AddCartItem?bookID=${book.bookID }&num="
+					+ $(".cart_quantity_input").attr("value");
+			$.ajax({
+				url : url,
+				dataType : "json",
+				success : function(data) {
+					if (data == true) {
+						messageToast("成功加入购物车~");
+					} else {
+						messageToast("仓库剩余量不足~");
+					}
+				}
+			})
+		}
+		function QuantityUp() {
+			var currentNum = parseInt($(".cart_quantity_input").attr("value"));
+			$(".cart_quantity_input").attr("value", currentNum + 1);
+			return false;
+		}
 
 		function QuantityDown() {
 			var currentNum = $(".cart_quantity_input").attr("value");

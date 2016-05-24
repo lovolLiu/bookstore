@@ -1,6 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +50,7 @@
 	height: calc(3em + 30px);
 	background: orange;
 	text-align: center;
-	z-index:99;
+	z-index: 99;
 }
 </style>
 </head>
@@ -90,7 +90,7 @@
 								</a>
 								<div class="dropdown-menu">
 									<ul class="list-unstyled">
-										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										<li><a onclick="gouserinfo()"><i class="fa fa-user"></i>我的账户</a>
 										</li>
 										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
 									</ul>
@@ -125,10 +125,11 @@
 						<div class="widget widget-search">
 							<h2>搜索</h2>
 							<div class="input-container">
-								<input id="searchinput" type="text" placeholder="输入关键词" > 
-								<i class="fa fa-search" ></i>
+								<input id="searchinput" type="text" placeholder="输入关键词">
+								<i class="fa fa-search"></i>
 							</div>
-							<a onclick="filter()" class="btn btn-primary col-md-12" style="margin-top:15px;">搜索</a>
+							<a onclick="filter()" class="btn btn-primary col-md-12"
+								style="margin-top:15px;">搜索</a>
 						</div>
 						<!--SEARCH WIDGET END-->
 						<!--NEW ARRIVAL WIDGET START-->
@@ -191,7 +192,7 @@
 							<h2>类别</h2>
 							<ul>
 								<s:iterator value="btList">
-								<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
+									<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
 								</s:iterator>
 							</ul>
 						</div>
@@ -296,30 +297,34 @@
 						<div class="row">
 							<!--BOOK LISTING START-->
 							<s:iterator value="divBook">
-							  <div class="col-md-4 col-sm-6">
-								<div class="books-listing-4">
-									<div class="kode-thumb">
-										<a href="#" onclick="AddCartItem(${bookID}); return false;"><img src="${URL }" alt=""></a>
-									</div>
-									<div class="kode-text">
-										<h3>
-											<a href="BookDetail?bookID=${bookID }" >${bookName }</a>
-										</h3>
-										<p>
-											<a class="btn btn-primary" href="BookDetail?bookID=${bookID }">详情</a>
-										</p>
-									</div>
-									<div class="book-price">
-										<p>${bookPrice }</p>
-										<div class="rating">
-											<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+								<div class="col-md-4 col-sm-6">
+									<div class="books-listing-4">
+										<div class="kode-thumb">
+											<a href="#" onclick="AddCartItem(${bookID}); return false;"><img
+												src="${URL }" alt=""></a>
 										</div>
+										<div class="kode-text">
+											<h3>
+												<a href="BookDetail?bookID=${bookID }">${bookName }</a>
+											</h3>
+											<p>
+												<a class="btn btn-primary"
+													href="BookDetail?bookID=${bookID }">详情</a>
+											</p>
+										</div>
+										<div class="book-price">
+											<p>${bookPrice }</p>
+											<div class="rating">
+												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+											</div>
+										</div>
+										<a href="#" class="add-to-cart"
+											onclick="AddCartItem(${bookID}); return false;">Add to
+											cart</a>
 									</div>
-									<a href="#" class="add-to-cart" onclick="AddCartItem(${bookID}); return false;">Add to cart</a>
 								</div>
-							</div>
 							</s:iterator>
-							
+
 
 							<!--BOOK LISTING END-->
 							<nav>
@@ -350,12 +355,12 @@
 					d="M33.623,8.004c-0.185-0.268-0.486-0.434-0.812-0.447L12.573,6.685c-0.581-0.025-1.066,0.423-1.091,1.001 c-0.025,0.578,0.423,1.065,1.001,1.091L31.35,9.589l-3.709,11.575H11.131L8.149,4.924c-0.065-0.355-0.31-0.652-0.646-0.785 L2.618,2.22C2.079,2.01,1.472,2.274,1.26,2.812s0.053,1.146 0.591,1.357l4.343,1.706L9.23,22.4c0.092,0.497,0.524,0.857,1.03,0.857 h0.504l-1.15,3.193c-0.096,0.268-0.057,0.565,0.108,0.798c0.163,0.232,0.429,0.37,0.713,0.37h0.807 c-0.5,0.556-0.807,1.288-0.807,2.093c0,1.732,1.409,3.141,3.14,3.141c1.732,0,3.141-1.408,3.141-3.141c0-0.805-0.307-1.537-0.807-2.093h6.847c-0.5,0.556-0.806,1.288-0.806,2.093c0,1.732,1.407,3.141,3.14,3.141 c1.731,0,3.14-1.408,3.14-3.141c0-0.805-0.307-1.537-0.806-2.093h0.98c0.482,0,0.872-0.391,0.872-0.872s-0.39-0.873-0.872-0.873 H11.675l0.942-2.617h15.786c0.455,0,0.857-0.294,0.996-0.727l4.362-13.608C33.862,8.612,33.811,8.272,33.623,8.004z M13.574,31.108c-0.769,0-1.395-0.626-1.395-1.396s0.626-1.396,1.395-1.396c0.77,0,1.396,0.626,1.396,1.396S14.344,31.108,13.574,31.108z M25.089,31.108c-0.771,0-1.396 0.626-1.396-1.396s0.626-1.396,1.396-1.396c0.77,0,1.396,0.626,1.396,1.396 S25.858,31.108,25.089,31.108z" />
 				</svg>
 			<div class="checkout">
-				<a class="checkout__button" href="#"  onclick="CheckoutCart();">
+				<a class="checkout__button" href="#" onclick="CheckoutCart();">
 					<!-- Fallback location --> <span class="checkout__text"> <span
 						class="checkout__text-inner checkout__initial-text">结算</span> <span
-						class="checkout__text-inner checkout__final-text">$<span id="price_number_span">40.70</span><i
-							class="fa fa-fw fa-shopping-cart"
-							></i></span>
+						class="checkout__text-inner checkout__final-text">$<span
+							id="price_number_span">40.70</span><i
+							class="fa fa-fw fa-shopping-cart"></i></span>
 				</span>
 				</a>
 				<div class="checkout__order">
@@ -370,30 +375,30 @@
 								</tr>
 							</thead>
 							<tbody id="tbody_cart">
-<!-- 								<tr> -->
-<!-- 									<td>Imitations <span>Mark Lanegan</span></td> -->
-<!-- 									<td>1</td> -->
-<!-- 									<td>$12.90</td> -->
-<!-- 									<td><button class="checkout__action"> -->
-<!-- 											<i class="icon fa fa-trash"></i> -->
-<!-- 										</button></td> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<td>Out Of Exile <span>Audioslave</span></td> -->
-<!-- 									<td>1</td> -->
-<!-- 									<td>$15.90</td> -->
-<!-- 									<td><button class="checkout__action"> -->
-<!-- 											<i class="icon fa fa-trash"></i> -->
-<!-- 										</button></td> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<td>Cure For Pain <span>Morphine</span></td> -->
-<!-- 									<td>1</td> -->
-<!-- 									<td>$11.90</td> -->
-<!-- 									<td><button class="checkout__action"> -->
-<!-- 											<i class="icon fa fa-trash"></i> -->
-<!-- 										</button></td> -->
-<!-- 								</tr> -->
+								<!-- 								<tr> -->
+								<!-- 									<td>Imitations <span>Mark Lanegan</span></td> -->
+								<!-- 									<td>1</td> -->
+								<!-- 									<td>$12.90</td> -->
+								<!-- 									<td><button class="checkout__action"> -->
+								<!-- 											<i class="icon fa fa-trash"></i> -->
+								<!-- 										</button></td> -->
+								<!-- 								</tr> -->
+								<!-- 								<tr> -->
+								<!-- 									<td>Out Of Exile <span>Audioslave</span></td> -->
+								<!-- 									<td>1</td> -->
+								<!-- 									<td>$15.90</td> -->
+								<!-- 									<td><button class="checkout__action"> -->
+								<!-- 											<i class="icon fa fa-trash"></i> -->
+								<!-- 										</button></td> -->
+								<!-- 								</tr> -->
+								<!-- 								<tr> -->
+								<!-- 									<td>Cure For Pain <span>Morphine</span></td> -->
+								<!-- 									<td>1</td> -->
+								<!-- 									<td>$11.90</td> -->
+								<!-- 									<td><button class="checkout__action"> -->
+								<!-- 											<i class="icon fa fa-trash"></i> -->
+								<!-- 										</button></td> -->
+								<!-- 								</tr> -->
 							</tbody>
 						</table>
 						<!-- /checkout__summary -->
@@ -420,7 +425,7 @@
 								<li><a href="index.jsp">主页</a></li>
 								<li><a href="initSearchAction">开始选购</a></li>
 								<li><a onclick="gocart()">购物车</a></li>
-								<li id="myaccount" style="display:none;"><a href="userinfo.jsp">我的账户</a></li>
+								<li><a onclick="gouserinfo()">我的账户</a></li>
 							</ul>
 						</div>
 					</div>
@@ -476,10 +481,10 @@
 	<script src="js/functions.js"></script>
 	<script src="js/classie.js"></script>
 	<script>
-	    function filter(){
-	    	var keyword = document.getElementById("searchinput").value;
-	    	location.href = "Search?keyword="+keyword;
-	    }
+		function filter() {
+			var keyword = document.getElementById("searchinput").value;
+			location.href = "Search?keyword=" + keyword;
+		}
 		(function() {
 			var dummy = document.getElementById('dummy-grid');
 			[].slice
@@ -509,140 +514,168 @@
 								});
 							});
 		})();
-		
 	</script>
-	
+
 	<script>
-		$(document).ready(function(){
+		$(document).ready(function() {
 			UpdateCartNum();
 			$.ajax({
-			url : "GetUsrname",
-			dataType : "json",
-			success : function(data) {
-				if(data == ""){
-				    $('#gologin').attr("style","");
-				}else{
-				    $('#userbox').attr("style","");
-				    $('#usrName').html(data);
-				    $('#myaccount').attr("style","");
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						$('#gologin').attr("style", "");
+					} else {
+						$('#userbox').attr("style", "");
+						$('#usrName').html(data);
+					}
 				}
-			}
+			})
 		})
-		})
-	
-	    function gocart(){
-		    var usrName = $('#usrName').html();
-		    if(usrName == "")
-		        location.href="login.jsp";
-		    else
-		        location.href="cart.jsp"
+		
+		function gouserinfo() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "userinfo.jsp"
+					}
+				}
+			})
 		}
 		
-		function UpdateCartNum(){
+		function gocart() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "cart.jsp"
+					}
+				}
+			})
+		}
+
+		function UpdateCartNum() {
 			var num = 0;
 			$.ajax({
-				url: "GetCartNum",
-				dataType: "json",
-				success:function(data){
+				url : "GetCartNum",
+				dataType : "json",
+				success : function(data) {
 					$(".checkout__count").html(data);
 				}
 			})
-			
+
 		}
-	
-	
-	//用在其他页面时只需将 html相对应的id加为tbody_cart即可
-		function DownloadCartList(){
-					$(".tr_cartitem").remove();
-					$.ajax({
-						url:"GetCartItemList",
-						dataType:"json",
-						success:function(data){
-							$.each(data,function(i,list){  
-		                       	var _tr = 	'<tr class="tr_cartitem" id="' + list.buyItemID + '">' + 
-											'<td>' + list.bookName + '<span>' + list.authorName + '</span></td>' + 
-											'<td>' + list.num + '</td>' +
-											'<td>' + list.buyItemPrice + '</td>' +
-											'<td><button class="checkout__action" onclick="deleteCart(' + list.buyItemID + ')">' +
-													'<i class="icon fa fa-trash"></i>' +
-												'</button></td>' +
-											'</tr>';
-		                       			 	 $("tbody[id='tbody_cart']").prepend(_tr);
-		                    })
+
+		//用在其他页面时只需将 html相对应的id加为tbody_cart即可
+		function DownloadCartList() {
+			$(".tr_cartitem").remove();
+			$
+					.ajax({
+						url : "GetCartItemList",
+						dataType : "json",
+						success : function(data) {
+							$
+									.each(
+											data,
+											function(i, list) {
+												var _tr = '<tr class="tr_cartitem" id="' + list.buyItemID + '">'
+														+ '<td>'
+														+ list.bookName
+														+ '<span>'
+														+ list.authorName
+														+ '</span></td>'
+														+ '<td>'
+														+ list.num
+														+ '</td>'
+														+ '<td>'
+														+ list.buyItemPrice
+														+ '</td>'
+														+ '<td><button class="checkout__action" onclick="deleteCart('
+														+ list.buyItemID
+														+ ')">'
+														+ '<i class="icon fa fa-trash"></i>'
+														+ '</button></td>'
+														+ '</tr>';
+												$("tbody[id='tbody_cart']")
+														.prepend(_tr);
+											})
 						}
 					})
 		}
-	
-		function CheckoutCart(){
-			$(".checkout__button").attr("onclick", "window.location='cart.jsp'");
+
+		function CheckoutCart() {
+			$(".checkout__button")
+					.attr("onclick", "window.location='cart.jsp'");
 			setTimeout("DownloadCartList()", 200);
 			//更新购物车价格
 			UpdateCartTotal();
 		}
-	
-		function UpdateCartTotal(){
+
+		function UpdateCartTotal() {
 			$.ajax({
-				url: "GetCartTotal",
-				dataType:"json",
-				success:function(data){
+				url : "GetCartTotal",
+				dataType : "json",
+				success : function(data) {
 					$("#price_number_span").html(data);
 				}
 			})
 		}
-	
-		
-	
-		function CloseCartDialog(){
+
+		function CloseCartDialog() {
 			$(".checkout__button").attr("onclick", "CheckoutCart()");
 		}
-	
-		
-		function deleteCart(buyItemID){
-						$.ajax({
-							url: "DeleteCartItem?buyItemID=" + buyItemID,
-							dataType:"json",
-							success:function(data){
-								//删除这条数据
-								$("#" + buyItemID).slideDown();
-								$("#" + buyItemID).remove();
-								UpdateCartNum();
-								UpdateCartTotal();
-							}
-						})
-						return false;
+
+		function deleteCart(buyItemID) {
+			$.ajax({
+				url : "DeleteCartItem?buyItemID=" + buyItemID,
+				dataType : "json",
+				success : function(data) {
+					//删除这条数据
+					$("#" + buyItemID).slideDown();
+					$("#" + buyItemID).remove();
+					UpdateCartNum();
+					UpdateCartTotal();
+				}
+			})
+			return false;
 		}
-		
-		function AddCartItem(bookID){
+
+		function AddCartItem(bookID) {
 			var url = "AddCartItem?bookID=" + bookID + "&num=1";
 			$.ajax({
-				url: url,
-				dataType: "json",
-				success: function(data){
-					if(data==true){
+				url : url,
+				dataType : "json",
+				success : function(data) {
+					if (data == true) {
 						messageToast("成功加入购物车~");
 						UpdateCartNum();
-					}
-					else{
+					} else {
 						messageToast("仓库剩余量不足~");
 					}
 				}
 			})
 		}
-		
-	    function messageToast(messageText){
-			  var htmlText = '<div id="time_messagebox" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width:250px; ' +
-			  'height:80px;background: orange;color: white;display: none;border-radius:10px;">' +
-			  '<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">' + messageText + '</span></p></div>' ;
-			  if ($("#time_messagebox" ).length == 0){
-			       $( "body" ).append(htmlText);
-			  }
-			  else {
-			       $( "#time_messagebox" ).find( "span").html(messageText);
-			  }
-			  $( "#time_messagebox" ).fadeIn(300);
-			  setTimeout( "$('#time_messagebox').fadeOut(300);" ,1200)
-  		}
-		
+
+		function messageToast(messageText) {
+			var htmlText = '<div id="time_messagebox" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width:250px; ' +
+			  'height:80px;background: orange;color: white;display: none;border-radius:10px;">'
+					+ '<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">'
+					+ messageText + '</span></p></div>';
+			if ($("#time_messagebox").length == 0) {
+				$("body").append(htmlText);
+			} else {
+				$("#time_messagebox").find("span").html(messageText);
+			}
+			$("#time_messagebox").fadeIn(300);
+			setTimeout("$('#time_messagebox').fadeOut(300);", 1200)
+		}
 	</script>
 </body>
 </html>

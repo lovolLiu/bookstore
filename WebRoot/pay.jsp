@@ -252,7 +252,7 @@ select {
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
-						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
+						<li class="hidden-sm"><a onclick="gocart()">购物车</a></li>
 						<li id="userbox" style="display:none;">
 							<div class="userbox" style="margin-top:30px;">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -262,7 +262,7 @@ select {
 								</a>
 								<div class="dropdown-menu">
 									<ul class="list-unstyled">
-										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										<li><a onclick="gouserinfo()"><i class="fa fa-user"></i>我的账户</a>
 										</li>
 										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
 									</ul>
@@ -366,8 +366,8 @@ select {
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
 								<li><a href="initSearchAction">开始选购</a></li>
-								<li><a href="cart.jsp">购物车</a></li>
-								<li><a href="userinfo.jsp">我的账户</a></li>
+								<li><a onclick="gocart()">购物车</a></li>
+								<li><a onclick="gouserinfo()">我的账户</a></li>
 							</ul>
 						</div>
 					</div>
@@ -455,6 +455,32 @@ select {
 			}
 		})
 		});
+		function gouserinfo() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "userinfo.jsp"
+					}
+				}
+			})
+		}
+		function gocart(){
+		     $.ajax({
+			url : "GetUsrname",
+			dataType : "json",
+			success : function(data) {
+				if(data == ""){
+				    location.href="login.jsp";
+				}else{
+				    location.href="cart.jsp"
+				}
+			}
+		})
+		}
 	</script>
 
 </body>

@@ -74,7 +74,7 @@
 								</a>
 								<div class="dropdown-menu">
 									<ul class="list-unstyled">
-										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										<li><a onclick="gouserinfo()"><i class="fa fa-user"></i>我的账户</a>
 										</li>
 										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
 									</ul>
@@ -403,7 +403,7 @@
 									<li><a href="index.jsp">主页</a></li>
 									<li><a href="initSearchAction">开始选购</a></li>
 									<li><a onclick="gocart()">购物车</a></li>
-									<li id="myaccount" style="display:none;"><a href="userinfo.jsp">我的账户</a></li>
+									<li><a onclick="gouserinfo()">我的账户</a></li>
 								</ul>
 							</div>
 						</div>
@@ -481,11 +481,30 @@
 		})
 		});
 		function gocart(){
-		    var usrName = $('#usrName').html();
-		    if(usrName == "")
-		        location.href="login.jsp";
-		    else
-		        location.href="cart.jsp"
+		     $.ajax({
+			url : "GetUsrname",
+			dataType : "json",
+			success : function(data) {
+				if(data == ""){
+				    location.href="login.jsp";
+				}else{
+				    location.href="cart.jsp"
+				}
+			}
+		})
+		}
+		function gouserinfo() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "userinfo.jsp"
+					}
+				}
+			})
 		}
 		$('a[href="#typeid_1"]').one('shown.bs.tab', function (e) {
 			$('.bxslider-1').bxSlider();

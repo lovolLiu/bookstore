@@ -286,7 +286,7 @@ select {
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
-						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
+						<li class="hidden-sm"><a onclick="gocart()">购物车</a></li>
 						<li id="userbox" style="display:none;">
 							<div class="userbox" style="margin-top:30px;">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -296,7 +296,7 @@ select {
 								</a>
 								<div class="dropdown-menu">
 									<ul class="list-unstyled">
-										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										<li><a onclick="gouserinfo()"><i class="fa fa-user"></i>我的账户</a>
 										</li>
 										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
 									</ul>
@@ -323,15 +323,17 @@ select {
 		<!--CONTENT START-->
 		<section id="cart_items">
 			<div class="container">
-			    <div id="emptycart" style="display:none;">
-			        <div class="col-sm-12">
-				        <h2 class="uline-title text-center">您的购物车还是空的哦~</h2>
-			        </div>
-			        <div style="width:260px;margin:0 auto;margin-bottom:20px;">
-			            <img src="images/empty-cart.png" alt="" />
-			        </div>
-			        <a class="btn btn-primary col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" href="initSearchAction?">去逛逛</a>
-			    </div>
+				<div id="emptycart" style="display:none;">
+					<div class="col-sm-12">
+						<h2 class="uline-title text-center">您的购物车还是空的哦~</h2>
+					</div>
+					<div style="width:260px;margin:0 auto;margin-bottom:20px;">
+						<img src="images/empty-cart.png" alt="" />
+					</div>
+					<a
+						class="btn btn-primary col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4"
+						href="initSearchAction?">去逛逛</a>
+				</div>
 				<div id="cartwithitem" class="table-responsive cart_info">
 					<form action="CheckOrderInfo" id="cart_form">
 						<table class="table table-condensed">
@@ -425,8 +427,8 @@ select {
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
 								<li><a href="initSearchAction">开始选购</a></li>
-								<li><a href="cart.jsp">购物车</a></li>
-								<li><a href="userinfo.jsp">我的账户</a></li>
+								<li><a onclick="gocart()">购物车</a></li>
+								<li><a onclick="gouserinfo()">我的账户</a></li>
 							</ul>
 						</div>
 					</div>
@@ -489,7 +491,9 @@ select {
 	<script type="application/x-javascript">
 		
 		
+		
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	
 	
 	
 	</script>
@@ -518,7 +522,35 @@ select {
 			showCart();
 			UpdateTotalCartPrice();
 		});
-
+		
+		function gouserinfo() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "userinfo.jsp"
+					}
+				}
+			})
+		}
+		
+		function gocart() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "cart.jsp"
+					}
+				}
+			})
+		}
+		
 		function SubmitForm() {
 			//首先需要判断，如果一个都没有勾选，不能提交
 			var flag = false;
@@ -545,15 +577,20 @@ select {
 		});
 
 		function showCart() {
-			$.ajax({
+			$
+					.ajax({
 						url : "GetCartItemList",
 						dataType : "json",
 						success : function(data) {
-						    if(data == ""){
-						        $('#emptycart').attr("style","");
-						        $('#cartwithitem').attr("style","display:none");
-						    }
-							$.each(data,function(i, list) {
+							if (data == "") {
+								$('#emptycart').attr("style", "");
+								$('#cartwithitem')
+										.attr("style", "display:none");
+							}
+							$
+									.each(
+											data,
+											function(i, list) {
 												var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
 														+ "<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?id="
 														+ list.bookID
