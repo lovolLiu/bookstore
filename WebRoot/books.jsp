@@ -540,6 +540,10 @@
 			$(".checkout__button").attr("onclick", "window.location='cart.jsp'");
 			setTimeout("DownloadCartList()", 200);
 			//更新购物车价格
+			UpdateCartTotal();
+		}
+	
+		function UpdateCartTotal(){
 			$.ajax({
 				url: "GetCartTotal",
 				dataType:"json",
@@ -548,6 +552,8 @@
 				}
 			})
 		}
+	
+		
 	
 		function CloseCartDialog(){
 			$(".checkout__button").attr("onclick", "CheckoutCart()");
@@ -563,6 +569,7 @@
 								$("#" + buyItemID).slideDown();
 								$("#" + buyItemID).remove();
 								UpdateCartNum();
+								UpdateCartTotal();
 							}
 						})
 						return false;
@@ -574,8 +581,13 @@
 				url: url,
 				dataType: "json",
 				success: function(data){
-					messageToast("成功加入购物车~");
-					UpdateCartNum();
+					if(data==true){
+						messageToast("成功加入购物车~");
+						UpdateCartNum();
+					}
+					else{
+						messageToast("仓库剩余量不足~");
+					}
 				}
 			})
 		}
