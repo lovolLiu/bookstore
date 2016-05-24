@@ -149,7 +149,7 @@
 												<s:property value="newestDivBookList[0].bookName" />
 											</h3>
 											<p>
-												<s:property value="newestDivBookList[0].description" />
+												<s:property value="newestDivBookList[0].author" />
 											</p>
 										</div>
 									</div>
@@ -165,7 +165,7 @@
 												<s:property value="newestDivBookList[1].bookName" />
 											</h3>
 											<p>
-												<s:property value="newestDivBookList[1].description" />
+												<s:property value="newestDivBookList[1].author" />
 											</p>
 										</div>
 									</div>
@@ -181,7 +181,7 @@
 												<s:property value="newestDivBookList[2].bookName" />
 											</h3>
 											<p>
-												<s:property value="newestDivBookList[2].description" />
+												<s:property value="newestDivBookList[2].author" />
 											</p>
 										</div>
 									</div>
@@ -214,7 +214,7 @@
 												<s:property value="hotestDivBookList[0].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[0].description" />
+												<s:property value="hotestDivBookList[0].author" />
 											</p>
 										</div>
 									</div>
@@ -228,7 +228,7 @@
 												<s:property value="hotestDivBookList[1].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[1].description" />
+												<s:property value="hotestDivBookList[1].author" />
 											</p>
 										</div>
 									</div>
@@ -242,7 +242,7 @@
 												<s:property value="hotestDivBookList[2].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[2].description" />
+												<s:property value="hotestDivBookList[2].author" />
 											</p>
 										</div>
 									</div>
@@ -258,7 +258,7 @@
 												<s:property value="hotestDivBookList[3].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[3].description" />
+												<s:property value="hotestDivBookList[3].author" />
 											</p>
 										</div>
 									</div>
@@ -272,7 +272,7 @@
 												<s:property value="hotestDivBookList[4].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[4].description" />
+												<s:property value="hotestDivBookList[4].author" />
 											</p>
 										</div>
 									</div>
@@ -286,7 +286,7 @@
 												<s:property value="hotestDivBookList[5].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[5].description" />
+												<s:property value="hotestDivBookList[5].author" />
 											</p>
 										</div>
 									</div>
