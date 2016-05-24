@@ -244,6 +244,15 @@ select {
 	display: none;
 	border-radius: 10px;
 }
+
+.uline-title {
+	margin-bottom: 50px;
+	padding: 0 0 37px;
+	text-align: center;
+	background: url("images/utitlebg.png");
+	background-repeat: no-repeat;
+	background-position: center bottom -2px;
+}
 </style>
 </head>
 <body>
@@ -314,7 +323,16 @@ select {
 		<!--CONTENT START-->
 		<section id="cart_items">
 			<div class="container">
-				<div class="table-responsive cart_info">
+			    <div id="emptycart" style="display:none;">
+			        <div class="col-sm-12">
+				        <h2 class="uline-title text-center">您的购物车还是空的哦~</h2>
+			        </div>
+			        <div style="width:260px;margin:0 auto;margin-bottom:20px;">
+			            <img src="images/empty-cart.png" alt="" />
+			        </div>
+			        <a class="btn btn-primary col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" href="initSearchAction?">去逛逛</a>
+			    </div>
+				<div id="cartwithitem" class="table-responsive cart_info">
 					<form action="CheckOrderInfo" id="cart_form">
 						<table class="table table-condensed">
 							<thead>
@@ -327,7 +345,6 @@ select {
 									<td></td>
 								</tr>
 							</thead>
-
 							<tbody class="cartItem" id="cartItem">
 
 
@@ -471,7 +488,9 @@ select {
 	<script src="js/functions.js"></script>
 	<script type="application/x-javascript">
 		
+		
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	
 	
 	</script>
 	</script>
@@ -526,15 +545,15 @@ select {
 		});
 
 		function showCart() {
-			$
-					.ajax({
+			$.ajax({
 						url : "GetCartItemList",
 						dataType : "json",
 						success : function(data) {
-							$
-									.each(
-											data,
-											function(i, list) {
+						    if(data == ""){
+						        $('#emptycart').attr("style","");
+						        $('#cartwithitem').attr("style","display:none");
+						    }
+							$.each(data,function(i, list) {
 												var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
 														+ "<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?id="
 														+ list.bookID
@@ -631,30 +650,29 @@ select {
 			$(".time_messagebox").fadeIn(300);
 			setTimeout("$('.time_messagebox').fadeOut(300);", 1200)
 		}
-					
-				
-					
-					
-					function OnClickCheckBox(buyItemID){
-						UpdateTotalPrice();
-					}
-					
-					
-					function UpdateTotalPrice(){
-						
-						var totalPrice = 0.0;
-						$("input[type='checkbox']").each(function() {
-							if(this.checked){
-								var id = $(this).parent().parent().attr("id");
-								totalPrice = parseFloat(totalPrice) + parseFloat($("tr#" + id + " .cart_span").html());
-								totalPrice = totalPrice.toFixed(2);
-							}
-						})
-						$("#cart_total").html("¥" + totalPrice);
-						
-					}
-				   </script>
-				  
+
+		function OnClickCheckBox(buyItemID) {
+			UpdateTotalPrice();
+		}
+
+		function UpdateTotalPrice() {
+
+			var totalPrice = 0.0;
+			$("input[type='checkbox']").each(
+					function() {
+						if (this.checked) {
+							var id = $(this).parent().parent().attr("id");
+							totalPrice = parseFloat(totalPrice)
+									+ parseFloat($("tr#" + id + " .cart_span")
+											.html());
+							totalPrice = totalPrice.toFixed(2);
+						}
+					})
+			$("#cart_total").html("¥" + totalPrice);
+
+		}
+	</script>
+
 
 </body>
 </html>
