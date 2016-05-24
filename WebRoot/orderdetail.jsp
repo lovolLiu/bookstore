@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,109 +39,123 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style>
-.form-one {
-	float: left;
-	width: 47%;
+.flowstep {
+	
 }
 
-.form-two {
-	float: right;
-	width: 47%;
-}
-
-input {
-	background: #F0F0E9;
-	border: 0 none;
-	margin-bottom: 10px;
-	padding: 10px;
-	width: 100%;
-	font-weight: 300;
-}
-
-select {
-	background: #F0F0E9;
-	border: 0 none;
-	margin-bottom: 10px;
-	padding: 10px;
-	width: 100%;
-	font-weight: 300;
-}
-
-.bill-to p, .order-message p {
-	color: #FE980F;
-	font-size: 25px;
-	font-weight: 300;
-	margin-top: 20px;
-}
-
-.btn.btn-primary {
-	background: #FE980F;
-	border: 0 none;
-	border-radius: 0;
-	margin-top: 16px;
-}
-
-.review-payment h2 {
-	color: #FE980F;
-	font-size: 25px;
-	font-weight: 300;
-	margin-top: 45px;
-	margin-bottom: 20px;
-}
-
-.cart_info .cart_menu {
-	background: #FE980F;
-	color: #fff;
-	font-size: 16px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: normal;
-}
-
-.cart_product>a>img {
-	height: 50%;
-}
-
-.cart_info table {
-	border: none;
-}
-
-.cart_info table tr {
-	border-top: 0 none;
-	vertical-align: inherit;
-	border-bottom: 2px solid #67675f;
-}
-
-.cart_info td {
-	padding: 5px;
-	vertical-align: middle !important;
-	border: none;
-}
-
-.cart_quantity_button {
-	width: 100px;
-}
-
-.cart_quantity_button a {
-	background: #F0F0E9;
-	color: #696763;
-	display: inline-block;
-	font-size: 16px;
-	height: 28px;
+.flowstep ol {
 	overflow: hidden;
-	text-align: center;
-	width: 20%;
-	float: left;
+	zoom: 1;
 }
 
-.cart_quantity_input {
-	color: #696763;
-	font-size: 16px;
-	text-align: center;
-	font-family: 'Roboto', sans-serif;
+.flowstep-5 {
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+.flowstep-5 li {
+	width: 25%;
+}
+
+.flowstep li {
 	float: left;
-	height: 28px;
-	padding: 0;
-	width: 60%;
+	text-align: center;
+}
+
+.flowstep .step-name {
+	padding: 3px 0;
+	font-weight: 700;
+	color: #888;
+}
+
+.flowstep .step-first .step-done .step-no {
+	background-position: 50% -204px;
+}
+
+.flowstep .step-done .step-no {
+	background-position: 50% -170px;
+}
+
+.flowstep .step-no {
+	height: 34px;
+	line-height: 34px;
+	font-family: 'arial black';
+	color: #fff;
+	font-size: 18px;
+}
+
+.flowstep .step-no, .flowstep .step-sub-box .step-sub {
+	background: url(images/progressbar.png) no-repeat 50% -102px;
+}
+
+.flowstep .step-time {
+	color: #999;
+	margin-top: 10px;
+}
+
+.flowstep .step-time {
+	color: #999;
+	padding: 8px 0;
+}
+
+.flowstep .step-cur .step-no {
+	background-position: 50% 0;
+}
+
+.flowstep .step-last .step-no {
+	background-position: 50% -136px;
+}
+
+.flowstep .step-no, .flowstep .step-sub-box .step-sub {
+	background: url(images/progressbar.png) no-repeat 50% -102px;
+}
+
+.flowstep .step-last .step-done .step-no {
+	background-position: 50% -68px;
+}
+
+.uline-title {
+	margin-bottom: 50px;
+	padding: 0 0 37px;
+	text-align: center;
+	background: url("images/utitlebg.png");
+	background-repeat: no-repeat;
+	background-position: center bottom -2px;
+}
+
+.headerwithshadow {
+	margin-bottom: 0;
+	background: orange;
+	color: #ffffff;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.lead {
+	margin: 0;
+	line-height: 93px;
+	font-size: x-large;
+	color: white;
+}
+
+.divider-shadow {
+	text-align: center;
+	position: relative;
+	line-height: 0;
+}
+
+.btn {
+	background-color: orange;
+	border-color: orange;
+}
+
+.btn-primary:hover {
+	background-color: orange;
+	border-color: orange;
 }
 
 #cart_items .cart_info .cart_price p {
@@ -204,35 +218,44 @@ select {
 	padding: 7px 20px;
 }
 
-.check_out {
-	margin-left: 20px;
-}
-
-.update {
-	margin-left: 40px;
-}
-
-.update, .check_out {
+.cart_info .cart_menu {
 	background: #FE980F;
-	border-radius: 0;
-	color: #FFFFFF;
-	margin-top: 18px;
-	border: none;
-	padding: 5px 15px;
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: normal;
 }
 
-.total-result>tr>td {
-	border-top: none;
+.cart_product>a>img {
+	height: 50%;
+}
+
+.cart_info table {
+	border: none;
+}
+
+.cart_info table tr {
+	border-top: 0 none;
+	vertical-align: inherit;
+	border-bottom: 2px solid #67675f;
+}
+
+.cart_info td {
+	padding: 5px;
+	vertical-align: middle !important;
+	border: none;
+}
+
+.cart_quantity p{
+    font-size:18px;
 }
 </style>
 </head>
 <body>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
-
 		<div class="loader-section section-left"></div>
 		<div class="loader-section section-right"></div>
-
 	</div>
 	<!--WRAPPER START-->
 	<div class="wrapper kode-header-class-3">
@@ -251,7 +274,7 @@ select {
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
-						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
+						<li class="hidden-sm"><a href="books.jsp">开始选购</a></li>
 						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
 						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
 					</ul>
@@ -263,21 +286,119 @@ select {
 		<!--BANNER START-->
 		<div class="kode-inner-banner">
 			<div class="kode-page-heading">
-				<h2>付款</h2>
+				<h2>订单详情</h2>
 				<ol class="breadcrumb">
 					<li><a href="#">主页</a></li>
-					<li class="active">付款</li>
+					<li class="active">订单详情</li>
 				</ol>
 			</div>
 		</div>
 		<!--BANNER END-->
-		<!--LOGINFORM START-->
-		<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
-		<blockquote>
-		    <h2>收货人信息</h2>
-			<p>收货人姓名：${address.person }</br>联系方式：${address.tel }</br>收货地址：${address.address }</p>
-		</blockquote>
-		</div>
+		<!--CONTENT START-->
+		<section>
+			<div class="col-md-4 text-center">
+				<blockquote style="background-color:white">
+					<div style="margin-bottom:15px;">
+						订单号：<span id="orderID"><s:property value="orderID"/></span><br />
+					</div>
+					<div style="margin-bottom:15px;">
+						<span id="orderstatuslabel" class=""><s:property value="divOrder.orderStats"/></span>
+					</div>
+					<a id="gosw" class="btn btn-primary" style="width:50%" href="InitMyOrder?">去付款</a>
+				</blockquote>
+			</div>
+			<div class="row text-center col-md-8" style="margin-top:50px;">
+				<div class="flowstep">
+					<!-- 订单状态 -->
+					<ol id="normalstats" class="flowstep-5" style="">
+						<li class="step-first">
+							<div class="step-done">
+								<div class="step-name">提交订单</div>
+								<div class="step-no"></div>
+							</div>
+						</li>
+						<li>
+							<div id="unpaidstats" class="">
+								<div class="step-name">未付款</div>
+								<div id="unpaidstats-num" class="step-no">2</div>
+							</div>
+						</li>
+						<li class="step-last">
+							<div id="paidstats" class="">
+								<div class="step-name">已付款</div>
+								<div id="paidstats-num" class="step-no">3</div>
+							</div>
+						</li>
+					</ol>
+					<!-- 订单状态 -->
+					<!-- 订单取消状态 -->
+					<ol id="cancelstats" class="flowstep-5 ordecancelstatus" style="display:none;">
+						<li class="step-first" style="width:50%;">
+							<div class="step-done">
+								<div class="step-name">提交订单</div>
+								<div class="step-no"></div>
+							</div>
+						</li>
+						<li class="step-last" style="width:50%;">
+							<div class="step-done">
+								<div class="step-name">取消</div>
+								<div class="step-no">2</div>
+							</div>
+						</li>
+					</ol>
+					<!-- 订单取消状态结束 -->
+				</div>
+			</div>
+		</section>
+		<section style="background: rgba(244,245,247,0.9);">
+			<div class="col-sm-12">
+				<h2 class="uline-title text-center">收货人信息</h2>
+			</div>
+			<div class="container col-md-6 col-md-offset-3">
+				<div class="contact-box">
+					<div class="row">
+						<div class="">
+							<table>
+								<tbody>
+									<tr>
+										<td><i class="fa  fa-user"></i></td>
+										<td>收货人:</td>
+										<td><s:property value="divOrder.consignee" /></td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-phone"></i></td>
+										<td>联系方式：</td>
+										<td><s:property value="divOrder.tel" /></td>
+									</tr>
+									<tr>
+										<td><i class="fa  fa-location-arrow"></i></td>
+										<td>收货地址：</td>
+										<td><s:property value="divOrder.address" /></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section style="padding:0px;">
+			<div class="headerwithshadow">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="lead">订单商品</h2>
+						</div>
+					</div>
+					<!-- / .row -->
+				</div>
+				<!-- / .container -->
+			</div>
+			<div class="divider-shadow">
+				<img src="images/divider-shadow1.png" alt="devider"
+					class="responsive-img">
+			</div>
+		</section>
 		<section id="cart_items">
 			<div class="container">
 				<div class="table-responsive cart_info">
@@ -289,47 +410,38 @@ select {
 								<td class="price">单价</td>
 								<td class="quantity">数量</td>
 								<td class="total">总价</td>
+								<td></td>
 							</tr>
 						</thead>
-						<tbody>
-						
-						<s:iterator value="divOrder.orderItemList">
-							<tr>
-								<td class="cart_product"><a href='BookDetail?id=${bookID }'><img
-										src="${imageUrl }"></a></td>
-								<td class="cart_description">
-									<h4>
-										<a href='BookDetail?id=${bookID }'>${bookName }</a>
-									</h4>
-								</td>
-								<td class="cart_price">
-									<p>${price }</p>
-								</td>
-								<td class="cart_quantity">
-									<div class="cart_quantity_button">
-										<input class="cart_quantity_input" type="text" name="quantity"
-											value="${num }" autocomplete="off" size="2">
-									</div>
-								</td>
-								<td class="cart_total">
-									<p class="cart_total_price">${buyItemPrice }</p>
-								</td>
-							</tr>
-						</s:iterator>
+						<tbody id="cartItem">
+							<s:iterator value="divOrder.orderItemList">
 								<tr>
+									<td class="cart_product"><a
+										href='BookDetail?id=${bookID }'><img src="${imageUrl }"></a></td>
+									<td class="cart_description">
+										<h4>
+											<a href='BookDetail?id=${bookID }'>${bookName }</a>
+										</h4>
+									</td>
+									<td class="cart_price">
+										<p>￥${price }</p>
+									</td>
+									<td class="cart_quantity">								
+											<p>${num }</p>
+									</td>
+									<td class="cart_total">
+										<p class="cart_total_price">￥${buyItemPrice }</p>
+									</td>
+								</tr>
+							</s:iterator>
+							<tr>
 								<td colspan="4">&nbsp;</td>
 								<td colspan="2">
 									<table class="total-result">
 										<tbody>
-											<tr style="font-size: x-large;">
+											<tr style="font-size: x-large;border-bottom: 0;">
 												<td>总价</td>
-												<td style="color:#FE980F;"><span>${totalPrice }</span></td>
-											</tr>
-											<tr style="border-bottom: 0;">
-												<td></td>
-												<td><div style="text-align: right;">
-														<a class="btn btn-primary check_out" href="Payment?orderID=${divOrder.orderId }">付款</a>
-													</div></td>
+												<td style="color:#FE980F;"><span id="orderTotal">￥<s:property value="divOrder.totalPrice"/></span></td>
 											</tr>
 										</tbody>
 									</table>
@@ -338,9 +450,9 @@ select {
 						</tbody>
 					</table>
 				</div>
+			</div>
 		</section>
-		<!--/#cart_items-->
-		<!--LOGINFORM END-->
+		<!--CONTENT END-->
 		<footer class="footer-3">
 			<div class="container">
 				<div class="row">
@@ -350,7 +462,7 @@ select {
 							<h2>站点地图</h2>
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
-								<li><a href="initSearchAction">开始选购</a></li>
+								<li><a href="books.jsp">开始选购</a></li>
 								<li><a href="cart.jsp">购物车</a></li>
 								<li><a href="userinfo.jsp">我的账户</a></li>
 							</ul>
@@ -406,17 +518,13 @@ select {
 	<script src="js/jquery.counterup.min.js"></script>
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/dl-menu/jquery.dlmenu.js"></script>
-	<!--<script src="js/googlemap.js"></script>-->
 	<script type="text/javascript" src="lib/hash.js"></script>
 	<script type="text/javascript" src="lib/booklet-lib.js"></script>
 	<script src="js/jquerypp.custom.js"></script>
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
 	<script type="application/x-javascript">
-		
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-	</script>
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
@@ -427,9 +535,29 @@ select {
 				fit : true
 			// 100% fit in a container
 			});
+			var orderStats = $('#orderstatuslabel').html();
+			switch(orderStats){
+			    case "未付款":
+			    $('#orderstatuslabel').attr("class","label label-warning");
+			    $('#unpaidstats').attr("class","step-cur");
+			    $('#gopay/myorder').html("去付款");
+			    break;
+			    case "已付款":
+			    $('#orderstatuslabel').attr("class","label label-success");
+			    $('#unpaidstats').attr("class","step-done");
+			    $('#unpaidstats-num').html("");
+			    $('#paidstats').attr("class","step-done");
+			    $('#gosw').html("返回");
+			    break;
+			    case "已取消":
+			    $('#orderstatuslabel').attr("class","label label-danger");
+			    $('#normalstats').attr("style","display:none;");
+			    $('#cancelstats').attr("style","");
+			    $('#gosw').html("返回");
+			    break;
+			}
+			
 		});
 	</script>
-
 </body>
 </html>
->>>>>>> origin/master

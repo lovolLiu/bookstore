@@ -389,7 +389,7 @@ a {
 			<div class="panel-body bk-ltr">
 				<div class="row text-center userinfo">
 					<a class="col-xs-4" href="InitMyOrder?filter=0"> <i
-						class="icon-money"></i><small class="bk-fg-inverse bk-fg-darken">待付款</small>
+						class="icon-money"></i><small class="bk-fg-inverse bk-fg-darken">未付款</small>
 						<h4 class="bk-margin-off-bottom" id="unpaid"></h4>
 					</a> <a class="col-xs-4" href="InitMyOrder?filter=1"> <i
 						class="icon-truck"></i><small class="bk-fg-inverse bk-fg-darken">已付款</small>
@@ -1060,7 +1060,6 @@ a {
 			$('#tab-content').find('div').removeClass('in');
 			$('#apprise').addClass('active');
 			$('#apprise').addClass('in');
-			startapprise();
 		}
 		//显示隐藏的评价框
 		function startapprise(e){
@@ -1107,8 +1106,8 @@ a {
 		$('#confirmapprise').click(function() {
 		    var content = $('#apprisemessage').val();
 		    var bookID = $('#confirmapprise').attr('appriseid');
-		    var score = $('#input-rating').val();	//先写的死的
-		    if(scorewidth == "0%"){
+		    var score = $('#input-rating').val();	
+		    if(score == "0"){
 		        $('#appriseerror').html("亲，请给这本书评个级！");
 		        return;
 		    }

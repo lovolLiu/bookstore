@@ -205,6 +205,7 @@
 				</section>
 				<div id="isotope-container" class="container">
 				    <s:iterator value="divOrderList" var="u">
+				        <s:if test="#u.orderStats != '已删除'">
 				        <table id="<s:property value='orderId'/>" class="table table-striped isotope-item <s:property value='orderStats'/>">
 					    <tbody>
 					        <tr class="itemhead">
@@ -236,16 +237,19 @@
 					                <td class="operation">
 					                    <a class="btn btn-primary canelorder">取消</a>
 					                    <a class="btn btn-primary deleteorder">删除</a>
+					                    <a class="btn btn-primary orderdetail" href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
 					                </td>
 					            </s:if>
 					            <s:else>
 					                <td class="operation">
 					                    <a class="btn btn-primary deleteorder">删除</a>
+					                    <a class="btn btn-primary orderdetail" href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
 					                </td>
 					            </s:else>
 					        </tr>
 					    </tbody>
 				    </table>
+				    </s:if>
 				    </s:iterator>
 				</div>
 			</div>

@@ -4,19 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.dao.AddressDAO;
+import com.bookstore.dao.AppriseDAO;
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.dao.OrderDAO;
 import com.bookstore.dao.PictureDAO;
+import com.bookstore.dao.UserDAO;
 import com.bookstore.domain.Address;
+import com.bookstore.domain.Apprise;
 import com.bookstore.domain.Book;
 import com.bookstore.domain.BookType;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.domain.Picture;
+import com.bookstore.domain.User;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.util.DivBook;
 import com.bookstore.util.DivOrder;
+import com.bookstore.util.LiApprise;
 import com.bookstore.util.TrCartItem;
 import com.bookstore.util.TypeAndBookListItem;
 
@@ -35,6 +40,8 @@ public class ConvertorServiceImpl implements ConvertorService{
 	BuyItemDAO buyItemDAO;
 	AddressDAO addressDAO;
 	OrderDAO orderDAO;
+	AppriseDAO appriseDAO;
+	UserDAO userDAO;
 	
 	public Double calculateTotalPrice(List<TrCartItem> trCartItemList){
 		Double totalPrice = 0.0;
@@ -61,8 +68,6 @@ public class ConvertorServiceImpl implements ConvertorService{
 		}
 		return trCartItemList;
 	}
-	
-	
 	
 
 	
@@ -214,6 +219,7 @@ public class ConvertorServiceImpl implements ConvertorService{
 		return divOrder;
 	}
 	
+
 	public List<TypeAndBookListItem> bookTypeToTypeAndBookListItemList(List<BookType> bookTypeList){
 		List<TypeAndBookListItem> resultList = new ArrayList();
 		for(BookType bookType : bookTypeList){
@@ -227,6 +233,39 @@ public class ConvertorServiceImpl implements ConvertorService{
 		return resultList;
 	}
 	
+
+	@Override
+	public List<LiApprise> appriseListToLiApprise(List<Apprise> appriseList) {
+		List<LiApprise> liAppriseList = new ArrayList<LiApprise>();
+		for(Apprise a: appriseList){
+			liAppriseList.add(appriseToLiApprise(a));
+		}
+		return liAppriseList;
+	}
+
+
+	@Override
+	public LiApprise appriseIDToLiApprise(Integer appriseID) {
+		Apprise apprise = appriseDAO.findByID(appriseID);
+		LiApprise liApprise = appriseToLiApprise(apprise);
+		return liApprise;
+	}
+
+
+	@Override
+	public LiApprise appriseToLiApprise(Apprise apprise) {
+		User user = userDAO.findById(apprise.getUserID());
+		LiApprise liApprise = new LiApprise();
+		liApprise.setAppriseID(apprise.getAppriseID());
+		liApprise.setBookID(apprise.getBookID());
+		liApprise.setScore(apprise.getScore());
+		liApprise.setText(apprise.getText());
+		liApprise.setUserID(user.getUserID());
+		liApprise.setUserName(user.getUserName());
+		liApprise.setAppriseTime(apprise.getAppriseTime());
+		return liApprise;
+	}
+
 	
 	public BookDAO getBookDAO() {
 		return bookDAO;
@@ -273,6 +312,27 @@ public class ConvertorServiceImpl implements ConvertorService{
 	public void setOrderDAO(OrderDAO orderDAO) {
 		this.orderDAO = orderDAO;
 	}
+
+
+	public AppriseDAO getAppriseDAO() {
+		return appriseDAO;
+	}
+
+
+	public void setAppriseDAO(AppriseDAO appriseDAO) {
+		this.appriseDAO = appriseDAO;
+	}
+
+
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
 
 
 

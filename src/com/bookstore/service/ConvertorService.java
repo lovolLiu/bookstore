@@ -2,9 +2,14 @@ package com.bookstore.service;
 
 import java.util.List;
 
+
 import com.bookstore.domain.BookType;
+
+import com.bookstore.domain.Apprise;
+
 import com.bookstore.domain.BuyItem;
 import com.bookstore.util.DivOrder;
+import com.bookstore.util.LiApprise;
 import com.bookstore.util.TrCartItem;
 import com.bookstore.util.DivBook;
 import com.bookstore.util.TypeAndBookListItem;
@@ -23,5 +28,11 @@ public interface ConvertorService {
 	
 	List<DivBook> bookIDToDivBook(List<Book> bookList);
 	
+
 	List<TypeAndBookListItem> bookTypeToTypeAndBookListItemList(List<BookType> bookTypeList);
+
+	List<LiApprise> appriseListToLiApprise(List<Apprise> appriseList); 
+	LiApprise appriseIDToLiApprise(Integer appriseID);
+	LiApprise appriseToLiApprise(Apprise apprise);
+
 }

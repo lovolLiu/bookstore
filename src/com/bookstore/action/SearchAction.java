@@ -3,6 +3,7 @@ package com.bookstore.action;
 import java.util.List;
 
 import com.bookstore.domain.*;
+import com.bookstore.service.BookTypeService;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.SearchService;
 import com.bookstore.util.DivBook;
@@ -15,12 +16,28 @@ public class SearchAction {
 	List<Book> bookList;
 	List<DivBook> divBook ;
 	ConvertorService convertorService;
+	
+	
+	
+	Integer typeID;
+	BookTypeService bookTypeService;
+	List<BookType> btList;
+
+	List<DivBook> divBookList;
+	//获得对应类别的书籍
+	public List<DivBook> getSortBookList(){
+		List<Book> bookList = bookTypeService.getBookByBookType(typeID);
+		divBookList = convertorService.bookIDToDivBook(bookList);
+		return divBookList;
+	}
+	//选择所有图书
 	public List<Book> searchAllBook(){
 		List<Book> list;
 		System.out.println("222222333333");
 		list = searchService.searchAllBook();
 		return list;
 	}
+	//选择对应搜索的图书
 	public List<Book> searchBookList(){
 		List<Book> list;
 		if(tag == 0){
@@ -51,12 +68,13 @@ public class SearchAction {
 		 sum = num/9;
 		 return sum;
 	 }
-	
+	//执行搜索action
 	 public String execute(){
 		 
 		 if(searchBookList() != null){
 			 bookList = searchBookList();
 			 divBook = convertorService.bookIDToDivBook(bookList);
+			 btList = bookTypeService.getBookTypeList();
 			 return "success";
 		 }
 			 
@@ -68,12 +86,24 @@ public class SearchAction {
 		 
 		 bookList = searchAllBook();
 		 divBook = convertorService.bookIDToDivBook(bookList);
+		 btList = bookTypeService.getBookTypeList();
 //		 for(int i =0;i <divBook.size();i++){
 //			 System.out.println(divBook.get(i).getBookID()+" "+divBook.get(i).getPictureID());
 //		 }
 		 
 		 return "success";
 	 }
+	 
+	//显示对应类别书目的action
+		 public String sortSearchExecute(){
+			 //init findall
+			 
+			 
+			 divBook = getSortBookList();
+			 btList = bookTypeService.getBookTypeList();
+			 
+			 return "success";
+		 }
 	public String getKeyword() {
 		return keyword;
 	}
@@ -116,7 +146,51 @@ public class SearchAction {
 	public void setConvertorService(ConvertorService convertorService) {
 		this.convertorService = convertorService;
 	}
-	 
+	public BookTypeService getbookTypeService() {
+		return bookTypeService;
+	}
+	public void setbookTypeService(BookTypeService bookTypeService) {
+		this.bookTypeService = bookTypeService;
+	}
+	public List<BookType> getBtList() {
+		return btList;
+	}
+	public void setBtList(List<BookType> btList) {
+		this.btList = btList;
+	}
+
+	public BookTypeService getBookTypeService() {
+		return bookTypeService;
+	}
+
+	public void setBookTypeService(BookTypeService bookTypeService) {
+		this.bookTypeService = bookTypeService;
+	}
+
+	public ConvertorService getconvertorService() {
+		return convertorService;
+	}
+
+	public void setconvertorService(ConvertorService convertorService) {
+		this.convertorService = convertorService;
+	}
+
+	public List<DivBook> getDivBookList() {
+		return divBookList;
+	}
+
+	public void setDivBookList(List<DivBook> divBookList) {
+		this.divBookList = divBookList;
+	}
+	public Integer getTypeID() {
+		return typeID;
+	}
+	public void setTypeID(Integer typeID) {
+		this.typeID = typeID;
+	}
+
+
+	
 	
 
 }

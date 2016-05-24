@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,10 +39,8 @@
 <body>
 <div id="loader-wrapper">
 	<div id="loader"></div>
-
 	<div class="loader-section section-left"></div>
 	<div class="loader-section section-right"></div>
-
 </div>
 <!--WRAPPER START-->
 <div class="wrapper kode-header-class-3">

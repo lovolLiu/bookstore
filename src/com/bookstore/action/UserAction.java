@@ -2,6 +2,7 @@ package com.bookstore.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.bookstore.domain.Address;
 import com.bookstore.domain.Book;
@@ -11,6 +12,7 @@ import com.bookstore.service.ConvertorService;
 import com.bookstore.service.PersonalInfoService;
 import com.bookstore.util.DivBook;
 import com.bookstore.util.DivOrder;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * @author Chang Su
@@ -46,11 +48,13 @@ public class UserAction {
 	
 	
 	///////////////////////////
-	Integer userID = 1;
+	Integer userID;
 	Integer orderID;
 	
 	//Password and Email
 	public String isPasswordValid(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		if(personalInfoService.isPasswordValid(userID, oldpassword))
 			result = "success";
 		else
@@ -59,6 +63,8 @@ public class UserAction {
 	}
 	
 	public String modifyPassword(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		if(personalInfoService.modifyPassword(userID, newpassword))
 			result = "success";
 		else
@@ -67,6 +73,8 @@ public class UserAction {
 	}
 	
 	public String modifyEmail(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		if(personalInfoService.modifyEmail(userID, newemail))
 			result = "success";
 		else
@@ -76,6 +84,8 @@ public class UserAction {
 	
 	//Order
 	public String showPaidOrder() {
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		List<Order> orderList = personalInfoService.getPaidOrder(userID);
 		divOrderList = new ArrayList<DivOrder>();
 		for(Order order: orderList){
@@ -106,6 +116,8 @@ public class UserAction {
 	}
 	
 	public String showOrderListAll(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		List<Order> orderList = personalInfoService.getAllOrder(userID);
 		divOrderList = new ArrayList<DivOrder>();
 		for(Order order: orderList){
@@ -118,6 +130,8 @@ public class UserAction {
 	}
 
 	public String showPaidOrderNumber() {
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		List<Order> orderList = personalInfoService.getPaidOrder(userID);
 		if(orderList.isEmpty())
 			paidNum = 0;
@@ -126,6 +140,8 @@ public class UserAction {
 	}
 	
 	public String showUnpaidOrderNumber() {
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		List<Order> orderList = personalInfoService.getUnpaidOrder(userID);
 		if(orderList.isEmpty())
 			unpaidNum = 0;
@@ -135,6 +151,8 @@ public class UserAction {
 	
 	//Unapprised Book
 	public String showUnapprisedBooksNumber() {
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		List<Book> bookList = personalInfoService.getUnappriseBook(userID);
 		if(bookList.isEmpty())
 			unapprisedNum = 0;
@@ -143,6 +161,8 @@ public class UserAction {
 	}
 	
 	public String showUnapprisedBookList(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		List<Book> bookList = personalInfoService.getUnappriseBook(userID);
 		unapprisedList = convertorService.bookIDToDivBook(bookList);
 		return "success";
@@ -150,6 +170,8 @@ public class UserAction {
 	
 	//Address
 	public String showAddress(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
 		addressList = personalInfoService.getAddress(userID);
 		this.result = "success";
 		return "success";

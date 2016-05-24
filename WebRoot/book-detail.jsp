@@ -32,7 +32,8 @@
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
-<link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/star-rating.css" media="all"
+	rel="stylesheet" type="text/css" />
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -40,33 +41,35 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style>
-.cart_quantity_button{
-	width:100px;
+.cart_quantity_button {
+	width: 100px;
 }
+
 .cart_quantity_button a {
-    background: #F0F0E9;
-    color: #696763;
-    display: inline-block;
-    font-size: 16px;
-    height: 28px;
-    overflow: hidden;
-    text-align: center;
-    width: 20%;
-    float: left;
+	background: #F0F0E9;
+	color: #696763;
+	display: inline-block;
+	font-size: 16px;
+	height: 28px;
+	overflow: hidden;
+	text-align: center;
+	width: 20%;
+	float: left;
 }
+
 .cart_quantity_input {
-    color: #696763;
-    font-size: 16px;
-    text-align: center;
-    font-family: 'Roboto',sans-serif;
-    float: left;
-    height:28px;
-    padding: 0;
-    width: 60%;
-    
+	color: #696763;
+	font-size: 16px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	float: left;
+	height: 28px;
+	padding: 0;
+	width: 60%;
 }
-.button_div{
-	clear:both;
+
+.button_div {
+	clear: both;
 	margin-top: 20px;
 }
 </style>
@@ -74,10 +77,8 @@
 <body>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
-
 		<div class="loader-section section-left"></div>
 		<div class="loader-section section-right"></div>
-
 	</div>
 	<!--WRAPPER START-->
 	<div class="wrapper kode-header-class-3">
@@ -99,7 +100,7 @@
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
 						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
 						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
-			   	   </ul>
+					</ul>
 				</div>
 				<!--/.nav-collapse -->
 			</div>
@@ -122,32 +123,13 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 sidebar">
-						<!--SEARCH WIDGET START-->
-						<div class="widget widget-search">
-							<h2>搜索</h2>
-							<div class="input-container">
-								<input type="text" placeholder="输入关键字"> <i
-									class="fa fa-search"></i>
-							</div>
-						</div>
-						<!--SEARCH WIDGET END-->
-						<!--PRICE FILTER WIDGET START-->
-						<div class="widget widget-price-filter">
-							<h2>按照价格筛选</h2>
-							<b>10 RMB</b> <b class="pull-right">1000 RMB</b> <input id="ex2"
-								type="text" class="span2" value="" data-slider-min="10"
-								data-slider-max="1000" data-slider-step="5"
-								data-slider-value="[10,400]" /> <a href="#" class="filter">筛选</a>
-						</div>
-						<!--PRICE FILTER WIDGET END-->
-						<!--NEW ARRIVAL WIDGET START-->
 						<div class="widget widget-new-arrival">
 							<h2>新书上架</h2>
 							<ul>
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[0].bookID}"><img
 												src="<s:property value='newestDivBookList[0].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -163,7 +145,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[1].bookID}"><img
 												src="<s:property value='newestDivBookList[1].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -179,7 +161,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${newestDivBookList[2].bookID}"><img
 												src="<s:property value='newestDivBookList[2].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -217,7 +199,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[0].bookID}"><img
 												src="<s:property value='hotestDivBookList[0].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -231,7 +213,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[1].bookID}"><img
 												src="<s:property value='hotestDivBookList[1].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -245,7 +227,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[2].bookID}"><img
 												src="<s:property value='hotestDivBookList[2].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -261,7 +243,7 @@
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[3].bookID}"><img
 												src="<s:property value='hotestDivBookList[3].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -275,7 +257,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[4].bookID}"><img
 												src="<s:property value='hotestDivBookList[4].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -289,7 +271,7 @@
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img
+											<a href="BookDetail?bookID=${hotestDivBookList[5].bookID}"><img
 												src="<s:property value='hotestDivBookList[5].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
@@ -308,7 +290,7 @@
 					</div>
 					<div class="col-md-9">
 						<!--BOOK DETAIL START-->
-						<div class="lib-book-detail"  >
+						<div class="lib-book-detail">
 							<div class="row">
 								<div class="col-md-5">
 									<div class="kode-thumb">
@@ -339,6 +321,9 @@
 														class="star"><i class="glyphicon glyphicon-star"></i></span><span
 														class="star"><i class="glyphicon glyphicon-star"></i></span><span
 														class="star"><i class="glyphicon glyphicon-star"></i></span></span>
+												</div>
+												<div class="caption">
+													<span id="scorecaption" class=""></span>
 												</div>
 											</div>
 										</div>
@@ -414,39 +399,7 @@
 								</div>
 								<div role="tabpanel" class="tab-pane fade" id="reviews">
 									<div class="kode-comments">
-										<ul>
-											<li>
-												<div class="kode-thumb">
-													<a href="#"><img alt="" src="images/author14.png"></a>
-												</div>
-												<div class="kode-text">
-													<h4>Saul Bellow</h4>
-													<p class="designation">JUNE 20, 2015</p>
-													<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-														elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-														dolore magna aliquyam erat, sed diam voluptua. At vero eos
-														et accusam et justo duo dolores et ea rebum. Stet clita
-														kasd gubergren, no sea takimata sanctus est Lorem ipsum
-														dolor sit amet.</p>
-													<a class="reply" href="#">Reply</a>
-												</div>
-											</li>
-											<li>
-												<div class="kode-thumb">
-													<a href="#"><img alt="" src="images/author14.png"></a>
-												</div>
-												<div class="kode-text">
-													<h4>Saul Bellow</h4>
-													<p class="designation">JUNE 20, 2015</p>
-													<p>Lorem ipsum dolor sit amet, consetetur sadipscing
-														elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-														dolore magna aliquyam erat, sed diam voluptua. At vero eos
-														et accusam et justo duo dolores et ea rebum. Stet clita
-														kasd gubergren, no sea takimata sanctus est Lorem ipsum
-														dolor sit amet.</p>
-													<a class="reply" href="#">Reply</a>
-												</div>
-											</li>
+										<ul id="reviews">
 										</ul>
 									</div>
 								</div>
@@ -508,20 +461,32 @@
 									<div class="best-seller-pro">
 										<figure>
 											<a href="#"><img
-												src="<s:property value='personalFindByAuthorDivBookList[0].URL'/>" alt=""></a>
+												src="<s:property value='personalFindByAuthorDivBookList[0].URL'/>"
+												alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#"><s:property value="personalFindByAuthorDivBookList[0].bookName" /></a>
+												<a href="#"><s:property
+														value="personalFindByAuthorDivBookList[0].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3><s:property value="personalFindByAuthorDivBookList[0].bookName" /></h3>
+											<h3>
+												<s:property
+													value="personalFindByAuthorDivBookList[0].bookName" />
+											</h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p><s:property value="personalFindByAuthorDivBookList[0].author" /></p>
-											<p class="price">$<s:property value="personalFindByAuthorDivBookList[0].bookPrice" /></p>
+											<p>
+												<s:property
+													value="personalFindByAuthorDivBookList[0].author" />
+											</p>
+											<p class="price">
+												$
+												<s:property
+													value="personalFindByAuthorDivBookList[0].bookPrice" />
+											</p>
 											<a href="#" class="add-to-cart">Add To Cart</a>
 										</div>
 									</div>
@@ -532,20 +497,32 @@
 									<div class="best-seller-pro">
 										<figure>
 											<a href="#"><img
-												src="<s:property value='personalFindByAuthorDivBookList[1].URL'/>" alt=""></a>
+												src="<s:property value='personalFindByAuthorDivBookList[1].URL'/>"
+												alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#"><s:property value="personalFindByAuthorDivBookList[1].bookName" /></a>
+												<a href="#"><s:property
+														value="personalFindByAuthorDivBookList[1].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3><s:property value="personalFindByAuthorDivBookList[1].bookName" /></h3>
+											<h3>
+												<s:property
+													value="personalFindByAuthorDivBookList[1].bookName" />
+											</h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p><s:property value="personalFindByAuthorDivBookList[1].author" /></p>
-											<p class="price">$<s:property value="personalFindByAuthorDivBookList[1].bookPrice" /></p>
+											<p>
+												<s:property
+													value="personalFindByAuthorDivBookList[1].author" />
+											</p>
+											<p class="price">
+												$
+												<s:property
+													value="personalFindByAuthorDivBookList[1].bookPrice" />
+											</p>
 											<a href="#" class="add-to-cart">Add To Cart</a>
 										</div>
 									</div>
@@ -556,20 +533,32 @@
 									<div class="best-seller-pro">
 										<figure>
 											<a href="#"><img
-												src="<s:property value='personalFindByAuthorDivBookList[2].URL'/>" alt=""></a>
+												src="<s:property value='personalFindByAuthorDivBookList[2].URL'/>"
+												alt=""></a>
 										</figure>
 										<div class="kode-text">
 											<h3>
-												<a href="#"><s:property value="personalFindByAuthorDivBookList[2].bookName" /></a>
+												<a href="#"><s:property
+														value="personalFindByAuthorDivBookList[2].bookName" /></a>
 											</h3>
 										</div>
 										<div class="kode-caption">
-											<h3><s:property value="personalFindByAuthorDivBookList[2].bookName" /></h3>
+											<h3>
+												<s:property
+													value="personalFindByAuthorDivBookList[2].bookName" />
+											</h3>
 											<div class="rating">
 												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 											</div>
-											<p><s:property value="personalFindByAuthorDivBookList[2].author" /></p>
-											<p class="price">$<s:property value="personalFindByAuthorDivBookList[2].bookPrice" /></p>
+											<p>
+												<s:property
+													value="personalFindByAuthorDivBookList[2].author" />
+											</p>
+											<p class="price">
+												$
+												<s:property
+													value="personalFindByAuthorDivBookList[2].bookPrice" />
+											</p>
 											<a class="add-to-cart" href="#">Add To Cart</a>
 										</div>
 									</div>
@@ -668,19 +657,66 @@
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
-	<script type="application/x-javascript">	 
-addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	<script type="application/x-javascript">
+			 
+	     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#horizontalTab').easyResponsiveTabs({
-				type : 'default', //Types: default, vertical, accordion           
-				width : 'auto', //auto or any width like 600px
-				fit : true
-			// 100% fit in a container
-			});
-		});
+		$(document)
+				.ready(
+						function() {
+							$('#horizontalTab').easyResponsiveTabs({
+								type : 'default', //Types: default, vertical, accordion           
+								width : 'auto', //auto or any width like 600px
+								fit : true
+							// 100% fit in a container
+							});
+							var score = <s:property value="bookScore"/>;
+							switch (score) {
+							case 1:
+								$('#scorecaption').html("一星");
+								$('#scorecaption').attr("class",
+										"label label-danger");
+								$('.rating-container .rating .filled-stars')
+										.css("width", "20%");
+								break;
+							case 2:
+								$('#scorecaption').html("两星");
+								$('#scorecaption').attr("class",
+										"label label-warning");
+								$('.rating-container .rating .filled-stars')
+										.css("width", "40%");
+								break;
+							case 3:
+								$('#scorecaption').html("三星");
+								$('#scorecaption').attr("class",
+										"label label-info");
+								$('.rating-container .rating .filled-stars')
+										.css("width", "60%");
+								break;
+							case 4:
+								$('#scorecaption').html("四星");
+								$('#scorecaption').attr("class",
+										"label label-primary");
+								$('.rating-container .rating .filled-stars')
+										.css("width", "80%");
+								break;
+							case 5:
+								$('#scorecaption').html("五星");
+								$('#scorecaption').attr("class",
+										"label label-success");
+								$('.rating-container .rating .filled-stars')
+										.css("width", "100%");
+								break;
+							default:
+								$('#scorecaption').html("暂无评价");
+								$('#scorecaption').attr("class",
+										"label label-default");
+							}
+							getAppriseList();
+						});
 	</script>
 <script>
 	function StraightBuy(){
@@ -715,26 +751,66 @@ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); func
 		return false;
 	}
 
-	function QuantityDown() {
-		var currentNum = $(".cart_quantity_input").attr("value");
-		if (currentNum == 1)
-			return false;
-		$(".cart_quantity_input").attr("value", currentNum - 1);
-	}
-	
-	 function messageToast(messageText){
-	 	 var htmlText = '<div id="time_messagebox" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width:250px; ' +
-	 	 'height:80px;background: orange;color: white;display: none;border-radius:10px;">' +
-	 	 				'<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">' + messageText + '</span></p></div>';
-	     if($("#time_messagebox").length == 0){
-	     	$("body").append(htmlText);
-	     }
-	     else{
-	     	$("#time_messagebox").find("span").html(messageText);
-	     }
-		 $("#time_messagebox").fadeIn(300);
-		 setTimeout("$('#time_messagebox').fadeOut(300);",1200)
-	 }
-</script>
+
+
+		function QuantityDown() {
+			var currentNum = $(".cart_quantity_input").attr("value");
+			if (currentNum == 1)
+				return false;
+			$(".cart_quantity_input").attr("value", currentNum - 1);
+		}
+
+		function messageToast(messageText) {
+			var htmlText = '<div id="time_messagebox" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width:250px; ' +
+	 	 'height:80px;background: orange;color: white;display: none;border-radius:10px;">'
+					+ '<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">'
+					+ messageText + '</span></p></div>';
+			if ($("#time_messagebox").length == 0) {
+				$("body").append(htmlText);
+			} else {
+				$("#time_messagebox").find("span").html(messageText);
+			}
+			$("#time_messagebox").fadeIn(300);
+			setTimeout("$('#time_messagebox').fadeOut(300);", 1200)
+		}
+		function formatDate(data) {
+			var d = new Date(data); //for date in the format "YYYY-MM-DDTHH:MM:SS" where T means timezone!!! 
+			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1)
+					+ "-" + d.getDate();
+			var hours = ((d.getHours() + 16) % 24 < 10) ? "0"
+					+ (d.getHours() + 16) % 24 : (d.getHours() + 16) % 24;
+			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d
+					.getMinutes();
+			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d
+					.getSeconds();
+			var formattedTime = hours + ":" + minutes + ":" + seconds;
+			formattedDate = formattedDate + " " + formattedTime;
+			return formattedDate;
+		}
+
+		function getAppriseList() {
+			$.ajax({
+				url : "ShowAppriseList",
+				type : "post",
+				data : {
+					"bookID" : 2
+				},
+				dataType : "json",
+				success : function(data) {
+					$.each(data, function(i, list) {
+						var strLi = "<li>" + "<div class='kode-thumb'>"
+								+ "<a href='#'>"
+								+ "<img src='images/author14.png' alt=''/>"
+								+ "</a>" + "</div>" + "<div class='kode-text'>"
+								+ "<h4>" + list.userName + "</h4>"
+								+ "<p class='designation'>"
+								+ formatDate(list.appriseTime) + "</p>" + "<p>"
+								+ list.text + "</p>" + "</div>" + "</li>";
+						$("ul[id='reviews']").append(strLi);
+					})
+				}
+			})
+		}
+	</script>
 </body>
 </html>

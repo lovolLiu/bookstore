@@ -17,20 +17,21 @@ import com.bookstore.util.DivBook;
  * @modifyDate
  */
 public class BookTypeAction {
-	List<BookType> btList;
+	
 	List<DivBook> divBookList;
 	List<Book> relatedBookList;
 	
 	Integer bookTypeID;
 	Integer bookID;
 	
+
 	BookTypeService bookTypeService;
 	ConvertorService convertorService;
 		
-	public String showBTList(){
-		btList = bookTypeService.getBookTypeList();
-		return "success";
-	}
+//	public String showBTList(){
+//		btList = bookTypeService.getBookTypeList();
+//		return "success";
+//	}
 	
 	/**
 	 * @in: bookTypeID
@@ -69,13 +70,7 @@ public class BookTypeAction {
 		return "success";
 	}
 
-	public List<BookType> getBtList() {
-		return btList;
-	}
 
-	public void setBtList(List<BookType> btList) {
-		this.btList = btList;
-	}
 
 	public List<DivBook> getDivBookList() {
 		return divBookList;

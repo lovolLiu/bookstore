@@ -30,6 +30,11 @@
 			<result name="success">/books.jsp</result>
 		</action>
 
+		<!-- 显示对应类别的书目 -->
+		<action name="sortSearchAction" class="com.bookstore.action.SearchAction" method="sortSearchExecute">
+			<result name="success">/books.jsp</result>
+		</action>
+
 		<action name="GetBookType" class="com.bookstore.action.BookTypeAction" method="showBTList">
 		    <result name="success" type="json"><param name="root">btList</param></result>
 		    <result name="false" type="json">btList</result>
@@ -41,6 +46,12 @@
 		
 		<action name="GetRelatedBookList" class="com.bookstore.action.BookTypeAction" method="showRelatedBookList">
 			<result name="success" type="json"><param name="root">relatedBookList</param></result>
+		</action>
+		
+		<action name="ShowAppriseList" class="com.bookstore.action.AppriseAction" method="showAppriseList">
+			<result name="success" type="json">
+				<param name="root">liAppriseList</param>
+			</result>
 		</action>
 		
 		    	<!-- FindPassword相关的2个action -->
@@ -102,6 +113,17 @@
 			<result name="fail" type="json">
 				<param name="root">result</param>
 			</result>
+		</action>
+		
+		<action name="FindMoreBooks" class="com.bookstore.action.SearchAction" method="initSearchExecute">
+			<result name="success">/books.jsp</result>
+			<result name="false">/books.jsp</result>
+		</action>
+		
+		<!-- 订单详情 -->
+		<action name="OrderDetail" class="com.bookstore.action.OrderAction" method="getOrderDetail">
+		    <result name="success">/orderdetail.jsp</result>
+			<result name="false">/orderdetail.jsp</result>
 		</action>
 		
 	</package>

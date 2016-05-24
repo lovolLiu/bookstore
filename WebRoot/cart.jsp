@@ -326,7 +326,7 @@ select{
 									</tr>
 									<tr style="border-bottom: 0;">
 										<!-- <td><div style="text-align: right"><a class="btn btn-default update" href="">更新购物车</a></div></td> -->
-										<td><div style="text-align: right;"><a class="btn btn-default check_out" onclick="SubmitForm(); return false;">去结算</a></div></td>
+										<td><div style="text-align: right;"><a class="btn btn-primary check_out" onclick="SubmitForm(); return false;">去结算</a></div></td>
 									</tr>
 									
 								</tbody>

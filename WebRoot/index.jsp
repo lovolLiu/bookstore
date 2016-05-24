@@ -506,5 +506,8 @@
 			  setTimeout( "$('#time_messagebox').fadeOut(300);" ,1200)
   		}
 		</script>
+
+	</div>
+
 </body>
 </html>
