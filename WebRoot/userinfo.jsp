@@ -598,7 +598,7 @@ a {
 					<div class="modifyitem">
 						<i class="fa fa-envelope"></i><br> <em> <a href="#"
 							id="email" data-type="text" data-original-title="电子邮箱"
-							class="editable editable-click editable-disabled mail">wcincredible@163.com</a>
+							class="editable editable-click editable-disabled mail"></a>
 						</em> <br> <a id="enable" class="btn btn-primary"
 							style="margin-left:20px;">编辑</a> <a id="submitemail"
 							class="btn btn-primary" style="margin-left:20px;">保存</a>
@@ -830,6 +830,7 @@ a {
 		function bindbutton() {
 			//修改地址
 			$('.itemselect').click(function(e) {
+			    $(e.target).siblings('.itemsave').attr("style","");
 				var parent = $(e.target).parent();
 				var flag = true;
 				if (parent.attr('firsttime') == "yes")
@@ -843,6 +844,7 @@ a {
 			});
 			//保存修改的地址
 			$('.itemsave').click(function(e) {
+			    $(e.target).attr("style","display:none");
 				var consignee = $(e.target).siblings().find("a[id='consignee']").text();
 				var addressDetail = $(e.target).siblings().find("a[id='detailaddress']").text();
 				var tel = $(e.target).siblings().find("a[id='tel']").text();
@@ -854,6 +856,7 @@ a {
 					dataType:"json",	/* 服务器返回的数据类型 */
 					success:function(data){
 						if(data=="success"){
+						    alert("修改成功！");
 		          		}else{
 		          			alert("修改失败");
 		          			location.reload();	//刷新
@@ -863,10 +866,10 @@ a {
 			});
 			//删除地址
 			$('.itemdelete').click(function(e) {
-/* 				var flag = window.confirm("确定删除？");
+ 				var flag = window.confirm("确定删除？");
 				if (flag) {
 					$(e.target).parent().parent().remove();
-				} */
+				} 
 				var addressID = $(e.target).parent().parent().attr("title");
 				$.ajax({
 					url:"DeleteAddress",
@@ -910,8 +913,8 @@ a {
 														+ list.address
 														+ "</a></em>"
 														+ "</p>"
-														+ "<a id='modifyaddress' class='btn btn-primary itemselect col-xs-12'>编辑</a> "
-														+ "<a id='saveaddress' class='btn btn-primary itemsave col-xs-12'>保存</a> "
+														+ "<a id='modifyaddress' class='btn btn-primary itemselect col-xs-12'>修改</a> "
+														+ "<a id='saveaddress' class='btn btn-primary itemsave col-xs-12' style='display:none'>保存修改</a> "
 														+ "<a id='deleteaddress' class='btn btn-primary itemdelete col-xs-12'>删除</a>"
 														+ "</div></div>");
 												$("div[id='address']").append(
@@ -921,6 +924,16 @@ a {
 						}
 					})
 		}
+		//显示邮箱
+		function showEmail(){
+		    $.ajax({
+				url : "GetEmail",
+				dataType : "json",
+				success : function(data) {
+					$('#email').html(data);
+				}
+			})
+		}
 		//页面加载后执行的函数
 		$(document).ready(function() {
 			$('#horizontalTab').easyResponsiveTabs({
@@ -929,6 +942,7 @@ a {
 				fit : true
 			// 100% fit in a container
 			});
+			showEmail()
 			showOrder();
 			showAddress();
 			showPaidOrderNumber();
@@ -962,7 +976,6 @@ a {
 		//保存修改的email
 		$('#submitemail').click(function() {
 			var newemail = $('#email').html();
-			alert(newemail);
 			$.ajax({
 				url : "modifyEmail.action",
 				type : "post",
@@ -1001,6 +1014,11 @@ a {
 			var hmiddle = Math.floor((w - 400) / 2);
 			childDiv.style.top = vmiddle + "px";
 			childDiv.style.left = hmiddle + "px";
+			$('#oldpassword').val("");
+			$('#oldpassworderror').html("");
+			$('#newpassword').val("");
+			$('#renewpassword').val("");
+			$('#newpassworderror').html("");
 		}
 		//输入旧密码div的cancel按钮
 		$('#cancel').click(function() {
@@ -1088,8 +1106,12 @@ a {
 					success : function(data) {
 						if (data == "success") {
 							alert("成功修改密码！");
+							var overDiv = document.getElementById("newpasswordform");
+			                overDiv.style.display = "none";
 						} else if (data == "fail") {
 							alert("密码修改失败！");
+							var overDiv = document.getElementById("newpasswordform");
+			                overDiv.style.display = "none";
 						}
 					}
 				})
@@ -1165,14 +1187,15 @@ a {
 														+ data.address
 														+ "</a></em>"
 														+ "</p>"
-														+ "<a id='modifyaddress" + data.addressID +"'class='btn btn-primary itemselect col-xs-12'>编辑</a> "
-														+ "<a id='saveaddress" + data.addressID + "'class='btn btn-primary itemsave col-xs-12'>保存</a> "
+														+ "<a id='modifyaddress" + data.addressID +"'class='btn btn-primary itemselect col-xs-12'>修改</a> "
+														+ "<a id='saveaddress" + data.addressID + "'class='btn btn-primary itemsave col-xs-12' style='display:none;'>保存修改</a> "
 														+ "<a id='deleteaddress" + data.addressID +"'class='btn btn-primary itemdelete col-xs-12'>删除</a>"
 														+ "</div></div>");
 					$("div[id='addNew']").after(table1);
 					//修改地址
 			$('#modifyaddress' + data.addressID).click(function(e) {
 				var parent = $(e.target).parent();
+				$('#saveaddress' + data.addressID).attr("style","");
 				var flag = true;
 				if (parent.attr('firsttime') == "yes")
 					flag = false;
@@ -1185,18 +1208,46 @@ a {
 			});
 			//保存修改的地址
 			$('#saveaddress' + data.addressID).click(function(e) {
-				alert("保存");
-				var addressDetail = $("a[id='detailaddress',class='editable editable-click address']").val();
-				var consignee = $("a[id='consignee',class='editable editable-click address']").val();
-				var tel = $("a[id='tel',class='editable editable-click address']").val();
-				var addressID = $("div[id='tel']").getAttribute("title");//这里需要在编辑的div里添加一个编辑的属性，方便取值，编辑成功之后需要将这个属性删除
+				$('#saveaddress' + data.addressID).attr("style","display:none");
+				var consignee = $(e.target).siblings().find("a[id='consignee']").text();
+				var addressDetail = $(e.target).siblings().find("a[id='detailaddress']").text();
+				var tel = $(e.target).siblings().find("a[id='tel']").text();
+				var addressID = $(e.target).parent().parent().attr("title");
+				$.ajax({
+					url:"UpdateAddress",
+					type:"post",
+					data:{"addressDetail":addressDetail,"consignee":consignee,"tel":tel,"addressID":addressID},
+					dataType:"json",	/* 服务器返回的数据类型 */
+					success:function(data){
+						if(data=="success"){
+						    alert("修改成功！")
+		          		}else{
+		          			alert("修改失败！");
+		          			location.reload();	//刷新
+		          		}
+					}
+				});
 			});
 			//删除地址
 			$('#deleteaddress' + data.addressID).click(function(e) {
 				var flag = window.confirm("确定删除？");
 				if (flag) {
 					$(e.target).parent().parent().remove();
-				}
+				} 
+				var addressID = $(e.target).parent().parent().attr("title");
+				$.ajax({
+					url:"DeleteAddress",
+					type:"post",
+					data:{"addressID":addressID},
+					dataType:"json",	/* 服务器返回的数据类型 */
+					success:function(data){
+						if(data=="success"){
+							$(e.target).parent().parent().remove();
+		          		}else{
+		          			alert("删除失败");
+		          		}
+					}
+				});
 			});
 			alert('您的地址已保存！');
 			//将遮罩层的内容隐藏掉

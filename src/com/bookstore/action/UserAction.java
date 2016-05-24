@@ -34,6 +34,7 @@ public class UserAction {
 	Integer paidNum;
 	Integer unpaidNum;
 	Integer unapprisedNum;
+	String email;
 	String result;
 	
 	//To changepassword function
@@ -53,6 +54,15 @@ public class UserAction {
 	Integer orderID;
 	
 	String usrName;
+	
+	//Email
+	public String GetEmail(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
+		User user = personalInfoService.UserInfo(userID);
+		email = user.getUserEmail();
+		return "success";
+	}
 	
 	//Username
 	public String GetUsrname(){
@@ -313,5 +323,14 @@ public class UserAction {
 	public void setUsrName(String usrName) {
 		this.usrName = usrName;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	
 }

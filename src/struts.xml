@@ -219,6 +219,13 @@
 			</result>
 		</action>
 		
+		<action name="GetEmail" class="com.bookstore.action.UserAction"
+			method="GetEmail">
+			<result type="json">
+				<param name="root">email</param>
+			</result>
+		</action>
+		
 		<action name="IsPasswordValid" class="com.bookstore.action.UserAction"
 			method="isPasswordValid">
 			<result name="success" type="json">
