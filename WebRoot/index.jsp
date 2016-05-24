@@ -179,8 +179,7 @@
 							<s:iterator value="typeAndBookListItemList" var="d" status="st">
 									<div role="tabpanel" class="typetab tab-pane fade<s:if test="#st.first"> in active</s:if>"
 										id="typeid_<s:property value='#st.index'/>">
-										<!-- <ul class="bxslider<s:if test='#st.first==false'>-<s:property value='#st.index'/></s:if>">-->
-										<ul class="bxslider">
+										<ul class="bxslider<s:if test='#st.first==false'>-<s:property value='#st.index'/></s:if>">
 												<s:iterator value="bookList" status="innerst">
 													<s:if test="#innerst.index%4 == 0">
 														<li>
@@ -441,11 +440,13 @@
 		<script src="js/jquery.bookblock.js"></script>
 		<script src="js/functions.js"></script>
 		<script>
-// 			function OnClickType(typeNum){
+			function OnClickType(typeNum){
 // 				var selector = "#typeid_" + typeNum;
 // 				$("div.typetab").find("ul").attr("class", "bxslider-1");
 // 				$(selector).find("ul").attr("class", "bxslider");
-// 			}
+				if(typeNum > 0)
+					$('.bxslider-' + typeNum).bxSlider();
+			}
 
 
 		function AddCartItem(bookID){
