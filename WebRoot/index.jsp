@@ -138,7 +138,7 @@
 										</div>
 										<p>${author }</p>
 										<p class="price">${bookPrice }</p>
-										<a href="#" class="add-to-cart">Add To Cart</a>
+										<a href="#" class="add-to-cart" onclick="AddCartItem(${bookID});return false;">Add To Cart</a>
 									</div>
 								</div>
 							</div>
@@ -162,12 +162,12 @@
 							<s:iterator value="typeAndBookListItemList" var="d" status="st">
 								<s:if test="#st.first">
 									<li role="presentation" class="active"><a
-										href="#typeid_<s:property value='#st.index'/>" role="tab"
+										href="#typeid_<s:property value='#st.index'/>" onclick="OnClickType(<s:property value='#st.index'/>)" role="tab"
 										data-toggle="tab">${bookType.type }</a></li>
 								</s:if>
 								<s:else>
 									<li role="presentation"><a
-										href="#typeid_<s:property value='#st.index'/>" role="tab"
+										href="#typeid_<s:property value='#st.index'/>" onclick="OnClickType(<s:property value='#st.index'/>)" role="tab"
 										data-toggle="tab">${bookType.type }</a></li>
 								</s:else>
 							</s:iterator>
@@ -177,8 +177,9 @@
 						<div class="tab-content">
 
 							<s:iterator value="typeAndBookListItemList" var="d" status="st">
-									<div role="tabpanel" class="tab-pane fade in <s:if test="#st.first">active</s:if>"
+									<div role="tabpanel" class="typetab tab-pane fade<s:if test="#st.first"> in active</s:if>"
 										id="typeid_<s:property value='#st.index'/>">
+										<!-- <ul class="bxslider<s:if test='#st.first==false'>-<s:property value='#st.index'/></s:if>">-->
 										<ul class="bxslider">
 												<s:iterator value="bookList" status="innerst">
 													<s:if test="#innerst.index%4 == 0">
@@ -193,13 +194,13 @@
 															<h3>${bookName}</h3>
 														</div>
 														<div class="kode-caption">
-															<h3>${author}</h3>
+															<h3>${bookName}</h3>
 															<div class="rating">
 																<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 															</div>
 															<p>${author}</p>
 															<p class="price">${bookPrice}</p>
-															<a href="#" class="add-to-cart">Add To Cart</a>
+															<a href="#" class="add-to-cart" onclick="AddCartItem(${bookID});return false;">Add To Cart</a>
 														</div>
 													</div> <!--PRODUCT GRID END-->
 													<s:if test="#innerst.index%4 == 3 || #innerst.last">
@@ -439,5 +440,44 @@
 		<script src="js/jquerypp.custom.js"></script>
 		<script src="js/jquery.bookblock.js"></script>
 		<script src="js/functions.js"></script>
+		<script>
+// 			function OnClickType(typeNum){
+// 				var selector = "#typeid_" + typeNum;
+// 				$("div.typetab").find("ul").attr("class", "bxslider-1");
+// 				$(selector).find("ul").attr("class", "bxslider");
+// 			}
+
+
+		function AddCartItem(bookID){
+			var url = "AddCartItem?bookID=" + bookID + "&num=1";
+			$.ajax({
+				url: url,
+				dataType: "json",
+				success: function(data){
+					if(data==true){
+						messageToast("成功加入购物车~");
+						UpdateCartNum();
+					}
+					else{
+						messageToast("仓库剩余量不足~");
+					}
+				}
+			})
+		}
+		
+	    function messageToast(messageText){
+			  var htmlText = '<div id="time_messagebox" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width:250px; ' +
+			  'height:80px;background: orange;color: white;display: none;border-radius:10px;">' +
+			  '<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">' + messageText + '</span></p></div>' ;
+			  if ($("#time_messagebox" ).length == 0){
+			       $( "body" ).append(htmlText);
+			  }
+			  else {
+			       $( "#time_messagebox" ).find( "span").html(messageText);
+			  }
+			  $( "#time_messagebox" ).fadeIn(300);
+			  setTimeout( "$('#time_messagebox').fadeOut(300);" ,1200)
+  		}
+		</script>
 </body>
 </html>

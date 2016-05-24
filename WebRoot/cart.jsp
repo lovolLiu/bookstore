@@ -436,7 +436,7 @@ select{
 						});
 						
 						showCart();
-						UpdateTotalCartPrice();
+						UpdateTotalPrice();
 					});
 
 					
@@ -475,13 +475,13 @@ select{
 							success:function(data){
 								$.each(data,function(i,list){  
                        				 var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
-                       				 +"<td class=\"cart_product\"><input type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?id=" + list.bookID  + "'><img src=\""+list.imageUrl+"\"></a></td>"
+                       				 +"<td class=\"cart_product\"><input onclick='OnClickCheckBox(" + list.buyItemID + ")' type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?id=" + list.bookID  + "'><img src=\""+list.imageUrl+"\"></a></td>"
                        				 +"<td class=\"cart_description\"><h4><a href='BookDetail?id=" + list.bookID  + "'>"+ list.bookName+"</a></h4></td>"
                        				 +"<td class=\"cart_price\"><p>¥"+list.price+"</p></td>"
                        				 +"<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\" onclick='return QuantityUp(" + list.buyItemID + ")'> + </a> "
                        				 	+ "<input class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+"\"autocomplete=\"off\" size=\"2\" >"
 									 	+ "<a class=\"cart_quantity_down\" href=\"\" onclick='return QuantityDown("+ list.buyItemID +")'> - </a></div></td>"
-									 +"<td class=\"cart_total\"> <p class=\"cart_total_price\"> ¥"+list.buyItemPrice+"</p></td>"
+									 +"<td class=\"cart_total\"> <p class=\"cart_total_price\"> ¥<span class='cart_span'>"+list.buyItemPrice+"</span></p></td>"
 									 +"<td class=\"cart_delete\"><a class=\"cart_quantity_delete\" href=\"\" onclick=\"return deleteCart( "+ list.buyItemID +")\"><i class=\"fa fa-times\"></i></a></td>"
 									 +"</tr>");  
                        			 	 $("tbody[id='cartItem']").prepend(_tr);
@@ -513,10 +513,10 @@ select{
 								//更新这条数据对应的html
 								var tr = $("tr#" + buyItemID);
 								var numInput = tr.find(".cart_quantity_input");
-								var itemTotalPrice = tr.find(".cart_total_price");
+								var itemTotalPrice = tr.find(".cart_span");
 								numInput.attr("value", data.num);
-								itemTotalPrice.html("¥" + data.buyItemPrice);
-								UpdateTotalCartPrice();
+								itemTotalPrice.html( data.buyItemPrice);
+								UpdateTotalPrice();
 							}
 						})
 					}
@@ -529,20 +529,28 @@ select{
 								//删除这条数据
 								$("#" + buyItemID).slideDown();
 								$("#" + buyItemID).remove();
-								UpdateTotalCartPrice();
+								UpdateTotalPrice();
 							}
 						})
 						return false;
 					}
 					
-					function UpdateTotalCartPrice(){
-						$.ajax({
-							url: "GetCartTotal",
-							dataType:"json",
-							success:function(data){
-								$("#cart_total").html("¥" + data);
+					function OnClickCheckBox(buyItemID){
+						UpdateTotalPrice();
+					}
+					
+					
+					function UpdateTotalPrice(){
+						
+						var totalPrice = 0.0;
+						$("input[type='checkbox']").each(function() {
+							if(this.checked){
+								var id = $(this).parent().parent().attr("id");
+								totalPrice += parseInt($("tr#" + id + " .cart_span").html());
 							}
 						})
+						$("#cart_total").html("¥" + totalPrice);
+						
 					}
 					
 					

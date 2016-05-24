@@ -83,7 +83,6 @@ public class CartServiceImpl implements CartService {
 		if(!cartItemList.isEmpty()){
 			cartItemDAO.delete(cartItemList.get(0).getCartItemID());
 		}
-		buyItemDAO.delete(buyItemID);
 		return true;
 	}
 
