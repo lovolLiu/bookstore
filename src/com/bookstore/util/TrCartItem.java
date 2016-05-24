@@ -12,8 +12,8 @@ public class TrCartItem {
 	String imageUrl;
 	String bookName;
 	String authorName;
-	Double price;
-	Double buyItemPrice;
+	String price;
+	String buyItemPrice;
 	Integer num;
 	
 	public Integer getBuyItemID() {
@@ -34,24 +34,14 @@ public class TrCartItem {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double price) {
-		this.price = price;
-	}
+
 	public Integer getNum() {
 		return num;
 	}
 	public void setNum(Integer num) {
 		this.num = num;
 	}
-	public Double getBuyItemPrice() {
-		return buyItemPrice;
-	}
-	public void setBuyItemPrice(Double buyItemPrice) {
-		this.buyItemPrice = buyItemPrice;
-	}
+
 	public String getAuthorName() {
 		return authorName;
 	}
@@ -63,6 +53,18 @@ public class TrCartItem {
 	}
 	public void setBookID(Integer bookID) {
 		this.bookID = bookID;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getBuyItemPrice() {
+		return buyItemPrice;
+	}
+	public void setBuyItemPrice(String buyItemPrice) {
+		this.buyItemPrice = buyItemPrice;
 	}
 
 	

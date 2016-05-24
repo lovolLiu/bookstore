@@ -616,11 +616,12 @@ select {
 					var itemTotalPrice = tr.find(".cart_total_price");
 					numInput.attr("value", data.num);
 					
-					var oldItemTotalPrice = parseInt(itemTotalPrice.html().substr(1, itemTotalPrice.html().length));
+					var oldItemTotalPrice = parseFloat(itemTotalPrice.html().substr(1, itemTotalPrice.html().length)).toFixed(2);
 					
 					itemTotalPrice.html("¥" + data.buyItemPrice);
 					
-					g_totalPrice = parseInt(g_totalPrice) - parseInt(oldItemTotalPrice) + parseInt(data.buyItemPrice);
+					g_totalPrice = parseFloat(g_totalPrice) - parseFloat(oldItemTotalPrice) + parseFloat(data.buyItemPrice);
+					g_totalPrice = g_totalPrice.toFixed(2);
 					$("#orderTotal").html("¥" + g_totalPrice);
 					
 				}

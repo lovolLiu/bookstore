@@ -299,7 +299,7 @@
 				<a class="checkout__button" href="#"  onclick="CheckoutCart();">
 					<!-- Fallback location --> <span class="checkout__text"> <span
 						class="checkout__text-inner checkout__initial-text">结算</span> <span
-						class="checkout__text-inner checkout__final-text">$40.70<i
+						class="checkout__text-inner checkout__final-text">$<span id="price_number_span">40.70</span><i
 							class="fa fa-fw fa-shopping-cart"
 							></i></span>
 				</span>
@@ -502,6 +502,14 @@
 		function CheckoutCart(){
 			$(".checkout__button").attr("onclick", "window.location='cart.jsp'");
 			setTimeout("DownloadCartList()", 200);
+			//更新购物车价格
+			$.ajax({
+				url: "GetCartTotal",
+				dataType:"json",
+				success:function(data){
+					$("#price_number_span").html(data);
+				}
+			})
 		}
 	
 		function CloseCartDialog(){

@@ -43,7 +43,8 @@ public class CartServiceImpl implements CartService {
 		//如果没有，需要新建一个buyItem，并新建一个cartItem
 		BuyItem buyItem = new BuyItem();
 		buyItem.setBuyNum(num);
-		buyItem.setCurrentPrice(book.getPrice());
+		Double currentPrice = book.getPrice() * book.getDiscount()/100;
+		buyItem.setCurrentPrice(currentPrice);
 		buyItem.setHasApprise(false);
 		buyItem.setBookID(bookID);
 		Integer buyItemID =  buyItemDAO.save(buyItem);

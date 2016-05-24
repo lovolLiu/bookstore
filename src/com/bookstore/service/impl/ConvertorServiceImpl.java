@@ -1,5 +1,6 @@
 package com.bookstore.service.impl;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,11 +45,11 @@ public class ConvertorServiceImpl implements ConvertorService{
 	UserDAO userDAO;
 	
 	public Double calculateTotalPrice(List<TrCartItem> trCartItemList){
-		Double totalPrice = 0.0;
+		Double fTotalPrice = 0.0;
 		for(TrCartItem trCartItem : trCartItemList){
-			totalPrice += trCartItem.getBuyItemPrice();
+			fTotalPrice += Double.parseDouble(trCartItem.getBuyItemPrice());
 		}
-		return totalPrice;
+		return fTotalPrice;
 	}
 	
 	
@@ -88,8 +89,9 @@ public class ConvertorServiceImpl implements ConvertorService{
 			pictureUrl = pictureList.get(0).getUrl();
 		trCartItem.setImageUrl(pictureUrl);
 		trCartItem.setNum(buyItem.getBuyNum());
-		trCartItem.setPrice(buyItem.getCurrentPrice());
-		trCartItem.setBuyItemPrice(trCartItem.getPrice() * trCartItem.getNum());
+		DecimalFormat df = new DecimalFormat("0.00");
+		trCartItem.setPrice(df.format(buyItem.getCurrentPrice()));
+		trCartItem.setBuyItemPrice(df.format(Double.parseDouble(trCartItem.getPrice()) * trCartItem.getNum()));
 		return trCartItem;
 	}
 

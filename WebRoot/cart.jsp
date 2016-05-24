@@ -546,7 +546,8 @@ select{
 						$("input[type='checkbox']").each(function() {
 							if(this.checked){
 								var id = $(this).parent().parent().attr("id");
-								totalPrice += parseInt($("tr#" + id + " .cart_span").html());
+								totalPrice = parseFloat(totalPrice) + parseFloat($("tr#" + id + " .cart_span").html());
+								totalPrice = totalPrice.toFixed(2);
 							}
 						})
 						$("#cart_total").html("¥" + totalPrice);
