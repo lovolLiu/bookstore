@@ -220,7 +220,7 @@ Sidebar heading:	'Oswald', sans-serif;
 
 .userbox.open .dropdown-menu a:hover {
 	background: none;
-	color: #435D78;
+	color: orange;
 }
 
 .userbox.open .dropdown-menu i {
