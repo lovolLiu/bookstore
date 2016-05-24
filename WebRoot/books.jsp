@@ -128,46 +128,58 @@
 								<input id="searchinput" type="text" placeholder="输入关键词" > 
 								<i class="fa fa-search" ></i>
 							</div>
-							<a onclick="filter()" class="btn btn-primary col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">搜索</a>
+							<a onclick="filter()" class="btn btn-primary col-md-12" style="margin-top:15px;">搜索</a>
 						</div>
 						<!--SEARCH WIDGET END-->
 						<!--NEW ARRIVAL WIDGET START-->
 						<div class="widget widget-new-arrival">
-							<h2>新品上架</h2>
+							<h2>新书上架</h2>
 							<ul>
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival1.png" alt=""></a>
+											<a href="BookDetail?bookID=${newestDivBookList[0].bookID}"><img
+												src="<s:property value='newestDivBookList[0].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore</p>
+											<h3>
+												<s:property value="newestDivBookList[0].bookName" />
+											</h3>
+											<p>
+												<s:property value="newestDivBookList[0].description" />
+											</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival2.png" alt=""></a>
+											<a href="BookDetail?bookID=${newestDivBookList[1].bookID}"><img
+												src="<s:property value='newestDivBookList[1].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore</p>
+											<h3>
+												<s:property value="newestDivBookList[1].bookName" />
+											</h3>
+											<p>
+												<s:property value="newestDivBookList[1].description" />
+											</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival3.png" alt=""></a>
+											<a href="BookDetail?bookID=${newestDivBookList[2].bookID}"><img
+												src="<s:property value='newestDivBookList[2].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore</p>
+											<h3>
+												<s:property value="newestDivBookList[2].bookName" />
+											</h3>
+											<p>
+												<s:property value="newestDivBookList[2].description" />
+											</p>
 										</div>
 									</div>
 								</li>
@@ -176,7 +188,7 @@
 						<!--NEW ARRIVAL WIDGET END-->
 						<!--CATEGORY WIDGET START-->
 						<div class="widget widget-categories">
-							<h2>图书分类</h2>
+							<h2>类别</h2>
 							<ul>
 								<s:iterator value="btList">
 								<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
@@ -186,68 +198,93 @@
 						<!--CATEGORY WIDGET END-->
 						<!--NEW ARRIVAL WIDGET START-->
 						<div class="widget widget-new-arrival">
-							<h2>热销榜</h2>
+							<h2>畅销书目</h2>
 							<ul class="bxslider">
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival2.png" alt=""></a>
+											<a href="BookDetail?bookID=${hotestDivBookList[0].bookID}"><img
+												src="<s:property value='hotestDivBookList[0].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore</p>
+											<h3>
+												<s:property value="hotestDivBookList[0].bookName" />
+											</h3>
+											<p>
+												<s:property value="hotestDivBookList[0].description" />
+											</p>
 										</div>
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival1.png" alt=""></a>
+											<a href="BookDetail?bookID=${hotestDivBookList[1].bookID}"><img
+												src="<s:property value='hotestDivBookList[1].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et</p>
+											<h3>
+												<s:property value="hotestDivBookList[1].bookName" />
+											</h3>
+											<p>
+												<s:property value="hotestDivBookList[1].description" />
+											</p>
 										</div>
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival3.png" alt=""></a>
+											<a href="BookDetail?bookID=${hotestDivBookList[2].bookID}"><img
+												src="<s:property value='hotestDivBookList[2].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore</p>
+											<h3>
+												<s:property value="hotestDivBookList[2].bookName" />
+											</h3>
+											<p>
+												<s:property value="hotestDivBookList[2].description" />
+											</p>
 										</div>
 									</div>
 								</li>
 								<li>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival3.png" alt=""></a>
+											<a href="BookDetail?bookID=${hotestDivBookList[3].bookID}"><img
+												src="<s:property value='hotestDivBookList[3].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore</p>
+											<h3>
+												<s:property value="hotestDivBookList[3].bookName" />
+											</h3>
+											<p>
+												<s:property value="hotestDivBookList[3].description" />
+											</p>
 										</div>
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival2.png" alt=""></a>
+											<a href="BookDetail?bookID=${hotestDivBookList[4].bookID}"><img
+												src="<s:property value='hotestDivBookList[4].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore</p>
+											<h3>
+												<s:property value="hotestDivBookList[4].bookName" />
+											</h3>
+											<p>
+												<s:property value="hotestDivBookList[4].description" />
+											</p>
 										</div>
 									</div>
 									<div class="new-arrival">
 										<div class="kode-thumb">
-											<a href="#"><img src="images/new-arrival1.png" alt=""></a>
+											<a href="BookDetail?bookID=${hotestDivBookList[5].bookID}"><img
+												src="<s:property value='hotestDivBookList[5].URL'/>" alt=""></a>
 										</div>
 										<div class="kode-text">
-											<h3>consetetur sadip scing</h3>
-											<p>Sed diam nonumy eirmod tempor invidunt ut labore et
-												dolore</p>
+											<h3>
+												<s:property value="hotestDivBookList[5].bookName" />
+											</h3>
+											<p>
+												<s:property value="hotestDivBookList[5].description" />
+											</p>
 										</div>
 									</div>
 								</li>
@@ -269,7 +306,7 @@
 											<a href="BookDetail?bookID=${bookID }" >${bookName }</a>
 										</h3>
 										<p>
-											<a href="BookDetail?bookID=${bookID }" class="btn btn-primary">详情</a>
+											<a class="btn btn-primary" href="BookDetail?bookID=${bookID }">详情</a>
 										</p>
 									</div>
 									<div class="book-price">
@@ -316,7 +353,7 @@
 				<a class="checkout__button" href="#"  onclick="CheckoutCart();">
 					<!-- Fallback location --> <span class="checkout__text"> <span
 						class="checkout__text-inner checkout__initial-text">结算</span> <span
-						class="checkout__text-inner checkout__final-text">$40.70<i
+						class="checkout__text-inner checkout__final-text">$<span id="price_number_span">40.70</span><i
 							class="fa fa-fw fa-shopping-cart"
 							></i></span>
 				</span>
@@ -539,7 +576,21 @@
 		function CheckoutCart(){
 			$(".checkout__button").attr("onclick", "window.location='cart.jsp'");
 			setTimeout("DownloadCartList()", 200);
+			//更新购物车价格
+			UpdateCartTotal();
 		}
+	
+		function UpdateCartTotal(){
+			$.ajax({
+				url: "GetCartTotal",
+				dataType:"json",
+				success:function(data){
+					$("#price_number_span").html(data);
+				}
+			})
+		}
+	
+		
 	
 		function CloseCartDialog(){
 			$(".checkout__button").attr("onclick", "CheckoutCart()");
@@ -555,6 +606,7 @@
 								$("#" + buyItemID).slideDown();
 								$("#" + buyItemID).remove();
 								UpdateCartNum();
+								UpdateCartTotal();
 							}
 						})
 						return false;
@@ -566,8 +618,13 @@
 				url: url,
 				dataType: "json",
 				success: function(data){
-					messageToast("成功加入购物车~");
-					UpdateCartNum();
+					if(data==true){
+						messageToast("成功加入购物车~");
+						UpdateCartNum();
+					}
+					else{
+						messageToast("仓库剩余量不足~");
+					}
 				}
 			})
 		}

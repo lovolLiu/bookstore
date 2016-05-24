@@ -1,5 +1,6 @@
 package com.bookstore.service.impl;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import com.bookstore.dao.UserDAO;
 import com.bookstore.domain.Address;
 import com.bookstore.domain.Apprise;
 import com.bookstore.domain.Book;
+import com.bookstore.domain.BookType;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
 import com.bookstore.domain.Picture;
@@ -22,6 +24,7 @@ import com.bookstore.util.DivBook;
 import com.bookstore.util.DivOrder;
 import com.bookstore.util.LiApprise;
 import com.bookstore.util.TrCartItem;
+import com.bookstore.util.TypeAndBookListItem;
 
 /**
  * @author Zhiqi Yang
@@ -42,11 +45,11 @@ public class ConvertorServiceImpl implements ConvertorService{
 	UserDAO userDAO;
 	
 	public Double calculateTotalPrice(List<TrCartItem> trCartItemList){
-		Double totalPrice = 0.0;
+		Double fTotalPrice = 0.0;
 		for(TrCartItem trCartItem : trCartItemList){
-			totalPrice += trCartItem.getBuyItemPrice();
+			fTotalPrice += Double.parseDouble(trCartItem.getBuyItemPrice());
 		}
-		return totalPrice;
+		return fTotalPrice;
 	}
 	
 	
@@ -86,8 +89,9 @@ public class ConvertorServiceImpl implements ConvertorService{
 			pictureUrl = pictureList.get(0).getUrl();
 		trCartItem.setImageUrl(pictureUrl);
 		trCartItem.setNum(buyItem.getBuyNum());
-		trCartItem.setPrice(buyItem.getCurrentPrice());
-		trCartItem.setBuyItemPrice(trCartItem.getPrice() * trCartItem.getNum());
+		DecimalFormat df = new DecimalFormat("0.00");
+		trCartItem.setPrice(df.format(buyItem.getCurrentPrice()));
+		trCartItem.setBuyItemPrice(df.format(Double.parseDouble(trCartItem.getPrice()) * trCartItem.getNum()));
 		return trCartItem;
 	}
 
@@ -217,6 +221,21 @@ public class ConvertorServiceImpl implements ConvertorService{
 		return divOrder;
 	}
 	
+
+	public List<TypeAndBookListItem> bookTypeToTypeAndBookListItemList(List<BookType> bookTypeList){
+		List<TypeAndBookListItem> resultList = new ArrayList();
+		for(BookType bookType : bookTypeList){
+			TypeAndBookListItem item = new TypeAndBookListItem();
+			item.setBookType(bookType);
+			List<Book> bookList = bookDAO.findByTypeID(bookType.getTypeID());
+			List<DivBook> divBookList = bookIDToDivBook(bookList);
+			item.setBookList(divBookList);
+			resultList.add(item);
+		}
+		return resultList;
+	}
+	
+
 	@Override
 	public List<LiApprise> appriseListToLiApprise(List<Apprise> appriseList) {
 		List<LiApprise> liAppriseList = new ArrayList<LiApprise>();

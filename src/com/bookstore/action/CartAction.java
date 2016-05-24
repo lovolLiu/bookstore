@@ -1,6 +1,7 @@
 
 package com.bookstore.action;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +27,7 @@ public class CartAction {
 	
 	//To cart.jsp -- ordinary variable
 	List<TrCartItem> trCartList;
-	Double totalPrice;
+	String totalPrice;
 	
 	//To cart.jap -- json variable
 	Boolean isSuccess;
@@ -51,10 +52,12 @@ public class CartAction {
 		
 		List<BuyItem> buyItemList = cartService.getCartItemList(userID);
 		trCartList = convertorService.buyItemListToTrCartList(buyItemList);
-		totalPrice = 0.0;
+		Double fTotalPrice = 0.0;
 		for(TrCartItem trCartItem: trCartList){
-			totalPrice += trCartItem.getBuyItemPrice();
+			fTotalPrice += Double.parseDouble(trCartItem.getBuyItemPrice());
 		}
+		DecimalFormat df = new DecimalFormat("0.00");
+		totalPrice = df.format(fTotalPrice);
 		return "success";
 	}
 	
@@ -122,14 +125,6 @@ public class CartAction {
 		this.trCartList = trCartList;
 	}
 
-	public Double getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
 	public CartService getCartService() {
 		return cartService;
 	}
@@ -184,6 +179,14 @@ public class CartAction {
 
 	public void setCartNum(Integer cartNum) {
 		this.cartNum = cartNum;
+	}
+
+	public String getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(String totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	

@@ -1,5 +1,6 @@
 package com.bookstore.action;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class CheckOrderInfoAction {
 	//out
 	List<Address> addressList;
 	List<TrCartItem> trOrderItemList;
-	Double totalPrice;
+	String totalPrice;
 	
 	//IOC Service
 	ConvertorService convertorService;
@@ -30,8 +31,9 @@ public class CheckOrderInfoAction {
 		Integer userID = (Integer) session.get("userID");
 		trOrderItemList = convertorService.buyItemIDListToTrCartList(buyItemIDList);
 		addressList = personalInfoService.getAddress(userID);
-		totalPrice = convertorService.calculateTotalPrice(trOrderItemList);
-		
+		Double fTotalPrice = convertorService.calculateTotalPrice(trOrderItemList);
+		DecimalFormat df = new DecimalFormat("0.00");
+		totalPrice = df.format(fTotalPrice);
 		return "success";
 	}
 
@@ -51,13 +53,6 @@ public class CheckOrderInfoAction {
 		this.addressList = addressList;
 	}
 
-	public Double getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
 
 	public List<TrCartItem> getTrOrderItemList() {
 		return trOrderItemList;
@@ -81,6 +76,14 @@ public class CheckOrderInfoAction {
 
 	public void setPersonalInfoService(PersonalInfoService personalInfoService) {
 		this.personalInfoService = personalInfoService;
+	}
+
+	public String getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(String totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	

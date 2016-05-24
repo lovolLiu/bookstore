@@ -140,6 +140,16 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 sidebar">
+					    <!--SEARCH WIDGET START-->
+						<div class="widget widget-search">
+							<h2>搜索</h2>
+							<div class="input-container">
+								<input id="searchinput" type="text" placeholder="输入关键词" > 
+								<i class="fa fa-search" ></i>
+							    <a onclick="filter()" class="btn btn-primary">搜索</a>
+							</div>
+						</div>
+						<!--SEARCH WIDGET END-->
 						<div class="widget widget-new-arrival">
 							<h2>新书上架</h2>
 							<ul>
@@ -198,14 +208,9 @@
 						<div class="widget widget-categories">
 							<h2>类别</h2>
 							<ul>
-								<li><a href="#"><s:property value="" /></a></li>
-								<li><a href="#">Web/Graphic Design</a></li>
-								<li><a href="#">Mobile Development</a></li>
-								<li><a href="#">Video Editing</a></li>
-								<li><a href="#">Photoshop</a></li>
-								<li><a href="#">Web/Graphic Design</a></li>
-								<li><a href="#">Mobile Development</a></li>
-								<li><a href="#">Video Editing</a></li>
+								<s:iterator value="btList">
+								<li><a href="sortSearchAction?typeID=${typeID }">${type }</a></li>
+								</s:iterator>
 							</ul>
 						</div>
 						<!--CATEGORY WIDGET END-->
@@ -736,6 +741,7 @@
 							})
 						});
 	</script>
+
 	<script>
 		function gocart(){
 		    var usrName = $('#usrName').html();
@@ -745,28 +751,40 @@
 		        location.href="cart.jsp"
 		}
 		
-		function StraightBuy() {
-			var url = "StraightBuy?bookID=${book.bookID }&num="
-					+ $(".cart_quantity_input").attr("value");
-			window.location.href = url;
+	
+	function StraightBuy(){
+		var restNum = ${book.restNum};
+		var wantedNum = $(".cart_quantity_input").attr("value");
+		if(wantedNum > restNum){
+			messageToast("仓库剩余量不足~");
+			return;
 		}
-
-		function AddCartItem() {
-			var url = "AddCartItem?bookID=${book.bookID }&num="
-					+ $(".cart_quantity_input").attr("value");
-			$.ajax({
-				url : url,
-				dataType : "json",
-				success : function(data) {
+		var url = "StraightBuy?bookID=${book.bookID }&num=" + wantedNum;
+		window.location.href = url;
+	}
+	
+	function AddCartItem(){
+		var url = "AddCartItem?bookID=${book.bookID }&num=" + $(".cart_quantity_input").attr("value");
+		$.ajax({
+			url: url,
+			dataType: "json",
+			success: function(data){
+				if(data==true){
 					messageToast("成功加入购物车~");
 				}
-			})
-		}
-		function QuantityUp() {
-			var currentNum = parseInt($(".cart_quantity_input").attr("value"));
-			$(".cart_quantity_input").attr("value", currentNum + 1);
-			return false;
-		}
+				else{
+					messageToast("仓库剩余量不足~");
+				}
+			}
+		})
+	}
+	function QuantityUp() {
+		var currentNum = parseInt($(".cart_quantity_input").attr("value"));
+		$(".cart_quantity_input").attr("value", currentNum + 1);
+		return false;
+	}
+
+
 
 		function QuantityDown() {
 			var currentNum = $(".cart_quantity_input").attr("value");

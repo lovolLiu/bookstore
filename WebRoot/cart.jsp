@@ -564,6 +564,7 @@ select {
 												$("tbody[id='cartItem']")
 														.prepend(_tr);
 											})
+
 						}
 					})
 		}
@@ -630,7 +631,30 @@ select {
 			$(".time_messagebox").fadeIn(300);
 			setTimeout("$('.time_messagebox').fadeOut(300);", 1200)
 		}
-	</script>
+					
+				
+					
+					
+					function OnClickCheckBox(buyItemID){
+						UpdateTotalPrice();
+					}
+					
+					
+					function UpdateTotalPrice(){
+						
+						var totalPrice = 0.0;
+						$("input[type='checkbox']").each(function() {
+							if(this.checked){
+								var id = $(this).parent().parent().attr("id");
+								totalPrice = parseFloat(totalPrice) + parseFloat($("tr#" + id + " .cart_span").html());
+								totalPrice = totalPrice.toFixed(2);
+							}
+						})
+						$("#cart_total").html("¥" + totalPrice);
+						
+					}
+				   </script>
+				  
 
 </body>
 </html>
