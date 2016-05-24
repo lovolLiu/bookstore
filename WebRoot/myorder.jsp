@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,45 +107,51 @@
 	color: white;
 	background: orange;
 }
+
 .btn.btn-primary {
 	background: #FE980F;
 	color: white;
 	border: 0 none;
 	border-radius: 0;
 }
-.itemdetail{
-    width:20%;
+
+.itemdetail {
+	width: 20%;
 }
-.deliver{
-    width:20%;
+
+.deliver {
+	width: 20%;
 }
-.sum{
-    width:20%;
+
+.sum {
+	width: 20%;
 }
-.status{
-    width:20%;
+
+.status {
+	width: 20%;
 }
-.operation{
-    width:20%;
+
+.operation {
+	width: 20%;
 }
 </style>
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
-    function formatDate(data) {
-    		var strDate = "20"+data;		//for date in the format "YY-MM-DD HH:MM:SS(.000)" 
-			var d = new Date(strDate); 
-			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1)
-					+ "-" + d.getDate();
-			var hours = ((d.getHours()) % 24 < 10) ? "0"
-					+ (d.getHours() ) % 24 : (d.getHours()) % 24;
-			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d
-					.getMinutes();
-			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d
-					.getSeconds();
-			var formattedTime = hours + ":" + minutes + ":" + seconds;
-			formattedDate = formattedDate + " " + formattedTime;
-			return formattedDate;
-		}
+	function formatDate(data) {
+		var strDate = "20" + data; //for date in the format "YY-MM-DD HH:MM:SS(.000)" 
+		var d = new Date(strDate);
+		var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-"
+				+ d.getDate();
+		var hours = ((d.getHours()) % 24 < 10) ? "0" + (d.getHours()) % 24 : (d
+				.getHours()) % 24;
+		var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d
+				.getMinutes();
+		var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d
+				.getSeconds();
+		var formattedTime = hours + ":" + minutes + ":" + seconds;
+		formattedDate = formattedDate + " " + formattedTime;
+		return formattedDate;
+	}
 </script>
 <body>
 	<div id="loader-wrapper">
@@ -173,7 +179,22 @@
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
 						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
-						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
+						<li id="userbox" style="display:none;">
+							<div class="userbox" style="margin-top:30px;">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<div class="profile-info">
+										<span class="role">欢迎</span> <span id="usrName" class="name"></span>
+									</div> <i class="fa custom-caret"></i>
+								</a>
+								<div class="dropdown-menu">
+									<ul class="list-unstyled">
+										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										</li>
+										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -197,60 +218,68 @@
 				<section>
 					<h3>订单状态</h3>
 					<ul class="project-filter" id="filters">
-						<li><a id="all-filter" data-filter="*" class="filter-selected">所有</a></li>
+						<li><a id="all-filter" data-filter="*"
+							class="filter-selected">所有</a></li>
 						<li><a id="unpaid-filter" data-filter=".未付款">未付款</a></li>
 						<li><a id="paid-filter" data-filter=".已付款">已付款</a></li>
 						<li><a id="canceled-filter" data-filter=".已取消">已取消</a></li>
 					</ul>
 				</section>
 				<div id="isotope-container" class="container">
-				    <s:iterator value="divOrderList" var="u">
-				        <s:if test="#u.orderStats != '已删除'">
-				        <table id="<s:property value='orderId'/>" class="table table-striped isotope-item <s:property value='orderStats'/>">
-					    <tbody>
-					        <tr class="itemhead">
-					            <td colspan="5">
-					                <span class="dealtime">
-					                    <script type="text/javascript">
-					                        var formatedDate = formatDate("<s:property value='dealTime' />");
-					                        $('#<s:property value='orderId'/>').find('tbody').find('.dealtime').html(formatedDate);
-					                    </script>
-					                </span>
-					                <span class="orderhead"> 订单号：</span>
-					                <span class="orderno"><s:property value='orderId'/></span>
-					            </td>
-					        </tr>
-					        <tr class="item">
-					            <td class="itemdetail">
-					                <div>
-					                    <s:iterator value="#u.orderItemList">
-					                      <div class="pic"><img src="<s:property value='imageUrl' />"></div>
-					                    </s:iterator>
-					                </div>
-					            </td>
-					            <td class="deliver">
-					                <span data-toggle="tooltip" data-placement="bottom" title=""><s:property value='consignee'/></span>
-					            </td>
-					            <td class="sum"><span><s:property value='totalPrice'/></span></td>
-					            <td class="status"><span><s:property value='orderStats'/></span></td>
-					            <s:if test="#u.orderStats == '未付款'">
-					                <td class="operation">
-					                    <a class="btn btn-primary canelorder">取消</a>
-					                    <a class="btn btn-primary deleteorder">删除</a>
-					                    <a class="btn btn-primary orderdetail" href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
-					                </td>
-					            </s:if>
-					            <s:else>
-					                <td class="operation">
-					                    <a class="btn btn-primary deleteorder">删除</a>
-					                    <a class="btn btn-primary orderdetail" href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
-					                </td>
-					            </s:else>
-					        </tr>
-					    </tbody>
-				    </table>
-				    </s:if>
-				    </s:iterator>
+					<s:iterator value="divOrderList" var="u">
+						<s:if test="#u.orderStats != '已删除'">
+							<table id="<s:property value='orderId'/>"
+								class="table table-striped isotope-item <s:property value='orderStats'/>">
+								<tbody>
+									<tr class="itemhead">
+										<td colspan="5"><span class="dealtime"> <script
+													type="text/javascript">
+											var formatedDate = formatDate("<s:property value='dealTime' />");
+											$('#<s:property value='orderId'/>')
+													.find('tbody').find(
+															'.dealtime').html(
+															formatedDate);
+										</script>
+										</span> <span class="orderhead"> 订单号：</span> <span class="orderno"><s:property
+													value='orderId' /></span></td>
+									</tr>
+									<tr class="item">
+										<td class="itemdetail">
+											<div>
+												<s:iterator value="#u.orderItemList">
+													<div class="pic">
+														<img src="<s:property value='imageUrl' />">
+													</div>
+												</s:iterator>
+											</div>
+										</td>
+										<td class="deliver"><span data-toggle="tooltip"
+											data-placement="bottom" title=""><s:property
+													value='consignee' /></span></td>
+										<td class="sum"><span><s:property
+													value='totalPrice' /></span></td>
+										<td class="status"><span><s:property
+													value='orderStats' /></span></td>
+										<s:if test="#u.orderStats == '未付款'">
+											<td class="operation"><a
+												class="btn btn-primary canelorder">取消</a> <a
+												class="btn btn-primary deleteorder">删除</a> <a
+												class="btn btn-primary orderdetail"
+												href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
+											</td>
+										</s:if>
+										<s:else>
+											<td class="operation"><a
+												class="btn btn-primary deleteorder">删除</a> <a
+												class="btn btn-primary orderdetail"
+												href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
+											</td>
+										</s:else>
+									</tr>
+								</tbody>
+							</table>
+						</s:if>
+					</s:iterator>
 				</div>
 			</div>
 		</div>
@@ -328,38 +357,54 @@
 	<script src="js/functions.js"></script>
 	<script src="js/jquery.isotope.js"></script>
 	<script type="application/x-javascript">
+		
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		function getUrlParam(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-            if (r != null) return unescape(r[2]); return null; //返回参数值
-        }
-        var $container = $('#isotope-container');
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+			var r = window.location.search.substr(1).match(reg); //匹配目标参数
+			if (r != null)
+				return unescape(r[2]);
+			return null; //返回参数值
+		}
+		var $container = $('#isotope-container');
 		$container.isotope({
 			itemSelector : '.isotope-item',
 		});
 		$(document).ready(function() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						$('#gologin').attr("style", "");
+					} else {
+						$('#userbox').attr("style", "");
+						$('#usrName').html(data);
+					}
+				}
+			})
 			var filterid = getUrlParam("filter");
 			$('#filters li a').removeClass('filter-selected');
-			if(filterid == "0"){//userinfo页点击了“待付款”
-			    $('#unpaid-filter').addClass('filter-selected');
-			    var selector = $('#unpaid-filter').attr('data-filter');
-			    $container.isotope({
-				    filter : selector
-			    });
-			    return false;
-			}else if(filterid == "1"){//userinfo页点击了“已付款”
-			    $('#paid-filter').addClass('filter-selected');
-			    var selector = $('#paid-filter').attr('data-filter');
-			    $container.isotope({
-				    filter : selector
-			    });
-			    return false;
-			}else{//userinfo页点击了“查看全部订单”
-			    $('#all-filter').addClass('filter-selected');
+			if (filterid == "0") {//userinfo页点击了“待付款”
+				$('#unpaid-filter').addClass('filter-selected');
+				var selector = $('#unpaid-filter').attr('data-filter');
+				$container.isotope({
+					filter : selector
+				});
+				return false;
+			} else if (filterid == "1") {//userinfo页点击了“已付款”
+				$('#paid-filter').addClass('filter-selected');
+				var selector = $('#paid-filter').attr('data-filter');
+				$container.isotope({
+					filter : selector
+				});
+				return false;
+			} else {//userinfo页点击了“查看全部订单”
+				$('#all-filter').addClass('filter-selected');
 			}
 			$('#horizontalTab').easyResponsiveTabs({
 				type : 'default', //Types: default, vertical, accordion           
@@ -378,40 +423,48 @@
 			});
 			return false;
 		})
-		
-		$("a[class='btn btn-primary canelorder']").click(function cancelOrder(){
-			var orderID = $(this).parent().parent().prev().find("span[class='orderno']").text();
-			$.ajax({
-					url:"CancelOrder",
-					type:"post",
-					data:{"orderID":orderID},
-					dataType:"json",	/* 服务器返回的数据类型 */
-					success:function(data){
-						if(data=="success"){
-							//$(e.target).parent().parent().parent().remove();
-		          		}else{
-		          			alert("取消失败");
-		          		}
-					}
-				});
-		})
-		
-		$("a[class='btn btn-primary deleteorder']").click(function deleteOrder(){
-			var orderID = $(this).parent().parent().prev().find("span[class='orderno']").text();
-			$.ajax({
-					url:"DeleteOrder",
-					type:"post",
-					data:{"orderID":orderID},
-					dataType:"json",	/* 服务器返回的数据类型 */
-					success:function(data){
-						if(data=="success"){
-							$(this).parent().parent().parent().remove();
-		          		}else{
-		          			alert("删除失败");
-		          		}
-					}
-				});
-		})
+
+		$("a[class='btn btn-primary canelorder']").click(
+				function cancelOrder() {
+					var orderID = $(this).parent().parent().prev().find(
+							"span[class='orderno']").text();
+					$.ajax({
+						url : "CancelOrder",
+						type : "post",
+						data : {
+							"orderID" : orderID
+						},
+						dataType : "json", /* 服务器返回的数据类型 */
+						success : function(data) {
+							if (data == "success") {
+								//$(e.target).parent().parent().parent().remove();
+							} else {
+								alert("取消失败");
+							}
+						}
+					});
+				})
+
+		$("a[class='btn btn-primary deleteorder']").click(
+				function deleteOrder() {
+					var orderID = $(this).parent().parent().prev().find(
+							"span[class='orderno']").text();
+					$.ajax({
+						url : "DeleteOrder",
+						type : "post",
+						data : {
+							"orderID" : orderID
+						},
+						dataType : "json", /* 服务器返回的数据类型 */
+						success : function(data) {
+							if (data == "success") {
+								$(this).parent().parent().parent().remove();
+							} else {
+								alert("删除失败");
+							}
+						}
+					});
+				})
 	</script>
 
 </body>

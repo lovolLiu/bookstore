@@ -64,8 +64,6 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
-						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
-						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -100,10 +98,12 @@
 
 					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 						<div class="register">
-							<form onSubmit="return false;">								
-								<input placeholder="用户名" class="mail" type="text" id="loginusrname" required="" name="username">									
-								<input placeholder="密码" class="lock" type="password" id="loginpwd" required="" name="password">				
-								<input type="submit" value="登陆" onclick="loginUser()"/>
+							<form onSubmit="return false;">
+								<input placeholder="用户名" class="mail" type="text"
+									id="loginusrname" required="" name="username"> <input
+									placeholder="密码" class="lock" type="password" id="loginpwd"
+									required="" name="password"> <input type="submit"
+									value="登陆" onclick="loginUser()" />
 							</form>
 							<p>
 								忘记密码?<a href="findpassword.jsp"> 点击这里</a>
@@ -114,19 +114,25 @@
 					<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 						<div class="register">
 
-							<h4 id="register-success" style="width: 100%;display: inline-block;text-align: center;display: none;"></h4>
-							<form id="registerform" onSubmit="return false;">	
-								<input id="usrname" placeholder="用户名" type="text" required="required" onblur="checkusrname()">
+							<h4 id="register-success"
+								style="width: 100%;display: inline-block;text-align: center;display: none;"></h4>
+							<form id="registerform" onSubmit="return false;">
+								<input id="usrname" placeholder="用户名" type="text"
+									required="required" onblur="checkusrname()">
 								<div id="errorusrname" class="errormessage"></div>
-								<input id="tel" placeholder="电话号码" type="text" required="" onblur="checktel()">
-								<div id="errortel" class="errormessage"></div>		
-								<input id="email" placeholder="电子邮箱" type="text" required="required" onblur="checkemail()">
-								<div id="erroremail" class="errormessage"></div>											
-								<input id="pwd1" placeholder="密码" type="password" required="required">	
-								<input id="pwd2" placeholder="重复密码" type="password" required="required" onblur="checkpwd2()">
+								<input id="tel" placeholder="电话号码" type="text" required=""
+									onblur="checktel()">
+								<div id="errortel" class="errormessage"></div>
+								<input id="email" placeholder="电子邮箱" type="text"
+									required="required" onblur="checkemail()">
+								<div id="erroremail" class="errormessage"></div>
+								<input id="pwd1" placeholder="密码" type="password"
+									required="required"> <input id="pwd2"
+									placeholder="重复密码" type="password" required="required"
+									onblur="checkpwd2()">
 								<div id="errorpwd2" class="errormessage"></div>
 								<div class="sign-up" id="sign-up">
-									<input type="submit" value="注册" onclick="submitUser()"/>
+									<input type="submit" value="注册" onclick="submitUser()" />
 								</div>
 							</form>
 						</div>
@@ -147,8 +153,6 @@
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
 								<li><a href="books.jsp">开始选购</a></li>
-								<li><a href="cart.jsp">购物车</a></li>
-								<li><a href="userinfo.jsp">我的账户</a></li>
 							</ul>
 						</div>
 					</div>
@@ -190,204 +194,164 @@
 			</div>
 		</div>
 	</div>
-    <!--LOGINFORM END-->
-    <footer class="footer-3">
-        <div class="container">
-            <div class="row">
-                <!--CATEGORY WIDGET START-->
-                <div class="col-md-6 col-sm-6">
-                    <div class="widget widget-categories">
-                        <h2>站点地图</h2>
-                        <ul>
-                            <li><a href="index.jsp">主页</a></li> 
-                            <li><a href="books.jsp">开始选购</a></li> 
-                            <li><a href="cart.jsp">购物车</a></li> 
-                            <li><a href="userinfo.jsp">我的账户</a></li> 
-                        </ul>
-                    </div>
-                </div>
-                <!--CATEGORY WIDGET END-->
-                <!--NEWSLETTER START-->
-                <div class="col-md-6 col-sm-6">
-                    <div class="widget widget-contact-info">
-                        <h2>联系我们</h2>
-                        <ul>
-                            <li>
-                                <i class="fa fa-paper-plane"></i>
-                                <div class="kode-text">
-                                    <h4>地址</h4>
-                                    <p>北京市海淀区西土城路10号北京邮电大学</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fa fa-phone"></i>
-                                <div class="kode-text">
-                                    <h4>电话号码</h4>
-                                    <p>+55(62) 55258-4570</p>
-                                    <p>+55(62) 55258-4570</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fa fa-envelope-o"></i>
-                                <div class="kode-text">
-                                    <h4>电子邮箱</h4>
-                                    <a href="#">teamx@bupt.edu.cn</a>
-                                </div>
-                            </li>
-                        </ul>                        
-                    </div>
-                </div>
-                <!--NEWSLETTER START END-->
-            </div>
-        </div>
-    </footer>
-    <div class="copyrights">
-    	<div class="container">
-        	<p>Copyrights © 2015-16 BUPTSSE. All rights reserved</p>
-            <div class="cards"><img src="images/cards.png" alt=""></div>
-        </div>
-    </div>
-</div>
-<!--WRAPPER END-->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/modernizr.custom.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.bxslider.min.js"></script>
-<script src="js/bootstrap-slider.js"></script>
-<script src="js/waypoints.min.js"></script> 
-<script src="js/jquery.counterup.min.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/dl-menu/jquery.dlmenu.js"></script>
-<!--<script src="js/googlemap.js"></script>-->
-<script type="text/javascript" src="lib/hash.js"></script>
-<script type="text/javascript" src="lib/booklet-lib.js"></script>
-<script src="js/jquerypp.custom.js"></script>
-<script src="js/jquery.bookblock.js"></script>
-<script src="js/functions.js"></script>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-</script>
-<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-<script type="text/javascript">
-                    var flag = true;
-					$(document).ready(function () {
-						$('#horizontalTab').easyResponsiveTabs({
-							type: 'default', //Types: default, vertical, accordion           
-							width: 'auto', //auto or any width like 600px
-							fit: true   // 100% fit in a container
-						});
-					});
-					function loginUser(){
-						var username = $("input[id='loginusrname']").val();
-						var pwd = $("input[id='loginpwd']").val();
-						$.ajax({
-							url:"Login",
-							type:"post",
-							data:{"username":username,"password":pwd},
-							dataType:"json",
-							success:function(data){
-								if(data=="success"){
-									window.location.href="http://localhost:8080/bookstore/index.jsp";
-								}else{
-									alert("登录失败");
-								}
+	<!--WRAPPER END-->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/modernizr.custom.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.bxslider.min.js"></script>
+	<script src="js/bootstrap-slider.js"></script>
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/jquery.counterup.min.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/dl-menu/jquery.dlmenu.js"></script>
+	<!--<script src="js/googlemap.js"></script>-->
+	<script type="text/javascript" src="lib/hash.js"></script>
+	<script type="text/javascript" src="lib/booklet-lib.js"></script>
+	<script src="js/jquerypp.custom.js"></script>
+	<script src="js/jquery.bookblock.js"></script>
+	<script src="js/functions.js"></script>
+	<script type="application/x-javascript">
+		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	</script>
+	</script>
+	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var flag = true;
+		$(document).ready(function() {
+			$('#horizontalTab').easyResponsiveTabs({
+				type : 'default', //Types: default, vertical, accordion           
+				width : 'auto', //auto or any width like 600px
+				fit : true
+			// 100% fit in a container
+			});
+		});
+		function loginUser() {
+			var username = $("input[id='loginusrname']").val();
+			var pwd = $("input[id='loginpwd']").val();
+			$
+					.ajax({
+						url : "Login",
+						type : "post",
+						data : {
+							"username" : username,
+							"password" : pwd
+						},
+						dataType : "json",
+						success : function(data) {
+							if (data == "success") {
+								window.location.href = "http://localhost:8080/bookstore/index.jsp";
+							} else {
+								alert("登录失败");
 							}
-						})
-					};
-					function checkusrname(){
-						var username = $("input[id='usrname']").val();
+						}
+					})
+		};
+		function checkusrname() {
+			var username = $("input[id='usrname']").val();
+			$("#errorusrname").html("");
+			$.ajax({
+				url : "CheckUsername",
+				type : "post",
+				data : {
+					"userName" : username
+				},
+				dataType : "json", /* 服务器返回的数据类型 */
+				success : function(data) {
+					if (data == "true") {
+						$("#errorusrname").html("用户名已被注册");
+						flag = false;
+					} else {
 						$("#errorusrname").html("");
-						$.ajax({
-							url:"CheckUsername",
-							type:"post",
-							data:{"userName":username},
-							dataType:"json",	/* 服务器返回的数据类型 */
-							success:function(data){
-								if(data=="true"){
-									$("#errorusrname").html("用户名已被注册");
-									flag = false;
-				          		}else{
-				          			$("#errorusrname").html("");
-				          			flag = true;
-				          		}
+						flag = true;
+					}
+				}
+			});
+		}
+		function checktel() {
+			var tel = document.getElementById("tel").value;
+			var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+			if (!reg.test(tel)) {
+				$("#errortel").html("请输入有效的电话号码");
+				flag = false;
+			} else {
+				$("#errortel").html("");
+				flag = true;
+			}
+		}
+		function checkemail() {
+			var email = document.getElementById("email").value;
+			$("#erroremail").html("");
+			var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+			if (!(reg.test(email))) {
+				$("#erroremail").html("邮箱格式错误");
+				flag = false;
+			} else {
+				$.ajax({
+					url : "CheckEmail",
+					type : "post",
+					data : {
+						"userEmail" : email
+					},
+					dataType : "json", /* 服务器返回的数据类型 */
+					success : function(data) {
+						if (data == "true") {
+							$("#erroremail").html("邮箱已被注册");
+							flag = false;
+						} else {
+							$("#erroremail").html("");
+							flag = true;
+						}
+					}
+				});
+			}
+		}
+		function checkpwd2() {
+			var pwd1 = document.getElementById("pwd1").value;
+			var pwd2 = document.getElementById("pwd2").value;
+			if (pwd1 != pwd2) {
+				$("#errorpwd2").html("两次密码不一致！");
+				flag = false;
+			} else {
+				$("#errorpwd2").html("");
+				flag = true;
+			}
+		}
+		function submitUser() {
+			if (flag == true) {
+				var username = $("input[id='usrname']").val();
+				var tel = document.getElementById("tel").value;
+				var email = document.getElementById("email").value;
+				var pwd1 = document.getElementById("pwd1").value;
+				$
+						.ajax({
+							url : "RegisterUser",
+							type : "post",
+							data : {
+								"userName" : username,
+								"password" : pwd1,
+								"userTel" : tel,
+								"userEmail" : email
+							},
+							dataType : "json",
+							success : function(data) {
+								if (data == "success") {
+									$("form[id='registerform']").css("display",
+											"none");
+									$("h4[id='register-success']").css(
+											"display", "");
+									$("h4[id='register-success']").html("注册成功");
+								} else {
+									$("h4[id='register-success']").html(
+											"注册失败，请重新注册");
+								}
 							}
 						});
-					}
-					function checktel(){
-					    var tel = document.getElementById("tel").value;
-					    var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
-					    if(!reg.test(tel)){
-					      $("#errortel").html("请输入有效的电话号码");
-					      flag = false;
-					    }else{
-					      $("#errortel").html("");
-					      flag = true;
-					    }
-					}
-					function checkemail(){
-					    var email = document.getElementById("email").value;
-					    $("#erroremail").html("");
-					    var reg =  /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-					    if(!(reg.test(email))){
-					      $("#erroremail").html("邮箱格式错误");
-					      flag = false;
-					    }else{
-					    	$.ajax({
-								url:"CheckEmail",
-								type:"post",
-								data:{"userEmail":email},
-								dataType:"json",	/* 服务器返回的数据类型 */
-								success:function(data){
-									if(data=="true"){
-										$("#erroremail").html("邮箱已被注册");
-										flag = false;
-					          		}else{
-					          			$("#erroremail").html("");
-					      				flag = true;
-					          		}
-								}
-							});
-					    }
-					}
-					function checkpwd2(){
-		                var pwd1 = document.getElementById("pwd1").value;
-		                var pwd2 = document.getElementById("pwd2").value;
-		                if(pwd1 != pwd2){
-		                  $("#errorpwd2").html("两次密码不一致！");
-		                  flag = false;
-		                }else{
-		                  $("#errorpwd2").html("");
-		                  flag = true;
-		                }
-		            }
-		            function submitUser(){
-		            	if(flag == true){
-			            	var username = $("input[id='usrname']").val();
-			            	var tel = document.getElementById("tel").value;
-			            	var email = document.getElementById("email").value;
-			            	var pwd1 = document.getElementById("pwd1").value;
-			            	$.ajax({
-								url:"RegisterUser",
-								type:"post",
-								data:{"userName":username,"password":pwd1,"userTel":tel,"userEmail":email},
-								dataType:"json",	
-								success:function(data){
-									if(data=="success"){
-										$("form[id='registerform']").css("display","none");
-										$("h4[id='register-success']").css("display","");
-										$("h4[id='register-success']").html("注册成功");
-					          		}else{
-										$("h4[id='register-success']").html("注册失败，请重新注册");
-					          		}
-								}
-							});
-		            	}else{
-		        			alert("请确保您的各项信息填写正确");
-		    			}
-		            }
-		            
-		 
-</script>
+			} else {
+				alert("请确保您的各项信息填写正确");
+			}
+		}
+	</script>
 </body>
 </html>

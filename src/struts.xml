@@ -105,7 +105,8 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-				<!-- Login相关的1个action -->
+		
+		<!-- Login相关的1个action -->
 		<action name="Login" class="com.bookstore.action.LoginAction" method="execute">
 			<result name="success" type="json">
 				<param name="root">result</param>
@@ -120,12 +121,11 @@
 			<result name="false">/books.jsp</result>
 		</action>
 		
-		<!-- 订单详情 -->
-		<action name="OrderDetail" class="com.bookstore.action.OrderAction" method="getOrderDetail">
-		    <result name="success">/orderdetail.jsp</result>
-			<result name="false">/orderdetail.jsp</result>
+		<action name="GetUsrname" class="com.bookstore.action.UserAction" method="GetUsrname">
+			<result type="json">
+				<param name="root">usrName</param>
+			</result>
 		</action>
-		
 	</package>
 	
 	
@@ -147,7 +147,7 @@
 		</global-results>
 		
 		<action name="Logout" class="com.bookstore.action.LogoutAction">
-			<result type="json"/>
+			<result>/index.jsp</result>
 		</action>
 		
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
@@ -218,6 +218,7 @@
 				<param name="root">paidNum</param>
 			</result>
 		</action>
+		
 		<action name="IsPasswordValid" class="com.bookstore.action.UserAction"
 			method="isPasswordValid">
 			<result name="success" type="json">
@@ -305,10 +306,12 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-
+		<!-- 订单详情 -->
+		<action name="OrderDetail" class="com.bookstore.action.OrderAction" method="getOrderDetail">
+		    <result name="success">/orderdetail.jsp</result>
+			<result name="false">/orderdetail.jsp</result>
+		</action>
 	</package>
-
-
 </struts>
 
 

@@ -8,6 +8,7 @@ import com.bookstore.domain.Address;
 import com.bookstore.domain.Book;
 import com.bookstore.domain.BuyItem;
 import com.bookstore.domain.Order;
+import com.bookstore.domain.User;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.PersonalInfoService;
 import com.bookstore.util.DivBook;
@@ -51,6 +52,21 @@ public class UserAction {
 	Integer userID;
 	Integer orderID;
 	
+	String usrName;
+	
+	//Username
+	public String GetUsrname(){
+		Map session = ActionContext.getContext().getSession();
+		Integer userID = (Integer) session.get("userID");
+		if(userID == null){
+			usrName = "";
+		}
+		else{
+			User user = personalInfoService.UserInfo(userID);
+			usrName = user.getUserName();
+		}
+		return "success";
+	}
 	//Password and Email
 	public String isPasswordValid(){
 		Map session = ActionContext.getContext().getSession();
@@ -288,6 +304,14 @@ public class UserAction {
 
 	public void setOrderID(Integer orderID) {
 		this.orderID = orderID;
+	}
+
+	public String getUsrName() {
+		return usrName;
+	}
+
+	public void setUsrName(String usrName) {
+		this.usrName = usrName;
 	}
 	
 }

@@ -98,8 +98,25 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
-						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
-						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
+						<li class="hidden-sm"><a onclick="gocart()">购物车</a></li>
+						<li id="userbox" style="display:none;">
+							<div class="userbox" style="margin-top:30px;">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<div class="profile-info">
+										<span class="role">欢迎</span> <span id="usrName" class="name"></span>
+									</div> <i class="fa custom-caret"></i>
+								</a>
+								<div class="dropdown-menu">
+									<ul class="list-unstyled">
+										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										</li>
+										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li id="gologin" class="hidden-sm" style="display:none;"><a
+							href="login.jsp">登陆</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -584,8 +601,8 @@
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
 								<li><a href="initSearchAction">开始选购</a></li>
-								<li><a href="cart.jsp">购物车</a></li>
-								<li><a href="userinfo.jsp">我的账户</a></li>
+								<li><a onclick="gocart()">购物车</a></li>
+								<li id="myaccount" style="display:none;"><a href="userinfo.jsp">我的账户</a></li>
 							</ul>
 						</div>
 					</div>
@@ -631,17 +648,6 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="js/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.bxslider.min.js"></script>
-	<script src="js/bootstrap-slider.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/owl.carousel.js"></script>
-	<script src="js/dl-menu/modernizr.custom.js"></script>
-	<script src="js/dl-menu/jquery.dlmenu.js"></script>
-	<script src="js/functions.js"></script>
-	<script src="js/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/modernizr.custom.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.bxslider.min.js"></script>
@@ -650,7 +656,6 @@
 	<script src="js/jquery.counterup.min.js"></script>
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/dl-menu/jquery.dlmenu.js"></script>
-	<!--<script src="js/googlemap.js"></script>-->
 	<script type="text/javascript" src="lib/hash.js"></script>
 	<script type="text/javascript" src="lib/booklet-lib.js"></script>
 	<script src="js/jquerypp.custom.js"></script>
@@ -658,7 +663,7 @@
 	<script src="js/functions.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script type="application/x-javascript">
-			 
+		
 	     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 	
 	</script>
@@ -716,9 +721,30 @@
 										"label label-default");
 							}
 							getAppriseList();
+							$.ajax({
+								url : "GetUsrname",
+								dataType : "json",
+								success : function(data) {
+									if (data == "") {
+										$('#gologin').attr("style", "");
+									} else {
+										$('#userbox').attr("style", "");
+										$('#usrName').html(data);
+										$('#myaccount').attr("style","");
+									}
+								}
+							})
 						});
 	</script>
 	<script>
+		function gocart(){
+		    var usrName = $('#usrName').html();
+		    if(usrName == "")
+		        location.href="login.jsp";
+		    else
+		        location.href="cart.jsp"
+		}
+		
 		function StraightBuy() {
 			var url = "StraightBuy?bookID=${book.bookID }&num="
 					+ $(".cart_quantity_input").attr("value");

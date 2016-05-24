@@ -40,6 +40,142 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style type="text/css">
+. /* Userbox */
+.userbox {
+	display: inline-block;
+	margin: -3px 17px 0 0;
+	position: relative;
+	vertical-align: middle;
+}
+
+.userbox>a {
+	display: inline-block;
+	text-decoration: none;
+}
+
+.userbox a:hover {
+	text-decoration: none;
+}
+
+.userbox .profile-info, .userbox .profile-picture {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.userbox .profile-picture img {
+	width: 35px;
+	color: transparent;
+}
+
+.userbox .profile-info {
+	margin: 0 25px 0 10px;
+}
+
+.userbox .name, .userbox .role {
+	display: block;
+}
+
+.userbox .name {
+	color: orange;
+	font-size: 13px;
+	font-size: 1.3rem;
+	line-height: 1.2em;
+}
+
+.userbox .role {
+	color: orange;
+	font-size: 11px;
+	font-size: 1.1rem;
+	line-height: 1.2em;
+}
+
+.userbox .custom-caret {
+	color: #000011;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.userbox .custom-caret:before {
+	content: "\f107";
+}
+/* Userbox - Open */
+.userbox.open>a {
+	position: relative;
+	z-index: 993;
+}
+
+.userbox.open>a .custom-caret:before {
+	content: "\f106";
+}
+
+.userbox.open .dropdown-menu {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	left: -11px;
+	padding: 45px 10px 0;
+	top: -10px;
+	width: 100%;
+	z-index: 992;
+	margin-top: 30px;
+}
+
+.userbox.open .dropdown-menu li {
+	margin-bottom: 5px;
+}
+
+.userbox.open .dropdown-menu a {
+	border-radius: 2px;
+	color: #7d7d7d;
+	display: block;
+	font-size: 12px;
+	font-size: 1.2rem;
+	line-height: 15px;
+	line-height: 1.5rem;
+	padding: 5px 10px;
+}
+
+.userbox.open .dropdown-menu a:hover {
+	background: none;
+	color: #435D78;
+}
+
+.userbox.open .dropdown-menu i {
+	font-size: 17px;
+	font-size: 1.7rem;
+	margin-right: 3px;
+	vertical-align: middle;
+	width: 20px;
+}
+/* Userbox - Mobile */
+@media only screen and (max-width: 767px) {
+	.userbox {
+		float: left;
+		margin: 0 0 0 12px;
+		position: relative;
+	}
+	.userbox:after {
+		background: #E9E9E6;
+		content: '';
+		height: 63px;
+		margin: 0;
+		position: absolute;
+		right: -21px;
+		top: -18px;
+		width: 1px;
+	}
+	.userbox .profile-picture {
+		display: none;
+	}
+	.userbox.open .dropdown-menu {
+		left: -5px;
+		padding: 43px 0 0 0;
+	}
+}
 .panel {
 	border: 1;
 	-webkit-border-radius: 0px;
@@ -346,7 +482,22 @@ a {
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
 						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
-						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
+						<li id="userbox" style="display:none;">
+							<div class="userbox" style="margin-top:30px;">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<div class="profile-info">
+										<span class="role">欢迎</span> <span id="usrName" class="name"></span>
+									</div> <i class="fa custom-caret"></i>
+								</a>
+								<div class="dropdown-menu">
+									<ul class="list-unstyled">
+										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										</li>
+										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -380,7 +531,7 @@ a {
 			<div
 				class="panel-body bk-ltr bk-padding-bottom-10 bk-avatar80-halfdown-after text-center bk-bg-white">
 				<h3 class="bk-margin-off">
-					<strong>Crenshaw</strong>
+					<strong id="usrName1"></strong>
 				</h3>
 				<p class="bk-margin-off-bottom bk-fg-gray">
 					<em>"Books are to mankind what memory is to the individual"</em>
@@ -531,16 +682,6 @@ a {
 		</div>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="js/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/dl-menu/modernizr.custom.js"></script>
-	<script src="js/dl-menu/jquery.dlmenu.js"></script>
-	<script src="js/jquery.bxslider.min.js"></script>
-	<script src="js/bootstrap-slider.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/functions.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/modernizr.custom.js"></script>
@@ -795,6 +936,19 @@ a {
 			showUnapprisedOrderNumber();
 			showUnappriseBook();
 			$('#input-rating').rating();
+			$.ajax({
+			url : "GetUsrname",
+			dataType : "json",
+			success : function(data) {
+				if(data == ""){
+				    $('#gologin').attr("style","");
+				}else{
+				    $('#userbox').attr("style","");
+				    $('#usrName').html(data);
+				    $('#usrName1').html(data);
+				}
+			}
+		})
 		});
 		//修改email
 		$('#enable').click(function() {

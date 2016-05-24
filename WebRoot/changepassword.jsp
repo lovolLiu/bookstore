@@ -63,8 +63,8 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
-						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
-						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
+						<li class="hidden-sm"><a href="login.jsp">购物车</a></li>
+						<li class="hidden-sm"><a href="login.jsp">登陆</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -111,8 +111,8 @@
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
 								<li><a href="books.jsp">开始选购</a></li>
-								<li><a href="cart.jsp">购物车</a></li>
-								<li><a href="userinfo.jsp">我的账户</a></li>
+								<li><a href="login.jsp">购物车</a></li>
+								<li><a href="login.jsp">登陆</a></li>
 							</ul>
 						</div>
 					</div>

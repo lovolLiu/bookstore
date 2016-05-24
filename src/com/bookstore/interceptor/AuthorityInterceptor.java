@@ -13,7 +13,7 @@ public class AuthorityInterceptor extends AbstractInterceptor {
 		ActionContext ctx = invocation.getInvocationContext();
 		Map session = ctx.getSession();
 		///DEBUG　MODE CODE//////////////////////////////
-		session.put("userID", 1);
+		//session.put("userID", 1);
 		////////////////////////////////////////////////
 		Integer user = (Integer)session.get("userID");
 		if(user != null){

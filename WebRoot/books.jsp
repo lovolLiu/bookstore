@@ -80,8 +80,25 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
-						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
-						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
+						<li class="hidden-sm"><a onclick="gocart()">购物车</a></li>
+						<li id="userbox" style="display:none;">
+							<div class="userbox" style="margin-top:30px;">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<div class="profile-info">
+										<span class="role">欢迎</span> <span id="usrName" class="name"></span>
+									</div> <i class="fa custom-caret"></i>
+								</a>
+								<div class="dropdown-menu">
+									<ul class="list-unstyled">
+										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										</li>
+										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li id="gologin" class="hidden-sm" style="display:none;"><a
+							href="login.jsp">登陆</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -365,8 +382,8 @@
 							<ul>
 								<li><a href="index.jsp">主页</a></li>
 								<li><a href="initSearchAction">开始选购</a></li>
-								<li><a href="cart.jsp">购物车</a></li>
-								<li><a href="userinfo.jsp">我的账户</a></li>
+								<li><a onclick="gocart()">购物车</a></li>
+								<li id="myaccount" style="display:none;"><a href="userinfo.jsp">我的账户</a></li>
 							</ul>
 						</div>
 					</div>
@@ -461,9 +478,29 @@
 	<script>
 		$(document).ready(function(){
 			UpdateCartNum();
+			$.ajax({
+			url : "GetUsrname",
+			dataType : "json",
+			success : function(data) {
+				if(data == ""){
+				    $('#gologin').attr("style","");
+				}else{
+				    $('#userbox').attr("style","");
+				    $('#usrName').html(data);
+				    $('#myaccount').attr("style","");
+				}
+			}
+		})
 		})
 	
-	
+	    function gocart(){
+		    var usrName = $('#usrName').html();
+		    if(usrName == "")
+		        location.href="login.jsp";
+		    else
+		        location.href="cart.jsp"
+		}
+		
 		function UpdateCartNum(){
 			var num = 0;
 			$.ajax({

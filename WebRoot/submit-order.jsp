@@ -224,38 +224,43 @@ select {
 .total-result>tr>td {
 	border-top: none;
 }
-.selected{
-    border: 2px solid orange;
-}
-.item{
-    margin:30px;
-    height:300px;
-}
-.panel-body > p{
-    height:50px;
+
+.selected {
+	border: 2px solid orange;
 }
 
-		.time_messagebox{
-			position: fixed;
-			margin:auto;
-			left:0; 
-			right:0; 
-			top:0; 
-			bottom:0;
-			width:250px; 
-			height:80px;
-			background: orange;
-			color: white;
-			display: none;
-			border-radius:10px;
-			z-index:99;
-		}
+.item {
+	margin: 30px;
+	height: 300px;
+}
+
+.panel-body>p {
+	height: 50px;
+}
+
+.time_messagebox {
+	position: fixed;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 250px;
+	height: 80px;
+	background: orange;
+	color: white;
+	display: none;
+	border-radius: 10px;
+	z-index: 99;
+}
 </style>
 </head>
 <body>
-<div class="time_messagebox">
-		<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">请选择一个收货地址哦亲~~</span></p>
-</div>
+	<div class="time_messagebox">
+		<p style="height:80px;margin:0px auto;text-align:center">
+			<span style="line-height:80px;">请选择一个收货地址哦亲~~</span>
+		</p>
+	</div>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 		<div class="loader-section section-left"></div>
@@ -281,7 +286,22 @@ select {
 						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
 						<li class="hidden-sm"><a href="cart.jsp">购物车</a></li>
-						<li class="hidden-sm"><a href="userinfo.jsp">我的账户</a></li>
+						<li id="userbox" style="display:none;">
+							<div class="userbox" style="margin-top:30px;">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<div class="profile-info">
+										<span class="role">欢迎</span> <span id="usrName" class="name"></span>
+									</div> <i class="fa custom-caret"></i>
+								</a>
+								<div class="dropdown-menu">
+									<ul class="list-unstyled">
+										<li><a href="userinfo.jsp"><i class="fa fa-user"></i>我的账户</a>
+										</li>
+										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -314,46 +334,48 @@ select {
 				<!--NAV TABS END-->
 				<!--TAB PANEL START-->
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane fade active in" id="selectaddress">
+					<div role="tabpanel" class="tab-pane fade active in"
+						id="selectaddress">
 
-					<s:iterator value="addressList">
+						<s:iterator value="addressList">
 
-						<div class="panel col-sm-3 item">
-							<div class="panel-body text-center bk-padding-off bk-wrapper">
-								<img src="images/addressheader.jpg" alt=""
-									class="img-responsive">
+							<div class="panel col-sm-3 item">
+								<div class="panel-body text-center bk-padding-off bk-wrapper">
+									<img src="images/addressheader.jpg" alt=""
+										class="img-responsive">
+								</div>
+								<div class="panel-body text-center">
+									<h3 class="bk-margin-off">
+										<strong>${person }</strong>
+									</h3>
+									<small class="bk-fg-inverse">${tel }</small>
+									<p class="bk-margin-off-bottom bk-fg-gray">
+										<em>${address }</em>
+									</p>
+
+									<a class="btn btn-primary itemselect"
+										onclick="SelectAddress(${addressID}); return false;">选择</a>
+
+								</div>
 							</div>
-							<div class="panel-body text-center">
-								<h3 class="bk-margin-off">
-									<strong>${person }</strong>
-								</h3>
-								<small class="bk-fg-inverse">${tel }</small>
-								<p class="bk-margin-off-bottom bk-fg-gray">
-									<em>${address }</em>
-								</p>
+						</s:iterator>
 
-								<a class="btn btn-primary itemselect" onclick="SelectAddress(${addressID}); return false;">选择</a>
-
-							</div>
-						</div>
-					</s:iterator>
-						
-<!-- 						<div class="panel col-sm-3 item  selected"> -->
-<!-- 							<div class="panel-body text-center bk-padding-off bk-wrapper"> -->
-<!-- 								<img src="images/flat-landscape.jpg" alt="" -->
-<!-- 									class="img-responsive"> -->
-<!-- 							</div> -->
-<!-- 							<div class="panel-body text-center"> -->
-<!-- 								<h3 class="bk-margin-off"> -->
-<!-- 									<strong>赵四</strong> -->
-<!-- 								</h3> -->
-<!-- 								<small class="bk-fg-inverse">13275678900</small> -->
-<!-- 								<p class="bk-margin-off-bottom bk-fg-gray"> -->
-<!-- 									<em>昆明市盘龙区白云路128号</em> -->
-<!-- 								</p> -->
-<!-- 								<a class="btn btn-primary itemselect">选择</a> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
+						<!-- 						<div class="panel col-sm-3 item  selected"> -->
+						<!-- 							<div class="panel-body text-center bk-padding-off bk-wrapper"> -->
+						<!-- 								<img src="images/flat-landscape.jpg" alt="" -->
+						<!-- 									class="img-responsive"> -->
+						<!-- 							</div> -->
+						<!-- 							<div class="panel-body text-center"> -->
+						<!-- 								<h3 class="bk-margin-off"> -->
+						<!-- 									<strong>赵四</strong> -->
+						<!-- 								</h3> -->
+						<!-- 								<small class="bk-fg-inverse">13275678900</small> -->
+						<!-- 								<p class="bk-margin-off-bottom bk-fg-gray"> -->
+						<!-- 									<em>昆明市盘龙区白云路128号</em> -->
+						<!-- 								</p> -->
+						<!-- 								<a class="btn btn-primary itemselect">选择</a> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="newaddress">
 						<div class="shopper-informations">
@@ -364,20 +386,19 @@ select {
 											<p>寄送到</p>
 											<div class="form-one">
 												<form onSubmit="return false;">
-												    <input type="text" placeholder="省份" id="address1">
-												     <input type="text" placeholder="地区" id="address2">
-													<input type="text" placeholder="详细地址"
-														value="" id="address3"> 
-													<input type="text"
-														placeholder="邮政编码" id="address4">
-													<a class="btn btn-primary" onclick="addAddress()">确定</a>
+													<input type="text" placeholder="省份" id="address1">
+													<input type="text" placeholder="地区" id="address2">
+													<input type="text" placeholder="详细地址" value=""
+														id="address3"> <input type="text"
+														placeholder="邮政编码" id="address4"> <a
+														class="btn btn-primary" onclick="addAddress()">确定</a>
 												</form>
 												<a class="btn btn-primary">添加新地址</a>
 											</div>
 											<div class="form-two">
 												<form onSubmit="return false;">
-													<input type="text" placeholder="收货人姓名"
-														value="" id="consignee"> <input type="text"
+													<input type="text" placeholder="收货人姓名" value=""
+														id="consignee"> <input type="text"
 														placeholder="电话号码" value="" id="tel">
 												</form>
 											</div>
@@ -405,32 +426,34 @@ select {
 							</tr>
 						</thead>
 						<tbody id='cartItem'>
-						<s:iterator value="trOrderItemList">
-							<tr id="${buyItemID }" class="itemtr">
-								<td class="cart_product"><a href='BookDetail?id=${bookID }'><img
-										src="${imageUrl }"></a></td>
-								<td class="cart_description">
-									<h4>
-										<a href='BookDetail?id=${bookID }'>${bookName}</a>
-									</h4>
-								</td>
-								<td class="cart_price">
-									<p>¥${price }</p>
-								</td>
-								<td class="cart_quantity">
-									<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href="" onclick="return QuantityUp(${buyItemID})"> + </a>
-										<input class="cart_quantity_input" type="text" name="quantity"
-											value="${num }" autocomplete="off" size="2"/>
-									<a class="cart_quantity_down" href="" onclick="return QuantityDown(${buyItemID})"> - </a>
-									</div>
-								</td>
-								<td class="cart_total">
-									<p class="cart_total_price">¥${buyItemPrice }</p>
-								</td>
+							<s:iterator value="trOrderItemList">
+								<tr id="${buyItemID }" class="itemtr">
+									<td class="cart_product"><a
+										href='BookDetail?id=${bookID }'><img src="${imageUrl }"></a></td>
+									<td class="cart_description">
+										<h4>
+											<a href='BookDetail?id=${bookID }'>${bookName}</a>
+										</h4>
+									</td>
+									<td class="cart_price">
+										<p>¥${price }</p>
+									</td>
+									<td class="cart_quantity">
+										<div class="cart_quantity_button">
+											<a class="cart_quantity_up" href=""
+												onclick="return QuantityUp(${buyItemID})"> + </a> <input
+												class="cart_quantity_input" type="text" name="quantity"
+												value="${num }" autocomplete="off" size="2" /> <a
+												class="cart_quantity_down" href=""
+												onclick="return QuantityDown(${buyItemID})"> - </a>
+										</div>
+									</td>
+									<td class="cart_total">
+										<p class="cart_total_price">¥${buyItemPrice }</p>
+									</td>
 
-							</tr>
-						</s:iterator>
+								</tr>
+							</s:iterator>
 							<tr>
 
 								<td colspan="4">&nbsp;</td>
@@ -442,9 +465,10 @@ select {
 												<td style="color:#FE980F;"><span id="orderTotal">¥${totalPrice }</span></td>
 											</tr>
 											<tr style="border-bottom: 0;">
-												<td ></td>
+												<td></td>
 												<td><div style="text-align: right;" id="div_submit">
-														<a class="btn btn-default check_out" onclick="SubmitOrder(); return false;">提交订单</a>
+														<a class="btn btn-default check_out"
+															onclick="SubmitOrder(); return false;">提交订单</a>
 													</div></td>
 
 											</tr>
@@ -532,15 +556,17 @@ select {
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
 	<script type="application/x-javascript">
+		
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	
 	</script>
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
-	    $(".itemselect").click(function(e){
-	        $('.item').removeClass("selected");
-	        $(e.target).parent().parent().addClass("selected");
-	    });
+		$(".itemselect").click(function(e) {
+			$('.item').removeClass("selected");
+			$(e.target).parent().parent().addClass("selected");
+		});
 		$(document).ready(function() {
 			$('#horizontalTab').easyResponsiveTabs({
 				type : 'default', //Types: default, vertical, accordion           
@@ -548,7 +574,18 @@ select {
 				fit : true
 			// 100% fit in a container
 			});
-
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						$('#gologin').attr("style", "");
+					} else {
+						$('#userbox').attr("style", "");
+						$('#usrName').html(data);
+					}
+				}
+			})
 		});
 	</script>
 
@@ -556,124 +593,134 @@ select {
 	<script>
 		var g_addressID = -1;
 		var g_totalPrice = ${totalPrice};
-		function SelectAddress(addressID){
+		function SelectAddress(addressID) {
 			g_addressID = addressID;
 		}
-		
-		
-		function SubmitOrder(){
 
-			if(g_addressID == -1){
-				
+		function SubmitOrder() {
+
+			if (g_addressID == -1) {
+
 				messageToast();
 				return false;
 			}
 			var url = "SubmitOrder?addressID=" + g_addressID;
 			var trs = $(".itemtr");
-			$.each(trs,function(i,list){
+			$.each(trs, function(i, list) {
 				url += "&buyItemIDList=" + list.getAttribute("id");
 			})
 
 			window.location.href = url;
-			
-		}
-		
 
-		$(".cart_quantity_input").blur(function(){
+		}
+
+		$(".cart_quantity_input").blur(function() {
 			alert();
 			var num = $(this).attr("value");
 			var buyItemID = $(this).parents("tr")[0].attr("id");
 			updateCart(buyItemID, num);
 			return false;
 		});
-		
 
-		
-
-		function QuantityUp(buyItemID){
-			var currentNum = parseInt($("tr#" + buyItemID).find(".cart_quantity_input").attr("value"));
-			updateCart(buyItemID, currentNum+1);
+		function QuantityUp(buyItemID) {
+			var currentNum = parseInt($("tr#" + buyItemID).find(
+					".cart_quantity_input").attr("value"));
+			updateCart(buyItemID, currentNum + 1);
 			return false;
 		}
-		
-		function QuantityDown(buyItemID){
-			var currentNum = parseInt($("tr#" + buyItemID).find(".cart_quantity_input").attr("value"));
-			if(currentNum == 1) return false;
-			updateCart(buyItemID, currentNum-1);
+
+		function QuantityDown(buyItemID) {
+			var currentNum = parseInt($("tr#" + buyItemID).find(
+					".cart_quantity_input").attr("value"));
+			if (currentNum == 1)
+				return false;
+			updateCart(buyItemID, currentNum - 1);
 			return false;
 		}
-		
-		
-		function updateCart(buyItemID,num){
+
+		function updateCart(buyItemID, num) {
 			$.ajax({
-				url: "UpdateCartItem?buyItemID=" + buyItemID + "&num=" + num,
-				dataType:"json",
-				success:function(data){
+				url : "UpdateCartItem?buyItemID=" + buyItemID + "&num=" + num,
+				dataType : "json",
+				success : function(data) {
 					//data便是更新之后这条数据的trCartItem
 					//更新这条数据对应的html
 					var tr = $("tr#" + buyItemID);
 					var numInput = tr.find(".cart_quantity_input");
 					var itemTotalPrice = tr.find(".cart_total_price");
 					numInput.attr("value", data.num);
-					
-					var oldItemTotalPrice = parseInt(itemTotalPrice.html().substr(1, itemTotalPrice.html().length));
-					
+
+					var oldItemTotalPrice = parseInt(itemTotalPrice.html()
+							.substr(1, itemTotalPrice.html().length));
+
 					itemTotalPrice.html("¥" + data.buyItemPrice);
-					
-					g_totalPrice = parseInt(g_totalPrice) - parseInt(oldItemTotalPrice) + parseInt(data.buyItemPrice);
+
+					g_totalPrice = parseInt(g_totalPrice)
+							- parseInt(oldItemTotalPrice)
+							+ parseInt(data.buyItemPrice);
 					$("#orderTotal").html("¥" + g_totalPrice);
-					
+
 				}
 			})
 		}
 
-
-		function addAddress(){
+		function addAddress() {
 			var consignee = $("input[id='consignee']").val();
 			var tel = $("input[id='tel']").val();
-			var address = $("input[id='address1']").val()+$("input[id='address2']").val()+$("input[id='address3']").val()+$("input[id='address4']").val();
-			$.ajax({
-				url:"AddAddress",
-				data:{"consignee":consignee,"tel":tel,"address":String(address)},
-				dataType:"json",
-				success:function(data){
-					var address =  $(
-	             						"<div class='panel col-sm-3 item'>"
-   									 		+"<div class='panel-body text-center bk-padding-off bk-wrapper'>"
-   									 			+"<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
-   									 		+"</div>"
-   									 	+"<div class='panel-body text-center'>"
-   									 		+"<h3 class='bk-margin-off'>"
-   									 			+"<strong>"+data.person+"</strong>"
-   									 		+"</h3>"
-  									 	+"<small class='bk-fg-inverse'>"+data.tel+"</small>"
-  									 	+"<p class='bk-margin-off-bottom bk-fg-gray'>"
-  									 		+"<em>"+data.address+"</em>"
-  									 	+"</p>"
-  									 	+"<a class='btn btn-primary itemselect'>选择</a>"
-  									 	+"</div>");		
-					
-             		 $("div[id='selectaddress']").prepend(address);
-             		 
-             		location.reload()
-				}
-			})
-		}
-		
+			var address = $("input[id='address1']").val()
+					+ $("input[id='address2']").val()
+					+ $("input[id='address3']").val()
+					+ $("input[id='address4']").val();
+			$
+					.ajax({
+						url : "AddAddress",
+						data : {
+							"consignee" : consignee,
+							"tel" : tel,
+							"address" : String(address)
+						},
+						dataType : "json",
+						success : function(data) {
+							var address = $("<div class='panel col-sm-3 item'>"
+									+ "<div class='panel-body text-center bk-padding-off bk-wrapper'>"
+									+ "<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
+									+ "</div>"
+									+ "<div class='panel-body text-center'>"
+									+ "<h3 class='bk-margin-off'>"
+									+ "<strong>"
+									+ data.person
+									+ "</strong>"
+									+ "</h3>"
+									+ "<small class='bk-fg-inverse'>"
+									+ data.tel
+									+ "</small>"
+									+ "<p class='bk-margin-off-bottom bk-fg-gray'>"
+									+ "<em>"
+									+ data.address
+									+ "</em>"
+									+ "</p>"
+									+ "<a class='btn btn-primary itemselect'>选择</a>"
+									+ "</div>");
 
+							$("div[id='selectaddress']").prepend(address);
+
+							location.reload()
+						}
+					})
+		}
 	</script>
-	
+
 
 	<script>
-	   function messageToast(){
+		function messageToast() {
 			$(".time_messagebox").fadeIn(300);
-			setTimeout("$('.time_messagebox').fadeOut(300);",1200)
-	   }
-</script>
+			setTimeout("$('.time_messagebox').fadeOut(300);", 1200)
+		}
+	</script>
 
-	
-	
-	
+
+
+
 
 </body>
 </html>
