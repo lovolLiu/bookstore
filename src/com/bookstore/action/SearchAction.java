@@ -6,6 +6,7 @@ import com.bookstore.domain.*;
 import com.bookstore.service.BookTypeService;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.SearchService;
+import com.bookstore.service.SelectBookService;
 import com.bookstore.util.DivBook;
 
 public class SearchAction {
@@ -24,6 +25,19 @@ public class SearchAction {
 	List<BookType> btList;
 
 	List<DivBook> divBookList;
+	
+	Integer bookID;
+	SelectBookService selectBookService;
+	List<Book> relatedBookList;
+	List<Book> hotestBookList;
+	List<Book> newestBookList;
+	List<Book> personalFindByAuthorBookList;
+	List<BookType> typeList;
+	List<DivBook> relatedDivBookList;
+	List<DivBook> hotestDivBookList;
+	List<DivBook> newestDivBookList;
+	List<DivBook> personalFindByAuthorDivBookList;
+	
 	//获得对应类别的书籍
 	public List<DivBook> getSortBookList(){
 		List<Book> bookList = bookTypeService.getBookByBookType(typeID);
@@ -72,6 +86,13 @@ public class SearchAction {
 	 public String execute(){
 		 
 		 if(searchBookList() != null){
+			 hotestBookList = selectBookService.selectHottestBook();
+			 hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
+				
+			
+			 newestBookList = selectBookService.selectNewestBook();
+			 newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
+			 
 			 bookList = searchBookList();
 			 divBook = convertorService.bookIDToDivBook(bookList);
 			 btList = bookTypeService.getBookTypeList();
@@ -83,6 +104,14 @@ public class SearchAction {
 	 //显示所有书目的action
 	 public String initSearchExecute(){
 		 //init findall
+		 
+		 //热搜和畅销
+		 hotestBookList = selectBookService.selectHottestBook();
+		 hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
+			
+		
+		 newestBookList = selectBookService.selectNewestBook();
+		 newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
 		 
 		 bookList = searchAllBook();
 		 divBook = convertorService.bookIDToDivBook(bookList);
@@ -97,7 +126,12 @@ public class SearchAction {
 	//显示对应类别书目的action
 		 public String sortSearchExecute(){
 			 //init findall
-			 
+			 hotestBookList = selectBookService.selectHottestBook();
+			 hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
+				
+			
+			 newestBookList = selectBookService.selectNewestBook();
+			 newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
 			 
 			 divBook = getSortBookList();
 			 btList = bookTypeService.getBookTypeList();
@@ -187,6 +221,74 @@ public class SearchAction {
 	}
 	public void setTypeID(Integer typeID) {
 		this.typeID = typeID;
+	}
+	public List<Book> getRelatedBookList() {
+		return relatedBookList;
+	}
+	public void setRelatedBookList(List<Book> relatedBookList) {
+		this.relatedBookList = relatedBookList;
+	}
+	public List<Book> getHotestBookList() {
+		return hotestBookList;
+	}
+	public void setHotestBookList(List<Book> hotestBookList) {
+		this.hotestBookList = hotestBookList;
+	}
+	public List<Book> getNewestBookList() {
+		return newestBookList;
+	}
+	public void setNewestBookList(List<Book> newestBookList) {
+		this.newestBookList = newestBookList;
+	}
+	public List<Book> getPersonalFindByAuthorBookList() {
+		return personalFindByAuthorBookList;
+	}
+	public void setPersonalFindByAuthorBookList(
+			List<Book> personalFindByAuthorBookList) {
+		this.personalFindByAuthorBookList = personalFindByAuthorBookList;
+	}
+	public List<BookType> getTypeList() {
+		return typeList;
+	}
+	public void setTypeList(List<BookType> typeList) {
+		this.typeList = typeList;
+	}
+	public List<DivBook> getRelatedDivBookList() {
+		return relatedDivBookList;
+	}
+	public void setRelatedDivBookList(List<DivBook> relatedDivBookList) {
+		this.relatedDivBookList = relatedDivBookList;
+	}
+	public List<DivBook> getHotestDivBookList() {
+		return hotestDivBookList;
+	}
+	public void setHotestDivBookList(List<DivBook> hotestDivBookList) {
+		this.hotestDivBookList = hotestDivBookList;
+	}
+	public List<DivBook> getNewestDivBookList() {
+		return newestDivBookList;
+	}
+	public void setNewestDivBookList(List<DivBook> newestDivBookList) {
+		this.newestDivBookList = newestDivBookList;
+	}
+	public List<DivBook> getPersonalFindByAuthorDivBookList() {
+		return personalFindByAuthorDivBookList;
+	}
+	public void setPersonalFindByAuthorDivBookList(
+			List<DivBook> personalFindByAuthorDivBookList) {
+		this.personalFindByAuthorDivBookList = personalFindByAuthorDivBookList;
+	}
+	public Integer getBookID() {
+		return bookID;
+	}
+	public void setBookID(Integer bookID) {
+		this.bookID = bookID;
+	}
+	public SelectBookService getSelectBookService() {
+		return selectBookService;
+	}
+	public void setSelectBookService(SelectBookService selectBookService) {
+		this.selectBookService = selectBookService;
 	}
 
 
