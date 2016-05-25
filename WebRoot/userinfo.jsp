@@ -389,9 +389,10 @@ a {
 				<input type="text" placeholder="省份" id="address1" required="" /> <input
 					type="text" placeholder="地区" id="address2" required="" /> <input
 					type="text" placeholder="详细地址" value="" id="address3" required="" />
-				<input type="text" placeholder="邮政编码" id="address4" required="" /> <input
-					type="text" placeholder="收货人姓名" value="" id="consignee" required="" />
-				<input type="text" placeholder="电话号码" value="" id="tel" required="" />
+				<input type="text" placeholder="邮政编码" id="address4" required="" />
+				<input type="text" placeholder="收货人姓名" value="" id="consignee"
+					required="" /> <input type="text" placeholder="电话号码" value=""
+					id="tel" required="" />
 			</form>
 			<div id="addresserror" class="error"></div>
 			<a id="confirmaddaddress" class="btn btn-primary">确定</a> <a
@@ -490,7 +491,7 @@ a {
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="Index">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
-						<li class="hidden-sm"><a href="gocart()">购物车</a></li>
+						<li class="hidden-sm"><a onclick="gocart()">购物车</a></li>
 						<li id="userbox" style="display:none;">
 							<div class="userbox" style="margin-top:30px;">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -717,7 +718,9 @@ a {
 	<script src="js/functions.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script type="application/x-javascript">
+		
 		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script src="js/bootstrap-editable.min.js"></script>
@@ -738,15 +741,16 @@ a {
 			})
 		}
 
-		function gocart(){
-		     $.ajax({
-			url : "GetUsrname",
-			dataType : "json",
-			success : function(data) {
-				if(data == ""){
-				    location.href="login.jsp?cart.jsp";
-				}else{
-				    location.href="cart.jsp"
+		function gocart() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp?cart.jsp";
+					} else {
+						location.href = "cart.jsp"
+					}
 				}
 			})
 		}
@@ -803,48 +807,57 @@ a {
 						url : "ShowOrderInUserInfo.action",
 						dataType : "json",
 						success : function(data) {
-						    if(data == ""){
-						        $('#emptyorder').attr("style","");
-						        $('#recentorders').attr("style","display:none;");
-						    }else{
-							$.each(data,function(i, list) {
-												var divPic = "";
-												var bookName = "";
-												$.each(list.orderItemList,function(j,order) {
-																	divPic += "<div class='pic'>"
-																			+ "<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
-																			+ "</div>";
-																	/* bookName = order.bookName; */
-																});
-												var table1 = $("<tr class='itemhead'>"
-														+ "<td colspan='4'>"
-														+ "<span class='dealtime'>"
-														+ formatDate(list.dealTime)
-														+ "</span>"
-														+ "<span class='orderno'>"
-														+ "订单号: <a href='xxxxx'>"
-														+ list.orderId
-														+ "</a></span>"/*xxxx表示以后要添加跳转href */
-														+ "</tr>"
-														+ "<tr class='item'>"
-														+ "<td class='itemdetail'>"
-														+ "<div>"
-														+ divPic
-														+ "</div></td>"
-														+ "<td class='deliver'>"
-														+ "<span data-toggle='tooltip' data-placement='bottom' title=''>"
-														+ list.consignee
-														+ "</span>"
-														+ "</td>"
-														+ "<td class='sum'><span>￥"
-														+ list.totalPrice
-														+ "</span></td>"
-														+ "<td class='status'><span>"
-														+ list.orderStats
-														+ "</span></td></tr>");
-												$("tbody[id='ordertable']").append(table1);
-											});
-											}
+							if (data == "") {
+								$('#emptyorder').attr("style", "");
+								$('#recentorders').attr("style",
+										"display:none;");
+							} else {
+								$
+										.each(
+												data,
+												function(i, list) {
+													var divPic = "";
+													var bookName = "";
+													$
+															.each(
+																	list.orderItemList,
+																	function(j,
+																			order) {
+																		divPic += "<div class='pic'>"
+																				+ "<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
+																				+ "</div>";
+																		/* bookName = order.bookName; */
+																	});
+													var table1 = $("<tr class='itemhead'>"
+															+ "<td colspan='4'>"
+															+ "<span class='dealtime'>"
+															+ formatDate(list.dealTime)
+															+ "</span>"
+															+ "<span class='orderno'>"
+															+ "订单号: <a href='xxxxx'>"
+															+ list.orderId
+															+ "</a></span>"/*xxxx表示以后要添加跳转href */
+															+ "</tr>"
+															+ "<tr class='item'>"
+															+ "<td class='itemdetail'>"
+															+ "<div>"
+															+ divPic
+															+ "</div></td>"
+															+ "<td class='deliver'>"
+															+ "<span data-toggle='tooltip' data-placement='bottom' title=''>"
+															+ list.consignee
+															+ "</span>"
+															+ "</td>"
+															+ "<td class='sum'><span>￥"
+															+ list.totalPrice
+															+ "</span></td>"
+															+ "<td class='status'><span>"
+															+ list.orderStats
+															+ "</span></td></tr>");
+													$("tbody[id='ordertable']")
+															.append(table1);
+												});
+							}
 						}
 					})
 		}
@@ -1061,7 +1074,7 @@ a {
 					} else if (data == "fail") {
 						swal("操作失败!", "修改邮箱失败！", "error");
 						showEmail();
-					} else if(data == "hasEmail"){
+					} else if (data == "hasEmail") {
 						swal("操作失败!", "邮箱已被注册！", "error");
 						showEmail();
 					}
@@ -1537,9 +1550,9 @@ a {
 						overDiv.style.display = "none";
 						$("div[id=apprise]").html("");
 						showUnappriseBook();
-	          		}else{
+					} else {
 						swal("Sorry!", "评论失败，请稍后再试！", "error");
-	          		}
+					}
 
 				}
 			});

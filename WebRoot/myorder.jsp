@@ -512,6 +512,7 @@
 						},
 						dataType : "json", /* 服务器返回的数据类型 */
 						success : function(data) {
+						    if (data == "success") {
 								swal("Success!", "成功删除订单！", "success");
 								location.reload();
 							} else {
