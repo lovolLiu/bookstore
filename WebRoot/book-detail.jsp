@@ -461,8 +461,9 @@
 													<s:property value="author" />
 												</p>
 												<p class="price">
-													$
-													<s:property value="bookPrice" />
+													￥
+													<s:property
+													value="bookPrice" />
 												</p>
 												<a href="#" class="add-to-cart">Add To Cart</a>
 											</div>
