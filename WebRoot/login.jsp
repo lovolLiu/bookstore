@@ -237,8 +237,8 @@
 							if (data == "success") {
 
 							    swal("登陆成功!", "开始购书吧！", "success");
-
-								if(window.location.href.indexOf("bookID")==-1 && window.location.href.indexOf("/login.jsp")!=-1){
+								var urlSplit = window.location.href.split("/");
+								if(	urlSplit[urlSplit.length-1] == "login.jsp"){
 									window.location.href = "Index";
 								}else if(searchAttr.indexOf("BookID")!=-1){
 									window.location.href = "BookDetail"+searchAttr;
