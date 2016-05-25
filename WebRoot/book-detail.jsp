@@ -318,7 +318,7 @@
 							<div class="row">
 								<div class="col-md-5">
 									<div class="kode-thumb">
-										<img src="<s:property value='divBook.URL' />" alt="">
+										<img src="<s:property value='bookPicture[0].url'/>" alt="">
 									</div>
 								</div>
 								<div class="col-md-7">
@@ -478,115 +478,46 @@
 						<!--PRODUCT REVIEW TABS END-->
 						<!--RELATED PRODUCTS START-->
 						<div class="lib-related-products">
-							<h2>相关书籍</h2>
+							<h2>猜你喜欢</h2>
 							<div class="row">
 								<!--PRODUCT GRID START-->
-								<div class="col-md-4 col-sm-6">
-									<div class="best-seller-pro">
-										<figure>
-											<a href="#"><img
-												src="<s:property value='personalFindByAuthorDivBookList[0].URL'/>"
-												alt=""></a>
-										</figure>
-										<div class="kode-text">
-											<h3>
-												<a href="#"><s:property
-														value="personalFindByAuthorDivBookList[0].bookName" /></a>
-											</h3>
-										</div>
-										<div class="kode-caption">
-											<h3>
-												<s:property
-													value="personalFindByAuthorDivBookList[0].bookName" />
-											</h3>
-											<div class="rating">
-												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+								<s:iterator value="personalFindByAuthorDivBookList">
+									<div class="col-md-4 col-sm-6">
+										<div class="best-seller-pro">
+											<figure>
+												<a href="#"><img
+													src="<s:property value="URL"/>"
+													alt=""></a>
+											</figure>
+											<div class="kode-text">
+												<h3>
+													<a href="#"><s:property
+														value="bookName" /></a>
+												</h3>
 											</div>
-											<p>
-												<s:property
-													value="personalFindByAuthorDivBookList[0].author" />
-											</p>
-											<p class="price">
-												$
-												<s:property
-													value="personalFindByAuthorDivBookList[0].bookPrice" />
-											</p>
-											<a href="#" class="add-to-cart">Add To Cart</a>
+											<div class="kode-caption">
+												<h3>
+													<s:property
+													value="bookName" />
+												</h3>
+												<div class="rating">
+													<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+												</div>
+												<p>
+													<s:property
+													value="author" />
+												</p>
+												<p class="price">
+													$
+													<s:property
+													value="bookPrice" />
+												</p>
+												<a href="#" class="add-to-cart">Add To Cart</a>
+											</div>
 										</div>
 									</div>
-								</div>
-								<!--PRODUCT GRID END-->
-								<!--PRODUCT GRID START-->
-								<div class="col-md-4 col-sm-6">
-									<div class="best-seller-pro">
-										<figure>
-											<a href="#"><img
-												src="<s:property value='personalFindByAuthorDivBookList[1].URL'/>"
-												alt=""></a>
-										</figure>
-										<div class="kode-text">
-											<h3>
-												<a href="#"><s:property
-														value="personalFindByAuthorDivBookList[1].bookName" /></a>
-											</h3>
-										</div>
-										<div class="kode-caption">
-											<h3>
-												<s:property
-													value="personalFindByAuthorDivBookList[1].bookName" />
-											</h3>
-											<div class="rating">
-												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-											</div>
-											<p>
-												<s:property
-													value="personalFindByAuthorDivBookList[1].author" />
-											</p>
-											<p class="price">
-												$
-												<s:property
-													value="personalFindByAuthorDivBookList[1].bookPrice" />
-											</p>
-											<a href="#" class="add-to-cart">Add To Cart</a>
-										</div>
-									</div>
-								</div>
-								<!--PRODUCT GRID END-->
-								<!--PRODUCT GRID START-->
-								<div class="col-md-4">
-									<div class="best-seller-pro">
-										<figure>
-											<a href="#"><img
-												src="<s:property value='personalFindByAuthorDivBookList[2].URL'/>"
-												alt=""></a>
-										</figure>
-										<div class="kode-text">
-											<h3>
-												<a href="#"><s:property
-														value="personalFindByAuthorDivBookList[2].bookName" /></a>
-											</h3>
-										</div>
-										<div class="kode-caption">
-											<h3>
-												<s:property
-													value="personalFindByAuthorDivBookList[2].bookName" />
-											</h3>
-											<div class="rating">
-												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-											</div>
-											<p>
-												<s:property
-													value="personalFindByAuthorDivBookList[2].author" />
-											</p>
-											<p class="price">
-												$
-												<s:property
-													value="personalFindByAuthorDivBookList[2].bookPrice" />
-											</p>
-											<a class="add-to-cart" href="#">Add To Cart</a>
-										</div>
-									</div>
-								</div>
+								</s:iterator>
+
 								<!--PRODUCT GRID END-->
 							</div>
 						</div>

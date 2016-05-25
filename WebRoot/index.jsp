@@ -100,7 +100,7 @@
 						<h2>海量书籍</h2>
 						<p>体验完美购书体验</p>
 						<div class="caption-btns">
-							<a href="searchbook.jsp">发现更多书籍</a>
+							<a href="initSearchAction">发现更多书籍</a>
 						</div>
 					</div></li>
 				<li><img src="images/banner-2.png" alt="">
@@ -109,7 +109,7 @@
 						<h2>海量书籍</h2>
 						<p>体验完美购书体验</p>
 						<div class="caption-btns">
-							<a href="searchbook.jsp">发现更多书籍</a>
+							<a href="initSearchAction">发现更多书籍</a>
 						</div>
 					</div></li>
 				<li><img src="images/banner-3.png" alt="">
@@ -118,7 +118,7 @@
 						<h2>海量书籍</h2>
 						<p>体验完美购书体验</p>
 						<div class="caption-btns">
-							<a href="searchbook.jsp">发现更多书籍</a>
+							<a href="initSearchAction">发现更多书籍</a>
 						</div>
 					</div></li>
 			</ul>

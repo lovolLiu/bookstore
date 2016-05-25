@@ -28,12 +28,15 @@ public class BookDetailAction {
 	Publisher publisher;
 	int bookScore = 0;
 	int totalScore=0;
+	List<Picture> bookPicture;
 	List<Apprise> appriseList;
 	List<Book> relatedBookList;
 	List<Book> hotestBookList;
 	List<Book> newestBookList;
 	List<Book> personalFindByAuthorBookList;
 	List<BookType> typeList;
+	List<Book> mainBook;
+	List<DivBook> mainDivBook;
 	List<DivBook> relatedDivBookList;
 	List<DivBook> hotestDivBookList;
 	List<DivBook> newestDivBookList;
@@ -59,6 +62,7 @@ public class BookDetailAction {
 		divBook = convertorService.bookToDivBook(book);
 		publisher = bookDetailService.getBookPublisher(bookID);
 		appriseList = bookDetailService.getAppriseList(bookID);
+		bookPicture = bookDetailService.getBookPicture(bookID);
 		if(appriseList.size() ==0){
 			bookScore  = 0;
 		}else{
@@ -67,6 +71,9 @@ public class BookDetailAction {
 			}
 		bookScore = totalScore/appriseList.size();
 		}
+		//mainBook.add(book);
+		//mainDivBook = convertorService.bookIDToDivBook(mainBook);
+		
 		hotestBookList = selectBookService.selectHottestBook();
 		hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
 		System.out.println(hotestDivBookList.get(bookID).getURL());
@@ -281,6 +288,32 @@ public class BookDetailAction {
 	public void setDivBookList(List<DivBook> divBookList) {
 		this.divBookList = divBookList;
 	}
+
+	public List<Book> getMainBook() {
+		return mainBook;
+	}
+
+	public void setMainBook(List<Book> mainBook) {
+		this.mainBook = mainBook;
+	}
+
+	public List<DivBook> getMainDivBook() {
+		return mainDivBook;
+	}
+
+	public void setMainDivBook(List<DivBook> mainDivBook) {
+		this.mainDivBook = mainDivBook;
+	}
+
+	public List<Picture> getBookPicture() {
+		return bookPicture;
+	}
+
+	public void setBookPicture(List<Picture> bookPicture) {
+		this.bookPicture = bookPicture;
+	}
+
+
 
 
 
