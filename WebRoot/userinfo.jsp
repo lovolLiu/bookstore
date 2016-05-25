@@ -861,7 +861,7 @@ a {
 															+ "</span>"
 															+ "</td>"
 															+ "<td class='sum'><span>￥"
-															+ list.totalPrice
+															+ list.totalPrice.toFixed(2)
 															+ "</span></td>"
 															+ "<td class='status'><span>"
 															+ list.orderStats
