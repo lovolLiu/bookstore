@@ -1,5 +1,6 @@
 package com.bookstore.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.domain.*;
@@ -11,7 +12,7 @@ import com.bookstore.util.DivBook;
 
 public class SearchAction {
 	String keyword = "1";
-	Integer pageNo;
+	Integer pageNo = 1;
 	Integer tag = 0; //0表示按书名 1表示按出版社 2表示按书的作者 进行搜索
 	SearchService searchService;
 	List<Book> bookList;
@@ -38,6 +39,9 @@ public class SearchAction {
 	List<DivBook> newestDivBookList;
 	List<DivBook> personalFindByAuthorDivBookList;
 	
+	List<Integer> navPageTag;
+	Integer pageCount;
+	
 	//获得对应类别的书籍
 	public List<DivBook> getSortBookList(){
 		List<Book> bookList = bookTypeService.getBookByBookType(typeID);
@@ -57,7 +61,6 @@ public class SearchAction {
 		if(tag == 0){
 			System.out.println("123444444444");
 			list = searchService.searchByBookName(keyword);
-			System.out.println(list.get(0).getBookName());
 			if(list != null)
 				return list;
 			}
@@ -94,7 +97,29 @@ public class SearchAction {
 			 newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
 			 
 			 bookList = searchBookList();
-			 divBook = convertorService.bookIDToDivBook(bookList);
+			 
+			 //这里的divBook其实是个list
+			 List<DivBook> allDivBookList = convertorService.bookIDToDivBook(bookList);
+			 
+			 //根据这个divBookList计算出应该有多少页
+			 pageCount = allDivBookList.size()/12;
+			 if(allDivBookList.size()%12 > 0) pageCount++;
+			 
+			 navPageTag = new ArrayList();
+			 for(int i=1;i<=pageCount;i++){
+				 navPageTag.add(i);
+			 }
+			 
+			 
+			 
+			 //根据pageNo从divBook中选择出应该返回的页
+			 //pageNo默认是1，因此范围是[1-1, 1*12-1]
+			 divBook = new ArrayList();
+			 for(int i=(pageNo-1)*12; i<=pageNo*12-1; i++){
+				 if(allDivBookList.size() <= i) break;
+				 divBook.add(allDivBookList.get(i));
+			 }
+			 
 			 btList = bookTypeService.getBookTypeList();
 			 return "success";
 		 }
@@ -114,7 +139,29 @@ public class SearchAction {
 		 newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
 		 
 		 bookList = searchAllBook();
-		 divBook = convertorService.bookIDToDivBook(bookList);
+		 
+		 
+		 //这里的divBook其实是个list
+		 List<DivBook> allDivBookList = convertorService.bookIDToDivBook(bookList);
+		 
+		 //根据这个divBookList计算出应该有多少页
+		 pageCount = allDivBookList.size()/12;
+		 if(allDivBookList.size()%12 > 0) pageCount++;
+		 
+		 navPageTag = new ArrayList();
+		 for(int i=1;i<=pageCount;i++){
+			 navPageTag.add(i);
+		 }
+		 
+		 //根据pageNo从divBook中选择出应该返回的页
+		 //pageNo默认是1，因此范围是[1-1, 1*12-1]
+		 divBook = new ArrayList();
+		 for(int i=(pageNo-1)*12; i<=pageNo*12-1; i++){
+			 if(allDivBookList.size() <= i) break;
+			 divBook.add(allDivBookList.get(i));
+		 }
+		 
+
 		 btList = bookTypeService.getBookTypeList();
 //		 for(int i =0;i <divBook.size();i++){
 //			 System.out.println(divBook.get(i).getBookID()+" "+divBook.get(i).getPictureID());
@@ -290,6 +337,19 @@ public class SearchAction {
 	public void setSelectBookService(SelectBookService selectBookService) {
 		this.selectBookService = selectBookService;
 	}
+	public List<Integer> getNavPageTag() {
+		return navPageTag;
+	}
+	public void setNavPageTag(List<Integer> navPageTag) {
+		this.navPageTag = navPageTag;
+	}
+	public Integer getPageCount() {
+		return pageCount;
+	}
+	public void setPageCount(Integer pageCount) {
+		this.pageCount = pageCount;
+	}
+
 
 
 	

@@ -331,15 +331,15 @@
 							<!--BOOK LISTING END-->
 							<nav>
 								<ul class="pagination">
-									<li><a href="#" aria-label="Previous"> <span
+									<li><a href="initSearchAction?pageNo=<s:if test='pageNo == 1'>1</s:if><s:else>${pageNo-1 }</s:else>" aria-label="Previous"> <span
 											aria-hidden="true">&laquo;</span>
 									</a></li>
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#" aria-label="Next"> <span
+									
+									<s:iterator value="navPageTag" id="i">
+										<li><a href="initSearchAction?pageNo=${i }">${i }</a></li>
+									</s:iterator>
+									
+									<li> <a href="initSearchAction?pageNo=<s:if test='pageNo >= pageCount'>${pageCount }</s:if><s:else>${pageNo+1 }</s:else>" aria-label="Next"> <span
 											aria-hidden="true">&raquo;</span>
 									</a></li>
 								</ul>
@@ -650,6 +650,7 @@
 		}
 
 		function AddCartItem(bookID) {
+		
 			var url = "AddCartItem?bookID=" + bookID + "&num=1";
 			$.ajax({
 				url : url,
@@ -659,9 +660,13 @@
 						messageToast("成功加入购物车~");
 						UpdateCartNum();
 					} else {
-						messageToast("仓库剩余量不足~");
+						messageToast("库存不足~");
 					}
+				},
+				error: function(data){
+					messageToast("请先登录~");
 				}
+				
 			})
 		}
 

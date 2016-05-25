@@ -733,6 +733,9 @@
 					} else {
 						messageToast("仓库剩余量不足~");
 					}
+				},
+				error: function(data){
+					messageToast("请先登录~");
 				}
 			})
 		}
