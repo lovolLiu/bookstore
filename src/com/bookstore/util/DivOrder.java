@@ -13,7 +13,7 @@ public class DivOrder {
 	// order property in userinfo.jsp
 	Integer orderId;
 	String consignee; // 收货人
-	Double totalPrice;
+	String totalPrice;
 	String orderStats;
 	Timestamp dealTime;	// 交易时间
 	
@@ -51,12 +51,6 @@ public class DivOrder {
 	public void setOrderStats(String orderStats) {
 		this.orderStats = orderStats;
 	}
-	public Double getTotalPrice() {
-		return totalPrice;
-	}
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
 	public String getConsignee() {
 		return consignee;
 	}
@@ -80,6 +74,12 @@ public class DivOrder {
 	}
 	public void setOrderItemList(List<TrCartItem> orderItemList) {
 		this.orderItemList = orderItemList;
+	}
+	public String getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(String totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	

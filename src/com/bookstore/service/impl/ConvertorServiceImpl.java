@@ -194,13 +194,14 @@ public class ConvertorServiceImpl implements ConvertorService{
 			divOrder.setOrderStats("已删除");
 		}
 		divOrder.setTel(address.getTel());
-		Double totalPrice = 0.0;
+		Double fTotalPrice = 0.0;
 		for(BuyItem buyItem: buyItemList){
 			int num = buyItem.getBuyNum();
 			double currentPrice = buyItem.getCurrentPrice();
-			totalPrice += num * currentPrice;
+			fTotalPrice += num * currentPrice;
 		}
-		divOrder.setTotalPrice(totalPrice);
+		DecimalFormat df = new DecimalFormat("0.00");
+		divOrder.setTotalPrice(df.format(fTotalPrice));
 		divOrder.setOrderItemList(trCartItemList);
 		return divOrder;
 	}
@@ -208,12 +209,12 @@ public class ConvertorServiceImpl implements ConvertorService{
 	@Override
 	public DivOrder buyItemIDListAddToDivOrder(List<Integer> buyItemIDList, Integer orderId) {
 		List<TrCartItem> trCartItemList = new ArrayList<TrCartItem>();
-		Double totalPrice = 0.0;
+		Double fTotalPrice = 0.0;
 		for(Integer buyItemId : buyItemIDList) {
 			BuyItem buyItem = buyItemDAO.findByID(buyItemId);
 			int num = buyItem.getBuyNum();
 			double currentPrice = buyItem.getCurrentPrice();
-			totalPrice += num * currentPrice;
+			fTotalPrice += num * currentPrice;
 			TrCartItem trCartItem = buyItemIDToTrCartItem(buyItemId);
 			trCartItemList.add(trCartItem);
 		}
@@ -235,7 +236,8 @@ public class ConvertorServiceImpl implements ConvertorService{
 			divOrder.setOrderStats("未付款");
 		}
 		divOrder.setTel(address.getTel());
-		divOrder.setTotalPrice(totalPrice);
+		DecimalFormat df = new DecimalFormat("0.00");
+		divOrder.setTotalPrice(df.format(fTotalPrice));
 		divOrder.setOrderItemList(trCartItemList);
 		return divOrder;
 	}
