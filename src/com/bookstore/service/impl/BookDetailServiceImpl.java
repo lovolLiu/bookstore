@@ -5,9 +5,11 @@ import java.util.List;
 
 import com.bookstore.dao.AppriseDAO;
 import com.bookstore.dao.BookDAO;
+import com.bookstore.dao.PictureDAO;
 import com.bookstore.dao.PublisherDAO;
 import com.bookstore.domain.Apprise;
 import com.bookstore.domain.Book;
+import com.bookstore.domain.Picture;
 import com.bookstore.domain.Publisher;
 import com.bookstore.service.BookDetailService;
 
@@ -16,6 +18,7 @@ public class BookDetailServiceImpl implements BookDetailService {
 	BookDAO bookDao;
 	AppriseDAO appriseDao;
 	PublisherDAO publisherDao;
+	PictureDAO pictureDao;
 
 	@Override
 	public Book getBookInfo(int bookID) {
@@ -60,6 +63,22 @@ public class BookDetailServiceImpl implements BookDetailService {
 
 	public void setPublisherDao(PublisherDAO publisherDao) {
 		this.publisherDao = publisherDao;
+	}
+
+
+
+	public PictureDAO getPictureDao() {
+		return pictureDao;
+	}
+
+	public void setPictureDao(PictureDAO pictureDao) {
+		this.pictureDao = pictureDao;
+	}
+
+	@Override
+	public List<Picture> getBookPicture(int bookID) {
+
+		return pictureDao.findByBookID(bookID);
 	}
 
 

@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Bookaholic</title>
+<!-- icon -->
+<link rel="shortcut icon" href="siteicon.ico" type="image/x-icon" />
 <!-- CUSTOM STYLE -->
 <link href="css/style.css" rel="stylesheet">
 <!-- THEME TYPO -->
@@ -98,7 +100,7 @@
 						<h2>海量书籍</h2>
 						<p>体验完美购书体验</p>
 						<div class="caption-btns">
-							<a href="searchbook.jsp">发现更多书籍</a>
+							<a href="initSearchAction">发现更多书籍</a>
 						</div>
 					</div></li>
 				<li><img src="images/banner-2.png" alt="">
@@ -107,7 +109,7 @@
 						<h2>海量书籍</h2>
 						<p>体验完美购书体验</p>
 						<div class="caption-btns">
-							<a href="searchbook.jsp">发现更多书籍</a>
+							<a href="initSearchAction">发现更多书籍</a>
 						</div>
 					</div></li>
 				<li><img src="images/banner-3.png" alt="">
@@ -116,7 +118,7 @@
 						<h2>海量书籍</h2>
 						<p>体验完美购书体验</p>
 						<div class="caption-btns">
-							<a href="searchbook.jsp">发现更多书籍</a>
+							<a href="initSearchAction">发现更多书籍</a>
 						</div>
 					</div></li>
 			</ul>

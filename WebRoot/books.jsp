@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Bookaholic</title>
+<!-- icon -->
+<link rel="shortcut icon" href="siteicon.ico" type="image/x-icon" />
 <!-- CUSTOM STYLE -->
 <link href="css/style.css" rel="stylesheet">
 <!-- THEME TYPO -->
@@ -147,7 +149,7 @@
 												<s:property value="newestDivBookList[0].bookName" />
 											</h3>
 											<p>
-												<s:property value="newestDivBookList[0].description" />
+												<s:property value="newestDivBookList[0].author" />
 											</p>
 										</div>
 									</div>
@@ -163,7 +165,7 @@
 												<s:property value="newestDivBookList[1].bookName" />
 											</h3>
 											<p>
-												<s:property value="newestDivBookList[1].description" />
+												<s:property value="newestDivBookList[1].author" />
 											</p>
 										</div>
 									</div>
@@ -179,7 +181,7 @@
 												<s:property value="newestDivBookList[2].bookName" />
 											</h3>
 											<p>
-												<s:property value="newestDivBookList[2].description" />
+												<s:property value="newestDivBookList[2].author" />
 											</p>
 										</div>
 									</div>
@@ -212,7 +214,7 @@
 												<s:property value="hotestDivBookList[0].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[0].description" />
+												<s:property value="hotestDivBookList[0].author" />
 											</p>
 										</div>
 									</div>
@@ -226,7 +228,7 @@
 												<s:property value="hotestDivBookList[1].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[1].description" />
+												<s:property value="hotestDivBookList[1].author" />
 											</p>
 										</div>
 									</div>
@@ -240,7 +242,7 @@
 												<s:property value="hotestDivBookList[2].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[2].description" />
+												<s:property value="hotestDivBookList[2].author" />
 											</p>
 										</div>
 									</div>
@@ -256,7 +258,7 @@
 												<s:property value="hotestDivBookList[3].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[3].description" />
+												<s:property value="hotestDivBookList[3].author" />
 											</p>
 										</div>
 									</div>
@@ -270,7 +272,7 @@
 												<s:property value="hotestDivBookList[4].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[4].description" />
+												<s:property value="hotestDivBookList[4].author" />
 											</p>
 										</div>
 									</div>
@@ -284,7 +286,7 @@
 												<s:property value="hotestDivBookList[5].bookName" />
 											</h3>
 											<p>
-												<s:property value="hotestDivBookList[5].description" />
+												<s:property value="hotestDivBookList[5].author" />
 											</p>
 										</div>
 									</div>
