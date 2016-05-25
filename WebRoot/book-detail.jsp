@@ -98,7 +98,7 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="hidden-sm"><a href="index.jsp">主页</a></li>
+						<li class="hidden-sm"><a href="Index">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
 						<li class="hidden-sm"><a onclick="gocart()">购物车</a></li>
 						<li id="userbox" style="display:none;">
@@ -318,7 +318,6 @@
 							<div class="row">
 								<div class="col-md-5">
 									<div class="kode-thumb">
-	
 										<img src="<s:property value='bookPicture[0].url'/>" alt="">
 									</div>
 								</div>
@@ -368,7 +367,10 @@
 											</p>
 										</div>
 										<div class="book-text">
-											<p>标签: 文学.</p>
+										<p>类别: 
+										<s:iterator value="bookTypeList">
+											<a class="btn btn-primary" href="sortSearchAction?typeID=${typeID}">${type }</a>
+											</s:iterator>
 											<p>
 												作者:
 												<s:property value="book.author" />
@@ -428,51 +430,7 @@
 										</ul>
 									</div>
 								</div>
-								<div role="tabpanel" class="tab-pane fade" id="tags">
-									<div class="product-tags">
-										<a href="#">habemus</a> <a href="#">accusam</a> <a href="#">vero</a>
-										<a href="#">dolor</a> <a href="#">justo</a> <a href="#">diam</a>
-										<a href="#">nonumy</a> <a href="#">consetetur</a> <a href="#">erat</a>
-										<a href="#">sanctus</a> <a href="#">gubergren</a> <a href="#">eirmod</a>
-										<a href="#">habemus</a> <a href="#">accusam</a> <a href="#">vero</a>
-										<a href="#">dolor</a> <a href="#">justo</a> <a href="#">diam</a>
-										<a href="#">nonumy</a> <a href="#">consetetur</a> <a href="#">erat</a>
-										<a href="#">sanctus</a> <a href="#">gubergren</a> <a href="#">eirmod</a>
-										<a href="#">habemus</a> <a href="#">accusam</a> <a href="#">vero</a>
-										<a href="#">dolor</a> <a href="#">justo</a> <a href="#">diam</a>
-										<a href="#">nonumy</a> <a href="#">consetetur</a> <a href="#">erat</a>
-										<a href="#">sanctus</a> <a href="#">gubergren</a> <a href="#">eirmod</a>
-									</div>
-								</div>
-								<div role="tabpanel" class="tab-pane fade" id="CustomTab">
-									<p>Ipsum euismod his at. Eu putent habemus voluptua sit,
-										sit cu rationibus scripserit, modus voluptaria ex per. Aeque
-										dicam consulatu eu his, probatus neglegentur disputationi sit
-										et. Ei nec ludus epicuri petentium, vis appetere maluisset ad.
-										Et hinc exerci utinam cum. Sonet saperet nominavi est at, vel
-										eu sumo tritani. Cum ex minim legere.</p>
-									<p>Te eam iisque deseruisse, ipsum euismod his at. Eu
-										putent habemus voluptua sit, sit cu rationibus scripserit,
-										modus voluptaria ex per. Aeque dicam consulatu eu his,
-										probatus neglegentur disputationi sit et. Ei nec ludus epicuri
-										petentium, vis appetere maluisset ad. Et hinc exerci utinam
-										cum. Sonet saperet nominavi est at, vel eu sumo tritani. Cum
-										ex minim legere.</p>
-									<p>Sed an nominavi maiestatis, et duo corrumpit constituto,
-										duo id rebum lucilius. Te eam iisque deseruisse, ipsum euismod
-										his at. Eu putent habemus voluptua sit, sit cu rationibus
-										scripserit, modus voluptaria ex per. Aeque dicam consulatu eu
-										his, probatus neglegentur disputationi sit et. Ei nec ludus
-										epicuri petentium, vis appetere maluisset ad. Et hinc exerci
-										utinam cum. Sonet saperet nominavi est at, vel eu sumo
-										tritani. Cum ex minim legere.</p>
-									<p>Ipsum euismod his at. Eu putent habemus voluptua sit,
-										sit cu rationibus scripserit, modus voluptaria ex per. Aeque
-										dicam consulatu eu his, probatus neglegentur disputationi sit
-										et. Ei nec ludus epicuri petentium, vis appetere maluisset ad.
-										Et hinc exerci utinam cum. Sonet saperet nominavi est at, vel
-										eu sumo tritani. Cum ex minim legere.</p>
-								</div>
+								
 							</div>
 							<!--TAB PANEL END-->
 						</div>
@@ -538,10 +496,10 @@
 						<div class="widget widget-categories">
 							<h2>站点地图</h2>
 							<ul>
-								<li><a href="index.jsp">主页</a></li>
+								<li><a href="Index">主页</a></li>
 								<li><a href="initSearchAction">开始选购</a></li>
 								<li><a onclick="gocart()">购物车</a></li>
-								<li ><a onclick="gouserinfo()">我的账户</a></li>
+								<li><a onclick="gouserinfo()">我的账户</a></li>
 							</ul>
 						</div>
 					</div>
@@ -565,7 +523,7 @@
 								<li><i class="fa fa-envelope-o"></i>
 									<div class="kode-text">
 										<h4>电子邮箱</h4>
-										<a href="#">teamx@bupt.edu.cn</a>
+										<a href="mailto:bookaholicstore@163.com">bookaholicstore@163.com</a>
 									</div></li>
 							</ul>
 						</div>
@@ -781,11 +739,12 @@
 		}
 
 		function getAppriseList() {
+			var bookID = window.location.search.slice(8);
 			$.ajax({
 				url : "ShowAppriseList",
 				type : "post",
 				data : {
-					"bookID" : 2
+					"bookID" : bookID
 				},
 				dataType : "json",
 				success : function(data) {

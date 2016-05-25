@@ -27,6 +27,7 @@ public interface ConvertorService {
 	List<BuyItem> getBuyItemList(Integer orderID);
 	
 	List<DivBook> bookIDToDivBook(List<Book> bookList);
+	DivBook bookToDivBook(Book book);
 	
 
 	List<TypeAndBookListItem> bookTypeToTypeAndBookListItemList(List<BookType> bookTypeList);

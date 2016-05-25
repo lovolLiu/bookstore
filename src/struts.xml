@@ -147,7 +147,7 @@
 		</global-results>
 		
 		<action name="Logout" class="com.bookstore.action.LogoutAction">
-			<result>/index.jsp</result>
+			<result type="chain">Index</result>
 		</action>
 		
 		<action name="StraightBuy" class="com.bookstore.action.StraightBuyAction">
