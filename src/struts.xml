@@ -11,6 +11,11 @@
 
 
 	<package name="unAuthorityActions" namespace="/" extends="struts-default,json-default">
+		<action name="CheckBuyNumLTRestNum" class="com.bookstore.action.SubmitOrderAction"
+			method="checkBuyNumLTRestNum">
+			<result type="json"><param name="root">jsonResult</param></result>	
+		</action>
+		
 		<action name="BookDetail" class="com.bookstore.action.BookDetailAction">
 			<result>/book-detail.jsp</result>
 		</action>

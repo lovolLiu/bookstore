@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.BuyItemDAO;
 import com.bookstore.dao.OrderDAO;
@@ -53,6 +54,22 @@ public class BuyServiceImpl implements BuyService {
 		return orderID;
 	}
 
+	public boolean checkBuyNumLTRestNum(List<Integer> buyItemIDList){
+		for(Integer buyItemID : buyItemIDList){
+			BuyItem buyItem = buyItemDAO.findByID(buyItemID);
+			int buyNum = buyItem.getBuyNum();
+			
+			Book book = bookDAO.findByID(buyItem.getBookID());
+			int restNum = book.getRestNum();
+			
+			if(buyNum > restNum) return false;
+		}
+		return true;
+	}
+	
+	
+	
+	
 	@Override
 	public boolean payOrder(int orderID) {
 		Order order = orderDAO.findById(orderID);
@@ -61,6 +78,7 @@ public class BuyServiceImpl implements BuyService {
 		return false;
 	}
 
+	
 	@Override
 	public boolean cancelOrder(int orderID) {
 		// TODO Auto-generated method stub

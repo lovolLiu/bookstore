@@ -610,17 +610,37 @@ select {
 
 		function SubmitOrder() {
 
-			if (g_addressID == -1) {
-				swal("Sorry!", "请选择一个收获地址哟，亲~！", "error");
-				return false;
-			}
-			var url = "SubmitOrder?addressID=" + g_addressID;
+			var urlCheck = "CheckBuyNumLTRestNum?";
 			var trs = $(".itemtr");
 			$.each(trs, function(i, list) {
-				url += "&buyItemIDList=" + list.getAttribute("id");
-			})
+				urlCheck += "&buyItemIDList=" + list.getAttribute("id");
+			});
+			
+			$.ajax({
+				url: urlCheck,
+				dataType: "json",
+				success: function(data){
+					if(data){  //库存均充足
+						if (g_addressID == -1) {
+							swal("Sorry!", "请选择一个收获地址哟，亲~！", "error");
+							return false;
+						}
+						var url = "SubmitOrder?addressID=" + g_addressID;
+						$.each(trs, function(i, list) {
+							url += "&buyItemIDList=" + list.getAttribute("id");
+						})
 
-			window.location.href = url;
+			 			window.location.href = url;
+					}
+					else{
+						swal("Sorry!", "库存不足，先少买几个吧亲~", "error");
+					}
+				}
+			});
+			
+			
+			
+			
 
 		}
 

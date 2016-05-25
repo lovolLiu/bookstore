@@ -22,12 +22,20 @@ public class SubmitOrderAction {
 	Address address;
 	DivOrder divOrder;
 	Double totalPrice;
+	Boolean jsonResult;
 	
 	//IOC Service
 	BuyService buyService;
 	CartService cartService;
 	ConvertorService convertorService;
 	AddressService addressService;
+
+	//json
+	public String checkBuyNumLTRestNum(){
+		jsonResult = buyService.checkBuyNumLTRestNum(buyItemIDList);
+		return "success";
+	}
+	
 
 	public String execute(){
 		Map session = ActionContext.getContext().getSession();
@@ -116,6 +124,16 @@ public class SubmitOrderAction {
 
 	public void setAddressService(AddressService addressService) {
 		this.addressService = addressService;
+	}
+
+
+	public Boolean getJsonResult() {
+		return jsonResult;
+	}
+
+
+	public void setJsonResult(Boolean jsonResult) {
+		this.jsonResult = jsonResult;
 	}
 
 	
