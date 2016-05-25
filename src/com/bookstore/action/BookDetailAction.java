@@ -68,7 +68,7 @@ public class BookDetailAction {
 		}
 		hotestBookList = selectBookService.selectHottestBook();
 		hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
-		System.out.println(hotestDivBookList.get(bookID).getURL());
+	//	System.out.println(hotestDivBookList.get(bookID).getURL());
 		
 	
 		newestBookList = selectBookService.selectNewestBook();
