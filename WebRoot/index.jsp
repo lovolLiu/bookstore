@@ -157,7 +157,7 @@ a.book-title{
 									<div class="kode-caption">
 										<h4><a href="BookDetail?bookID=${bookID}">${bookName }</a></h4>
 										<p>${author }</p>
-										<p class="price">${bookPrice }RMB</p>
+										<p class="price">￥${bookPrice }</p>
 										<a href="#" class="add-to-cart"
 											onclick="AddCartItem(${bookID});return false;">Add To
 											Cart</a>
