@@ -238,18 +238,18 @@
 
 							    swal("登陆成功!", "开始购书吧！", "success");
 
-								if(window.location == "http://localhost:8080/BookStore/login.jsp"){
-									window.location.href = "http://localhost:8080/BookStore/Index";
+								if(window.location.href.indexOf("bookID")==-1 && window.location.href.indexOf("/login.jsp")!=-1){
+									window.location.href = "Index";
 								}else if(searchAttr.indexOf("BookID")!=-1){
-									window.location.href = "http://localhost:8080/BookStore/BookDetail"+searchAttr;
+									window.location.href = "BookDetail"+searchAttr;
 								}else if(searchAttr.indexOf("initSearchAction?")!=-1){
-									window.location.href = "http://localhost:8080/BookStore/initSearchAction?";
+									window.location.href = "initSearchAction?";
 								}else if(searchAttr.indexOf("Index")!=-1){
-									window.location.href = "http://localhost:8080/BookStore/Index";
+									window.location.href = "Index";
 								}else if(searchAttr.indexOf("cart.jsp")!=-1){
-									window.location.href = "http://localhost:8080/BookStore/cart.jsp";
+									window.location.href = "cart.jsp";
 								}else if(searchAttr.indexOf("userinfo.jsp")!=-1){
-									window.location.href = "http://localhost:8080/BookStore/userinfo.jsp";
+									window.location.href = "userinfo.jsp";
 								}else{
 									window.location.href = window.location;
 								}
