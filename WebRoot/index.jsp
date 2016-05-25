@@ -339,32 +339,8 @@
 									</s:else>
 								</s:iterator>
 
-								<div role="tabpanel" class="tab-pane fade" id="book6">
-									<div class="lib-papular">
-										<div class="kode-thumb">
-											<img src="images/papular-books55.png" alt="">
-										</div>
-										<div class="kode-text">
-											<h2>New Moon</h2>
-											<h4>Stephenie Meyer</h4>
-											<div class="rating">
-												<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-											</div>
-											<p>Legions of readers entranced by Twilight are hungry
-												for more and they won't be disappointed. In New Moon,
-												Stephenie Meyer delivers another irresistible combination of
-												romance and suspense with a supernatural twist. The
-												"star-crossed" lovers theme continues as Bella and Edward
-												find themselves facing new obstacles that will enable them
-												to contribute to innovation in the workplace families a life
-												of safety.</p>
-											<div class="lib-price">
-												<h3>$630</h3>
-												<a href="#">See More</a>
-											</div>
-										</div>
-									</div>
-								</div>
+								
+								
 							</div>
 						</div>
 					</div>
@@ -389,7 +365,7 @@
 							<div class="widget widget-categories">
 								<h2>站点地图</h2>
 								<ul>
-									<li><a href="index.jsp">主页</a></li>
+									<li><a href="Index">主页</a></li>
 									<li><a href="initSearchAction">开始选购</a></li>
 									<li><a onclick="gocart()">购物车</a></li>
 									<li><a onclick="gouserinfo()">我的账户</a></li>
@@ -416,7 +392,7 @@
 									<li><i class="fa fa-envelope-o"></i>
 										<div class="kode-text">
 											<h4>电子邮箱</h4>
-											<a href="#">teamx@bupt.edu.cn</a>
+											<a href="mailto:bookaholicstore@163.com">bookaholicstore@163.com</a>
 										</div></li>
 								</ul>
 							</div>

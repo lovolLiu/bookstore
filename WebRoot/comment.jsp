@@ -61,12 +61,28 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="hidden-sm"><a href="index.jsp">主页</a></li>
-					<li class="hidden-sm"><a href="initSearchAction">开始选购</a></li>
-					<li class="hidden-sm"><a href="">购物车</a></li>
-					<li class="hidden-sm"><a href="">我的订单</a></li>
-					<li class="hidden-sm"><a href="">我的账户</a></li>
-			    </ul>
+						<li class="hidden-sm"><a href="Index">主页</a></li>
+						<li class="hidden-sm"><a href="initSearchAction?">开始选购</a></li>
+						<li class="hidden-sm"><a onclick="gocart()">购物车</a></li>
+						<li id="userbox" style="display:none;">
+							<div class="userbox" style="margin-top:30px;">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<div class="profile-info">
+										<span class="role">欢迎</span> <span id="usrName" class="name"></span>
+									</div> <i class="fa custom-caret"></i>
+								</a>
+								<div class="dropdown-menu">
+									<ul class="list-unstyled">
+										<li><a onclick="gouserinfo()"><i class="fa fa-user"></i>我的账户</a>
+										</li>
+										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li id="gologin" class="hidden-sm" style="display:none;"><a
+							href="login.jsp">登陆</a></li>
+					</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
@@ -141,8 +157,10 @@
                     <div class="widget widget-categories">
                         <h2>站点地图</h2>
                         <ul>
-                            <li><a href="#">主页</a></li> 
-                            <li><a href="#">搜索书籍</a></li> 
+                            <li><a href="Index">主页</a></li>
+									<li><a href="initSearchAction">开始选购</a></li>
+									<li><a onclick="gocart()">购物车</a></li>
+									<li><a onclick="gouserinfo()">我的账户</a></li>
                         </ul>
                     </div>
                 </div>
@@ -171,7 +189,7 @@
                                 <i class="fa fa-envelope-o"></i>
                                 <div class="kode-text">
                                     <h4>电子邮箱</h4>
-                                    <a href="#">teamx@bupt.edu.cn</a>
+                                    <a href="mailto:bookaholicstore@163.com">bookaholicstore@163.com</a>
                                 </div>
                             </li>
                         </ul>                        
