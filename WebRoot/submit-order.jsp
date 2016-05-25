@@ -394,9 +394,9 @@ select {
 													<input type="text" placeholder="详细地址" value=""
 														id="address3"> <input type="text"
 														placeholder="邮政编码" id="address4"> <a
-														class="btn btn-primary" onclick="addAddress()">确定</a>
+														class="btn btn-primary" onclick="addAddress();return false;">确定</a>
 												</form>
-												<a class="btn btn-primary">添加新地址</a>
+												
 											</div>
 											<div class="form-two">
 												<form onSubmit="return false;">
@@ -704,7 +704,7 @@ select {
 						data : {
 							"consignee" : consignee,
 							"tel" : tel,
-							"address" : String(address)
+							"addressDetail" : String(address)
 						},
 						dataType : "json",
 						success : function(data) {
