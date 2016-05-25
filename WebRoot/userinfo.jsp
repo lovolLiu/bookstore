@@ -1016,6 +1016,10 @@ a {
 						alert("成功修改邮箱！");
 					} else if (data == "fail") {
 						alert("邮箱修改失败！");
+						showEmail();
+					} else if(data == "hasEmail"){
+						alert("邮箱已被注册！修改失败！");
+						showEmail();
 					}
 				}
 			})

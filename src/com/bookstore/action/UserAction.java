@@ -11,6 +11,7 @@ import com.bookstore.domain.Order;
 import com.bookstore.domain.User;
 import com.bookstore.service.ConvertorService;
 import com.bookstore.service.PersonalInfoService;
+import com.bookstore.service.RegisterService;
 import com.bookstore.util.DivBook;
 import com.bookstore.util.DivOrder;
 import com.opensymphony.xwork2.ActionContext;
@@ -47,6 +48,7 @@ public class UserAction {
 	
 	PersonalInfoService personalInfoService;
 	ConvertorService convertorService;
+	RegisterService registerService;
 	
 	
 	///////////////////////////
@@ -101,6 +103,10 @@ public class UserAction {
 	public String modifyEmail(){
 		Map session = ActionContext.getContext().getSession();
 		Integer userID = (Integer) session.get("userID");
+		if(registerService.hasUserEmail(newemail)){
+			result = "hasEmail";
+			return "success";
+		}
 		if(personalInfoService.modifyEmail(userID, newemail))
 			result = "success";
 		else
@@ -330,6 +336,14 @@ public class UserAction {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public RegisterService getRegisterService() {
+		return registerService;
+	}
+
+	public void setRegisterService(RegisterService registerService) {
+		this.registerService = registerService;
 	}
 	
 	
