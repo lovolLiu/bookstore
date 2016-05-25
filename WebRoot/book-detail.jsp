@@ -318,7 +318,7 @@
 							<div class="row">
 								<div class="col-md-5">
 									<div class="kode-thumb">
-										<img src="images/book-detail.jpg" alt="">
+										<img src="<s:property value='divBook.URL' />" alt="">
 									</div>
 								</div>
 								<div class="col-md-7">
@@ -367,7 +367,7 @@
 											</p>
 										</div>
 										<div class="book-text">
-											<p>标签: 文学.</p>
+											<p>标签: 文学.！！！这里需要改！！！</p>
 											<p>
 												作者:
 												<s:property value="book.author" />
@@ -846,11 +846,12 @@
 		}
 
 		function getAppriseList() {
+			var bookID = window.location.search.slice(8);
 			$.ajax({
 				url : "ShowAppriseList",
 				type : "post",
 				data : {
-					"bookID" : 2
+					"bookID" : bookID
 				},
 				dataType : "json",
 				success : function(data) {

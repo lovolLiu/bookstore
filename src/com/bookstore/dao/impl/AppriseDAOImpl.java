@@ -44,7 +44,7 @@ public class AppriseDAOImpl extends HibernateDaoSupport implements AppriseDAO {
 	@Override
 	public List<Apprise> findByUserID(Integer userID) {
 		return (List<Apprise>)getHibernateTemplate()
-				.find("from Apprise as a where a.userID=?", userID);
+				.find("from Apprise as a where a.userID=? order by a.appriseTime desc", userID);
 	}
 
 }

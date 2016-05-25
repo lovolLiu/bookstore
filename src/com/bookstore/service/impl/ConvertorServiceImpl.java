@@ -152,6 +152,25 @@ public class ConvertorServiceImpl implements ConvertorService{
 		}
 		return divBookList;
 	}
+	
+
+	@Override
+	public DivBook bookToDivBook(Book book) {
+		Picture picture = pictureDAO.findByBookID(book.getBookID()).get(0);
+		
+		DivBook divBook = new DivBook();
+		divBook.setBookID(book.getBookID());
+		divBook.setBookName(book.getBookName());
+		divBook.setBookPrice(book.getPrice()*book.getDiscount()/100);
+		divBook.setDescription(book.getDescription());
+		divBook.setAuthor(book.getAuthor());
+		
+		
+		divBook.setPictureID(picture.getPictureID());
+		divBook.setURL(picture.getUrl());
+		return null;
+	}
+
 	@Override
 	public DivOrder buyItemListAddToDivOrder(List<BuyItem> buyItemList, Integer orderId) {
 		List<TrCartItem> trCartItemList = buyItemListToTrCartList(buyItemList);
@@ -334,6 +353,7 @@ public class ConvertorServiceImpl implements ConvertorService{
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
+
 
 
 

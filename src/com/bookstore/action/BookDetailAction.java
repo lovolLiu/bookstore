@@ -56,6 +56,7 @@ public class BookDetailAction {
 	
 	public String execute(){
 		book = bookDetailService.getBookInfo(bookID);
+		divBook = convertorService.bookToDivBook(book);
 		publisher = bookDetailService.getBookPublisher(bookID);
 		appriseList = bookDetailService.getAppriseList(bookID);
 		if(appriseList.size() ==0){
