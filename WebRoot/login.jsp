@@ -243,7 +243,7 @@
 						dataType : "json",
 						success : function(data) {
 							if (data == "success") {
-								window.location.href = "http://localhost:8080/BookStore/Index";
+								window.location.href = "http://localhost:8080/bookstore/Index";
 							} else {
 								alert("登录失败");
 							}
