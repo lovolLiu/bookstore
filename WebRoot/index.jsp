@@ -216,10 +216,10 @@ a.book-title{
 													<img src="${URL }" alt="">
 												</figure>
 												<div class="kode-text">
-													<h4><a href="BookDetail?bookID=${bookID}">${bookName}</a></h4>
+													<h4><a class="book-title" href="BookDetail?bookID=${bookID}">${bookName}</a></h4>
 												</div>
 												<div class="kode-caption">
-													<h4><a class="book-title" href="BookDetail?bookID=${bookID}">${bookName}</a></h4>
+													<h4><a href="BookDetail?bookID=${bookID}">${bookName}</a></h4>
 													<p>${author}</p>
 													<p class="price">${bookPrice}</p>
 													<a href="#" class="add-to-cart"
@@ -263,7 +263,7 @@ a.book-title{
 										</div>
 									</div>
 									<div class="kode-text">
-										<h2><a href="BookDetail?bookID=${bookID}">${bookName}</a></h2>
+										<h2><a class="book-title" href="BookDetail?bookID=${bookID}">${bookName}</a></h2>
 										<ul>
 											<li><p>
 													作者: <a href="#">${author }</a>
@@ -314,7 +314,7 @@ a.book-title{
 													<img src=${URL } alt="">
 												</div>
 												<div class="kode-text">
-													<h2><a href="BookDetail?bookID=${bookID}">${bookName}</a></h2>
+													<h2><a class="book-title" href="BookDetail?bookID=${bookID}">${bookName}</a></h2>
 													<h4>${author }</h4>
 													<p>${description }</p>
 													<div class="lib-price">
