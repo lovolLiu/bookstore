@@ -1564,6 +1564,7 @@ a {
 						overDiv.style.display = "none";
 						$("div[id=apprise]").html("");
 						showUnappriseBook();
+						showUnapprisedOrderNumber();
 					} else {
 						swal("Sorry!", "评论失败，请稍后再试！", "error");
 					}
