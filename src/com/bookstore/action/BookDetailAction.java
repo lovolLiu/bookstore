@@ -12,6 +12,7 @@ import com.bookstore.util.DivBook;
 /**
  * 
  * @author Xintong Liu
+ * @authore Chang Su
  * @description 书目详情和书的个性推荐
  * 
  */
@@ -41,6 +42,8 @@ public class BookDetailAction {
 	List<DivBook> hotestDivBookList;
 	List<DivBook> newestDivBookList;
 	List<DivBook> personalFindByAuthorDivBookList;
+	
+	List<BookType> bookTypeList;
 
 	
 	
@@ -58,6 +61,7 @@ public class BookDetailAction {
 	}
 	
 	public String execute(){
+		bookTypeList = bookTypeService.getBookTypeListByBook(bookID);
 		book = bookDetailService.getBookInfo(bookID);
 		divBook = convertorService.bookToDivBook(book);
 		publisher = bookDetailService.getBookPublisher(bookID);
@@ -311,6 +315,14 @@ public class BookDetailAction {
 
 	public void setBookPicture(List<Picture> bookPicture) {
 		this.bookPicture = bookPicture;
+	}
+
+	public List<BookType> getBookTypeList() {
+		return bookTypeList;
+	}
+
+	public void setBookTypeList(List<BookType> bookTypeList) {
+		this.bookTypeList = bookTypeList;
 	}
 
 
