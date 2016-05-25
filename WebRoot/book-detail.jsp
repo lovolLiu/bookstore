@@ -455,7 +455,7 @@
 													value="author" />
 												</p>
 												<p class="price">
-													$
+													￥
 													<s:property
 													value="bookPrice" />
 												</p>
