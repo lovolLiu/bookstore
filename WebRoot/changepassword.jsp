@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>在线书城</title>
+<title>Bookaholic</title>
 <!-- icon -->
 <link rel="shortcut icon" href="siteicon.ico" type="image/x-icon" />
 <!-- CUSTOM STYLE -->
@@ -65,23 +65,6 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-sm"><a href="Index">主页</a></li>
 						<li class="hidden-sm"><a href="initSearchAction?">开始选购</a></li>
-						<li class="hidden-sm"><a onclick="gocart()">购物车</a></li>
-						<li id="userbox" style="display:none;">
-							<div class="userbox" style="margin-top:30px;">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<div class="profile-info">
-										<span class="role">欢迎</span> <span id="usrName" class="name"></span>
-									</div> <i class="fa custom-caret"></i>
-								</a>
-								<div class="dropdown-menu">
-									<ul class="list-unstyled">
-										<li><a onclick="gouserinfo()"><i class="fa fa-user"></i>我的账户</a>
-										</li>
-										<li><a href="Logout?"><i class="fa fa-power-off"></i>登出</a></li>
-									</ul>
-								</div>
-							</div>
-						</li>
 						<li id="gologin" class="hidden-sm" style="display:none;"><a
 							href="login.jsp">登陆</a></li>
 					</ul>
@@ -206,6 +189,33 @@
 			// 100% fit in a container
 			});
 		});
+		function gouserinfo() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp?userinfo.jsp";
+					} else {
+						location.href = "userinfo.jsp"
+					}
+				}
+			})
+		}
+		
+		function gocart() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp?cart.jsp";
+					} else {
+						location.href = "cart.jsp"
+					}
+				}
+			})
+		}
 		function check(){
 		    var pwd1 = document.getElementById("pwd1").value;
 		    var pwd2 = document.getElementById("pwd2").value;

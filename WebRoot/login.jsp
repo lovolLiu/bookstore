@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>在线书城</title>
+<title>Bookaholic</title>
 <!-- icon -->
 <link rel="shortcut icon" href="siteicon.ico" type="image/x-icon" />
 <!-- CUSTOM STYLE -->
@@ -242,8 +242,23 @@
 						},
 						dataType : "json",
 						success : function(data) {
+							var searchAttr = window.location.search;
 							if (data == "success") {
-								window.location.href = "http://localhost:8080/BookStore/Index";
+								if(window.location == "http://localhost:8080/BookStore/login.jsp"){
+									window.location.href = "http://localhost:8080/BookStore/Index";
+								}else if(searchAttr.indexOf("BookID")!=-1){
+									window.location.href = "http://localhost:8080/BookStore/BookDetail"+searchAttr;
+								}else if(searchAttr.indexOf("initSearchAction?")!=-1){
+									window.location.href = "http://localhost:8080/BookStore/initSearchAction?";
+								}else if(searchAttr.indexOf("Index")!=-1){
+									window.location.href = "http://localhost:8080/BookStore/Index";
+								}else if(searchAttr.indexOf("cart.jsp")!=-1){
+									window.location.href = "http://localhost:8080/BookStore/cart.jsp";
+								}else if(searchAttr.indexOf("userinfo.jsp")!=-1){
+									window.location.href = "http://localhost:8080/BookStore/userinfo.jsp";
+								}else{
+									window.location.href = window.location;
+								}
 							} else {
 								alert("登录失败");
 							}

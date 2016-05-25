@@ -91,6 +91,7 @@ public class BookDetailAction {
 		btList = bookTypeService.getBookTypeList();
 		
 		personalFindByAuthorBookList = selectBookService.selectPersonalBookByAuthor(book.getAuthor());
+		personalFindByAuthorBookList.remove(book);	//猜你喜欢中删除书本身
 		personalFindByAuthorDivBookList = convertorService.bookIDToDivBook(personalFindByAuthorBookList);
 
 		//typeList = selectService.getTypeList();

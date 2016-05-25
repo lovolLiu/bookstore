@@ -451,7 +451,7 @@
 			dataType : "json",
 			success : function(data) {
 				if(data == ""){
-				    location.href="login.jsp";
+				    location.href="login.jsp?cart.jsp";
 				}else{
 				    location.href="cart.jsp"
 				}
@@ -464,7 +464,7 @@
 				dataType : "json",
 				success : function(data) {
 					if (data == "") {
-						location.href = "login.jsp";
+						location.href = "login.jsp?userinfo.jsp";
 					} else {
 						location.href = "userinfo.jsp"
 					}
@@ -520,7 +520,8 @@
 					}
 				},
 				error: function(data){
-					messageToast("请先登录~");
+					var loginUrl = "login.jsp?Index";
+					window.location.href = loginUrl;
 				}
 			})
 		}
