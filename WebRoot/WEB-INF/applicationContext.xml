@@ -170,6 +170,7 @@
 		<property name="bookDao" ref="bookDAO"/>
 		<property name="appriseDao" ref="appriseDAO"/>
 		<property name="publisherDao" ref="publisherDAO"/>
+		<property name="pictureDao" ref="pictureDAO"/>
 	</bean>
 	
 	<bean id="addressService" class="com.bookstore.service.impl.AddressServiceImpl">

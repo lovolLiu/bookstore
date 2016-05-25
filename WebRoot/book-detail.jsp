@@ -318,7 +318,8 @@
 							<div class="row">
 								<div class="col-md-5">
 									<div class="kode-thumb">
-										<img src="images/book-detail.jpg" alt="">
+	
+										<img src="<s:property value='bookPicture[0].url'/>" alt="">
 									</div>
 								</div>
 								<div class="col-md-7">
