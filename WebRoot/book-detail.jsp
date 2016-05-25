@@ -465,7 +465,7 @@
 													<s:property
 													value="bookPrice" />
 												</p>
-												<a href="#" class="add-to-cart">Add To Cart</a>
+												<a href="#" class="add-to-cart" onclick="AddCartItem(<s:property value='bookID'/>);return false;">Add To Cart</a>
 											</div>
 										</div>
 									</div>
@@ -659,16 +659,16 @@
 			var restNum = ${book.restNum};
 			var wantedNum = $(".cart_quantity_input").attr("value");
 			if (wantedNum > restNum) {
-				messageToast("仓库剩余量不足~");
+				swal("Sorry!", "库存不足~", "error");
 				return;
 			}
 			var url = "StraightBuy?bookID=${book.bookID }&num=" + wantedNum;
 			window.location.href = url;
 		}
-
-		function AddCartItem() {
-			var url = "AddCartItem?bookID=${book.bookID }&num="
-					+ $(".cart_quantity_input").attr("value");
+		
+		function AddCartItem(bookID) {
+			var url = "AddCartItem?bookID=" + bookID + "&num=1";
+			
 			$.ajax({
 				url : url,
 				dataType : "json",
@@ -686,6 +686,31 @@
 				}
 			})
 		}
+		
+		
+
+		function AddCartItem() {
+			var url = "AddCartItem?bookID=${book.bookID }&num="
+					+ $(".cart_quantity_input").attr("value");
+					
+			$.ajax({
+				url : url,
+				dataType : "json",
+				success : function(data) {
+					if (data == true) {
+						swal("Nice!", "已加入购物车！", "success");
+					} else {
+						swal("Sorry!", "库存不足！", "error");
+					}
+				},
+				error : function(data) {
+					swal("Sorry!", "请先登录！", "error");
+					var loginUrl = "login.jsp?BookID=${book.bookID }";
+					window.location.href = loginUrl;
+				}
+			})
+		}
+		
 		function QuantityUp() {
 			var currentNum = parseInt($(".cart_quantity_input").attr("value"));
 			$(".cart_quantity_input").attr("value", currentNum + 1);

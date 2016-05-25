@@ -576,7 +576,7 @@ select {
 											function(i, list) {
 											    remainingitem++;
 												var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
-														+ "<td class=\"cart_product\"><input onclick='UpdateTotalPrice();' type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?id="
+														+ "<td class=\"cart_product\"><input onclick='UpdateTotalPrice();' type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?bookID="
 														+ list.bookID
 														+ "'><img src=\""+list.imageUrl+"\"></a></td>"
 														+ "<td class=\"cart_description\"><h4><a href='BookDetail?bookID="
