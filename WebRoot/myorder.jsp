@@ -468,6 +468,7 @@
 						success : function(data) {
 							if (data == "success") {
 								//$(e.target).parent().parent().parent().remove();
+								location.reload();
 							} else {
 								alert("取消失败");
 							}
@@ -488,7 +489,7 @@
 						dataType : "json", /* 服务器返回的数据类型 */
 						success : function(data) {
 							if (data == "success") {
-								$(this).parent().parent().parent().remove();
+								location.reload();
 							} else {
 								alert("删除失败");
 							}
