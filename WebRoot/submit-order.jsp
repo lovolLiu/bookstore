@@ -34,6 +34,8 @@
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<script src="js/sweetalert.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -239,30 +241,10 @@ select {
 .panel-body>p {
 	height: 50px;
 }
-
-.time_messagebox {
-	position: fixed;
-	margin: auto;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	width: 250px;
-	height: 80px;
-	background: orange;
-	color: white;
-	display: none;
-	border-radius: 10px;
-	z-index: 99;
-}
 </style>
 </head>
 <body>
-	<div class="time_messagebox">
-		<p style="height:80px;margin:0px auto;text-align:center">
-			<span style="line-height:80px;">请选择一个收货地址哦亲~~</span>
-		</p>
-	</div>
+	
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 		<div class="loader-section section-left"></div>
@@ -629,8 +611,7 @@ select {
 		function SubmitOrder() {
 
 			if (g_addressID == -1) {
-
-				messageToast();
+				swal("Sorry!", "请选择一个收获地址哟，亲~！", "error");
 				return false;
 			}
 			var url = "SubmitOrder?addressID=" + g_addressID;
@@ -736,18 +717,5 @@ select {
 					})
 		}
 	</script>
-
-
-	<script>
-		function messageToast() {
-			$(".time_messagebox").fadeIn(300);
-			setTimeout("$('.time_messagebox').fadeOut(300);", 1200)
-		}
-	</script>
-
-
-
-
-
 </body>
 </html>

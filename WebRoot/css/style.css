@@ -119,6 +119,14 @@ Sidebar heading:	'Oswald', sans-serif;
 				DEFAULT CSS
 ==========================================
 */
+.uline-title {
+	margin-bottom: 50px;
+	padding: 0 0 37px;
+	text-align: center;
+	background: url("../images/utitlebg.png");
+	background-repeat: no-repeat;
+	background-position: center bottom -2px;
+}
 . /* Userbox */
 .userbox {
 	display: inline-block;

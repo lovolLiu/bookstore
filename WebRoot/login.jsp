@@ -20,10 +20,6 @@
 <link href="css/color.css" rel="stylesheet">
 <!-- FONT AWESOME -->
 <link href="css/font-awesome.min.css" rel="stylesheet">
-<!-- BX SLIDER -->
-<link href="css/jquery.bxslider.css" rel="stylesheet">
-<!-- Boostrap Slider -->
-<link href="css/bootstrap-slider.css" rel="stylesheet">
 <!-- Widgets -->
 <link href="css/widget.css" rel="stylesheet">
 <!-- Owl Carusel -->
@@ -33,6 +29,8 @@
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<script src="js/sweetalert.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -91,9 +89,8 @@
 					style="display: block; width: 100%; margin: 0px;">
 
 					<ul>
-						<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Login</span></li>
-						<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>create
-								account</span></li>
+						<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>登陆</span></li>
+						<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>注册</span></li>
 
 					</ul>
 					<!---->
@@ -202,15 +199,9 @@
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/modernizr.custom.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.bxslider.min.js"></script>
-	<script src="js/bootstrap-slider.js"></script>
 	<script src="js/waypoints.min.js"></script>
 	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/owl.carousel.js"></script>
-	<script src="js/dl-menu/jquery.dlmenu.js"></script>
-	<!--<script src="js/googlemap.js"></script>-->
 	<script type="text/javascript" src="lib/hash.js"></script>
-	<script type="text/javascript" src="lib/booklet-lib.js"></script>
 	<script src="js/jquerypp.custom.js"></script>
 	<script src="js/jquery.bookblock.js"></script>
 	<script src="js/functions.js"></script>
@@ -243,9 +234,10 @@
 						dataType : "json",
 						success : function(data) {
 							if (data == "success") {
-								window.location.href = "http://localhost:8080/BookStore/Index";
+							    swal("登陆成功!", "开始购书吧！", "success");
+								window.location.href = "Index";
 							} else {
-								alert("登录失败");
+								swal("登陆失败!", "请确保输入正确的用户名以及密码", "error");
 							}
 						}
 					})
@@ -321,13 +313,16 @@
 			}
 		}
 		function submitUser() {
+		    var username = $("input[id='usrname']").val();
+		    var tel = document.getElementById("tel").value;
+			var email = document.getElementById("email").value;
+			var pwd1 = document.getElementById("pwd1").value;
+			if(username != "" && tel != "" && email != "" && pwd1 != "")
+			    flag = true;
+			else
+			    flag = false;
 			if (flag == true) {
-				var username = $("input[id='usrname']").val();
-				var tel = document.getElementById("tel").value;
-				var email = document.getElementById("email").value;
-				var pwd1 = document.getElementById("pwd1").value;
-				$
-						.ajax({
+				$.ajax({
 							url : "RegisterUser",
 							type : "post",
 							data : {
@@ -339,20 +334,13 @@
 							dataType : "json",
 							success : function(data) {
 								if (data == "success") {
-									$("form[id='registerform']").css("display",
-											"none");
-									$("h4[id='register-success']").css(
-											"display", "");
-									$("h4[id='register-success']").html("注册成功");
+								    swal("注册成功!", "请登录！", "success");
 								} else {
-									$("h4[id='register-success']").html(
-											"注册失败，请重新注册");
+								    swal("注册失败!", "请稍后尝试！", "error");
 								}
 							}
 						});
-			} else {
-				alert("请确保您的各项信息填写正确");
-			}
+			} 
 		}
 	</script>
 </body>

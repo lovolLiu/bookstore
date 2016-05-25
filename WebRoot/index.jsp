@@ -34,13 +34,19 @@
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
-
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<script src="js/sweetalert.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+<style>
+a.book-title{
+    color:orange;
+}
+</style>
 </head>
 <body>
 	<div id="loader-wrapper">
@@ -145,7 +151,7 @@
 									</figure>
 									<div class="kode-text">
 										<h4>
-											<a href="BookDetail?bookID=${bookID}">${bookName }</a>
+											<a class="book-title" href="BookDetail?bookID=${bookID}">${bookName }</a>
 										</h4>
 									</div>
 									<div class="kode-caption">
@@ -213,7 +219,7 @@
 													<h4><a href="BookDetail?bookID=${bookID}">${bookName}</a></h4>
 												</div>
 												<div class="kode-caption">
-													<h4><a href="BookDetail?bookID=${bookID}">${bookName}</a></h4>
+													<h4><a class="book-title" href="BookDetail?bookID=${bookID}">${bookName}</a></h4>
 													<p>${author}</p>
 													<p class="price">${bookPrice}</p>
 													<a href="#" class="add-to-cart"
@@ -512,32 +518,18 @@
 				dataType: "json",
 				success: function(data){
 					if(data==true){
-						messageToast("成功加入购物车~");
+						swal("Nice!", "已加入购物车！", "success");
 						UpdateCartNum();
 					}
 					else{
-						messageToast("仓库剩余量不足~");
+						swal("Sorry!", "库存不足！", "error");
 					}
 				},
 				error: function(data){
-					messageToast("请先登录~");
+					swal("Sorry!", "请先登录！", "error");
 				}
 			})
 		}
-		
-	    function messageToast(messageText){
-			  var htmlText = '<div id="time_messagebox" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width:250px; ' +
-			  'height:80px;background: orange;color: white;display: none;border-radius:10px;">' +
-			  '<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">' + messageText + '</span></p></div>' ;
-			  if ($("#time_messagebox" ).length == 0){
-			       $( "body" ).append(htmlText);
-			  }
-			  else {
-			       $( "#time_messagebox" ).find( "span").html(messageText);
-			  }
-			  $( "#time_messagebox" ).fadeIn(300);
-			  setTimeout( "$('#time_messagebox').fadeOut(300);" ,1200)
-  		}
 		</script>
 </body>
 </html>

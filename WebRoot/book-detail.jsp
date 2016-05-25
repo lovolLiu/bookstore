@@ -34,8 +34,9 @@
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
-<link rel="stylesheet" href="css/star-rating.css" media="all"
-	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<script src="js/sweetalert.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -142,16 +143,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 sidebar">
-						<!--SEARCH WIDGET START-->
-						<div class="widget widget-search">
-							<h2>搜索</h2>
-							<div class="input-container">
-								<input id="searchinput" type="text" placeholder="输入关键词">
-								<i class="fa fa-search"></i> <a onclick="filter()"
-									class="btn btn-primary">搜索</a>
-							</div>
-						</div>
-						<!--SEARCH WIDGET END-->
 						<div class="widget widget-new-arrival">
 							<h2>新书上架</h2>
 							<ul>
@@ -459,9 +450,6 @@
 													<s:property
 													value="bookName" />
 												</h3>
-												<div class="rating">
-													<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-												</div>
 												<p>
 													<s:property
 													value="author" />
@@ -560,15 +548,7 @@
 	<script src="js/functions.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script type="application/x-javascript">
-		
-		
-		
-		
 	     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-	
-	
-	
-	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
@@ -687,13 +667,13 @@
 				dataType : "json",
 				success : function(data) {
 					if (data == true) {
-						messageToast("成功加入购物车~");
+						swal("Nice!", "已加入购物车！", "success");
 					} else {
-						messageToast("仓库剩余量不足~");
+						swal("Sorry!", "库存不足！", "error");
 					}
 				},
 				error: function(data){
-					messageToast("请先登录~");
+					swal("Sorry!", "请先登录！", "error");
 				}
 			})
 		}
@@ -710,19 +690,6 @@
 			$(".cart_quantity_input").attr("value", currentNum - 1);
 		}
 
-		function messageToast(messageText) {
-			var htmlText = '<div id="time_messagebox" style="position: fixed;margin:auto;left:0; right:0; top:0; bottom:0;width:250px; ' +
-	 	 'height:80px;background: orange;color: white;display: none;border-radius:10px;">'
-					+ '<p style="height:80px;margin:0px auto;text-align:center"><span style="line-height:80px;">'
-					+ messageText + '</span></p></div>';
-			if ($("#time_messagebox").length == 0) {
-				$("body").append(htmlText);
-			} else {
-				$("#time_messagebox").find("span").html(messageText);
-			}
-			$("#time_messagebox").fadeIn(300);
-			setTimeout("$('#time_messagebox').fadeOut(300);", 1200)
-		}
 		function formatDate(data) {
 			var d = new Date(data); //for date in the format "YYYY-MM-DDTHH:MM:SS" where T means timezone!!! 
 			var formattedDate = d.getFullYear() + "-" + (d.getMonth() + 1)

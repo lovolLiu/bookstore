@@ -35,6 +35,8 @@
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
 <link rel="stylesheet" type="text/css" href="css/isotope.css" />
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<script src="js/sweetalert.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -139,6 +141,7 @@
 </style>
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
+    var deletedcount = 0;
 	function formatDate(data) {
 		var strDate = "20" + data; //for date in the format "YY-MM-DD HH:MM:SS(.000)" 
 		var d = new Date(strDate);
@@ -215,7 +218,20 @@
 		</div>
 		<!--BANNER END-->
 		<!--CONTENT START-->
-		<div class="container">
+		<div id="emptyorder" style="display:none;">
+			<section>
+				<div class="col-sm-12">
+					<h2 class="uline-title text-center">没有发现您的订单记录哟~</h2>
+				</div>
+				<div style="width:260px;margin:0 auto;margin-bottom:20px;">
+					<img src="images/noorder.png" alt="" />
+				</div>
+				<div style="text-align: center;">
+					<a class="btn btn-primary" href="initSearchAction?">去逛逛</a>
+				</div>
+			</section>
+		</div>
+		<div id="allorders" class="container" style="">
 			<div class="row">
 				<section>
 					<h3>订单状态</h3>
@@ -228,60 +244,72 @@
 					</ul>
 				</section>
 				<div id="isotope-container" class="container">
-					<s:iterator value="divOrderList" var="u">
-						<s:if test="#u.orderStats != '已删除'">
-							<table id="<s:property value='orderId'/>"
-								class="table table-striped isotope-item <s:property value='orderStats'/>">
-								<tbody>
-									<tr class="itemhead">
-										<td colspan="5"><span class="dealtime"> <script
-													type="text/javascript">
-											var formatedDate = formatDate("<s:property value='dealTime' />");
-											$('#<s:property value='orderId'/>')
-													.find('tbody').find(
-															'.dealtime').html(
-															formatedDate);
-										</script>
-										</span> <span class="orderhead"> 订单号：</span> <span class="orderno"><s:property
-													value='orderId' /></span></td>
-									</tr>
-									<tr class="item">
-										<td class="itemdetail">
-											<div>
-												<s:iterator value="#u.orderItemList">
-													<div class="pic">
-														<img src="<s:property value='imageUrl' />">
-													</div>
-												</s:iterator>
-											</div>
-										</td>
-										<td class="deliver"><span data-toggle="tooltip"
-											data-placement="bottom" title=""><s:property
-													value='consignee' /></span></td>
-										<td class="sum"><span><s:property
-													value='totalPrice' /></span></td>
-										<td class="status"><span><s:property
-													value='orderStats' /></span></td>
-										<s:if test="#u.orderStats == '未付款'">
-											<td class="operation"><a
-												class="btn btn-primary canelorder">取消</a> <a
-												class="btn btn-primary deleteorder">删除</a> <a
-												class="btn btn-primary orderdetail"
-												href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
+						<s:iterator value="divOrderList" var="u">
+							<s:if test="#u.orderStats != '已删除'">
+								<table id="<s:property value='orderId'/>"
+									class="table table-striped isotope-item <s:property value='orderStats'/>">
+									<tbody>
+										<tr class="itemhead">
+											<td colspan="5"><span class="dealtime"> <script
+														type="text/javascript">
+												var formatedDate = formatDate("<s:property value='dealTime' />");
+												$(
+														'#<s:property value='orderId'/>')
+														.find('tbody').find(
+																'.dealtime')
+														.html(formatedDate);
+											</script>
+											</span> <span class="orderhead"> 订单号：</span> <span class="orderno"><s:property
+														value='orderId' /></span></td>
+										</tr>
+										<tr class="item">
+											<td class="itemdetail">
+												<div>
+													<s:iterator value="#u.orderItemList">
+														<div class="pic">
+															<img src="<s:property value='imageUrl' />">
+														</div>
+													</s:iterator>
+												</div>
 											</td>
-										</s:if>
-										<s:else>
-											<td class="operation"><a
-												class="btn btn-primary deleteorder">删除</a> <a
-												class="btn btn-primary orderdetail"
-												href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
-											</td>
-										</s:else>
-									</tr>
-								</tbody>
-							</table>
-						</s:if>
-					</s:iterator>
+											<td class="deliver"><span data-toggle="tooltip"
+												data-placement="bottom" title=""><s:property
+														value='consignee' /></span></td>
+											<td class="sum"><span><s:property
+														value='totalPrice' /></span></td>
+											<td class="status"><span><s:property
+														value='orderStats' /></span></td>
+											<s:if test="#u.orderStats == '未付款'">
+												<td class="operation"><a
+													class="btn btn-primary canelorder">取消</a> <a
+													class="btn btn-primary deleteorder">删除</a> <a
+													class="btn btn-primary orderdetail"
+													href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
+												</td>
+											</s:if>
+											<s:else>
+												<td class="operation"><a
+													class="btn btn-primary deleteorder">删除</a> <a
+													class="btn btn-primary orderdetail"
+													href="OrderDetail?orderID=<s:property value='orderId'/>">详情</a>
+												</td>
+											</s:else>
+										</tr>
+									</tbody>
+								</table>
+							</s:if>
+							<s:else>
+							    <script>
+							        deletedcount++;
+							        var length = <s:property value="divOrderList.size"/>;
+			if(length - deletedcount == 0){
+			    $('#emptyorder').attr("style","");
+			    $('#allorders').attr("style","display:none");
+			}
+							    </script>
+							</s:else>
+						</s:iterator>
+					
 				</div>
 			</div>
 		</div>
@@ -359,11 +387,7 @@
 	<script src="js/functions.js"></script>
 	<script src="js/jquery.isotope.js"></script>
 	<script type="application/x-javascript">
-		
-		
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-	
-	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
@@ -467,16 +491,17 @@
 						dataType : "json", /* 服务器返回的数据类型 */
 						success : function(data) {
 							if (data == "success") {
-								//$(e.target).parent().parent().parent().remove();
+								swal("Success!", "成功取消订单！", "success");
+								location.reload();
 							} else {
-								alert("取消失败");
+								swal("Sorry!", "取消订单失败！", "error");
 							}
 						}
 					});
 				})
 
 		$("a[class='btn btn-primary deleteorder']").click(
-				function deleteOrder() {
+				function deleteOrder(e) {
 					var orderID = $(this).parent().parent().prev().find(
 							"span[class='orderno']").text();
 					$.ajax({
@@ -488,9 +513,10 @@
 						dataType : "json", /* 服务器返回的数据类型 */
 						success : function(data) {
 							if (data == "success") {
-								$(this).parent().parent().parent().remove();
+								swal("Success!", "成功删除订单！", "success");
+								location.reload();
 							} else {
-								alert("删除失败");
+								swal("Sorry!", "删除订单失败！", "error");
 							}
 						}
 					});

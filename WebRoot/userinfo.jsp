@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,10 @@
 <!-- Icomoon Icon Fonts-->
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
-<link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/star-rating.css" media="all"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<script src="js/sweetalert.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -178,6 +182,7 @@
 		padding: 43px 0 0 0;
 	}
 }
+
 .panel {
 	border: 1;
 	-webkit-border-radius: 0px;
@@ -365,15 +370,15 @@ a {
 	width: 80%;
 }
 
-.apprisepic{
-    width:100px;
-    float:left;
-    margin-bottom:40px;
+.apprisepic {
+	width: 100px;
+	float: left;
+	margin-bottom: 40px;
 }
 </style>
 </head>
 <body>
-    <!-- 添加新地址form -->
+	<!-- 添加新地址form -->
 	<div id="addaddressform" class="panel addaddressform"
 		style="display:none">
 		<div class="panel-body text-center bk-padding-off bk-wrapper">
@@ -381,16 +386,16 @@ a {
 		</div>
 		<div class="panel-body text-center">
 			<form id="filladdress" onSubmit="return false;">
-				<input type="text" placeholder="省份" id="address1" required=""/>
-				<input type="text" placeholder="地区" id="address2" required=""/>
-				<input type="text" placeholder="详细地址" value="" id="address3" required=""/>
-				<input type="text" placeholder="邮政编码" id="address4" required=""/>
-			    <input type="text" placeholder="收货人姓名" value="" id="consignee" required=""/>
-			    <input type="text" placeholder="电话号码" value="" id="tel" required=""/>
+				<input type="text" placeholder="省份" id="address1" required="" /> <input
+					type="text" placeholder="地区" id="address2" required="" /> <input
+					type="text" placeholder="详细地址" value="" id="address3" required="" />
+				<input type="text" placeholder="邮政编码" id="address4" required="" /> <input
+					type="text" placeholder="收货人姓名" value="" id="consignee" required="" />
+				<input type="text" placeholder="电话号码" value="" id="tel" required="" />
 			</form>
 			<div id="addresserror" class="error"></div>
-			<a id="confirmaddaddress" class="btn btn-primary">确定</a>
-			<a id="canceladdaddress" class="btn btn-primary">取消</a>
+			<a id="confirmaddaddress" class="btn btn-primary">确定</a> <a
+				id="canceladdaddress" class="btn btn-primary">取消</a>
 		</div>
 	</div>
 	<!-- 输入旧密码form -->
@@ -446,18 +451,20 @@ a {
 			<img src="images/addressheader.jpg" alt="" class="img-responsive">
 		</div>
 		<div class="panel-body text-center">
-		    <div id="apprise-item" style="height:150px;">
-		        <img class="apprisepic" src="" alt="" />
-		        <h4></h4>
-		        <p></p>
-		    </div>
+			<div id="apprise-item" style="height:150px;">
+				<img class="apprisepic" src="" alt="" />
+				<h4></h4>
+				<p></p>
+			</div>
 			<form id="fillapprise" onSubmit="return false;">
-				<input id="input-rating" value="2" type="number" class="rating" min=0 max=5 step=1 data-size="xs">
-				<textarea name="" id="apprisemessage" rows="6" class="form-control" placeholder="在这儿加上一段走心的评论吧~~"></textarea>
+				<input id="input-rating" value="2" type="number" class="rating"
+					min=0 max=5 step=1 data-size="xs">
+				<textarea name="" id="apprisemessage" rows="6" class="form-control"
+					placeholder="在这儿加上一段走心的评论吧~~"></textarea>
 			</form>
 			<div id="appriseerror" class="error">我是错误信息</div>
-			<a id="confirmapprise" class="btn btn-primary" appriseid = "">确定</a>
-			<a id="cancelapprise" class="btn btn-primary">取消</a>
+			<a id="confirmapprise" class="btn btn-primary" appriseid="">确定</a> <a
+				id="cancelapprise" class="btn btn-primary">取消</a>
 		</div>
 	</div>
 	<div id="loader-wrapper">
@@ -576,8 +583,18 @@ a {
 			<!--TAB PANEL START-->
 			<div id="tab-content" class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active in" id="orders">
-					<h4>最近的订单</h4>
-					<div class="table-responsive">
+					<div id="emptyorder" style="display:none">
+						<div class="col-sm-12">
+							<h2 class="uline-title text-center">您最近还没购买过书籍哟~</h2>
+						</div>
+						<div style="width:260px;margin:0 auto;margin-bottom:20px;">
+							<img src="images/noorder.png" alt="" />
+						</div>
+						<div style="text-align: center;">
+							<a class="btn btn-primary" href="InitMyOrder?">查看所有订单</a>
+						</div>
+					</div>
+					<div id="recentorders" class="table-responsive col-md-12">
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -625,8 +642,7 @@ a {
 						</div>
 					</div>
 				</div>
-				<div role="tabpanel" class="tab-pane fade" id="apprise">
-				</div>
+				<div role="tabpanel" class="tab-pane fade" id="apprise"></div>
 			</div>
 		</div>
 		<!--CONTENT END-->
@@ -721,18 +737,18 @@ a {
 				}
 			})
 		}
-		function gocart(){
-		     $.ajax({
-			url : "GetUsrname",
-			dataType : "json",
-			success : function(data) {
-				if(data == ""){
-				    location.href="login.jsp";
-				}else{
-				    location.href="cart.jsp"
+		function gocart() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp";
+					} else {
+						location.href = "cart.jsp"
+					}
 				}
-			}
-		})
+			})
 		}
 		//格式化日期
 		function formatDate(data) {
@@ -741,34 +757,44 @@ a {
 					+ "-" + d.getDate();
 			var hours = ((d.getHours() + 16) % 24 < 10) ? "0"
 					+ (d.getHours() + 16) % 24 : (d.getHours() + 16) % 24;
-			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
+			var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d
+					.getMinutes();
+			var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d
+					.getSeconds();
 			var formattedTime = hours + ":" + minutes + ":" + seconds;
 			formattedDate = formattedDate + " " + formattedTime;
 			return formattedDate;
 		}
 		//显示未评论的书籍
 		function showUnappriseBook() {
-			$.ajax({
-				url : "ShowUnapprisedBookList",
-				dataType : "json",
-				success : function(data) {
-					$.each(data,function(i,list){
-						var strDiv = "<div class='col-md-4'>"
-										+"<div class='best-seller-pro'>"
-											+"<figure>"
-												+"<img src='"+list.URL+"' alt=''/>"
-											+"</figure>"
-											+"<div class='kode-caption' appriseid='" + list.bookID + "'>"
-												+"<h3>"+list.bookName+"</h3>"
-												+"<p>"+list.author+"</p>"
-												+"<a class='add-to-cart' onclick='startapprise(event)'>评价</a>"
-											+"</div>"
-										+"</div>";
-						$("div[id=apprise]").append(strDiv);
+			$
+					.ajax({
+						url : "ShowUnapprisedBookList",
+						dataType : "json",
+						success : function(data) {
+							$
+									.each(
+											data,
+											function(i, list) {
+												var strDiv = "<div class='col-md-4'>"
+														+ "<div class='best-seller-pro'>"
+														+ "<figure>"
+														+ "<img src='"+list.URL+"' alt=''/>"
+														+ "</figure>"
+														+ "<div class='kode-caption' appriseid='" + list.bookID + "'>"
+														+ "<h3>"
+														+ list.bookName
+														+ "</h3>"
+														+ "<p>"
+														+ list.author
+														+ "</p>"
+														+ "<a class='add-to-cart' onclick='startapprise(event)'>评价</a>"
+														+ "</div>" + "</div>";
+												$("div[id=apprise]").append(
+														strDiv);
+											})
+						}
 					})
-				}
-			})
 		}
 		//显示订单
 		function showOrder() {
@@ -777,17 +803,14 @@ a {
 						url : "ShowOrderInUserInfo.action",
 						dataType : "json",
 						success : function(data) {
-							$
-									.each(
-											data,
-											function(i, list) {
+						    if(data == ""){
+						        $('#emptyorder').attr("style","");
+						        $('#recentorders').attr("style","display:none;");
+						    }else{
+							$.each(data,function(i, list) {
 												var divPic = "";
 												var bookName = "";
-												$
-														.each(
-																list.orderItemList,
-																function(j,
-																		order) {
+												$.each(list.orderItemList,function(j,order) {
 																	divPic += "<div class='pic'>"
 																			+ "<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
 																			+ "</div>";
@@ -819,9 +842,9 @@ a {
 														+ "<td class='status'><span>"
 														+ list.orderStats
 														+ "</span></td></tr>");
-												$("tbody[id='ordertable']")
-														.append(table1);
+												$("tbody[id='ordertable']").append(table1);
 											});
+											}
 						}
 					})
 		}
@@ -858,7 +881,7 @@ a {
 		function bindbutton() {
 			//修改地址
 			$('.itemselect').click(function(e) {
-			    $(e.target).siblings('.itemsave').attr("style","");
+				$(e.target).siblings('.itemsave').attr("style", "");
 				var parent = $(e.target).parent();
 				var flag = true;
 				if (parent.attr('firsttime') == "yes")
@@ -871,56 +894,77 @@ a {
 					parent.find('.address').editable('toggleDisabled');
 			});
 			//保存修改的地址
-			$('.itemsave').click(function(e) {
-			    $(e.target).attr("style","display:none");
-				var consignee = $(e.target).siblings().find("a[id='consignee']").text();
-				var addressDetail = $(e.target).siblings().find("a[id='detailaddress']").text();
-				var tel = $(e.target).siblings().find("a[id='tel']").text();
-				var addressID = $(e.target).parent().parent().attr("title");
-				$.ajax({
-					url:"UpdateAddress",
-					type:"post",
-					data:{"addressDetail":addressDetail,"consignee":consignee,"tel":tel,"addressID":addressID},
-					dataType:"json",	/* 服务器返回的数据类型 */
-					success:function(data){
-						if(data=="success"){
-						    alert("修改成功！");
-		          		}else{
-		          			alert("修改失败");
-		          			location.reload();	//刷新
-		          		}
-					}
-				});
-			});
+			$('.itemsave').click(
+					function(e) {
+						$(e.target).attr("style", "display:none");
+						var consignee = $(e.target).siblings().find(
+								"a[id='consignee']").text();
+						var addressDetail = $(e.target).siblings().find(
+								"a[id='detailaddress']").text();
+						var tel = $(e.target).siblings().find("a[id='tel']")
+								.text();
+						var addressID = $(e.target).parent().parent().attr(
+								"title");
+						$.ajax({
+							url : "UpdateAddress",
+							type : "post",
+							data : {
+								"addressDetail" : addressDetail,
+								"consignee" : consignee,
+								"tel" : tel,
+								"addressID" : addressID
+							},
+							dataType : "json", /* 服务器返回的数据类型 */
+							success : function(data) {
+								if (data == "success") {
+									swal("Nice!", "修改成功！", "success");
+								} else {
+									swal("Sorry!", "修改失败！", "error");
+									location.reload(); //刷新
+								}
+							}
+						});
+					});
 			//删除地址
 			$('.itemdelete').click(function(e) {
- 				var flag = window.confirm("确定删除？");
-				if (flag) {
-					$(e.target).parent().parent().remove();
-				} 
 				var addressID = $(e.target).parent().parent().attr("title");
-				$.ajax({
-					url:"DeleteAddress",
-					type:"post",
-					data:{"addressID":addressID},
-					dataType:"json",	/* 服务器返回的数据类型 */
-					success:function(data){
-						if(data=="success"){
-							$(e.target).parent().parent().remove();
-		          		}else{
-		          			alert("删除失败");
-		          		}
-					}
+				swal({
+					title : "您确定要删除吗？",
+					text : "您确定要删除这条数据？",
+					type : "warning",
+					showCancelButton : true,
+					closeOnConfirm : false,
+					confirmButtonText : "是的，我要删除",
+					confirmButtonColor : "#ec6c62"
+				}, function() {
+					$.ajax({
+						url : "DeleteAddress",
+						type : "post",
+						data : {
+							"addressID" : addressID
+						},
+						dataType : "json", /* 服务器返回的数据类型 */
+						success : function(data) {
+							if (data == "success") {
+								$(e.target).parent().parent().remove();
+								swal("操作成功!", "已成功删除数据！", "success");
+							} else {
+								swal("Sorry", "删除操作失败了!", "error");
+							}
+						}
+					});
 				});
 			});
 		}
 		//显示地址
 		function showAddress() {
-			$.ajax({
+			$
+					.ajax({
 						url : "ShowAddress",
 						dataType : "json",
 						success : function(data) {
-							$.each(
+							$
+									.each(
 											data,
 											function(i, list) {
 												var table1 = $("<div class='panel col-sm-4 item' title='"+list.addressID+"'>"
@@ -953,8 +997,8 @@ a {
 					})
 		}
 		//显示邮箱
-		function showEmail(){
-		    $.ajax({
+		function showEmail() {
+			$.ajax({
 				url : "GetEmail",
 				dataType : "json",
 				success : function(data) {
@@ -979,18 +1023,18 @@ a {
 			showUnappriseBook();
 			$('#input-rating').rating();
 			$.ajax({
-			url : "GetUsrname",
-			dataType : "json",
-			success : function(data) {
-				if(data == ""){
-				    $('#gologin').attr("style","");
-				}else{
-				    $('#userbox').attr("style","");
-				    $('#usrName').html(data);
-				    $('#usrName1').html(data);
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						$('#gologin').attr("style", "");
+					} else {
+						$('#userbox').attr("style", "");
+						$('#usrName').html(data);
+						$('#usrName1').html(data);
+					}
 				}
-			}
-		})
+			})
 		});
 		//修改email
 		$('#enable').click(function() {
@@ -1013,9 +1057,9 @@ a {
 				dataType : "json", /* 服务器返回的数据类型 */
 				success : function(data) {
 					if (data == "success") {
-						alert("成功修改邮箱！");
+						swal("操作成功!", "成功修改邮箱！", "success");
 					} else if (data == "fail") {
-						alert("邮箱修改失败！");
+						swal("操作失败!", "修改邮箱失败！", "error");
 					}
 				}
 			})
@@ -1056,9 +1100,13 @@ a {
 			overDiv.style.display = "none";
 		});
 		//输入旧密码div的ok按钮
-		$('#ok').click(function() {
-							var oldpassword = document.getElementById("oldpassword").value;
-							$.ajax({
+		$('#ok')
+				.click(
+						function() {
+							var oldpassword = document
+									.getElementById("oldpassword").value;
+							$
+									.ajax({
 										url : "IsPasswordValid.action",
 										type : "post",
 										data : {
@@ -1071,7 +1119,8 @@ a {
 														.getElementById("oldpasswordform");
 												overDiv.style.display = "none";
 												//1.获得隐藏的DIV
-												var overDiv = document.getElementById("newpasswordform");
+												var overDiv = document
+														.getElementById("newpasswordform");
 												//2.将隐藏的div有隐藏显现出来hidden-->block
 												overDiv.style.display = "block";
 												var w = window.innerWidth;//返回窗口的文档显示区的宽度;
@@ -1121,32 +1170,40 @@ a {
 			overDiv.style.display = "none";
 		});
 		//修改密码隐藏div的ok按钮
-		$('#new_ok').click(function() {
-			var newpassword = document.getElementById("newpassword").value;
-			if (flag == true) {
-				$.ajax({
-					url : "modifyPassword.action",
-					type : "post",
-					data : {
-						"newpassword" : newpassword
-					},
-					dataType : "json", /* 服务器返回的数据类型 */
-					success : function(data) {
-						if (data == "success") {
-							alert("成功修改密码！");
-							var overDiv = document.getElementById("newpasswordform");
-			                overDiv.style.display = "none";
-						} else if (data == "fail") {
-							alert("密码修改失败！");
-							var overDiv = document.getElementById("newpasswordform");
-			                overDiv.style.display = "none";
-						}
-					}
-				})
-			} else {
-				alert("请确保您两次输入的密码一致！");
-			}
-		});
+		$('#new_ok')
+				.click(
+						function() {
+							var newpassword = document
+									.getElementById("newpassword").value;
+							if (flag == true) {
+								$
+										.ajax({
+											url : "modifyPassword.action",
+											type : "post",
+											data : {
+												"newpassword" : newpassword
+											},
+											dataType : "json", /* 服务器返回的数据类型 */
+											success : function(data) {
+												if (data == "success") {
+													swal("操作成功!", "成功修改密码！",
+															"success");
+													var overDiv = document
+															.getElementById("newpasswordform");
+													overDiv.style.display = "none";
+												} else if (data == "fail") {
+													swal("操作失败!", "修改密码失败！",
+															"error");
+													var overDiv = document
+															.getElementById("newpasswordform");
+													overDiv.style.display = "none";
+												}
+											}
+										})
+							} else {
+								swal("注意!", "请您确保两次输入的密码一致！", "error");
+							}
+						});
 		//添加新地址
 		function addaddress() {
 			$('#addresserror').html("");
@@ -1176,115 +1233,223 @@ a {
 			overDiv.style.display = "none";
 		});
 		//添加新地址form的确定按钮
-		$('#confirmaddaddress').click(function() {
-			var addressDetail = $("input[id='address1']").val()+$("input[id='address2']").val()+$("input[id='address3']").val()+$("input[id='address4']").val();
-			var consignee = $("input[id='consignee']").val();
-			var tel = $("input[id='tel']").val();
-			if(addressDetail == "" || consignee == "" || tel == ""){
-			    $('#addresserror').html("请填写完所有的信息再提交！");
-			    return;
-			}else{
-			    var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
-			    if(!reg.test(tel)){
-			        $('#addresserror').html("请输入有效的电话号码！");
-			        return;
-			    }
-			    $('#addresserror').html("");
-			}
-			$.ajax({
-				url : "AddAddress",
-				type:"post",
-				data:{"addressDetail":addressDetail,"consignee":consignee,"tel":tel},
-				dataType : "json",
-				success : function(data) {
-									var table1 = $("<div class='panel col-sm-4 item' title='"+data.addressID+"'>"
-														+ "<div class='panel-body text-center bk-padding-off bk-wrapper'>"
-														+ "<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
-														+ "</div>"
-														+ "<div class='panel-body text-center' firsttime='yes'>"
-														+ "<h3 class='bk-margin-off'>"
-														+ "<strong><a href='#' id='consignee' data-type='text' data-original-title='收货人' class='editable editable-click editable-disabled address'>"
-														+ data.person
-														+ "</a></strong>"
-														+ "</h3>"
-														+ "<small class='bk-fg-inverse'><a href='#' id='tel' data-type='text' data-original-title='电话' class='editable editable-click editable-disabled address'>"
-														+ data.tel
-														+ "</a></small>"
-														+ "<p class='bk-margin-off-bottom bk-fg-gray'>"
-														+ "<em><a href='#' id='detailaddress' data-type='text' data-original-title='详细地址' class='editable editable-click editable-disabled address'>"
-														+ data.address
-														+ "</a></em>"
-														+ "</p>"
-														+ "<a id='modifyaddress" + data.addressID +"'class='btn btn-primary itemselect col-xs-12'>修改</a> "
-														+ "<a id='saveaddress" + data.addressID + "'class='btn btn-primary itemsave col-xs-12' style='display:none;'>保存修改</a> "
-														+ "<a id='deleteaddress" + data.addressID +"'class='btn btn-primary itemdelete col-xs-12'>删除</a>"
-														+ "</div></div>");
-					$("div[id='addNew']").after(table1);
-					//修改地址
-			$('#modifyaddress' + data.addressID).click(function(e) {
-				var parent = $(e.target).parent();
-				$('#saveaddress' + data.addressID).attr("style","");
-				var flag = true;
-				if (parent.attr('firsttime') == "yes")
-					flag = false;
-				if (flag == false) {
-					parent.find('.address').editable('toggleDisabled');
-					parent.find('.address').editable('toggleDisabled');
-					parent.attr("firsttime", "no");
-				} else
-					parent.find('.address').editable('toggleDisabled');
-			});
-			//保存修改的地址
-			$('#saveaddress' + data.addressID).click(function(e) {
-				$('#saveaddress' + data.addressID).attr("style","display:none");
-				var consignee = $(e.target).siblings().find("a[id='consignee']").text();
-				var addressDetail = $(e.target).siblings().find("a[id='detailaddress']").text();
-				var tel = $(e.target).siblings().find("a[id='tel']").text();
-				var addressID = $(e.target).parent().parent().attr("title");
-				$.ajax({
-					url:"UpdateAddress",
-					type:"post",
-					data:{"addressDetail":addressDetail,"consignee":consignee,"tel":tel,"addressID":addressID},
-					dataType:"json",	/* 服务器返回的数据类型 */
-					success:function(data){
-						if(data=="success"){
-						    alert("修改成功！")
-		          		}else{
-		          			alert("修改失败！");
-		          			location.reload();	//刷新
-		          		}
-					}
-				});
-			});
-			//删除地址
-			$('#deleteaddress' + data.addressID).click(function(e) {
-				var flag = window.confirm("确定删除？");
-				if (flag) {
-					$(e.target).parent().parent().remove();
-				} 
-				var addressID = $(e.target).parent().parent().attr("title");
-				$.ajax({
-					url:"DeleteAddress",
-					type:"post",
-					data:{"addressID":addressID},
-					dataType:"json",	/* 服务器返回的数据类型 */
-					success:function(data){
-						if(data=="success"){
-							$(e.target).parent().parent().remove();
-		          		}else{
-		          			alert("删除失败");
-		          		}
-					}
-				});
-			});
-			alert('您的地址已保存！');
-			//将遮罩层的内容隐藏掉
-			//1.获得隐藏div
-			var overDiv = document.getElementById("addaddressform");
-			overDiv.style.display = "none";
-				}
-			})
-		});
+		$('#confirmaddaddress')
+				.click(
+						function() {
+							var addressDetail = $("input[id='address1']").val()
+									+ $("input[id='address2']").val()
+									+ $("input[id='address3']").val()
+									+ $("input[id='address4']").val();
+							var consignee = $("input[id='consignee']").val();
+							var tel = $("input[id='tel']").val();
+							if (addressDetail == "" || consignee == ""
+									|| tel == "") {
+								$('#addresserror').html("请填写完所有的信息再提交！");
+								return;
+							} else {
+								var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+								if (!reg.test(tel)) {
+									$('#addresserror').html("请输入有效的电话号码！");
+									return;
+								}
+								$('#addresserror').html("");
+							}
+							$
+									.ajax({
+										url : "AddAddress",
+										type : "post",
+										data : {
+											"addressDetail" : addressDetail,
+											"consignee" : consignee,
+											"tel" : tel
+										},
+										dataType : "json",
+										success : function(data) {
+											var table1 = $("<div class='panel col-sm-4 item' title='"+data.addressID+"'>"
+													+ "<div class='panel-body text-center bk-padding-off bk-wrapper'>"
+													+ "<img src='images/addressheader.jpg' alt='' class='img-responsive'>"
+													+ "</div>"
+													+ "<div class='panel-body text-center' firsttime='yes'>"
+													+ "<h3 class='bk-margin-off'>"
+													+ "<strong><a href='#' id='consignee' data-type='text' data-original-title='收货人' class='editable editable-click editable-disabled address'>"
+													+ data.person
+													+ "</a></strong>"
+													+ "</h3>"
+													+ "<small class='bk-fg-inverse'><a href='#' id='tel' data-type='text' data-original-title='电话' class='editable editable-click editable-disabled address'>"
+													+ data.tel
+													+ "</a></small>"
+													+ "<p class='bk-margin-off-bottom bk-fg-gray'>"
+													+ "<em><a href='#' id='detailaddress' data-type='text' data-original-title='详细地址' class='editable editable-click editable-disabled address'>"
+													+ data.address
+													+ "</a></em>"
+													+ "</p>"
+													+ "<a id='modifyaddress" + data.addressID +"'class='btn btn-primary itemselect col-xs-12'>修改</a> "
+													+ "<a id='saveaddress" + data.addressID + "'class='btn btn-primary itemsave col-xs-12' style='display:none;'>保存修改</a> "
+													+ "<a id='deleteaddress" + data.addressID +"'class='btn btn-primary itemdelete col-xs-12'>删除</a>"
+													+ "</div></div>");
+											$("div[id='addNew']").after(table1);
+											//修改地址
+											$('#modifyaddress' + data.addressID)
+													.click(
+															function(e) {
+																var parent = $(
+																		e.target)
+																		.parent();
+																$(
+																		'#saveaddress'
+																				+ data.addressID)
+																		.attr(
+																				"style",
+																				"");
+																var flag = true;
+																if (parent
+																		.attr('firsttime') == "yes")
+																	flag = false;
+																if (flag == false) {
+																	parent
+																			.find(
+																					'.address')
+																			.editable(
+																					'toggleDisabled');
+																	parent
+																			.find(
+																					'.address')
+																			.editable(
+																					'toggleDisabled');
+																	parent
+																			.attr(
+																					"firsttime",
+																					"no");
+																} else
+																	parent
+																			.find(
+																					'.address')
+																			.editable(
+																					'toggleDisabled');
+															});
+											//保存修改的地址
+											$('#saveaddress' + data.addressID)
+													.click(
+															function(e) {
+																$(
+																		'#saveaddress'
+																				+ data.addressID)
+																		.attr(
+																				"style",
+																				"display:none");
+																var consignee = $(
+																		e.target)
+																		.siblings()
+																		.find(
+																				"a[id='consignee']")
+																		.text();
+																var addressDetail = $(
+																		e.target)
+																		.siblings()
+																		.find(
+																				"a[id='detailaddress']")
+																		.text();
+																var tel = $(
+																		e.target)
+																		.siblings()
+																		.find(
+																				"a[id='tel']")
+																		.text();
+																var addressID = $(
+																		e.target)
+																		.parent()
+																		.parent()
+																		.attr(
+																				"title");
+																$
+																		.ajax({
+																			url : "UpdateAddress",
+																			type : "post",
+																			data : {
+																				"addressDetail" : addressDetail,
+																				"consignee" : consignee,
+																				"tel" : tel,
+																				"addressID" : addressID
+																			},
+																			dataType : "json", /* 服务器返回的数据类型 */
+																			success : function(
+																					data) {
+																				if (data == "success") {
+																					swal(
+																							"操作成功!",
+																							"修改地址成功！",
+																							"success");
+																				} else {
+																					swal(
+																							"操作失败!",
+																							"修改地址失败！",
+																							"error");
+																					location
+																							.reload(); //刷新
+																				}
+																			}
+																		});
+															});
+											//删除地址
+											$('#deleteaddress' + data.addressID)
+													.click(
+															function(e) {
+																var addressID = $(
+																		e.target)
+																		.parent()
+																		.parent()
+																		.attr(
+																				"title");
+																swal(
+																		{
+																			title : "您确定要删除吗？",
+																			text : "您确定要删除这条数据？",
+																			type : "warning",
+																			showCancelButton : true,
+																			closeOnConfirm : false,
+																			confirmButtonText : "是的，我要删除",
+																			confirmButtonColor : "#ec6c62"
+																		},
+																		function() {
+																			$
+																					.ajax({
+																						url : "DeleteAddress",
+																						type : "post",
+																						data : {
+																							"addressID" : addressID
+																						},
+																						dataType : "json", /* 服务器返回的数据类型 */
+																						success : function(
+																								data) {
+																							if (data == "success") {
+																								$(
+																										e.target)
+																										.parent()
+																										.parent()
+																										.remove();
+																								swal(
+																										"操作成功!",
+																										"已成功删除数据！",
+																										"success");
+																							} else {
+																								swal(
+																										"Sorry",
+																										"删除操作失败了!",
+																										"error");
+																							}
+																						}
+																					});
+																		});
+															});
+											swal("操作成功!", "您的地址已保存！", "success");
+											//将遮罩层的内容隐藏掉
+											//1.获得隐藏div
+											var overDiv = document
+													.getElementById("addaddressform");
+											overDiv.style.display = "none";
+										}
+									})
+						});
 		//查看未评价订单的function
 		function goapprise() {
 			$('#nav-tabs').find('li').removeClass('active');
@@ -1295,13 +1460,14 @@ a {
 			$('#apprise').addClass('in');
 		}
 		//显示隐藏的评价框
-		function startapprise(e){
-		    $('#appriseerror').html("");
-		    $('#apprisemessage').val("");
-		    $('.rating .filled-stars').css("width","0%");
-		    $('.rating-container .caption span').attr("class","label label-default");
-		    $('.rating-container .caption span').html("未评价");
-		    //1.获得隐藏的DIV
+		function startapprise(e) {
+			$('#appriseerror').html("");
+			$('#apprisemessage').val("");
+			$('.rating .filled-stars').css("width", "0%");
+			$('.rating-container .caption span').attr("class",
+					"label label-default");
+			$('.rating-container .caption span').html("未评价");
+			//1.获得隐藏的DIV
 			var overDiv = document.getElementById("appriseform");
 			//2.将隐藏的div有隐藏显现出来hidden-->block
 			overDiv.style.display = "block";
@@ -1321,12 +1487,14 @@ a {
 			var bookauthor = targ.previousElementSibling.innerHTML;
 			var bookname = targ.previousElementSibling.previousElementSibling.innerHTML;
 			var bookID = targ.parentNode.getAttribute("appriseid");
-			var picurl = targ.parentNode.parentNode.firstElementChild.firstElementChild.getAttribute("src");
+			var picurl = targ.parentNode.parentNode.firstElementChild.firstElementChild
+					.getAttribute("src");
 			var appriseinfo = document.getElementById("apprise-item");
 			appriseinfo.firstElementChild.setAttribute("src", picurl);
 			appriseinfo.firstElementChild.nextElementSibling.innerHTML = bookname;
 			appriseinfo.firstElementChild.nextElementSibling.nextElementSibling.innerHTML = bookauthor;
-			document.getElementById("confirmapprise").setAttribute("appriseid", bookID);
+			document.getElementById("confirmapprise").setAttribute("appriseid",
+					bookID);
 		}
 		//添加评论form的取消按钮
 		$('#cancelapprise').click(function() {
@@ -1337,31 +1505,35 @@ a {
 		});
 		//添加评论form的确定按钮
 		$('#confirmapprise').click(function() {
-		    var content = $('#apprisemessage').val();
-		    var bookID = $('#confirmapprise').attr('appriseid');
-		    var score = $('#input-rating').val();	
-		    if(score == "0"){
-		        $('#appriseerror').html("亲，请给这本书评个级！");
-		        return;
-		    }
-		    if(content == ""){
-		        $('#appriseerror').html("亲，评论不能为空!");
-		        return;
-		    }else{
-		        $('#appriseerror').html("");
-		    }
-		    $.ajax({
-				url:"AddApprise",
-				type:"post",
-				data:{"content":content,"bookID":bookID,"score":score},
-				dataType:"json",	
-				success:function(data){
-					if(data=="success"){
+			var content = $('#apprisemessage').val();
+			var bookID = $('#confirmapprise').attr('appriseid');
+			var score = $('#input-rating').val();
+			if (score == "0") {
+				$('#appriseerror').html("亲，请给这本书评个级！");
+				return;
+			}
+			if (content == "") {
+				$('#appriseerror').html("亲，评论不能为空!");
+				return;
+			} else {
+				$('#appriseerror').html("");
+			}
+			$.ajax({
+				url : "AddApprise",
+				type : "post",
+				data : {
+					"content" : content,
+					"bookID" : bookID,
+					"score" : score
+				},
+				dataType : "json",
+				success : function(data) {
+					if (data == "success") {
 						var overDiv = document.getElementById("appriseform");
 						overDiv.style.display = "none";
-	          		}else{
-						alert("Sorry,评论失败!请重新评论~");
-	          		}
+					} else {
+						swal("Sorry!", "评论失败，请稍后再试！", "error");
+					}
 				}
 			});
 		});

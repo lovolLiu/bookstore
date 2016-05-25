@@ -34,6 +34,8 @@
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<script src="js/sweetalert.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -231,38 +233,9 @@ select {
 	float: left;
 	width: 10%;
 }
-
-.time_messagebox {
-	position: fixed;
-	margin: auto;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	width: 250px;
-	height: 80px;
-	background: orange;
-	color: white;
-	display: none;
-	border-radius: 10px;
-}
-
-.uline-title {
-	margin-bottom: 50px;
-	padding: 0 0 37px;
-	text-align: center;
-	background: url("images/utitlebg.png");
-	background-repeat: no-repeat;
-	background-position: center bottom -2px;
-}
 </style>
 </head>
 <body>
-	<div class="time_messagebox">
-		<p style="height:80px;margin:0px auto;text-align:center">
-			<span style="line-height:80px;">您还没有勾选任何商品哦亲~~</span>
-		</p>
-	</div>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
 
@@ -502,6 +475,7 @@ select {
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
+		var remainingitem = 0;
 		$(document).ready(function() {
 			$('#horizontalTab').easyResponsiveTabs({
 				type : 'default', //Types: default, vertical, accordion           
@@ -563,7 +537,14 @@ select {
 			})
 
 			if (!flag) {
-				messageToast();
+				swal({   
+			title: "Sorry!",   
+			text: '<span style="color:red">您还没有勾选任何商品哦亲~~</span>',   
+			imageUrl: "images/empty-cart.png",
+			html: true,
+			timer: 3000,   
+			showConfirmButton: false
+		});
 				return false;
 			}
 
@@ -593,6 +574,7 @@ select {
 									.each(
 											data,
 											function(i, list) {
+											    remainingitem++;
 												var _tr = $("<tr class='itemtr' id=\""+list.buyItemID+"\">"
 														+ "<td class=\"cart_product\"><input onclick='UpdateTotalPrice();' type=\"checkbox\" class=\"itemselectbox\" name=\"buyItemIDList\" value=\"" + list.buyItemID + "\"><a href='BookDetail?id="
 														+ list.bookID
@@ -665,10 +647,15 @@ select {
 				url : "DeleteCartItem?buyItemID=" + buyItemID,
 				dataType : "json",
 				success : function(data) {
+				    remainingitem--;
 					//删除这条数据
 					$("#" + buyItemID).slideDown();
 					$("#" + buyItemID).remove();
 					UpdateTotalPrice();
+					if(remainingitem == 0){
+					    $('#emptycart').attr("style", "");
+						$('#cartwithitem').attr("style", "display:none");
+					}
 				}
 			})
 			return false;
@@ -676,10 +663,6 @@ select {
 
 	</script>
 	<script>
-		function messageToast() {
-			$(".time_messagebox").fadeIn(300);
-			setTimeout("$('.time_messagebox').fadeOut(300);", 1200)
-		}
 
 		function OnClickCheckBox(buyItemID) {
 			UpdateTotalPrice();
