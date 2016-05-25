@@ -34,7 +34,8 @@
 <!-- Component -->
 <link href="js/dl-menu/component.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/bookblock.css" />
-<link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/star-rating.css" media="all"
+	rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 <script src="js/sweetalert.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -358,10 +359,12 @@
 											</p>
 										</div>
 										<div class="book-text">
-										<p>类别: 
-										<s:iterator value="bookTypeList">
-											<a class="btn btn-primary" href="sortSearchAction?typeID=${typeID}">${type }</a>
-											</s:iterator>
+											<p>
+												类别:
+												<s:iterator value="bookTypeList">
+													<a class="btn btn-primary"
+														href="sortSearchAction?typeID=${typeID}">${type }</a>
+												</s:iterator>
 											<p>
 												作者:
 												<s:property value="book.author" />
@@ -416,12 +419,20 @@
 									</p>
 								</div>
 								<div role="tabpanel" class="tab-pane fade" id="reviews">
+									<div id="emptycomment" style="display:none;">
+										<div class="col-sm-12">
+											<h2 class="uline-title text-center">这本书还没人评论哟~</h2>
+										</div>
+										<div style="width:260px;margin:0 auto;margin-bottom:20px;">
+											<img src="images/nocomment.png" alt="" />
+										</div>
+									</div>
 									<div class="kode-comments">
 										<ul id="reviews">
 										</ul>
 									</div>
 								</div>
-								
+
 							</div>
 							<!--TAB PANEL END-->
 						</div>
@@ -435,29 +446,23 @@
 									<div class="col-md-4 col-sm-6">
 										<div class="best-seller-pro">
 											<figure>
-												<a href="#"><img
-													src="<s:property value="URL"/>"
-													alt=""></a>
+												<a href="#"><img src="<s:property value="URL"/>" alt=""></a>
 											</figure>
 											<div class="kode-text">
 												<h3>
-													<a href="#"><s:property
-														value="bookName" /></a>
+													<a href="#"><s:property value="bookName" /></a>
 												</h3>
 											</div>
 											<div class="kode-caption">
 												<h3>
-													<s:property
-													value="bookName" />
+													<s:property value="bookName" />
 												</h3>
 												<p>
-													<s:property
-													value="author" />
+													<s:property value="author" />
 												</p>
 												<p class="price">
 													$
-													<s:property
-													value="bookPrice" />
+													<s:property value="bookPrice" />
 												</p>
 												<a href="#" class="add-to-cart">Add To Cart</a>
 											</div>
@@ -548,17 +553,19 @@
 	<script src="js/functions.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script type="application/x-javascript">
+		
 	     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	
 	</script>
 	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
-	    function gocart() {
+		function gocart() {
 			$.ajax({
 				url : "GetUsrname",
 				dataType : "json",
 				success : function(data) {
 					if (data == "") {
-						location.href="login.jsp?cart.jsp";
+						location.href = "login.jsp?cart.jsp";
 					} else {
 						location.href = "cart.jsp"
 					}
@@ -647,7 +654,6 @@
 	</script>
 
 	<script>
-		
 		function StraightBuy() {
 			var restNum = ${book.restNum};
 			var wantedNum = $(".cart_quantity_input").attr("value");
@@ -672,7 +678,7 @@
 						swal("Sorry!", "库存不足！", "error");
 					}
 				},
-				error: function(data){
+				error : function(data) {
 					swal("Sorry!", "请先登录！", "error");
 					var loginUrl = "login.jsp?BookID=${book.bookID }";
 					window.location.href = loginUrl;
@@ -717,6 +723,9 @@
 				},
 				dataType : "json",
 				success : function(data) {
+				    if(data == ""){
+				        $('#emptycomment').attr("style","");
+				    }
 					$.each(data, function(i, list) {
 						var strLi = "<li>" + "<div class='kode-thumb'>"
 								+ "<a href='#'>"

@@ -643,7 +643,19 @@ a {
 						</div>
 					</div>
 				</div>
-				<div role="tabpanel" class="tab-pane fade" id="apprise"></div>
+				<div role="tabpanel" class="tab-pane fade" id="apprise">
+				    <div id="emptyapprise" style="display:none;">
+						<div class="col-sm-12">
+							<h2 class="uline-title text-center">您没有需要评论的书哟，去买新书吧~</h2>
+						</div>
+						<div style="width:260px;margin:0 auto;margin-bottom:20px;">
+							<img src="images/noapprise.png" alt="" />
+						</div>
+						<div style="text-align: center;">
+							<a class="btn btn-primary" href="InitMyOrder?">去逛逛</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!--CONTENT END-->
@@ -887,6 +899,8 @@ a {
 				url : "ShowUnapprisedNumber",
 				dataType : "json",
 				success : function(data) {
+				    if(data == "0")
+				        $('#emptyapprise').attr("style","");
 					$("h4[id='unapprise']").html(data);
 				}
 			})
