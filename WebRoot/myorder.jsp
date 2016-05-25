@@ -267,7 +267,7 @@
 												<div>
 													<s:iterator value="#u.orderItemList">
 														<div class="pic">
-															<img src="<s:property value='imageUrl' />">
+															<a href="BookDetail?bookID=${bookID }"><img src="<s:property value='imageUrl' />"></a>
 														</div>
 													</s:iterator>
 												</div>

@@ -824,7 +824,7 @@ a {
 																	function(j,
 																			order) {
 																		divPic += "<div class='pic'>"
-																				+ "<a href='xxxx'><img src='"+order.imageUrl+"'/></a>"
+																				+ "<a href='BookDetail?bookID="+order.bookID+"'><img src='"+order.imageUrl+"'/></a>"
 																				+ "</div>";
 																		/* bookName = order.bookName; */
 																	});
@@ -834,7 +834,7 @@ a {
 															+ formatDate(list.dealTime)
 															+ "</span>"
 															+ "<span class='orderno'>"
-															+ "订单号: <a href='xxxxx'>"
+															+ "订单号: <a href='OrderDetail?orderID="+list.orderId+"'>"
 															+ list.orderId
 															+ "</a></span>"/*xxxx表示以后要添加跳转href */
 															+ "</tr>"
