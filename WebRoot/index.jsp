@@ -332,7 +332,7 @@ a.book-title{
 													<img src=${URL } alt="">
 												</div>
 												<div class="kode-text">
-													<h2><a href="BookDetail?bookID=${bookID}">${bookName}</a></h2>
+													<h2><a class="book-title" href="BookDetail?bookID=${bookID}">${bookName}</a></h2>
 													<h4>${author }</h4>
 													<p>${description }</p>
 													<div class="lib-price">
