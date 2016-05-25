@@ -46,6 +46,7 @@
 <![endif]-->
 <style>
 .dummy-fixed {
+	display: none;
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -330,7 +331,7 @@
 							<!--BOOK LISTING END-->
 							<nav>
 								<ul class="pagination">
-									<li><a href="initSearchAction?pageNo=<s:if test='pageNo == 1'>1</s:if><s:else>${pageNo-1 }</s:else>" aria-label="Previous"> <span
+									<li><a href="${actionName }?pageNo=<s:if test='pageNo == 1'>1</s:if><s:else>${pageNo-1 }</s:else><s:if test='actionName=="Search"'>&keyword=${keyword }</s:if>" aria-label="Previous"> <span
 											aria-hidden="true">&laquo;</span>
 									</a></li>
 									
@@ -338,7 +339,7 @@
 										<li><a href="initSearchAction?pageNo=${i }">${i }</a></li>
 									</s:iterator>
 									
-									<li> <a href="initSearchAction?pageNo=<s:if test='pageNo >= pageCount'>${pageCount }</s:if><s:else>${pageNo+1 }</s:else>" aria-label="Next"> <span
+									<li> <a href="${actionName }?pageNo=<s:if test='pageNo >= pageCount'>${pageCount }</s:if><s:else>${pageNo+1 }</s:else><s:if test='actionName=="Search"'>&keyword=${keyword }</s:if>" aria-label="Next"> <span
 											aria-hidden="true">&raquo;</span>
 									</a></li>
 								</ul>
@@ -529,6 +530,7 @@
 					} else {
 						$('#userbox').attr("style", "");
 						$('#usrName').html(data);
+						$('.dummy-fixed').css("display", "block");
 					}
 				}
 			})
@@ -540,7 +542,7 @@
 				dataType : "json",
 				success : function(data) {
 					if (data == "") {
-						location.href = "login.jsp";
+						location.href = "login.jsp?userinfo.jsp";
 					} else {
 						location.href = "userinfo.jsp"
 					}
@@ -554,7 +556,7 @@
 				dataType : "json",
 				success : function(data) {
 					if (data == "") {
-						location.href = "login.jsp";
+						location.href = "login.jsp?cart.jsp";
 					} else {
 						location.href = "cart.jsp"
 					}
@@ -664,6 +666,8 @@
 				},
 				error: function(data){
 					swal("Sorry!", "请先登录！", "error");
+					var loginUrl = "login.jsp?initSearchAction?";
+					window.location.href = loginUrl;
 				}
 				
 			})

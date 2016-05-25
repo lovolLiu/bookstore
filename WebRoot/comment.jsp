@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>在线书城</title>
+<title>Bookaholic</title>
 <!-- CUSTOM STYLE -->
 <link href="css/style.css" rel="stylesheet">
 <!-- THEME TYPO -->
@@ -235,6 +235,33 @@
 							fit: true   // 100% fit in a container
 						});
 					});
+					function gouserinfo() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp?userinfo.jsp";
+					} else {
+						location.href = "userinfo.jsp"
+					}
+				}
+			})
+		}
+		
+		function gocart() {
+			$.ajax({
+				url : "GetUsrname",
+				dataType : "json",
+				success : function(data) {
+					if (data == "") {
+						location.href = "login.jsp?cart.jsp";
+					} else {
+						location.href = "cart.jsp"
+					}
+				}
+			})
+		}
 				   </script>
 
 </body>

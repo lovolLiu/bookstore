@@ -92,6 +92,7 @@ public class BookDetailAction {
 		
 		personalFindByAuthorBookList = selectBookService.selectPersonalBookByAuthor(book.getAuthor());
 		personalFindByAuthorDivBookList = convertorService.bookIDToDivBook(personalFindByAuthorBookList);
+		
 
 		//typeList = selectService.getTypeList();
 		return "success";

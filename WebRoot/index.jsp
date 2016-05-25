@@ -457,7 +457,7 @@ a.book-title{
 			dataType : "json",
 			success : function(data) {
 				if(data == ""){
-				    location.href="login.jsp";
+				    location.href="login.jsp?cart.jsp";
 				}else{
 				    location.href="cart.jsp"
 				}
@@ -470,7 +470,7 @@ a.book-title{
 				dataType : "json",
 				success : function(data) {
 					if (data == "") {
-						location.href = "login.jsp";
+						location.href = "login.jsp?userinfo.jsp";
 					} else {
 						location.href = "userinfo.jsp"
 					}
@@ -527,6 +527,8 @@ a.book-title{
 				},
 				error: function(data){
 					swal("Sorry!", "请先登录！", "error");
+					var loginUrl = "login.jsp?Index";
+					window.location.href = loginUrl;
 				}
 			})
 		}

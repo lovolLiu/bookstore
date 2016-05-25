@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>在线书城</title>
+<title>Bookaholic</title>
 <!-- icon -->
 <link rel="shortcut icon" href="siteicon.ico" type="image/x-icon" />
 <!-- CUSTOM STYLE -->
@@ -558,7 +558,7 @@
 				dataType : "json",
 				success : function(data) {
 					if (data == "") {
-						location.href = "login.jsp";
+						location.href="login.jsp?cart.jsp";
 					} else {
 						location.href = "cart.jsp"
 					}
@@ -571,7 +571,7 @@
 				dataType : "json",
 				success : function(data) {
 					if (data == "") {
-						location.href = "login.jsp";
+						location.href = "login.jsp?userinfo.jsp";
 					} else {
 						location.href = "userinfo.jsp"
 					}
@@ -674,6 +674,8 @@
 				},
 				error: function(data){
 					swal("Sorry!", "请先登录！", "error");
+					var loginUrl = "login.jsp?BookID=${book.bookID }";
+					window.location.href = loginUrl;
 				}
 			})
 		}

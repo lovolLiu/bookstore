@@ -84,7 +84,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 	@Override
 	public List<Book> fuzzyfindByName(String bookname) {
 		return (List<Book>)getHibernateTemplate()
-				.find("from Book as b where b.bookName = ? ", bookname);
+				.find("from Book as b where b.bookName like ? ", "%"+bookname+"%");
 	}
 
 	@Override

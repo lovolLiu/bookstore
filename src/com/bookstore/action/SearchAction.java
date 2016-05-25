@@ -41,6 +41,7 @@ public class SearchAction {
 	
 	List<Integer> navPageTag;
 	Integer pageCount;
+	String actionName;
 	
 	//获得对应类别的书籍
 	public List<DivBook> getSortBookList(){
@@ -87,7 +88,7 @@ public class SearchAction {
 	 }
 	//执行搜索action
 	 public String execute(){
-		 
+		 actionName = "Search";
 		 if(searchBookList() != null){
 			 hotestBookList = selectBookService.selectHottestBook();
 			 hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
@@ -128,6 +129,9 @@ public class SearchAction {
 	 }
 	 //显示所有书目的action
 	 public String initSearchExecute(){
+		 actionName = "initSearchAction";
+		 
+		 
 		 //init findall
 		 
 		 //热搜和畅销
@@ -348,6 +352,12 @@ public class SearchAction {
 	}
 	public void setPageCount(Integer pageCount) {
 		this.pageCount = pageCount;
+	}
+	public String getActionName() {
+		return actionName;
+	}
+	public void setActionName(String actionName) {
+		this.actionName = actionName;
 	}
 
 

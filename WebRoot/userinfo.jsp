@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>在线书城</title>
+<title>Bookaholic</title>
 <!-- icon -->
 <link rel="shortcut icon" href="siteicon.ico" type="image/x-icon" />
 <!-- CUSTOM STYLE -->
@@ -730,23 +730,23 @@ a {
 				dataType : "json",
 				success : function(data) {
 					if (data == "") {
-						location.href = "login.jsp";
+						location.href = "login.jsp?userinfo.jsp";
 					} else {
 						location.href = "userinfo.jsp"
 					}
 				}
 			})
 		}
-		function gocart() {
-			$.ajax({
-				url : "GetUsrname",
-				dataType : "json",
-				success : function(data) {
-					if (data == "") {
-						location.href = "login.jsp";
-					} else {
-						location.href = "cart.jsp"
-					}
+
+		function gocart(){
+		     $.ajax({
+			url : "GetUsrname",
+			dataType : "json",
+			success : function(data) {
+				if(data == ""){
+				    location.href="login.jsp?cart.jsp";
+				}else{
+				    location.href="cart.jsp"
 				}
 			})
 		}
@@ -1060,6 +1060,10 @@ a {
 						swal("操作成功!", "成功修改邮箱！", "success");
 					} else if (data == "fail") {
 						swal("操作失败!", "修改邮箱失败！", "error");
+						showEmail();
+					} else if(data == "hasEmail"){
+						swal("操作失败!", "邮箱已被注册！", "error");
+						showEmail();
 					}
 				}
 			})
@@ -1531,9 +1535,12 @@ a {
 					if (data == "success") {
 						var overDiv = document.getElementById("appriseform");
 						overDiv.style.display = "none";
-					} else {
+						$("div[id=apprise]").html("");
+						showUnappriseBook();
+	          		}else{
 						swal("Sorry!", "评论失败，请稍后再试！", "error");
-					}
+	          		}
+
 				}
 			});
 		});
