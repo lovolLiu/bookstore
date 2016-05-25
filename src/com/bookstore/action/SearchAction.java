@@ -176,6 +176,9 @@ public class SearchAction {
 	 
 	//显示对应类别书目的action
 		 public String sortSearchExecute(){
+			 actionName="sortSearchAction";
+			 
+			 
 			 //init findall
 			 hotestBookList = selectBookService.selectHottestBook();
 			 hotestDivBookList = convertorService.bookIDToDivBook(hotestBookList);
@@ -184,7 +187,30 @@ public class SearchAction {
 			 newestBookList = selectBookService.selectNewestBook();
 			 newestDivBookList = convertorService.bookIDToDivBook(newestBookList);
 			 
-			 divBook = getSortBookList();
+			 List<DivBook> allDivBookList = getSortBookList();
+			 
+			 //根据这个divBookList计算出应该有多少页
+			 pageCount = allDivBookList.size()/12;
+			 if(allDivBookList.size()%12 > 0) pageCount++;
+			 
+			 navPageTag = new ArrayList();
+			 for(int i=1;i<=pageCount;i++){
+				 navPageTag.add(i);
+			 }
+			 
+			 
+			 
+			 //根据pageNo从divBook中选择出应该返回的页
+			 //pageNo默认是1，因此范围是[1-1, 1*12-1]
+			 divBook = new ArrayList();
+			 for(int i=(pageNo-1)*12; i<=pageNo*12-1; i++){
+				 if(allDivBookList.size() <= i) break;
+				 divBook.add(allDivBookList.get(i));
+			 }
+			 
+			 
+			 
+			 
 			 btList = bookTypeService.getBookTypeList();
 			 
 			 return "success";

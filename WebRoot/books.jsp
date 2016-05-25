@@ -331,15 +331,26 @@
 							<!--BOOK LISTING END-->
 							<nav>
 								<ul class="pagination">
-									<li><a href="${actionName }?pageNo=<s:if test='pageNo == 1'>1</s:if><s:else>${pageNo-1 }</s:else><s:if test='actionName=="Search"'>&keyword=${keyword }</s:if>" aria-label="Previous"> <span
+									<li><a href="${actionName }?pageNo=<s:if test='pageNo == 1'>1</s:if>
+														<s:else>${pageNo-1 }</s:else>
+														<s:if test='actionName=="Search"'>&keyword=${keyword }</s:if>
+														<s:if test='actionName=="sortSearchAction"'>&typeID=${typeID }</s:if>
+														" aria-label="Previous"> <span
 											aria-hidden="true">&laquo;</span>
 									</a></li>
 									
 									<s:iterator value="navPageTag" id="i">
-										<li><a href="initSearchAction?pageNo=${i }">${i }</a></li>
+										<li><a href="${actionName }?pageNo=${i }
+													<s:if test='actionName=="Search"'>&keyword=${keyword }</s:if>
+													<s:if test='actionName=="sortSearchAction"'>&typeID=${typeID }</s:if>
+													">${i }</a></li>
 									</s:iterator>
 									
-									<li> <a href="${actionName }?pageNo=<s:if test='pageNo >= pageCount'>${pageCount }</s:if><s:else>${pageNo+1 }</s:else><s:if test='actionName=="Search"'>&keyword=${keyword }</s:if>" aria-label="Next"> <span
+									<li> <a href="${actionName }?pageNo=<s:if test='pageNo >= pageCount'>${pageCount }</s:if>
+									<s:else>${pageNo+1 }</s:else>
+									<s:if test='actionName=="Search"'>&keyword=${keyword }</s:if>
+									<s:if test='actionName=="sortSearchAction"'>&typeID=${typeID }</s:if>
+									" aria-label="Next"> <span
 											aria-hidden="true">&raquo;</span>
 									</a></li>
 								</ul>
