@@ -321,7 +321,7 @@ select {
 									</h4>
 								</td>
 								<td class="cart_price">
-									<p>${price }</p>
+									<p>¥${price }</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
@@ -330,7 +330,7 @@ select {
 									</div>
 								</td>
 								<td class="cart_total">
-									<p class="cart_total_price">${buyItemPrice }</p>
+									<p class="cart_total_price">¥${buyItemPrice }</p>
 								</td>
 							</tr>
 						</s:iterator>
@@ -341,7 +341,7 @@ select {
 										<tbody>
 											<tr style="font-size: x-large;">
 												<td>总价</td>
-												<td style="color:#FE980F;"><span>${totalPrice }</span></td>
+												<td style="color:#FE980F;"><span>¥${totalPrice }</span></td>
 											</tr>
 											<tr style="border-bottom: 0;">
 												<td></td>
