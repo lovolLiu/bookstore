@@ -551,13 +551,10 @@ select {
 			$("#cart_form").submit();
 		}
 
-		$(".cart_quantity_input").blur(function() {
-			alert();
-			var num = $(this).attr("value");
-			var buyItemID = $(this).parents("tr")[0].attr("id");
+		function QuantityChange(num, buyItemID) {
 			updateCart(buyItemID, num);
 			return false;
-		});
+		}
 
 		function showCart() {
 			$
@@ -590,7 +587,7 @@ select {
 														+ "<td class=\"cart_quantity\"> <div class=\"cart_quantity_button\"> <a class=\"cart_quantity_up\" href=\"\" onclick='return QuantityUp("
 														+ list.buyItemID
 														+ ")'> + </a> "
-														+ "<input readonly='readonly' class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+"\"autocomplete=\"off\" size=\"2\" >"
+														+ "<input onchange='QuantityChange(this.value," + list.buyItemID + ")' class=\"cart_quantity_input\" type=\"text\" name=\"quantity\" value=\""+list.num+"\"autocomplete=\"off\" size=\"2\" >"
 														+ "<a class=\"cart_quantity_down\" href=\"\" onclick='return QuantityDown("
 														+ list.buyItemID
 														+ ")'> - </a></div></td>"
@@ -611,14 +608,14 @@ select {
 
 		function QuantityUp(buyItemID) {
 			var currentNum = parseInt($("tr#" + buyItemID).find(
-					".cart_quantity_input").attr("value"));
+					".cart_quantity_input").val());
 			updateCart(buyItemID, currentNum + 1);
 			return false;
 		}
 
 		function QuantityDown(buyItemID) {
 			var currentNum = parseInt($("tr#" + buyItemID).find(
-					".cart_quantity_input").attr("value"));
+					".cart_quantity_input").val());
 			if (currentNum == 1)
 				return false;
 			updateCart(buyItemID, currentNum - 1);
@@ -635,7 +632,7 @@ select {
 					var tr = $("tr#" + buyItemID);
 					var numInput = tr.find(".cart_quantity_input");
 					var itemTotalPrice = tr.find(".cart_span");
-					numInput.attr("value", data.num);
+					numInput.val(data.num);
 					itemTotalPrice.html(data.buyItemPrice);
 					UpdateTotalPrice();
 				}
