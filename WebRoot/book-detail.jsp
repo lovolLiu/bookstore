@@ -383,6 +383,7 @@
 												<a class="cart_quantity_up" href=""
 													onclick="QuantityUp();return false;"> + </a> <input
 													class="cart_quantity_input" type="text" name="quantity"
+													onchange="QuantityChange(this.value);"
 													value="1" autocomplete="off" size="2" >
 												<a class="cart_quantity_down" href=""
 													onclick="QuantityDown();return false;"> - </a>
@@ -710,6 +711,14 @@
 				}
 			})
 		}
+		
+		function QuantityChange(num){
+			if(num <= 0){
+				swal("Sorry!", "购买数量有误~", "error");
+				$(".cart_quantity_input").val(1);
+			}
+		}
+		
 		
 		function QuantityUp() {
 			var currentNum = parseInt($(".cart_quantity_input").val());

@@ -647,6 +647,11 @@ select {
 
 
 		function QuantityChange(num, buyItemID) {
+			if(num <= 0){
+				swal("Sorry!", "购买数目有误~", "error");
+				num = 1;
+				$("tr#" + buyItemID).find(".cart_quantity_input").val(num);
+			}
 			updateCart(buyItemID, num);
 			return false;
 		}
