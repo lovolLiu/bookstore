@@ -383,7 +383,7 @@
 												<a class="cart_quantity_up" href=""
 													onclick="QuantityUp();return false;"> + </a> <input
 													class="cart_quantity_input" type="text" name="quantity"
-													value="1" autocomplete="off" size="2" readonly="readonly">
+													value="1" autocomplete="off" size="2" >
 												<a class="cart_quantity_down" href=""
 													onclick="QuantityDown();return false;"> - </a>
 											</div>
@@ -657,7 +657,7 @@
 	<script>
 		function StraightBuy() {
 			var restNum = ${book.restNum};
-			var wantedNum = $(".cart_quantity_input").attr("value");
+			var wantedNum = $(".cart_quantity_input").val();
 			if (wantedNum > restNum) {
 				swal("Sorry!", "库存不足~", "error");
 				return;
@@ -691,7 +691,7 @@
 
 		function AddCartItem() {
 			var url = "AddCartItem?bookID=${book.bookID }&num="
-					+ $(".cart_quantity_input").attr("value");
+					+ $(".cart_quantity_input").val();
 					
 			$.ajax({
 				url : url,
@@ -712,17 +712,18 @@
 		}
 		
 		function QuantityUp() {
-			var currentNum = parseInt($(".cart_quantity_input").attr("value"));
-			$(".cart_quantity_input").attr("value", currentNum + 1);
+			var currentNum = parseInt($(".cart_quantity_input").val());
+			$(".cart_quantity_input").val(currentNum + 1);
 			return false;
 		}
 
 		function QuantityDown() {
-			var currentNum = $(".cart_quantity_input").attr("value");
+			var currentNum = $(".cart_quantity_input").val();
 			if (currentNum == 1)
 				return false;
-			$(".cart_quantity_input").attr("value", currentNum - 1);
+			$(".cart_quantity_input").val(currentNum - 1);
 		}
+		
 
 		function formatDate(data) {
 			var d = new Date(data); //for date in the format "YYYY-MM-DDTHH:MM:SS" where T means timezone!!! 
