@@ -331,7 +331,7 @@
 															class="glyphicon glyphicon-star-empty"></i></span><span
 														class="star"><i
 															class="glyphicon glyphicon-star-empty"></i></span></span><span
-														class="filled-stars" style="width: 80%;"><span
+														class="filled-stars" style="width: 0%;"><span
 														class="star"><i class="glyphicon glyphicon-star"></i></span><span
 														class="star"><i class="glyphicon glyphicon-star"></i></span><span
 														class="star"><i class="glyphicon glyphicon-star"></i></span><span

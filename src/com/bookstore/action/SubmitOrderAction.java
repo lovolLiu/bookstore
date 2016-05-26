@@ -1,6 +1,7 @@
 package com.bookstore.action;
 
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class SubmitOrderAction {
 	//out
 	Address address;
 	DivOrder divOrder;
-	Double totalPrice;
+	String totalPrice;
 	Boolean jsonResult;
 	
 	//IOC Service
@@ -45,8 +46,9 @@ public class SubmitOrderAction {
 		
 		divOrder = convertorService.orderIDToDivOrder(orderID);
 		address = addressService.selectAddress(addressID);
-		totalPrice = convertorService.calculateTotalPrice(divOrder.getOrderItemList());
-		
+		Double fTotalPrice = convertorService.calculateTotalPrice(divOrder.getOrderItemList());
+		DecimalFormat df = new DecimalFormat("0.00");
+		totalPrice = df.format(fTotalPrice);
 		//最后，如果这些buyItem来自购物车，需要将这些项从购物车中清除.
 		for(Integer buyItemID : buyItemIDList){
 			cartService.deleteCartItem(buyItemID);
@@ -86,13 +88,17 @@ public class SubmitOrderAction {
 		this.divOrder = divOrder;
 	}
 
-	public Double getTotalPrice() {
+	
+
+	public String getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(Double totalPrice) {
+
+	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
 
 	public BuyService getBuyService() {
 		return buyService;
