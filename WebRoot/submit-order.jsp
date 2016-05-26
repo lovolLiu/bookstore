@@ -428,6 +428,7 @@ select {
 											<a class="cart_quantity_up" href=""
 												onclick="return QuantityUp(${buyItemID})"> + </a> <input
 												class="cart_quantity_input" type="text" name="quantity"
+												onchange="QuantityChange(this.value, ${buyItemID})"
 												value="${num }" autocomplete="off" size="2" /> <a
 												class="cart_quantity_down" href=""
 												onclick="return QuantityDown(${buyItemID})"> - </a>
@@ -644,24 +645,23 @@ select {
 
 		}
 
-		$(".cart_quantity_input").blur(function() {
-			alert();
-			var num = $(this).attr("value");
-			var buyItemID = $(this).parents("tr")[0].attr("id");
+
+		function QuantityChange(num, buyItemID) {
 			updateCart(buyItemID, num);
 			return false;
-		});
-
+		}
+		
+		
 		function QuantityUp(buyItemID) {
 			var currentNum = parseInt($("tr#" + buyItemID).find(
-					".cart_quantity_input").attr("value"));
+					".cart_quantity_input").val());
 			updateCart(buyItemID, currentNum + 1);
 			return false;
 		}
 
 		function QuantityDown(buyItemID) {
 			var currentNum = parseInt($("tr#" + buyItemID).find(
-					".cart_quantity_input").attr("value"));
+					".cart_quantity_input").val());
 			if (currentNum == 1)
 				return false;
 			updateCart(buyItemID, currentNum - 1);
@@ -678,7 +678,7 @@ select {
 					var tr = $("tr#" + buyItemID);
 					var numInput = tr.find(".cart_quantity_input");
 					var itemTotalPrice = tr.find(".cart_total_price");
-					numInput.attr("value", data.num);
+					numInput.val(data.num);
 					
 					var oldItemTotalPrice = parseFloat(itemTotalPrice.html().substr(1, itemTotalPrice.html().length)).toFixed(2);
 					
