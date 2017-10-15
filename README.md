@@ -1,5 +1,7 @@
 # bookstore
 
+这是一个SSH的空白框架。导入MyEclipse的方法如下：
+
 1、首先将项目直接clone到workspace中</br>
 2、File -> New -> Dynamic Web Project</br>
    输入项目名 bookstore</br>
